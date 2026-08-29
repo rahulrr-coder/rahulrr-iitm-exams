@@ -70,32 +70,20 @@ def page_words(pdf):
     return pages
 
 
-def footer_box(words):
-    """Bounding box of the 'Downloaded by <name> <email>' footer line, if present.
+def footer_boxes(words):
+    """Boxes covering the 'Downloaded by <name> <email>' footer words.
 
-    The papers stamp this at a fixed height rather than after the content, so on
-    a full page the last option can sit *below* it. Cropping the page at the
-    footer would therefore silently truncate real questions -- it has to be
-    painted over in place instead.
+    One box per word rather than a full-width band: the papers stamp this line
+    at a fixed height, and on a full page it can overlap the option printed
+    beside it (seen in Eng1, where option A runs 722.8-734.3 and the footer
+    733.2-742.3). A band across the page would paint out that whole option;
+    per-word boxes touch only the few points where they genuinely overlap.
     """
     line = [w for w in words if w[4] == "Downloaded" or "quizpractice.space" in w[4]]
     if not line:
-        return None
+        return []
     y = min(w[1] for w in line)
-    band = [w for w in words if abs(w[1] - y) < 4]
-    top, bottom = y - 2, max(w[3] for w in band) + 2
-    # keep the paint inside the gap around the footer: an option line can begin
-    # a couple of points below it, and clipping its ascenders looks like damage
-    # build_image grows every box by REDACT_PAD pixels, so leave that much room
-    # too -- otherwise the paint shaves the ascenders off the line below.
-    gap = 0.5 + REDACT_PAD / SCALE
-    above = [w[3] for w in words if w[3] <= y]
-    below = [w[1] for w in words if w[1] >= bottom - 2 and w not in band]
-    if above:
-        top = max(top, max(above) + gap)
-    if below:
-        bottom = min(bottom, min(below) - gap)
-    return (0, top, 10000, bottom)
+    return [(w[0], w[1], w[2], w[3]) for w in words if abs(w[1] - y) < 4]
 
 
 def body_top(words):
@@ -164,8 +152,7 @@ def redactions(qs, k, pages):
     y1 = qs[k + 1][2] if k + 1 < len(qs) else None
     boxes, stray = {}, 0
     for p in range(p0, p1 + 1):
-        fb = footer_box(pages[p])
-        if fb:
+        for fb in footer_boxes(pages[p]):
             boxes.setdefault(p, []).append(fb)
         for x0, wy0, x1, wy1, text in pages[p]:
             if p == p0 and wy0 < y0 - 1:
