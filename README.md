@@ -1,23 +1,47 @@
-# End Term Roadmap
+# rahulrr-iitm-exams
 
-Archetype-based PYQ trainer for IITM BS end-term prep (Math 2, Stat 1, English 1, Computational Thinking).
+Archetype-based PYQ trainer for IITM BS exams. Currently loaded with the **End Term Sep 2026**
+set: Math 2, Stat 1, English 1, Computational Thinking — 1302 classified past questions in 329
+archetypes.
 
-Every classified PYQ across four subjects is clustered into a handful of **archetypes** per week — recurring
-problem-solving patterns. Solve the flagged target question with AI help, internalise the trigger, then clear
-every other question that matches it on your own.
+Every past question is clustered into an **archetype** — a recurring solving pattern. Solve the
+flagged target question with AI help, internalise the trigger, then clear the rest of that pattern
+cold. Each question opens on its own page showing the **real question cropped from the source PDF**,
+with the answer redacted from the image and revealed only when you click.
+
+## The loop it encodes
+
+Per week, two rounds:
+
+1. **Round 1 — learn.** Work the archetype cards in order, solving each target question with help,
+   until every archetype in the week is marked learned.
+2. **Round 2 — solo.** Switch the filter to **Must-solve** and clear those with no help.
+3. When must-solve is empty, the week badge goes green — **move to the next week.** Do not stop to
+   clear *good-to-solve*; that is deferred on purpose.
+4. **Final week before the exam:** one revision pass over the cross-week good-to-solve backlog,
+   linked from the dashboard.
+
+Must vs good is computed, not hand-labelled: an archetype's target is always must, joined by its
+hardest and heaviest questions (difficulty ≥ 3 or marks ≥ 4, highest first) up to 60% of the
+archetype. The rule lives in `assignTiers()` in `assets/js/app.js` — change it there and every
+view follows.
 
 ## Structure
 
-- `index.html` — dashboard: countdown to 13 Sep 2026, per-subject progress, an auto-adjusting "today's plan", streaks.
-- `math2.html`, `stat1.html`, `english1.html`, `ct.html` — one roadmap page per subject: week-by-week archetype
-  cards above the full PYQ ladder table, every row tagged back to its archetype.
-- `assets/css/style.css` — shared design system (light/dark aware).
-- `assets/js/app.js` — data loading, unified localStorage state, the daily planner algorithm, streak/badge logic.
-- `assets/js/roadmap.js` — renders a subject's roadmap page from its data + archetype files.
-- `data/<subject>.json` — classified PYQ rows (paper, question, marks, week, difficulty, concept, answer, stem).
-- `data/<subject>_archetypes.json` — AI-generated archetype clusters (title, target question, trigger, covered qids).
+```
+index.html                     dashboard: countdown, must-solve progress, today's plan, good backlog
+math2.html stat1.html …        one page per subject (week ladder + archetype cards + question view)
+data/manifest.json             THE file that defines the current exam
+data/<subject>.json            classified questions
+data/<subject>_archetypes.json archetype clusters
+questions/<subject>/<qid>.webp cropped, answer-redacted question images
+tools/extract.py               builds those images from the source PDFs
+tools/check.py                 verifies every one of them
+assets/js/app.js               state, tiering, planner
+assets/js/roadmap.js           subject page + single-question view
+```
 
-No backend. Progress is stored in the browser's localStorage — per browser, not synced across devices.
+No build step, no dependencies, no backend. Progress lives in `localStorage`, per browser.
 
 ## Run locally
 
@@ -25,15 +49,43 @@ No backend. Progress is stored in the browser's localStorage — per browser, no
 python3 -m http.server 8000
 ```
 
-then open http://localhost:8000
+## Swapping in the next exam
+
+The app is subject- and exam-agnostic; nothing in the HTML, CSS, or JS names a specific exam.
+To point it at a different quiz or end-term:
+
+1. Drop the new papers in `~/Documents/IITM-T2-Q1/End Term PYQs/<Folder>/` and set `PDF_ROOT` /
+   `SUBJECTS` in `tools/extract.py` if the folders differ.
+2. Replace `data/<subject>.json` and `data/<subject>_archetypes.json`.
+3. Edit `data/manifest.json` — exam name, exam date, subject list. A new exam name gives you a
+   fresh progress bucket, so old progress is not mixed in.
+4. `python3 tools/extract.py && python3 tools/check.py`
+5. `git push` — Netlify redeploys on its own.
+
+Paper keys are matched to PDFs by the date in the filename, so new papers need no manual mapping.
+
+## How the question images are made
+
+Math and stats PDFs have no copy-pasteable question text — formulas are rasterised. But the
+*labels* are real text, so `tools/extract.py` uses `pdftotext -bbox-layout` (poppler) to find every
+`Q<n>` label's bounding box, renders the page with `pdftoppm`, and crops the band between one
+question and the next, stitching across page breaks.
+
+Three things are removed before saving:
+
+- **the answer text** — `✓ Correct` sits inline beside the right option (MCQ/MSQ); SA papers put
+  the value under an `ANSWER` heading.
+- **the answer highlight** — the correct option's row is washed pale green, which would give the
+  answer away on its own. Every near-white pixel is flattened to white, killing the wash and the
+  zebra striping together. Redactions are painted white too, so their *position* reveals nothing.
+- **the page footer** — it carries the downloader's name and email on every page, and this site
+  is public.
+
+`tools/check.py` re-derives the geometry and verifies all 1302 images: coverage both ways,
+every answer marker blank, no surviving highlight band, no footer inside a crop. It exits non-zero
+on any failure — run it after any change to the pipeline.
 
 ## Deploy
 
-This site is already created on Netlify as `endterm-roadmap-rahulrr` (site id in `netlify.toml`'s comments / your
-Netlify dashboard). From this folder:
-
-```
-npx netlify-cli deploy --prod --dir=. --site=fbebada3-431a-4a76-9394-6f0c0f6dfae9
-```
-
-First run will open a browser to log into Netlify — approve it, then the deploy proceeds.
+Pushing to `main` redeploys via Netlify (site `endterm-roadmap-rahulrr`). `netlify.toml` publishes
+the repo root as-is; there is no build command.

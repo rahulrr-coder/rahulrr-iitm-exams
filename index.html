@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="topnav"><div class="inner">
-<a class="brand" href="index.html">End Term Roadmap</a>
+<a class="brand" href="index.html">IITM Exams</a>
 <a class="tab active" href="index.html">Dashboard</a>
 <a class="tab" href="math2.html">Math 2</a>
 <a class="tab" href="stat1.html">Stat 1</a>
@@ -25,13 +25,15 @@
 <header class="mast">
 <p class="kicker">IITM BS &middot; End-term Sep 2026 &middot; archetype-based PYQ trainer</p>
 <h1 class="pagetitle">Learn the pattern, crush the rest</h1>
-<p class="lede">Every PYQ across four subjects, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then knock out everything else that matches it solo. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
+<p class="lede">Every PYQ across four subjects, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then clear the <strong>must-solve</strong> set cold. Every question opens on its own page with the real question image and the answer hidden until you ask for it. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
 <div class="statline" id="overallStats"></div>
 </header>
 
 <div id="planCard"></div>
 
 <div class="streakbar" id="streakBar"></div>
+
+<div id="backlogCard"></div>
 
 <h2 class="sec">Subjects</h2>
 <p class="sub">Tap a subject to open its week-by-week roadmap.</p>
@@ -44,6 +46,7 @@
 <script>
 (async function () {
   var E = window.EndTerm;
+  await E.load();
   var state = E.loadState();
   var dl = E.daysLeft();
   document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
@@ -55,16 +58,18 @@
   }));
 
   // overall stats
-  var totalQ = 0, doneQ = 0, totalM = 0, doneM = 0;
+  var totalQ = 0, doneQ = 0, mustQ = 0, mustDone = 0, goodLeft = 0;
   E.SUBJECTS.forEach(function (sub) {
     var st = E.subjectStats(sub, allData[sub.key], state);
-    totalQ += st.totalQ; doneQ += st.doneQ; totalM += st.totalM; doneM += st.doneM;
+    totalQ += st.totalQ; doneQ += st.doneQ;
+    mustQ += st.mustQ; mustDone += st.mustDone; goodLeft += st.goodLeft;
   });
   document.getElementById("overallStats").innerHTML =
     '<div class="stat"><b>' + dl + '</b><span>days left</span></div>' +
-    '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>questions solved</span></div>' +
-    '<div class="stat"><b>' + Math.round(doneM) + '/' + Math.round(totalM) + '</b><span>marks banked</span></div>' +
-    '<div class="stat"><b>' + (totalM ? Math.round(100*doneM/totalM) : 0) + '%</b><span>overall progress</span></div>';
+    '<div class="stat"><b>' + mustDone + '/' + mustQ + '</b><span>must-solve cleared</span></div>' +
+    '<div class="stat"><b>' + (mustQ ? Math.round(100*mustDone/mustQ) : 0) + '%</b><span>must-solve progress</span></div>' +
+    '<div class="stat"><b>' + goodLeft + '</b><span>in the good backlog</span></div>' +
+    '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>questions solved</span></div>';
 
   // today's plan
   var plan = E.buildTodaysPlan(allData, state);
@@ -77,10 +82,11 @@
     anyItems.slice(0, 4).forEach(function (item) {
       var sub = item.subject;
       var data = allData[sub.key];
+      var left = Math.round(item.stats.mustRemainingM);
       if (item.nextArch) {
-        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; learn <a href="' + sub.key + '.html#arch-' + item.nextArch.id + '"><b>' + item.nextArch.title + '</b></a> (W' + item.nextArch.week + '), then bank ~' + item.dailyMarksTarget + ' marks from its neighbours.</li>';
+        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; learn <a href="' + sub.key + '.html#arch-' + item.nextArch.id + '"><b>' + item.nextArch.title + '</b></a> (W' + item.nextArch.week + '), then clear ~' + item.dailyMarksTarget + ' marks of must-solve behind it (' + left + ' must-solve marks left).</li>';
       } else if (data && data.arch && data.arch.length) {
-        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; all archetypes learned. Bank ~' + item.dailyMarksTarget + ' marks today from unticked rows (' + Math.round(item.stats.remainingM) + ' left).</li>';
+        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; all archetypes learned. Clear ~' + item.dailyMarksTarget + ' marks of <a href="' + sub.key + '.html">must-solve</a> today (' + left + ' left).</li>';
       } else {
         planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; archetypes not generated yet. Bank ~' + item.dailyMarksTarget + ' marks today straight from the <a href="' + sub.key + '.html">ladder</a> (' + Math.round(item.stats.remainingM) + ' left).</li>';
       }
@@ -96,15 +102,27 @@
     '<span class="flame">' + (streak.count > 0 ? "🔥" : "💤") + '</span><span>' +
     (streak.count > 0 ? (streak.count + "-day streak") : "No streak yet — tick a question to start one") + '</span>';
 
+  // good-to-solve backlog -- deliberately deferred until the last week
+  var backlogHtml = '<div class="plancard backlog"><h3>Good-to-solve backlog</h3>' +
+    '<p class="sub">Same patterns, lower stakes. Leave these until must-solve is clear across every week &mdash; then this is your final revision pass.</p><ul>';
+  E.SUBJECTS.forEach(function (sub) {
+    var st = E.subjectStats(sub, allData[sub.key], state);
+    if (!st.goodLeft) return;
+    backlogHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; <b>' + st.goodLeft +
+      '</b> left <a href="' + sub.key + '.html">open the backlog</a></li>';
+  });
+  backlogHtml += '</ul></div>';
+  document.getElementById("backlogCard").innerHTML = backlogHtml;
+
   // subject cards
   var gridHtml = "";
   E.SUBJECTS.forEach(function (sub) {
     var data = allData[sub.key];
     var st = E.subjectStats(sub, data, state);
     gridHtml += '<a class="subjcard s-' + sub.key + '" href="' + sub.key + '.html">' +
-      '<div class="row1"><span class="emoji">' + sub.emoji + '</span><h2>' + sub.label + '</h2><span class="pct">' + st.pctQ + '%</span></div>' +
-      '<div class="ring-track"><div class="ring-fill" style="width:' + st.pctQ + '%;background:var(--accent)"></div></div>' +
-      '<div class="meta"><span><b>' + st.doneQ + '/' + st.totalQ + '</b> questions</span><span><b>' + Math.round(st.doneM) + '/' + Math.round(st.totalM) + '</b> marks</span><span><b>' + (data.arch.length || '—') + '</b> archetypes</span></div>' +
+      '<div class="row1"><span class="emoji">' + sub.emoji + '</span><h2>' + sub.label + '</h2><span class="pct">' + st.pctMust + '%</span></div>' +
+      '<div class="ring-track"><div class="ring-fill" style="width:' + st.pctMust + '%;background:var(--accent)"></div></div>' +
+      '<div class="meta"><span><b>' + st.mustDone + '/' + st.mustQ + '</b> must-solve</span><span><b>' + st.goodLeft + '</b> good left</span><span><b>' + (data.arch.length || '—') + '</b> archetypes</span></div>' +
       '</a>';
   });
   document.getElementById("subjectGrid").innerHTML = gridHtml;
