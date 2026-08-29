@@ -79,11 +79,13 @@ Three things are removed before saving:
   answer away on its own. Every near-white pixel is flattened to white, killing the wash and the
   zebra striping together. Redactions are painted white too, so their *position* reveals nothing.
 - **the page footer** — it carries the downloader's name and email on every page, and this site
-  is public.
+  is public. It is painted over rather than cropped away: the papers stamp it at a fixed height,
+  so on a full page the last option can sit *below* it, and cutting there silently truncated
+  real questions.
 
-`tools/check.py` re-derives the geometry and verifies all 1302 images: coverage both ways,
-every answer marker blank, no surviving highlight band, no footer inside a crop. It exits non-zero
-on any failure — run it after any change to the pipeline.
+`tools/check.py` re-derives the geometry and verifies all 1302 images: coverage both ways, every
+answer marker and footer region blank, and no surviving highlight band. It exits non-zero on any
+failure — run it after any change to the pipeline.
 
 ## Deploy
 

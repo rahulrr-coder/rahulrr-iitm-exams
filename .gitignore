@@ -1,5 +1,4 @@
 .DS_Store
 node_modules/
 .netlify/
-tools/_pages/
 __pycache__/

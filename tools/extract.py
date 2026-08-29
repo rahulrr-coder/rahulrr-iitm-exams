@@ -12,7 +12,9 @@ Two things get painted over before saving:
   * the answer markers -- "checkmark Correct" sits inline beside the right option
     (MCQ/MSQ), while SA papers use an "ANSWER" heading followed by the value.
   * the page footer, which carries the downloader's name and email on every
-    page. These crops go to a public site.
+    page. These crops go to a public site. It is painted over rather than
+    cropped away, because it is stamped at a fixed height and real content can
+    fall below it.
 
 The papers also tint the correct option's row pale green, so removing only the
 text would still hand over the answer. Every near-white background is therefore
@@ -37,6 +39,7 @@ SA_MARGIN = 14        # the SA answer card's top edge and green bar sit above "A
 REDACT_PAD = 2
 FILL = (255, 255, 255)   # match the flattened background: an invisible redaction
 FLATTEN_MIN = 235        # any pixel this pale is background, whatever its hue
+INK_MAX = 210            # darker than this is real content, not a hairline rule
 
 MONTHS = "jan feb mar apr may jun jul aug sep oct nov dec".split()
 WORD_RE = re.compile(
@@ -67,10 +70,42 @@ def page_words(pdf):
     return pages
 
 
-def footer_y(words, page_h):
-    """Top of the 'Downloaded by ... <email>' footer, or the page bottom."""
-    ys = [w[1] for w in words if w[4] == "Downloaded" or "quizpractice.space" in w[4]]
-    return (min(ys) - 4) if ys else (page_h - 30)
+def footer_box(words):
+    """Bounding box of the 'Downloaded by <name> <email>' footer line, if present.
+
+    The papers stamp this at a fixed height rather than after the content, so on
+    a full page the last option can sit *below* it. Cropping the page at the
+    footer would therefore silently truncate real questions -- it has to be
+    painted over in place instead.
+    """
+    line = [w for w in words if w[4] == "Downloaded" or "quizpractice.space" in w[4]]
+    if not line:
+        return None
+    y = min(w[1] for w in line)
+    band = [w for w in words if abs(w[1] - y) < 4]
+    top, bottom = y - 2, max(w[3] for w in band) + 2
+    # keep the paint inside the gap around the footer: an option line can begin
+    # a couple of points below it, and clipping its ascenders looks like damage
+    # build_image grows every box by REDACT_PAD pixels, so leave that much room
+    # too -- otherwise the paint shaves the ascenders off the line below.
+    gap = 0.5 + REDACT_PAD / SCALE
+    above = [w[3] for w in words if w[3] <= y]
+    below = [w[1] for w in words if w[1] >= bottom - 2 and w not in band]
+    if above:
+        top = max(top, max(above) + gap)
+    if below:
+        bottom = min(bottom, min(below) - gap)
+    return (0, top, 10000, bottom)
+
+
+def body_top(words):
+    """First content on a continuation page."""
+    return max(0, min((w[1] for w in words), default=TOP_MARGIN) - 6)
+
+
+def body_bottom(words, page_h):
+    """Last content on the page, footer included -- it gets painted, not cut."""
+    return min(page_h, max((w[3] for w in words), default=page_h - 30) + 8)
 
 
 def flatten(img):
@@ -115,9 +150,8 @@ def band_slices(qs, k, pages, page_imgs):
     out = []
     for p in range(p0, p1 + 1):
         page_h = page_imgs[p].height / SCALE
-        top = y0 if p == p0 else TOP_MARGIN
-        bottom = y1 if (p == p1 and y1 is not None) else footer_y(pages[p], page_h)
-        bottom = min(bottom, footer_y(pages[p], page_h))
+        top = y0 if p == p0 else body_top(pages[p])
+        bottom = y1 if (p == p1 and y1 is not None) else body_bottom(pages[p], page_h)
         if bottom - top > 4:
             out.append((p, top, bottom))
     return out
@@ -130,6 +164,9 @@ def redactions(qs, k, pages):
     y1 = qs[k + 1][2] if k + 1 < len(qs) else None
     boxes, stray = {}, 0
     for p in range(p0, p1 + 1):
+        fb = footer_box(pages[p])
+        if fb:
+            boxes.setdefault(p, []).append(fb)
         for x0, wy0, x1, wy1, text in pages[p]:
             if p == p0 and wy0 < y0 - 1:
                 continue
@@ -145,8 +182,7 @@ def redactions(qs, k, pages):
                 # SA: the value sits under the heading, so kill everything below
                 # it -- starting above the heading, because the answer card's
                 # top edge and green accent bar are drawn there.
-                page_h = 841.89
-                end = y1 if (p == p1 and y1 is not None) else footer_y(pages[p], page_h)
+                end = y1 if (p == p1 and y1 is not None) else body_bottom(pages[p], 841.89)
                 boxes.setdefault(p, []).append((0, wy0 - SA_MARGIN, 10000, end))
     return boxes, stray
 
@@ -176,8 +212,14 @@ def build_image(slices, boxes, page_imgs):
 
 
 def trim_bottom(img):
-    """Drop trailing blank rows -- redacting an SA answer can leave half a page."""
-    bbox = ImageChops.difference(img, Image.new("RGB", img.size, (255, 255, 255))).getbbox()
+    """Drop trailing blank rows -- redacting an SA answer can leave half a page.
+
+    Measured against real ink, not any non-white pixel: the *next* question's
+    card border is a hairline of about (232,232,232) and would otherwise hold a
+    page of whitespace in every crop.
+    """
+    ink = img.convert("L").point(lambda v: 255 if v < INK_MAX else 0)
+    bbox = ink.getbbox()
     if bbox and bbox[3] + 12 < img.height:
         return img.crop((0, 0, img.width, bbox[3] + 12))
     return img
