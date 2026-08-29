@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computational Thinking Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="s-ct">
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">End Term Roadmap</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab active" href="ct.html">CT</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">— days to end-term</div>
+</div></nav>
+<div class="wrap">
+<header class="mast">
+<p class="kicker">IITM BS &middot; Computational Thinking &middot; archetype-based roadmap</p>
+<h1 class="pagetitle">Computational Thinking Roadmap</h1>
+<p class="lede">Iteration through graphs and recursion, weeks 1–9 (papers don't reach W10–12). Each week: learn its archetypes (solve the flagged target question with help, internalise the trigger), then the full ladder below with every row tagged to its archetype. <strong>Progress saves in this browser.</strong></p>
+<div class="statline" id="overallStats"></div>
+</header>
+
+<div class="streakbar" id="streakBar"></div>
+<div class="badges" id="badgeRow"></div>
+
+<div class="toolbar"><div class="chips" id="chips"></div>
+<label class="tgl"><input type="checkbox" id="hideAns" checked> Hide answers</label>
+<label class="tgl"><input type="checkbox" id="hideDone"> Hide solved</label>
+</div>
+
+<div class="note"><h3>How to run this</h3>
+<p>Open a week. Read its archetype cards first &mdash; each names the pattern, the recognition trigger, and one target question to solve with AI help. Once that pattern clicks, work down the ladder table below: every row carries a small badge (e.g. <code>W3-A2</code>) linking it back to the archetype that solves it.</p>
+<p>Mark an archetype &ldquo;Learned&rdquo; once its trigger feels automatic, not just after solving the target question once. Tick ladder rows as you clear them &mdash; both feed the streak and the dashboard's daily plan.</p></div>
+
+<h2 class="sec">The roadmap</h2>
+<div id="ladderRoot"></div>
+
+<footer>Archetypes are AI-generated clusters over the classified PYQ set, aimed at grouping questions by solving technique rather than by topic label &mdash; a judgement call, not an official grouping. Progress is stored per-browser (localStorage).</footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>window.SUBJECT_KEY = "ct";</script>
+<script src="assets/js/roadmap.js"></script>
+</body>
+</html>

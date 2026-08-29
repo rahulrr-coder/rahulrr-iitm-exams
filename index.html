@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>End Term Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">End Term Roadmap</a>
+<a class="tab active" href="index.html">Dashboard</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab" href="ct.html">CT</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">— days to end-term</div>
+</div></nav>
+<div class="wrap">
+<header class="mast">
+<p class="kicker">IITM BS &middot; End-term Sep 2026 &middot; archetype-based PYQ trainer</p>
+<h1 class="pagetitle">Learn the pattern, crush the rest</h1>
+<p class="lede">Every PYQ across four subjects, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then knock out everything else that matches it solo. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
+<div class="statline" id="overallStats"></div>
+</header>
+
+<div id="planCard"></div>
+
+<div class="streakbar" id="streakBar"></div>
+
+<h2 class="sec">Subjects</h2>
+<p class="sub">Tap a subject to open its week-by-week roadmap.</p>
+<div class="grid4" id="subjectGrid"></div>
+
+<footer>Progress is stored per-browser (localStorage) &mdash; it won't follow you to a different device or browser. Exam date fixed at 13 Sep 2026; "today's plan" recomputes from your device's real clock on every load.</footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+(async function () {
+  var E = window.EndTerm;
+  var state = E.loadState();
+  var dl = E.daysLeft();
+  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+
+  var allData = {};
+  await Promise.all(E.SUBJECTS.map(async function (sub) {
+    try { allData[sub.key] = await E.loadSubjectData(sub); }
+    catch (e) { allData[sub.key] = { rows: [], arch: [], archByQid: {} }; }
+  }));
+
+  // overall stats
+  var totalQ = 0, doneQ = 0, totalM = 0, doneM = 0;
+  E.SUBJECTS.forEach(function (sub) {
+    var st = E.subjectStats(sub, allData[sub.key], state);
+    totalQ += st.totalQ; doneQ += st.doneQ; totalM += st.totalM; doneM += st.doneM;
+  });
+  document.getElementById("overallStats").innerHTML =
+    '<div class="stat"><b>' + dl + '</b><span>days left</span></div>' +
+    '<div class="stat"><b>' + doneQ + '/' + totalQ + '</b><span>questions solved</span></div>' +
+    '<div class="stat"><b>' + Math.round(doneM) + '/' + Math.round(totalM) + '</b><span>marks banked</span></div>' +
+    '<div class="stat"><b>' + (totalM ? Math.round(100*doneM/totalM) : 0) + '%</b><span>overall progress</span></div>';
+
+  // today's plan
+  var plan = E.buildTodaysPlan(allData, state);
+  var planHtml = '<div class="plancard"><h3>Today’s plan</h3>';
+  var anyItems = plan.items.filter(function(i){ return i.stats.remainingM > 0; });
+  if (!anyItems.length) {
+    planHtml += '<p class="empty">Everything’s ticked. Go find more papers, or start re-solving cold.</p>';
+  } else {
+    planHtml += '<ul>';
+    anyItems.slice(0, 4).forEach(function (item) {
+      var sub = item.subject;
+      var data = allData[sub.key];
+      if (item.nextArch) {
+        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; learn <a href="' + sub.key + '.html#arch-' + item.nextArch.id + '"><b>' + item.nextArch.title + '</b></a> (W' + item.nextArch.week + '), then bank ~' + item.dailyMarksTarget + ' marks from its neighbours.</li>';
+      } else if (data && data.arch && data.arch.length) {
+        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; all archetypes learned. Bank ~' + item.dailyMarksTarget + ' marks today from unticked rows (' + Math.round(item.stats.remainingM) + ' left).</li>';
+      } else {
+        planHtml += '<li><b>' + sub.emoji + ' ' + sub.label + '</b> &mdash; archetypes not generated yet. Bank ~' + item.dailyMarksTarget + ' marks today straight from the <a href="' + sub.key + '.html">ladder</a> (' + Math.round(item.stats.remainingM) + ' left).</li>';
+      }
+    });
+    planHtml += '</ul>';
+  }
+  planHtml += '</div>';
+  document.getElementById("planCard").innerHTML = planHtml;
+
+  // streak
+  var streak = state.streak || { count: 0 };
+  document.getElementById("streakBar").innerHTML =
+    '<span class="flame">' + (streak.count > 0 ? "🔥" : "💤") + '</span><span>' +
+    (streak.count > 0 ? (streak.count + "-day streak") : "No streak yet — tick a question to start one") + '</span>';
+
+  // subject cards
+  var gridHtml = "";
+  E.SUBJECTS.forEach(function (sub) {
+    var data = allData[sub.key];
+    var st = E.subjectStats(sub, data, state);
+    gridHtml += '<a class="subjcard s-' + sub.key + '" href="' + sub.key + '.html">' +
+      '<div class="row1"><span class="emoji">' + sub.emoji + '</span><h2>' + sub.label + '</h2><span class="pct">' + st.pctQ + '%</span></div>' +
+      '<div class="ring-track"><div class="ring-fill" style="width:' + st.pctQ + '%;background:var(--accent)"></div></div>' +
+      '<div class="meta"><span><b>' + st.doneQ + '/' + st.totalQ + '</b> questions</span><span><b>' + Math.round(st.doneM) + '/' + Math.round(st.totalM) + '</b> marks</span><span><b>' + (data.arch.length || '—') + '</b> archetypes</span></div>' +
+      '</a>';
+  });
+  document.getElementById("subjectGrid").innerHTML = gridHtml;
+})();
+</script>
+</body>
+</html>
