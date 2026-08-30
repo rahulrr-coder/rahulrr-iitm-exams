@@ -87,6 +87,11 @@ Three things are removed before saving:
   so on a full page the last option can sit *below* it, and cutting there silently truncated
   real questions.
 
+`tools/audit_weeks.py` is a separate, optional sanity check on week assignments: it confirms weeks
+are coherent groupings, then flags any question whose nearest neighbours sit in a different week.
+Its output is candidates for human review, not errors — a question can legitimately straddle two
+weeks, which is what `aw` records. Run it after swapping in a new exam.
+
 `tools/check.py` re-derives the geometry and verifies all 1302 images: coverage both ways, every
 answer marker and footer region blank, and no surviving highlight band. It exits non-zero on any
 failure — run it after any change to the pipeline.
