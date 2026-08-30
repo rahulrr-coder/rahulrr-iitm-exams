@@ -43,6 +43,10 @@ assets/js/roadmap.js           subject page + single-question view
 
 No build step, no dependencies, no backend. Progress lives in `localStorage`, per browser.
 
+CSS and JS are referenced with a `?v=N` query. **Bump that number in all five HTML files
+whenever you change `style.css`, `app.js`, or `roadmap.js`** — otherwise browsers keep serving the
+cached copy and your change appears not to have deployed.
+
 ## Run locally
 
 ```

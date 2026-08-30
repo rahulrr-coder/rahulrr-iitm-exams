@@ -62,6 +62,15 @@
     data.arch.forEach(function (a) { (archByWeek[a.week] = archByWeek[a.week] || []).push(a); });
     var weeks = Object.keys(byWeek).map(Number).sort(function (a, b) { return a - b; });
 
+    // how many questions in OTHER weeks name this week as a dependency -- the
+    // honest measure of what breaks later if you skip a week now
+    var leanedOn = {};
+    data.rows.forEach(function (r) {
+      (r.aw || []).forEach(function (w) {
+        if (w !== r.w) leanedOn[w] = (leanedOn[w] || 0) + 1;
+      });
+    });
+
     // toolbar chips
     var chipsHtml = '<button class="chip" data-w="all" aria-pressed="true">All weeks</button>';
     weeks.forEach(function (w) { chipsHtml += '<button class="chip" data-w="' + w + '" aria-pressed="false">W' + w + '</button>'; });
@@ -97,6 +106,38 @@
         '<span>avg difficulty <b>' + avgd.toFixed(1) + '</b></span><span><b>' + hi + '</b> at 4&ndash;5</span>' +
         '<span>in <b>' + npap + '</b>/' + alltotal + ' papers</span></div></div>';
       html += '<div class="wk-prog"><i data-prog="' + w + '"></i></div>';
+
+      // What's tested: the week's patterns, heaviest first, so with limited
+      // days you can see where the marks actually are before opening a card.
+      var mustByArch = {};
+      wrows.forEach(function (r) {
+        if (r.tier !== "must") return;
+        var id = data.archByQid[r.qid];
+        if (id) mustByArch[id] = (mustByArch[id] || 0) + r.m;
+      });
+      var ranked = warch.slice().sort(function (x, y) {
+        return (mustByArch[y.id] || 0) - (mustByArch[x.id] || 0);
+      });
+      var mix = { MCQ: 0, MSQ: 0, SA: 0 };
+      wrows.forEach(function (r) { mix[r.t] = (mix[r.t] || 0) + 1; });
+      var mustN = wrows.filter(function (r) { return r.tier === "must"; }).length;
+      var mustM = wrows.reduce(function (a, r) { return a + (r.tier === "must" ? r.m : 0); }, 0);
+
+      if (ranked.length) {
+        html += '<div class="wk-brief"><h3>What this week tests</h3><ol class="topics">';
+        ranked.forEach(function (a) {
+          var mm = Math.round(mustByArch[a.id] || 0);
+          html += '<li><a href="#arch-' + a.id + '">' + esc(a.title) + '</a>' +
+            '<span class="tm">' + (mm ? mm + ' must-marks' : 'good only') + '</span></li>';
+        });
+        html += '</ol><p class="wk-facts">' +
+          '<b>' + ranked.length + '</b> patterns to learn &middot; ' +
+          '<b>' + mustN + '</b> must-solve (' + Math.round(mustM) + ' marks) &middot; ' +
+          mix.SA + ' SA / ' + mix.MSQ + ' MSQ / ' + mix.MCQ + ' MCQ' +
+          (leanedOn[w] ? ' &middot; <b class="gates">later questions leaning on this week: ' +
+            leanedOn[w] + '</b>' : '') +
+          '</p></div>';
+      }
 
       if (warch.length) {
         html += '<div class="archgrid">';
