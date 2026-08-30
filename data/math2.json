@@ -1,1 +1,4953 @@
-[{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q2","t":"MCQ","m":3.0,"w":1,"aw":[],"c":"Nilpotent vs symmetric 2x2 matrix existence","d":4,"a":"B","s":"P: exists 2x2 A with A^2=0, A^T=A, A!=0; Q: A^2=0, A!=0"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q4","t":"MSQ","m":3.0,"w":1,"aw":[],"c":"Matrix product columns as linear combinations","d":3,"a":"A,B","s":"A,B square same order; which statements about rows/columns of AB hold"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q27","t":"SA","m":2.0,"w":1,"aw":[7],"c":"Angle between two lines via dot product","d":3,"a":"17","s":"Acute angle theta between 3x-5y=0 and x+y=0; find 1/cos^2(theta)"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q2","t":"SA","m":2.0,"w":1,"aw":[],"c":"Matrix equality entrywise, trace computation","d":2,"a":"3","s":"Given A written two ways, find tr(A) from matching entries"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q26","t":"SA","m":3.0,"w":1,"aw":[7],"c":"Orthogonality condition between two lines","d":2,"a":"0.6","s":"Line ax+by=0 orthogonal to 3x-5y=0; find b/a"},{"p":"2026 May","pk":"P12_2026_may","q":"Q34","t":"SA","m":4.0,"w":1,"aw":[],"c":"determinant of a 3x3 matrix","d":2,"a":"7","s":"Find determinant of A = [[3,0,-1],[1,2,0],[1,1,1]]"},{"p":"2026 May","pk":"P12_2026_may","q":"Q36","t":"SA","m":4.0,"w":1,"aw":[],"c":"determinant of a 3x3 matrix","d":2,"a":"-13","s":"Find determinant of B = [[-1,0,2],[0,1,0],[3,0,7]]"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q8","t":"MCQ","m":1.0,"w":1,"aw":[],"c":"Dimension of outer product x*y^T","d":1,"a":"A","s":"x,y nonzero column vectors in R^n; dimension of x*y^T"},{"p":"2026 May","pk":"P12_2026_may","q":"Q13","t":"SA","m":5.0,"w":1,"aw":[],"c":"dot product zero, solve for unknown component","d":1,"a":"12","s":"Find c so that (2,-1,4,3) and (1,c,-2,6) are orthogonal"},{"p":"2026 May","pk":"P12_2026_may","q":"Q14","t":"SA","m":5.0,"w":1,"aw":[],"c":"dot product zero, solve for unknown component","d":1,"a":"10","s":"Find c so that (1,3,-5) and (5,c,7) are perpendicular"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q18","t":"SA","m":1.0,"w":2,"aw":[1],"c":"Parameter for infinitely many solutions","d":4,"a":"2","s":"Number of a making a 3x3 homogeneous system have infinite solutions"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q13","t":"SA","m":4.0,"w":2,"aw":[1],"c":"Determinant of matrix polynomial via factoring","d":4,"a":"0","s":"A=[[1,2,3],[3,2,5],[-4,9,5]]; find det(A^3-3A^2+2A)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q2","t":"MSQ","m":3.0,"w":2,"aw":[],"c":"Effect of row operations on determinant","d":4,"a":"A,C","s":"det(A)=3; which operations give det(B)=-6"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q12","t":"SA","m":1.0,"w":2,"aw":[7],"c":"Consistency condition via Gaussian elimination","d":4,"a":"3","s":"Same A with b=(alpha, alpha+1, 10); find alpha"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q29","t":"SA","m":2.0,"w":2,"aw":[8],"c":"Cramer's rule on a 3x3 system","d":3,"a":"0","s":"Solve Bz=(2,-2,1)^T by Cramer's rule; find z2+2z3"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q23","t":"MCQ","m":3.0,"w":2,"aw":[5],"c":"Solution space of a 3x3 linear system","d":3,"a":"D","s":"Solution space of the system formed by three plane equations"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q2","t":"MSQ","m":2.0,"w":2,"aw":[7],"c":"Effect of elementary row operations on det/rank","d":3,"a":"B,C","s":"True statements about determinant and rank of n x n matrix A"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q6","t":"MSQ","m":3.0,"w":2,"aw":[5],"c":"Determinant/parameter test for unique solution of Ax=0","d":3,"a":"A,D","s":"For A with entries c,d, decide when Ax=0 has unique solution"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q2","t":"MCQ","m":3.0,"w":2,"aw":[1,7],"c":"Matrix invertibility and product properties","d":3,"a":"C","s":"Correct statement about AB, BA, A^2=I, invertibility, rank"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q4","t":"MCQ","m":4.0,"w":2,"aw":[],"c":"Consistency condition via Gaussian elimination","d":3,"a":"A","s":"Conditions on b1,b2,b3 so 3x3 system has a solution"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q8","t":"SA","m":2.0,"w":2,"aw":[],"c":"Determinant under elementary row operations","d":3,"a":"-2","s":"Row ops turn A (order 5) into I; compute det(A)"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q5","t":"MSQ","m":3.0,"w":2,"aw":[1],"c":"Determinant condition for invertibility","d":3,"a":"A,B","s":"A=[[a,b,b],[a,a,b],[a,a,a]] invertible; required conditions on a,b"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q3","t":"MCQ","m":3.0,"w":2,"aw":[],"c":"Consistency condition via row reduction","d":3,"a":"C","s":"Find consistency condition for a 3x3 system in b1,b2,b3"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q7","t":"MCQ","m":1.5,"w":2,"aw":[7],"c":"Consistency of Ax=b via rank of augmented matrix","d":3,"a":"A","s":"With k=1, b=(0,2,alpha), decide uniqueness/consistency for alpha=5 or 6"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q9","t":"SA","m":1.0,"w":2,"aw":[1],"c":"Determinant of matrix polynomial, factoring A^5(A-I)","d":3,"a":"0","s":"A=[[7,3],[4,3]]; find det(A^6 - A^5)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q10","t":"SA","m":1.0,"w":2,"aw":[],"c":"Determinant multiplicativity with A^2=2I, sign deduction","d":3,"a":"-36","s":"A,B 4x4 with A^2=2I, B^2=3I, det A<0, det B>0; find det(AB)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q18","t":"SA","m":6.0,"w":2,"aw":[],"c":"reverse row operations to recover determinant","d":3,"a":"-2","s":"Find det(A) from row operations reducing A to identity"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q6","t":"SA","m":1.5,"w":2,"aw":[1],"c":"Determinant zero for nontrivial solutions","d":2,"a":"0","s":"Find k so Ax=0 has infinitely many solutions, A=[[1,-1,k],[1,1,1],[5,1,3]]"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q8","t":"SA","m":1.0,"w":2,"aw":[],"c":"Determinant under row and column scaling","d":2,"a":"-30","s":"det(A)=5; row1 scaled by 3 and column2 by -2; find det(B)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q4","t":"MCQ","m":5.0,"w":2,"aw":[],"c":"row operations effect on determinant","d":2,"a":"C","s":"Which row-operation sequence turns det(A)=-3 into det=1"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q3","t":"MSQ","m":3.0,"w":3,"aw":[5],"c":"Identifying vector spaces and subspaces","d":4,"a":"B,C","s":"Which listed sets form vector spaces under usual operations"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q35","t":"MCQ","m":1.0,"w":3,"aw":[4],"c":"Intersection of a span with a plane subspace","d":4,"a":"C","s":"Which set equals W intersect U where U={x+y+z=0}"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q26","t":"MSQ","m":2.0,"w":3,"aw":[4],"c":"Column space as span, full-rank case","d":3,"a":"A,D","s":"Which sets denote the column space of A"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q3","t":"MSQ","m":2.0,"w":3,"aw":[5],"c":"Solvability of Ax=b, column space, independence","d":3,"a":"A,D","s":"True statements about a linear system Ax = b"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q4","t":"MSQ","m":2.0,"w":3,"aw":[],"c":"Subspace test in space of 2x2 matrices","d":3,"a":"A,D","s":"Which sets form subspaces of V = all 2x2 real matrices"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q8","t":"MCQ","m":1.0,"w":3,"aw":[4],"c":"Columns spanning R^2, rank of 2x3 matrix","d":3,"a":"A","s":"True/false: columns of A=[[3,1,-2],[1,k,1-k]] span R^2 for all k"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q10","t":"MCQ","m":1.0,"w":3,"aw":[4],"c":"Span of row vectors as a plane in R^3","d":3,"a":"A","s":"True/false: at k=1/3 rows of A span the plane x-3y=0"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q2","t":"MCQ","m":1.0,"w":3,"aw":[2],"c":"Linear dependence with parameter, determinant zero","d":3,"a":"C","s":"Find all alpha making {(1,a,0),(0,2,-a),(3,a^2,a)} linearly dependent"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q12","t":"SA","m":1.0,"w":3,"aw":[],"c":"Span membership giving a parameter value","d":3,"a":"3","s":"v1=(1,-1,1), v2=(2,0,4), v3=(1,1,t); find t with v3 in span{v1,v2}"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q15","t":"SA","m":1.0,"w":3,"aw":[],"c":"Vector space axioms to verify","d":2,"a":"45679","s":"Conditions needed to identify a vector space V: pick 5 terms"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q2","t":"MCQ","m":2.0,"w":3,"aw":[],"c":"Linear dependence of 4 vectors in R^3","d":2,"a":"A","s":"S={v1,v2,v3,v4} subset of R^3; true statement about dependence/span"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q13","t":"SA","m":1.0,"w":3,"aw":[],"c":"Solving for coefficients in a linear combination","d":2,"a":"-2","s":"With that t, v3 = a*v1 + b*v2; find a - b"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q3","t":"MSQ","m":3.0,"w":4,"aw":[3],"c":"Finding dimension of given subspaces","d":4,"a":"B,C","s":"Which listed subspaces/spans have a basis of cardinality 2"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q5","t":"MSQ","m":2.0,"w":4,"aw":[3],"c":"Verifying a basis for a subspace of R^4","d":4,"a":"C,D","s":"Which sets are bases for V = {(a,b,c,d): a+b=c+d}"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q7","t":"MSQ","m":3.0,"w":4,"aw":[5],"c":"Computing dimension of given vector spaces","d":4,"a":"A,C,E","s":"Which listed vector spaces have dimension 2"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q9","t":"MSQ","m":3.0,"w":4,"aw":[3],"c":"Identifying bases of a subspace of R^4","d":4,"a":"B,C","s":"Which sets are bases for W={x+z=y, y+w=z-x} in R^4"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q5","t":"MSQ","m":3.0,"w":4,"aw":[3],"c":"Extending independent set to basis, dimension bound","d":4,"a":"A,B","s":"S={u1..u5} linearly independent in V; select true statements"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q37","t":"MSQ","m":3.0,"w":4,"aw":[5],"c":"Isomorphism of vector spaces via equal dimension","d":4,"a":"A,D","s":"Which vector spaces are isomorphic to W (dim 2)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q9","t":"MSQ","m":6.0,"w":4,"aw":[3],"c":"dimension of subspaces, isomorphic iff same dimension","d":4,"a":"A,B,D","s":"Identify which given subspaces are isomorphic to R^2"},{"p":"2026 May","pk":"P12_2026_may","q":"Q10","t":"MSQ","m":7.0,"w":4,"aw":[3],"c":"dimension counting, column space dimension","d":4,"a":"A,D,E","s":"Identify which given subspaces are isomorphic to R^3"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q5","t":"SA","m":2.0,"w":4,"aw":[5,8],"c":"Dimension of solution subspace, orthonormal basis size","d":3,"a":"2","s":"W={(x,y,z): det(A)=0}; cardinality of orthonormal basis of W"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q3","t":"MCQ","m":3.0,"w":4,"aw":[3],"c":"Unique linear combination implies basis","d":3,"a":"A","s":"Every v in V uniquely a combination of v1,v2,v3; find dim(V)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q21","t":"MCQ","m":2.0,"w":4,"aw":[3,5],"c":"Dimension of a subspace defined by linear equations","d":3,"a":"B","s":"dim of W={(x,y,z,w): x+y=z, z+w=y-x} in R^4"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q6","t":"MCQ","m":2.0,"w":4,"aw":[3],"c":"Basis of a plane subspace of R^3","d":2,"a":"A","s":"Find a basis beta for W = {(x,y,z) : x-y+z=0}"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q10","t":"SA","m":1.0,"w":4,"aw":[],"c":"Dimension of a solution subspace","d":2,"a":"2","s":"Find dim(W) for W={(x,y,z,w): x+z=y, y+w=z-x}"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q14","t":"SA","m":1.0,"w":4,"aw":[3],"c":"Dimension of a matrix subspace","d":2,"a":"2","s":"V={[[x,0,y],[0,0,0],[0,x+y,0]]} in M_3x3; find dim V"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q34","t":"SA","m":1.0,"w":4,"aw":[3],"c":"Dimension of a span via rank of vectors","d":2,"a":"2","s":"u1=(-1,1,-1), u2=(2,0,2), u3=(1,-2,1); find dim of span"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q2","t":"MSQ","m":3.0,"w":5,"aw":[1,3,6],"c":"Consistency, column space, kernel as solution space","d":4,"a":"A,D","s":"Statements on Ax=b solvability, uniqueness, kernel of S(v)=Av^T"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q4","t":"MSQ","m":3.0,"w":5,"aw":[6],"c":"Rank, nullity, injectivity of linear map","d":4,"a":"A,D","s":"Statements about rank, nullity, one-one, isomorphism of T"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q9","t":"SA","m":2.0,"w":5,"aw":[4],"c":"Rank-nullity applied to nilpotent matrix","d":4,"a":"2","s":"Nonzero 5x5 matrix A with A^2=0; find maximum possible rank of A"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q25","t":"SA","m":5.0,"w":5,"aw":[6],"c":"Composition of maps and isomorphism","d":4,"a":"1","s":"Count true statements about S o T and T o S being isomorphisms"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q4","t":"MCQ","m":2.0,"w":5,"aw":[1],"c":"Injective/surjective test for linear map","d":3,"a":"B","s":"T(x,y,z)=det(A) for a parametrised A; injective/surjective/isomorphism"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q11","t":"MCQ","m":1.0,"w":5,"aw":[],"c":"Solutions of A^T x=0 depend on rank","d":3,"a":"D","s":"A is 3x5; how many solutions does A^T x=0 have"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q12","t":"MCQ","m":1.0,"w":5,"aw":[6],"c":"Injectivity/surjectivity from dimensions","d":3,"a":"A","s":"T:R^5->R^3 with matrix A; can T be one-one or onto"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q5","t":"MSQ","m":3.0,"w":5,"aw":[2],"c":"Solvability of Ax=b, column space, rank and uniqueness","d":3,"a":"A,D","s":"True statements about Ax=b solutions, column combinations, rank(A)=n"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q36","t":"MCQ","m":1.0,"w":5,"aw":[3],"c":"Null space size from column dependence of A","d":3,"a":"B","s":"Correct statement about Ax=0 when u1,u2 are first two columns of A"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q5","t":"MSQ","m":3.0,"w":5,"aw":[3],"c":"Linear map on basis, invertibility condition","d":3,"a":"A,B","s":"T(1,0,0)=(2,-1,1), T(0,1,0)=(3,0,1); choose T(0,0,1) making T invertible"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q17","t":"SA","m":6.0,"w":5,"aw":[2,4],"c":"Dimension of solution space of homogeneous system","d":3,"a":"2","s":"Find dimension of subspace of R^4 defined by three linear equations"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q26","t":"SA","m":5.0,"w":5,"aw":[3,4],"c":"Nullity of T minus dimension of a span","d":3,"a":"1","s":"Compute n-m where n=nullity of T and m=dim of given span"},{"p":"2026 May","pk":"P12_2026_may","q":"Q2","t":"MCQ","m":5.0,"w":5,"aw":[],"c":"linear map determined by action on a basis","d":3,"a":"B","s":"Find formula for T given T on three basis vectors of R^3"},{"p":"2026 May","pk":"P12_2026_may","q":"Q17","t":"SA","m":6.0,"w":5,"aw":[],"c":"linear map determined by action on a basis","d":3,"a":"-5","s":"Given T on three vectors, compute T(1,2,-3) and a-b"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q7","t":"SA","m":2.0,"w":5,"aw":[],"c":"Nullity of a linear transformation","d":2,"a":"1","s":"T(x,y,z)=(x+3z, x-y+2z, x+2y+5z); find nullity of T"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q8","t":"SA","m":1.0,"w":5,"aw":[],"c":"Rank via rank-nullity theorem","d":2,"a":"2","s":"Same T; find rank of T"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q7","t":"MSQ","m":2.0,"w":5,"aw":[6],"c":"Injectivity, surjectivity, rank and nullity of T","d":2,"a":"A,B","s":"For T(x,y)=(x+y, x-y), decide one-one, onto, range dim, nullity"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q13","t":"SA","m":2.0,"w":5,"aw":[2],"c":"Invertibility criteria: determinant and nullity","d":2,"a":"23","s":"An invertible 3x3 matrix has: pick 2 terms from the list"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q24","t":"MCQ","m":2.0,"w":5,"aw":[2],"c":"Null space of an invertible coefficient matrix","d":2,"a":"D","s":"Which set denotes nullspace(A) for that coefficient matrix"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q12","t":"SA","m":1.0,"w":5,"aw":[6],"c":"Nullity of an invertible representation matrix","d":2,"a":"0","s":"Dimension of solution space of Bx=0 for isomorphism matrix B"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q19","t":"MCQ","m":1.0,"w":5,"aw":[6],"c":"Injectivity and surjectivity from rank-nullity","d":2,"a":"D","s":"Is that T one-one, onto, both, or neither"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q10","t":"MCQ","m":1.0,"w":5,"aw":[],"c":"Solutions of Ax=0 for wide matrix","d":2,"a":"B","s":"A is 3x5; how many solutions does Ax=0 have"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q13","t":"SA","m":1.0,"w":5,"aw":[7],"c":"Dimension of hyperplane orthogonal to a vector","d":2,"a":"3","s":"U={x in R^4 : <x,u>=0}, u=(1,-1,2,-1); find dim U"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q15","t":"SA","m":1.0,"w":5,"aw":[2],"c":"Dimension of solution space of linear system","d":2,"a":"1","s":"W={(x,y,z): x+y-2z=0, 2x-y+z=0}; find dim W"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q23","t":"MCQ","m":1.0,"w":5,"aw":[6],"c":"Injectivity and surjectivity from rank","d":2,"a":"B","s":"Classify T:R^2->R^3 as injective/surjective"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q14","t":"SA","m":1.0,"w":5,"aw":[6],"c":"Linear map determined by images of basis vectors","d":2,"a":"C","s":"T with T(1,1)=(4,5), T(1,0)=(3,-2); find T(x,y)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q17","t":"SA","m":1.0,"w":5,"aw":[],"c":"Rank-nullity giving minimum nullity","d":2,"a":"1","s":"Minimum possible nullity of A for T:R^3->R^2"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q18","t":"MCQ","m":1.0,"w":5,"aw":[],"c":"Injectivity/surjectivity from dimension comparison","d":2,"a":"B","s":"Correct option about T:R^3->R^2 being one-one or onto"},{"p":"2026 May","pk":"P12_2026_may","q":"Q12","t":"SA","m":5.0,"w":5,"aw":[8],"c":"nullity of an invertible orthogonal matrix","d":2,"a":"0","s":"Find nullity of an orthogonal matrix of order 5"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q16","t":"SA","m":1.0,"w":5,"aw":[7],"c":"Maximum rank of a 2x3 transformation matrix","d":1,"a":"2","s":"T:R^3->R^2 with T(x)=Ax; maximum rank of A"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q6","t":"SA","m":2.0,"w":6,"aw":[5],"c":"Matrix representation order plus nullity","d":4,"a":"6","s":"B represents T:R^3->R with order m x n, nullity r; find m+n+r"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q9","t":"MSQ","m":2.0,"w":6,"aw":[4,5],"c":"Basis of kernel and range isomorphism","d":4,"a":"A,C","s":"Identify correct kernel basis and isomorphism of range of T"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q27","t":"SA","m":1.0,"w":6,"aw":[8,5],"c":"Null space dimension of squared representation matrix","d":4,"a":"2","s":"A represents P_W w.r.t. orthonormal bases; find dim null space of A^2"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q17","t":"MSQ","m":3.0,"w":6,"aw":[2],"c":"Valid matrix representations of identity map","d":4,"a":"A,C","s":"Which matrices represent T(x)=x for some choice of bases"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q16","t":"MCQ","m":2.0,"w":6,"aw":[2],"c":"Matrix of inverse linear transformation","d":4,"a":"A","s":"Find matrix representation of T inverse for that T"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q22","t":"MSQ","m":3.0,"w":6,"aw":[5],"c":"Rank, nullity and range of matrix of a transformation","d":4,"a":"A,C,D","s":"T:R^2->R^3 with given range; properties of matrix A"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q23","t":"MSQ","m":7.0,"w":6,"aw":[],"c":"Matrix representation wrt two ordered bases","d":4,"a":"B,C","s":"Select correct matrix reps of T(a,b;c,d)=a+b+c+d on M_2x2"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q24","t":"MSQ","m":7.0,"w":6,"aw":[],"c":"Matrix representation for T from M_2x2 to R^2","d":4,"a":"A,B","s":"Select correct matrix reps of T(a,b;c,d)=(a+b, c+d)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q5","t":"MCQ","m":6.0,"w":6,"aw":[2],"c":"matrix representation to transformation formula","d":4,"a":"B","s":"Recover T from its matrix w.r.t. ordered bases B1, B2"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q8","t":"SA","m":2.0,"w":6,"aw":[],"c":"Matrix of T w.r.t. non-standard ordered bases","d":3,"a":"3","s":"Matrix A of T(x,y)=(x+y,x-y) w.r.t. given bases; find a+d"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q13","t":"SA","m":3.0,"w":6,"aw":[11],"c":"Matrix representation w.r.t. standard basis","d":3,"a":"3","s":"H = Hessian at k=1 is matrix of T; find a combination of entries"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q3","t":"MCQ","m":2.0,"w":6,"aw":[],"c":"Matrix representation w.r.t. ordered bases","d":3,"a":"C","s":"Matrix of T on 2x2 diagonal matrices, T(diag(a,b))=(a+b,4a-5b)"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q8","t":"MSQ","m":2.0,"w":6,"aw":[],"c":"Matrix of a linear map in standard ordered basis","d":3,"a":"C,D","s":"Matrices representing shift maps L and R on R^4 in basis B"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q9","t":"MSQ","m":2.0,"w":6,"aw":[5],"c":"Rank, injectivity and kernel of linear maps","d":3,"a":"B,D","s":"True statements about rank and injectivity of shifts L and R"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q10","t":"SA","m":2.0,"w":6,"aw":[5],"c":"Nilpotency index via composition of linear maps","d":3,"a":"4","s":"Smallest k with L^k and R^k the zero transformation"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q16","t":"MCQ","m":1.0,"w":6,"aw":[],"c":"Matrix of identity map in nonstandard basis","d":3,"a":"A","s":"T(x)=x on R^2; matrix w.r.t. basis {(1,1),(-1,1)} to standard basis"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q15","t":"MSQ","m":1.0,"w":6,"aw":[5],"c":"Kernel and image of a linear transformation","d":3,"a":"A,D","s":"For that T, select true statements on kernel and image"},{"p":"2026 May","pk":"P12_2026_may","q":"Q6","t":"MCQ","m":5.0,"w":6,"aw":[2],"c":"matrix representation w.r.t. ordered bases","d":3,"a":"C","s":"Find matrix of T(x,y,z)=(x-2y,y-3z) w.r.t. B1 and B2"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q17","t":"SA","m":1.0,"w":6,"aw":[5],"c":"Nullity of a linear transformation","d":2,"a":"1","s":"T(x,y,z)=(x+z, z-y, x-y+2z); find nullity of T"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q18","t":"SA","m":1.0,"w":6,"aw":[5],"c":"Rank of a linear transformation","d":2,"a":"2","s":"T(x,y,z)=(x+z, z-y, x-y+2z); find rank of T"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q14","t":"MCQ","m":1.0,"w":6,"aw":[],"c":"Matrix representation in standard ordered basis","d":2,"a":"A","s":"T(x,y,z)=(x-y+z, x+z, y-2z); find matrix representation of T"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q11","t":"MCQ","m":1.0,"w":6,"aw":[],"c":"Recovering T from its standard matrix representation","d":2,"a":"B","s":"Given A as matrix of T in standard basis, choose formula for T(x,y,z)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q15","t":"MCQ","m":1.0,"w":6,"aw":[],"c":"Matrix representation w.r.t. standard ordered basis","d":2,"a":"C","s":"Matrix A representing the same T in the standard basis"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q11","t":"SA","m":1.0,"w":6,"aw":[5],"c":"Rank of matrix of an isomorphism","d":1,"a":"3","s":"T:R^3->R^3 isomorphism, A its standard matrix; find Rank(A)"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q10","t":"MSQ","m":2.0,"w":7,"aw":[],"c":"Verifying inner product axioms","d":4,"a":"B,C,D","s":"For <(x1,x2),(y1,y2)>=x1y1-2x2y2, which axioms hold"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q12","t":"MSQ","m":2.0,"w":7,"aw":[2],"c":"Matrix equivalence versus similarity","d":4,"a":"B,D","s":"Given 3x3 matrices A and B, decide equivalence and similarity"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q23","t":"MCQ","m":2.0,"w":7,"aw":[2,3],"c":"True statements on affine subspaces and systems","d":4,"a":"A","s":"Claims about intersections of affine subspaces and echelon-form systems"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q4","t":"MSQ","m":3.0,"w":7,"aw":[3],"c":"Affine subspace and its direction subspace","d":4,"a":"B,C","s":"For L1: x+y+2z=1, L2: z=3, identify W1, W2 and their intersection"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q9","t":"MSQ","m":3.0,"w":7,"aw":[6],"c":"Equivalence versus similarity of matrices","d":4,"a":"B,C","s":"Compare matrix A (non-standard bases) and B (standard) of same T"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q5","t":"MSQ","m":1.0,"w":7,"aw":[6],"c":"Similarity of matrix representations","d":4,"a":"A,C","s":"B is matrix of T in different codomain basis; similarity, rank, nullity"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q17","t":"SA","m":2.0,"w":7,"aw":[2],"c":"Affine subspaces and their intersection","d":4,"a":"1","s":"Affine spaces A1,A2,A3 through given points; find x1+2x2+x3"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q11","t":"MCQ","m":2.0,"w":7,"aw":[5],"c":"Matching affine subspace to associated subspace and dimension","d":4,"a":"C","s":"Match affine subspace row (i) with its subspace U and dimension"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q14","t":"MSQ","m":2.0,"w":7,"aw":[],"c":"Similarity versus equivalence of matrices","d":4,"a":"B,D","s":"True statements about similar and equivalent 2x2 matrices"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q13","t":"MSQ","m":2.0,"w":7,"aw":[6],"c":"Similarity of matrices under change of basis","d":4,"a":"C,D","s":"Compare A and B (same T, two bases): similarity, invertibility, AB vs BA"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q2","t":"MCQ","m":3.0,"w":7,"aw":[6,5],"c":"Similarity vs equivalence of matrices, rank","d":4,"a":"C","s":"T(x,y,z)=(x+y-z,ay+2bz,x-y+z); matrix A vs given B; judge similarity/equivalence"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q4","t":"MSQ","m":3.0,"w":7,"aw":[3],"c":"Row space and column space of product AB","d":4,"a":"B,C","s":"Choose correct inclusions among Rowspace(AB), Columnspace(AB) vs those of A,B"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q11","t":"SA","m":2.0,"w":7,"aw":[5,2],"c":"Affine solution set dimension fixes parameter","d":4,"a":"5","s":"A=[[2,2,1],[1,-2,3],[5,2,k]]; solution set of Ax=b is 1-dim affine subspace; find k"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q1","t":"MCQ","m":5.0,"w":7,"aw":[2],"c":"Rank of parametrised 4x3 matrix","d":4,"a":"D","s":"Determine which statement about rank of A with parameters a,k is true"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q3","t":"MCQ","m":5.0,"w":7,"aw":[6],"c":"Similarity vs equivalence of matrix of T","d":4,"a":"C","s":"Judge two statements on A being similar/equivalent to given B"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q4","t":"MCQ","m":5.0,"w":7,"aw":[6],"c":"Similarity vs equivalence under non-standard bases","d":4,"a":"C","s":"Judge similarity/equivalence of matrix rep of T(x,y)=(2x+y,3x+y)"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q8","t":"MSQ","m":8.0,"w":7,"aw":[2,5],"c":"Solvability of Ax=b via rank and column space","d":4,"a":"A,B,D","s":"Select correct statements about solutions of m-by-n system Ax=b"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q10","t":"SA","m":3.0,"w":7,"aw":[5],"c":"Rank when A^2=0 for nonzero 3x3 matrix","d":4,"a":"1","s":"Find rank of C given A^2=0, A~B, B equivalent to C"},{"p":"2026 May","pk":"P12_2026_may","q":"Q37","t":"MSQ","m":8.0,"w":7,"aw":[2,3,5],"c":"equivalence vs similarity, rank, column dependence","d":4,"a":"A,C","s":"Compare A and B on equivalence, similarity, null space, column independence"},{"p":"2026 May","pk":"P12_2026_may","q":"Q38","t":"MSQ","m":8.0,"w":7,"aw":[2,3,5],"c":"equivalence vs similarity, rank, column dependence","d":4,"a":"B,D","s":"Compare A and B on equivalence, similarity, null space, coplanar columns"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q12","t":"MCQ","m":2.0,"w":7,"aw":[],"c":"Matching affine subspace to subspace and dimension","d":3,"a":"B","s":"Match affine subspace row (ii) with its subspace U and dimension"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q13","t":"MCQ","m":2.0,"w":7,"aw":[],"c":"Matching affine subspace to subspace and dimension","d":3,"a":"D","s":"Match affine subspace row (iii) with its subspace U and dimension"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q7","t":"SA","m":3.0,"w":7,"aw":[5,2],"c":"Dimension of affine solution set","d":3,"a":"2","s":"Dimension of affine subspace of solutions to a 3x4 system Ax=b"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q9","t":"MCQ","m":1.0,"w":7,"aw":[4],"c":"Rank of a 2x3 parametrised matrix","d":3,"a":"B","s":"True/false: rank of A is 1 for some k"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q12","t":"SA","m":1.0,"w":7,"aw":[6],"c":"Rank invariance under change of ordered basis","d":3,"a":"2","s":"Find rank of B, matrix of T in basis {(1,2,0),(0,-1,3),(2,3,1)}"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q2","t":"MCQ","m":5.0,"w":7,"aw":[2],"c":"Rank conditions for 2x3 matrix","d":3,"a":"D","s":"Determine which rank statement holds for A with entries k1,k2"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q9","t":"SA","m":3.0,"w":7,"aw":[5,8],"c":"Nullity preserved under similarity and equivalence","d":3,"a":"0","s":"Find nullity of C given A orthogonal, A~B, B equivalent to C"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q25","t":"SA","m":2.0,"w":7,"aw":[2],"c":"Rank of a coefficient matrix","d":2,"a":"3","s":"Find Rank(A) for that coefficient matrix"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q9","t":"SA","m":1.0,"w":7,"aw":[1],"c":"Rank of an outer product matrix","d":2,"a":"1","s":"x,y nonzero column vectors in R^n; rank of x*y^T"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q13","t":"SA","m":1.0,"w":7,"aw":[2],"c":"Determinant invariance under similarity","d":2,"a":"0","s":"Find the determinant of B"},{"p":"2026 May","pk":"P12_2026_may","q":"Q21","t":"SA","m":4.0,"w":7,"aw":[10],"c":"affine subspace and its associated subspace dimension","d":2,"a":"2","s":"Dimension of subspace associated with tangent plane T(0,0)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q22","t":"SA","m":4.0,"w":7,"aw":[10],"c":"affine subspace and its associated subspace dimension","d":2,"a":"2","s":"Dimension of subspace associated with tangent plane T(0,0)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q33","t":"SA","m":4.0,"w":7,"aw":[2],"c":"rank of a 3x3 matrix by row reduction","d":2,"a":"2","s":"Find rank of A = [[2,-2,2],[2,-4,3],[5,3,1]]"},{"p":"2026 May","pk":"P12_2026_may","q":"Q35","t":"SA","m":4.0,"w":7,"aw":[2],"c":"rank of a 3x3 matrix by row reduction","d":2,"a":"2","s":"Find rank of B = [[1,1,1],[2,4,3],[5,-3,1]]"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q28","t":"MSQ","m":2.0,"w":8,"aw":[2],"c":"Row normalisation, orthogonality, echelon form","d":4,"a":"A,C","s":"B has normalized rows of A; judge echelon form and orthogonality"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q7","t":"SA","m":4.0,"w":8,"aw":[4],"c":"Gram-Schmidt and orthogonal projection","d":4,"a":"8","s":"Projection (a,b,c) of (1,0,1) onto W; find 6(a+b+c)"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q20","t":"MCQ","m":2.0,"w":8,"aw":[],"c":"Orthogonal projection formula onto a plane","d":4,"a":"A","s":"Formula for projection T of R^3 onto W: x+y+z=0"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q16","t":"MSQ","m":2.0,"w":8,"aw":[5],"c":"Projection map range, nullspace, complements","d":4,"a":"A,C","s":"Statements about projection P_W onto W={x-2y=z} and W perp"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q6","t":"MSQ","m":4.0,"w":8,"aw":[7],"c":"Gram-Schmidt, orthogonal matrices, projections","d":4,"a":"A,C","s":"Statements on Gram-Schmidt output, orthogonal matrix, projection onto plane"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q6","t":"MSQ","m":3.0,"w":8,"aw":[6],"c":"Projection onto subspace, idempotent matrix, orthogonal complement","d":4,"a":"A,C,D","s":"Properties of projection P of inner product space V onto subspace W"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q6","t":"MSQ","m":3.0,"w":8,"aw":[7],"c":"Orthogonal matrices, norms, determinants, equivalence","d":4,"a":"C,D,E","s":"Sets O1(2) with A^T A=I and O2(2) with A A^T=I; select true statements"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q7","t":"MSQ","m":8.0,"w":8,"aw":[3,7],"c":"Mixed true/false on independence and orthogonality","d":4,"a":"B,D","s":"Select correct statements on independence, adj(A), similarity, orthogonal sets"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q25","t":"SA","m":2.0,"w":8,"aw":[5],"c":"Nullity of a projection map","d":3,"a":"2","s":"Same setup; find dim of null space of P_W"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q5","t":"MSQ","m":2.0,"w":8,"aw":[4,7],"c":"Properties of orthogonal matrices","d":3,"a":"A,B","s":"True statements about a 3x3 orthogonal matrix A"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q6","t":"SA","m":3.0,"w":8,"aw":[],"c":"Orthogonal projection onto a subspace","d":3,"a":"6","s":"Project (1,2,3) onto W={(x,y,z): x=y}; find a+b+c"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q19","t":"MSQ","m":1.0,"w":8,"aw":[2,7],"c":"Orthogonal matrix determinant and equivalence","d":3,"a":"A,C","s":"3x3 orthogonal A with det>0; det(2A), det(3A), equivalence to I"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q18","t":"SA","m":1.0,"w":8,"aw":[1],"c":"Determinant of an orthogonal matrix from normalised columns","d":3,"a":"1","s":"A has columns v_i/"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q19","t":"SA","m":2.0,"w":8,"aw":[],"c":"Row norms of an orthogonal matrix","d":3,"a":"1","s":"Sum of squares of elements of each row of orthogonal A"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q21","t":"MCQ","m":2.0,"w":8,"aw":[6],"c":"Basis for range and kernel of a projection","d":3,"a":"B","s":"Statement about null space, range and rank of projection T"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q18","t":"SA","m":2.0,"w":8,"aw":[7],"c":"Orthogonal projection onto a line","d":3,"a":"3","s":"(a,b) is point on y=-x nearest to (2,-4); find a"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q19","t":"SA","m":2.0,"w":8,"aw":[7],"c":"Orthogonal projection onto a line","d":3,"a":"-3","s":"(a,b) is point on y=-x nearest to (2,-4); find b"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q4","t":"MCQ","m":3.0,"w":8,"aw":[4],"c":"Orthonormal basis via Gram-Schmidt","d":3,"a":"A","s":"Which set is an orthonormal basis for span{(1,1,-1),(1,2,0)}"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q8","t":"SA","m":3.0,"w":8,"aw":[],"c":"Rotation matrix about Z-axis by 45 degrees","d":3,"a":"8","s":"v=(sqrt2,-sqrt2,6) rotated 45 deg about Z-axis; find a+b+c"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q24","t":"SA","m":1.5,"w":8,"aw":[],"c":"Orthogonal projection onto a plane in R^3","d":3,"a":"3","s":"P_W(0,1,2)=(a,b,c) for W: x-2y+z=0; find a+b+c"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q25","t":"SA","m":3.0,"w":8,"aw":[1],"c":"Orthogonal projection of point onto a line","d":3,"a":"-8","s":"Ship at (1,-2), bridge 3x-5y=0; shortest path meets at (alpha,beta); find 34(alpha+beta)"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q11","t":"SA","m":5.0,"w":8,"aw":[],"c":"Orthogonal projection onto a 2D subspace","d":3,"a":"3","s":"Compute x1+x2+x3 for projection of (1,3,1) onto span W"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q12","t":"SA","m":5.0,"w":8,"aw":[],"c":"Distance from point to subspace via projection","d":3,"a":"1","s":"Find minimum distance from (0,3,0) to span{(1,0,1),(1,4,-1)}"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q16","t":"SA","m":6.0,"w":8,"aw":[],"c":"Counting orthogonal 2x2 matrices of given form","d":3,"a":"2","s":"Count matrices with entries 1/sqrt2, b, c, -1/sqrt2 that are orthogonal"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q18","t":"SA","m":6.0,"w":8,"aw":[4],"c":"Orthogonal complement dimension via rank","d":3,"a":"1","s":"Find dim W-perp for W spanned by four vectors in R^4"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q24","t":"SA","m":1.0,"w":8,"aw":[6],"c":"Dimension of image of a projection","d":2,"a":"1","s":"V=R^3, W={x=y, z=0}, P_W projection; find dim of image"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q26","t":"SA","m":1.0,"w":8,"aw":[],"c":"Projection fixes vectors already in W","d":2,"a":"3","s":"v in W with "},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q15","t":"SA","m":1.0,"w":8,"aw":[],"c":"Coordinates in an orthogonal basis via inner products","d":2,"a":"3","s":"Write v=(7,1,9) as a v1 + b v2 + c v3; find a"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q16","t":"SA","m":1.0,"w":8,"aw":[],"c":"Coordinates in an orthogonal basis via inner products","d":2,"a":"-1","s":"Write v=(7,1,9) as a v1 + b v2 + c v3; find b"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q17","t":"SA","m":1.0,"w":8,"aw":[],"c":"Coordinates in an orthogonal basis via inner products","d":2,"a":"2","s":"Write v=(7,1,9) as a v1 + b v2 + c v3; find c"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q14","t":"SA","m":1.0,"w":8,"aw":[],"c":"Dimension of orthogonal complement","d":2,"a":"1","s":"W={x-2y=z} in R^3; find dim(W perp)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q15","t":"SA","m":1.0,"w":8,"aw":[],"c":"Computing a vector in orthogonal complement","d":2,"a":"0","s":"(a,b,c) in W perp for W={x-2y=z}; find 2a+b"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q25","t":"SA","m":1.5,"w":8,"aw":[6],"c":"Kernel of a projection is the normal direction","d":2,"a":"0","s":"If (alpha,beta,gamma) in kernel of P_W, find alpha+beta+gamma"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q11","t":"SA","m":2.0,"w":8,"aw":[7],"c":"Orthogonal projection of a vector onto a line","d":2,"a":"3","s":"(a,b) is projection of (3,1) on line y=2x; find a+b"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q15","t":"SA","m":6.0,"w":8,"aw":[4],"c":"Dimension of orthogonal complement","d":2,"a":"2","s":"Find dim of W-perp for W=span{(1,2,3,0),(0,1,0,0)} in R^4"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q26","t":"SA","m":1.0,"w":8,"aw":[7],"c":"Dimension of an orthogonal complement","d":1,"a":"1","s":"Dimension of W-perp for W: x-2y+z=0 in R^3"},{"p":"2026 May","pk":"P12_2026_may","q":"Q11","t":"SA","m":5.0,"w":8,"aw":[],"c":"rotations are orthogonal, preserve norm","d":1,"a":"5","s":"Length of vector after 70 degree rotation about z-axis, "},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q5","t":"MSQ","m":3.0,"w":9,"aw":[10,11],"c":"Continuity, directional derivatives, tangent plane at origin","d":5,"a":"A,C","s":"For f=(x-y)^2 sin(1/(x-y)): choose correct statements at (0,0)"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q11","t":"MSQ","m":2.0,"w":9,"aw":[],"c":"Limit existence and continuity at origin","d":4,"a":"D,E","s":"For f=x^3y/(x^6+y^2), decide limit at (0,0) and continuity"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q19","t":"MSQ","m":3.0,"w":9,"aw":[],"c":"Homogeneity, continuity, limit of piecewise f","d":4,"a":"B,C,D","s":"Piecewise f; judge linearity, scaling, continuity, limits"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q20","t":"SA","m":2.0,"w":9,"aw":[],"c":"Directional derivative along (1,1)","d":4,"a":"4","s":"Directional derivative of f at (a,b); find k-l+m"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q21","t":"MSQ","m":3.0,"w":9,"aw":[],"c":"Limits along paths, continuity, partials","d":4,"a":"A,D","s":"f=x^2y^2/(x^4+y^4) at origin; limit, f_x(0,0), continuity"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q5","t":"MSQ","m":3.0,"w":9,"aw":[],"c":"Limit existence and directional derivatives at origin","d":4,"a":"A,C,E","s":"For f=(x+y)^2/(x^2+y^2), judge limit, partials, directional derivatives"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q7","t":"MSQ","m":4.0,"w":9,"aw":[],"c":"Existence of limits of two-variable functions","d":4,"a":"C,D","s":"Choose the options for which the two-variable limit exists"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q3","t":"MSQ","m":2.0,"w":9,"aw":[],"c":"Existence of limit at origin for two-variable functions","d":4,"a":"B,C","s":"Which functions on R^2 minus origin have a limit at (0,0)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q7","t":"MSQ","m":3.0,"w":9,"aw":[10,11],"c":"Gradient, directional derivatives, mixed partials, critical points","d":4,"a":"A,C,D","s":"True statements about a C^1 scalar function f: R^n -> R"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q7","t":"MSQ","m":3.0,"w":9,"aw":[],"c":"Limits of multivariable function along curves","d":4,"a":"B,D","s":"f=(y^2-x^2)/(x^4+(y-sin^2 x)^2); choose curves where limit at (0,0) exists"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q8","t":"SA","m":1.0,"w":9,"aw":[],"c":"Range of multivariable function, surjectivity on disc","d":4,"a":"1.5","s":"f=sin(sqrt(x^2+y^2)) on open disc D(r); largest r with f not surjective, find r0/pi"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q17","t":"SA","m":1.0,"w":9,"aw":[3,4],"c":"Dimension of span of zero-change directions","d":4,"a":"1","s":"S = unit directions with no change and perpendicular to given direction; dim(Span(S))"},{"p":"2026 May","pk":"P12_2026_may","q":"Q24","t":"SA","m":7.0,"w":9,"aw":[10],"c":"range, gradient domain, directional derivative count","d":4,"a":"1","s":"Count true statements about f(x,y)=e^(x^3+y^3)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q30","t":"SA","m":7.0,"w":9,"aw":[10],"c":"range, gradient domain, directional derivative count","d":4,"a":"1","s":"Count true statements about f(x,y,z)=e^(x^2+y^2+z^2)"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q18","t":"MCQ","m":2.0,"w":9,"aw":[],"c":"Partial derivative set to zero, ratio","d":3,"a":"C","s":"For f=x^3-xy^2 (x!=y), find x:y when df/dx=0 and y>x"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q22","t":"SA","m":2.0,"w":9,"aw":[],"c":"Directional derivative via gradient and unit vector","d":3,"a":"1","s":"Directional derivative of z(cos x + sin y) at (0,0,3) toward (6,3,-2)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q22","t":"SA","m":1.0,"w":9,"aw":[],"c":"Counting discontinuity points of f(x,y)","d":3,"a":"0","s":"At how many points is f=cos(y)sin(x)/x discontinuous"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q3","t":"MSQ","m":2.0,"w":9,"aw":[],"c":"Sign of partial derivatives at a point","d":3,"a":"A,C","s":"f=2x^4-8*sqrt(y)-7; increasing/decreasing at (1,4) in x and y"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q6","t":"MSQ","m":3.0,"w":9,"aw":[],"c":"Partial derivatives at origin of piecewise function","d":3,"a":"C,D","s":"f=y^4/(x^2+y^2) off origin, 0 at origin; evaluate fx(0,0), fy(0,0)"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q10","t":"SA","m":3.0,"w":9,"aw":[],"c":"Continuity at a point, choosing c","d":3,"a":"0","s":"Find c making f=(x^2-xy)/(sqrt x - sqrt y) continuous at (0,0)"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q11","t":"SA","m":3.0,"w":9,"aw":[],"c":"Directional derivative via gradient dot unit vector","d":3,"a":"5","s":"f=x^3y+xy^2+8 at (1,2) along (1/sqrt2,-1/sqrt2) equals p/sqrt2; find p"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q15","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Range of a multivariable function on a region","d":3,"a":"D","s":"Range of f=1/(x^2+y^2-1) on x^2+y^2<1"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q16","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Range of a multivariable function on a region","d":3,"a":"A","s":"Range of f=1/(x^2+y^2-1) on x^2+y^2>2"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q17","t":"SA","m":2.0,"w":9,"aw":[],"c":"Gradient of exponential function of two variables","d":3,"a":"14","s":"For f=e^(x^2 y+xy+2y), gradient at (3,0)=(a,b); find b-a"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q18","t":"SA","m":1.0,"w":9,"aw":[],"c":"Directional derivative via gradient dot unit vector","d":3,"a":"-7","s":"Directional derivative of f at (3,0) along (-sqrt3/2,-1/2)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q27","t":"SA","m":1.0,"w":9,"aw":[],"c":"Directional derivative via gradient dot unit vector","d":3,"a":"11","s":"Directional derivative of f=x^3y+xy^2+2x+y^2 at (2,-1) along (-1,-1)/sqrt2"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q32","t":"SA","m":1.0,"w":9,"aw":[],"c":"Existence of limit at origin for rational function","d":3,"a":"0","s":"Find k so limit of (x^3y+xy^3-x^2-y^2+k)/(x^2+y^2) exists at (0,0)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q33","t":"SA","m":1.0,"w":9,"aw":[],"c":"Removable discontinuity, value making f continuous","d":3,"a":"-1","s":"Find f(0,0) making f continuous on R^2"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q4","t":"MSQ","m":2.0,"w":9,"aw":[],"c":"Convergence of sequences in R^2, componentwise","d":3,"a":"A,B","s":"Which given sequences in R^2 are convergent"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q20","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Range of a composite log function on a region","d":3,"a":"B","s":"Range of f=ln(x^2+y^2-1) on D={x^2+y^2>=2}"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q25","t":"SA","m":1.0,"w":9,"aw":[],"c":"Directional derivative via gradient set to zero","d":3,"a":"0.5","s":"f=x sin y + y cos x; directional derivative zero at (0,pi/2); find t^2"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q13","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Existence of directional derivatives at origin","d":3,"a":"A","s":"f=xy^2/(x^2+y^4) off origin; do directional derivatives exist in all directions"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q15","t":"SA","m":1.0,"w":9,"aw":[],"c":"Directional derivative from definition at origin","d":3,"a":"3","s":"Directional derivative of f=xy^2/(x^2+y^4) at (0,0) along (1/2,-sqrt3/2)"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q14","t":"SA","m":6.0,"w":9,"aw":[],"c":"Squeeze theorem for multivariable limit","d":3,"a":"0","s":"Find lim f(x,y)g(x,y) at origin with f bounded and g squeezed"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q19","t":"MSQ","m":7.0,"w":9,"aw":[],"c":"Level sets that are straight lines","d":3,"a":"B,C","s":"Select functions and z0 whose level set is a straight line in R^2"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q20","t":"MSQ","m":7.0,"w":9,"aw":[],"c":"Level sets of exponential function e^(x+y)","d":3,"a":"A,D","s":"Select correct statements about level sets L_z0 of f=e^(x+y)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q1","t":"MCQ","m":5.0,"w":9,"aw":[],"c":"limits of multivariable function, sin(r)/r","d":3,"a":"D","s":"Limit behaviour of sin(sqrt(x^2+y^2))/sqrt(x^2+y^2) at various points"},{"p":"2026 May","pk":"P12_2026_may","q":"Q31","t":"SA","m":7.0,"w":9,"aw":[10],"c":"directional derivative via gradient dot unit vector","d":3,"a":"-1.15","s":"Rate of change of e^(x^2+y^2+z^2) at (-1,-1,1) along (1,1,1)/sqrt3"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q21","t":"MCQ","m":2.0,"w":9,"aw":[],"c":"Limit of rational function via factoring","d":2,"a":"B","s":"Find limit of (x^3-y^3)/(x-y) as (x,y)->(1,-1)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q20","t":"SA","m":1.0,"w":9,"aw":[],"c":"Limit of a two-variable function at origin","d":2,"a":"1","s":"f=cos(y)sin(x)/x for x!=0, cos(y) at x=0; find limit at (0,0)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q21","t":"SA","m":1.0,"w":9,"aw":[],"c":"Continuity of a piecewise two-variable function","d":2,"a":"1","s":"Is f=cos(y)sin(x)/x continuous at (0,0)? enter 1 or 0"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q9","t":"SA","m":3.0,"w":9,"aw":[],"c":"Limit of multivariable function using sin t/t","d":2,"a":"4","s":"Evaluate lim at origin of sin(4x^2+4y^2)/(x^2+y^2)"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q17","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Domain of a multivariable square-root function","d":2,"a":"E","s":"Largest valid domain D for f(x,y)=sqrt(1-x^2-y^2)"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q18","t":"MCQ","m":2.0,"w":9,"aw":[],"c":"Range of multivariable function on its domain","d":2,"a":"A","s":"Range of f(x,y)=sqrt(1-x^2-y^2) on the chosen domain"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q14","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Largest valid domain of a multivariable function","d":2,"a":"C","s":"Largest domain D for f(x,y)=1/(x^2+y^2-1)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q19","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Modelling volume as function of two variables","d":2,"a":"C","s":"Volume of cuboid with perimeter 12 as phi(x,y)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q19","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Domain of ln(x^2+y^2-1), region removed","d":2,"a":"C","s":"Minimum number of points removed from R^2 for domain of ln(x^2+y^2-1)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q21","t":"MCQ","m":1.0,"w":9,"aw":[],"c":"Injectivity of a radially symmetric function","d":2,"a":"B","s":"True/False: f=ln(x^2+y^2-1) on that domain is injective"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q14","t":"SA","m":2.0,"w":9,"aw":[],"c":"Limit along a parametrized curve","d":2,"a":"0.5","s":"Find limit of f=xy^2/(x^2+y^4) at (0,0) along curve x=y^2"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q16","t":"SA","m":2.0,"w":9,"aw":[],"c":"Zero directional derivative gives gradient dot product","d":2,"a":"-3","s":"Gradient (-9,b,c) at (-1,-1,-1); direction with no change; find c"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q18","t":"SA","m":1.0,"w":9,"aw":[],"c":"Directional derivative via gradient dot product","d":2,"a":"2","s":"Directional derivative at (-1,-1,-1) along (4/5,3/5,0) equals -6; find b"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q13","t":"SA","m":6.0,"w":9,"aw":[],"c":"Limit of composition with continuous outer function","d":2,"a":"9","s":"Find limit of (g o f)(x,y) at origin where g(t)=t^2, lim f=3"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q21","t":"MCQ","m":5.0,"w":9,"aw":[],"c":"Injectivity versus singleton level sets","d":2,"a":"B","s":"Relate f injective and level set having exactly one element"},{"p":"2026 May","pk":"P12_2026_may","q":"Q3","t":"MCQ","m":5.0,"w":9,"aw":[],"c":"limit at origin of sin(r)/r","d":2,"a":"D","s":"Evaluate lim of sin(sqrt(x^2+y^2))/sqrt(x^2+y^2) at (0,0)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q25","t":"SA","m":5.0,"w":9,"aw":[10],"c":"zero directional derivative, unit vector norm","d":2,"a":"1","s":"Unit direction of no change at (1,1); find a^2+b^2"},{"p":"2026 May","pk":"P12_2026_may","q":"Q23","t":"MCQ","m":3.0,"w":9,"aw":[],"c":"domains and regions in R^2, boundary shape","d":1,"a":"B","s":"Geometric shape of boundary of -1<=x<=1, 2<=y<=6"},{"p":"2026 May","pk":"P12_2026_may","q":"Q28","t":"MCQ","m":3.0,"w":9,"aw":[],"c":"domain region and boundary shape","d":1,"a":"A","s":"Shape of boundary of x+y<=1, x>=0, y>=0"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q3","t":"MSQ","m":1.0,"w":10,"aw":[1,7],"c":"Symmetry, idempotence, rank at critical point","d":4,"a":"B,C","s":"For f(a,b)=det[[a,b],[b,a]], judge symmetry, A^2=A, rank(A)=1"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q22","t":"MCQ","m":2.0,"w":10,"aw":[7],"c":"Tangent line as affine subspace","d":4,"a":"C","s":"f=x^3+y^3; tangent line at (1,1) in direction (1,1) as affine subspace"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q16","t":"SA","m":3.0,"w":10,"aw":[9],"c":"Counting critical points of f(a,b)","d":4,"a":"4","s":"f(a,b)=b^3+integral_0^a (3x^2+3b^2-15)dx; number of critical points"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q19","t":"MSQ","m":2.0,"w":10,"aw":[9],"c":"Steepest ascent/descent unit direction via gradient","d":4,"a":"A,D","s":"Unit directions of max derivative of u and min derivative of v at (1,1)"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q20","t":"SA","m":2.0,"w":10,"aw":[9],"c":"Linear approximation of two-variable functions","d":4,"a":"10","s":"Lu at (2,3) and Lv at (1,2) evaluated; find (a+c)-(b+d)"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q21","t":"MSQ","m":3.0,"w":10,"aw":[9],"c":"Tangent plane and tangent line equations","d":4,"a":"A,D","s":"Identify correct tangent planes/lines of u and v at (1,2)"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q8","t":"SA","m":3.0,"w":10,"aw":[11],"c":"Counting critical points of f(x,y)","d":4,"a":"9","s":"f=x^4+y^4+4x^3+4x^2-8y^2-5; number of critical points"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q22","t":"MCQ","m":4.0,"w":10,"aw":[7],"c":"Tangent planes and associated vector subspaces","d":4,"a":"B","s":"Match surfaces to tangent planes at (1,1,2) and to vector subspaces"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q6","t":"MSQ","m":3.0,"w":10,"aw":[11],"c":"Tangent plane and linear approximation","d":4,"a":"B,C,E","s":"For f=x^3+2x^2y+y^2-2x+y+1, tangent planes at (1,-1) and (1,1)"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q27","t":"MSQ","m":4.0,"w":10,"aw":[11],"c":"Tangent planes and tangent lines to surfaces","d":4,"a":"A,B,C","s":"Identify correct tangent planes/lines for u and v at (2,3)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q28","t":"SA","m":1.5,"w":10,"aw":[9],"c":"Point on tangent line in a given direction","d":4,"a":"0","s":"Find a where (1,a,b) lies on tangent line to f at (2,-1)"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q29","t":"SA","m":1.5,"w":10,"aw":[9],"c":"Point on tangent line in a given direction","d":4,"a":"10","s":"Find b where (1,a,b) lies on tangent line to f at (2,-1)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q27","t":"MSQ","m":2.0,"w":10,"aw":[],"c":"Finding critical points by solving gradient equals zero","d":4,"a":"C,D","s":"Critical points of f(x,y)=x^2+y^2-x^2y^2"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q10","t":"SA","m":2.0,"w":10,"aw":[9],"c":"Tangent line data giving directional derivatives","d":4,"a":"1","s":"Tangent lines at (2,3) in two directions given; find partial derivative w.r.t. y"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q19","t":"MSQ","m":2.0,"w":10,"aw":[7],"c":"Tangent plane as affine subspace, choosing offset vector","d":4,"a":"A,C","s":"f=x^2-xy+y^2; T(3,1)=v+U; choose possible candidates for v"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q20","t":"MCQ","m":2.0,"w":10,"aw":[4,7],"c":"Basis for direction subspace of tangent plane","d":4,"a":"D","s":"f=x^2-xy+y^2; tangent plane T(3,1)=v+U; find a basis for U"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q27","t":"MSQ","m":8.0,"w":10,"aw":[],"c":"Tangent lines to graph in given directions","d":4,"a":"C,D,E","s":"Select points lying on tangent lines of f=x^2+y^2+xy+3x+1 at origin"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q28","t":"MSQ","m":8.0,"w":10,"aw":[],"c":"Tangent lines to graph of 1/(1+x^2+y^2)","d":4,"a":"B,C,E","s":"Select correct statements about tangent lines of f at given points"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q34","t":"SA","m":5.0,"w":10,"aw":[],"c":"Largest disk radius with unique critical point","d":4,"a":"3.13-3.15","s":"Find max R so cos(x^2+y^2) has unique critical point on disk"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q2","t":"SA","m":1.0,"w":10,"aw":[1],"c":"Critical points of det-based function","d":3,"a":"1","s":"For A=[[a,b],[b,a]], f(a,b)=det(A); count critical points of f"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q14","t":"SA","m":2.0,"w":10,"aw":[8],"c":"Minimising distance from origin to a plane","d":3,"a":"32","s":"Point (a,b,c) on x+y+z=1 nearest the origin; find 48(a+b)"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q14","t":"SA","m":1.0,"w":10,"aw":[11,9],"c":"Consequences of tangent plane existence","d":3,"a":"1314161719","s":"If tangent plane exists at a point then: pick 5 terms"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q20","t":"MCQ","m":2.0,"w":10,"aw":[9],"c":"Tangent line via directional derivative","d":3,"a":"A","s":"f=x^2+xy; tangent line at (1,1) in direction (1,1)"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q24","t":"SA","m":2.0,"w":10,"aw":[11],"c":"Counting critical points of f(x,y)","d":3,"a":"4","s":"Number of critical points of f = x^3-3x+y^3-3y^2"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q23","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Direction of steepest ascent via gradient","d":3,"a":"7","s":"f=2x^2+3y^2/2; u=(a,b) steepest increase at (1,1); find 5(a+b)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q24","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Direction of steepest descent via gradient","d":3,"a":"-7","s":"f=2x^2+3y^2/2; u=(a,b) steepest decrease at (1,1); find 5(a+b)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q25","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Direction of zero directional derivative","d":3,"a":"1","s":"f=2x^2+3y^2/2; u=(a,b) gives no change at (1,1); find 5"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q20","t":"SA","m":2.0,"w":10,"aw":[9],"c":"Unit vector of steepest ascent via gradient","d":3,"a":"0","s":"T=xz/(x^2+y^2); unit vector of fastest increase at (1,0,1); find u1+u2+u3"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q21","t":"SA","m":2.0,"w":10,"aw":[9],"c":"Rate of change in steepest descent direction","d":3,"a":"53","s":"f=x^3*y*z^2 at (-1,2,1); a is rate in fastest-decrease direction; find a^2"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q22","t":"SA","m":1.0,"w":10,"aw":[],"c":"Counting critical points of f(x,y)","d":3,"a":"4","s":"f=x^3+y^3-3(x+y^2); how many critical points does f have"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q25","t":"SA","m":2.0,"w":10,"aw":[11],"c":"Linear approximation of a two-variable function","d":3,"a":"9","s":"L_u linear approx of u=xy+2e^x at (1,2); L_u(2,3)=a+be; find a+b"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q26","t":"SA","m":2.0,"w":10,"aw":[11],"c":"Linear approximation of a two-variable function","d":3,"a":"8","s":"L_v linear approx of v=y^2+y*e^x at (2,1); L_v(2,3)=c+de^2; find c+d"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q12","t":"SA","m":3.0,"w":10,"aw":[],"c":"Tangent plane to a surface at a point","d":3,"a":"2","s":"Tangent plane of f=e^x(x+y) at (1,0) is Ax+By+C=z; find (A+B+C)/e"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q30","t":"MCQ","m":2.0,"w":10,"aw":[11],"c":"Counting critical points of f(x,y)","d":3,"a":"C","s":"Number of critical points of f=xy^2-y^2-x+3"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q22","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Unit direction of steepest descent via negative gradient","d":3,"a":"1","s":"f=sin((x+y)/(x-y)); steepest descent unit direction at (-1,1); find sqrt(2)a"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q23","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Unit direction of steepest descent, second component","d":3,"a":"1","s":"Same setup; find sqrt(2)b"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q24","t":"SA","m":1.0,"w":10,"aw":[9],"c":"Direction of zero change, orthogonal to gradient","d":3,"a":"0","s":"(c,d) direction with no change in f at (-1,1); find c+d"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q26","t":"SA","m":2.0,"w":10,"aw":[9],"c":"Parametric tangent line at a point in a direction","d":3,"a":"-1","s":"(1,b,c) on tangent line at (0,pi/2) in that direction; find b-c"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q21","t":"MCQ","m":1.0,"w":10,"aw":[],"c":"Interior critical point of two-variable function","d":3,"a":"B","s":"T=10+xy+x^3-x/3 on region under y=-x^2+1; find only critical point in Int(D)"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q29","t":"SA","m":5.0,"w":10,"aw":[],"c":"Limit of tangent plane normal vectors","d":3,"a":"0","s":"Find lim x_n + lim y_n for normals of tangent planes at A_n"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q30","t":"SA","m":5.0,"w":10,"aw":[1],"c":"Angle between tangent plane normal and axis","d":3,"a":"0","s":"Find limit of angle between normal v_n and (0,0,-1)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q15","t":"SA","m":5.0,"w":10,"aw":[9],"c":"steepest descent direction via normalised negative gradient","d":3,"a":"3","s":"Unit steepest-descent direction of 3xyz+x^2+y^2+z^2 at (1,-1,0)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q16","t":"SA","m":5.0,"w":10,"aw":[9],"c":"steepest ascent direction via normalised gradient","d":3,"a":"2","s":"Unit steepest-ascent direction of xy+yz+zx+x^3+y^3+z^3 at (1,0,1)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q19","t":"MSQ","m":6.0,"w":10,"aw":[],"c":"tangent plane equation and point membership","d":3,"a":"C,D","s":"Which points lie on tangent plane to x^3+y^2 at (1,1)"},{"p":"2026 May","pk":"P12_2026_may","q":"Q20","t":"MSQ","m":6.0,"w":10,"aw":[],"c":"tangent plane equation and point membership","d":3,"a":"A,C","s":"Which points lie on tangent plane to xy^2+yx^2 at (2,3)"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q15","t":"SA","m":2.0,"w":10,"aw":[8],"c":"Minimum distance from origin to a plane","d":2,"a":"9","s":"For the same plane, if d is the min distance find 27d^2"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q12","t":"SA","m":2.0,"w":10,"aw":[11],"c":"Classification of critical points","d":2,"a":"101112","s":"A critical point can be: pick 3 terms from the list"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q23","t":"MCQ","m":2.0,"w":10,"aw":[],"c":"Direction of steepest descent as unit vector","d":2,"a":"A","s":"Direction of most rapid decrease of T=x^2+2y^2+2z^2 at (1,1,1)"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q19","t":"SA","m":1.0,"w":10,"aw":[],"c":"Critical point via setting gradient zero","d":2,"a":"5","s":"f=x^2+xy+y^2-7x-8y has critical point (a,b); find a+b"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q5","t":"MCQ","m":5.0,"w":10,"aw":[],"c":"Tangent plane horizontal iff critical point","d":2,"a":"B","s":"Relate tangent plane parallel to xy-plane and grad f = 0"},{"p":"2026 May","pk":"P12_2026_may","q":"Q29","t":"SA","m":4.0,"w":10,"aw":[],"c":"critical points of f in interior of domain","d":2,"a":"0","s":"Number of interior critical points of x^2-y on triangular domain"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q22","t":"MSQ","m":3.0,"w":11,"aw":[9],"c":"Continuity and mixed second partial derivatives","d":5,"a":"B,D","s":"Piecewise g; continuity and g_xy, g_y values"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q14","t":"SA","m":2.0,"w":11,"aw":[10],"c":"Hessian test counting local maxima","d":4,"a":"1","s":"f=2x^3+6xy^2-3y^3-150x; count local maxima"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q15","t":"SA","m":2.0,"w":11,"aw":[10],"c":"Hessian test counting local minima","d":4,"a":"1","s":"Same f; count local minima"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q16","t":"SA","m":2.0,"w":11,"aw":[10],"c":"Hessian test counting saddle points","d":4,"a":"2","s":"Same f; count saddle points"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q11","t":"MSQ","m":2.0,"w":11,"aw":[10],"c":"Second derivative test with a parameter k","d":4,"a":"A,D","s":"For which k is Hessian test inconclusive, max, min, or saddle"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q12","t":"MSQ","m":2.0,"w":11,"aw":[5,10],"c":"Hessian symmetry, rank and nullity","d":4,"a":"A,D","s":"Statements about the critical-point system and Hessian rank/nullity"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q9","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Hessian second-derivative test, saddle points","d":4,"a":"4","s":"Number of saddle points of that f"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q16","t":"SA","m":2.0,"w":11,"aw":[12],"c":"Constrained minimisation, AM-GM","d":4,"a":"9","s":"Minimum sum of three non-negative numbers whose product is 27"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q26","t":"SA","m":2.0,"w":11,"aw":[],"c":"Hessian test counting local maxima","d":4,"a":"1","s":"f=x^3+3xy^2-3x^2-3y^2+5; number of local maxima"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q27","t":"SA","m":2.0,"w":11,"aw":[],"c":"Hessian test counting local minima","d":4,"a":"1","s":"f=x^3+3xy^2-3x^2-3y^2+5; number of local minima"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q28","t":"SA","m":2.0,"w":11,"aw":[],"c":"Hessian test counting saddle points","d":4,"a":"2","s":"f=x^3+3xy^2-3x^2-3y^2+5; number of saddle points"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q29","t":"SA","m":1.0,"w":11,"aw":[],"c":"Evaluating f at selected local maximum","d":4,"a":"5","s":"Local max farthest from origin; find f(a,b)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q30","t":"SA","m":1.0,"w":11,"aw":[],"c":"Evaluating f at selected local minimum","d":4,"a":"1","s":"Local min farthest from origin; find f(a,b)"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q24","t":"MSQ","m":2.0,"w":11,"aw":[10],"c":"Classifying local extrema with Hessian","d":4,"a":"A,D","s":"f=x^3+y^3-3(x+y^2); identify local minima and maxima among given points"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q22","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Constrained maximum by substitution, three variables","d":4,"a":"4","s":"Maximize x^2yz^2 with x+y+z=10, x,y,z>0; enter x"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q23","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Constrained maximum by substitution, three variables","d":4,"a":"2","s":"Maximize x^2yz^2 with x+y+z=10; enter y"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q24","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Constrained maximum by substitution, three variables","d":4,"a":"4","s":"Maximize x^2yz^2 with x+y+z=10; enter z"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q4","t":"MSQ","m":3.0,"w":11,"aw":[9],"c":"Conditions guaranteeing all directional derivatives exist","d":4,"a":"B,C","s":"Which conditions guarantee directional derivative exists in all directions"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q20","t":"SA","m":2.0,"w":11,"aw":[10],"c":"Maximising a constrained volume via critical points","d":4,"a":"1","s":"Maximum volume of a cuboid with perimeter 12"},{"p":"2024 Dec","pk":"P08_2024_dec","q":"Q31","t":"MCQ","m":2.0,"w":11,"aw":[10],"c":"Hessian second-derivative test classification","d":4,"a":"E","s":"What the Hessian test concludes for f=xy^2-y^2-x+3"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q33","t":"SA","m":5.0,"w":11,"aw":[10],"c":"Hessian determinant at a critical point","d":4,"a":"4","s":"Find det Hessian of sin(x^2+y^2) at the conclusive critical point"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q36","t":"SA","m":6.0,"w":11,"aw":[10],"c":"Minimum Hessian determinant over critical points","d":4,"a":"0","s":"Find minimum of det Hessian of cos(x^2+y^2) over its critical points"},{"p":"2026 May","pk":"P12_2026_may","q":"Q7","t":"MSQ","m":6.0,"w":11,"aw":[9],"c":"continuity, partial derivatives, differentiability at origin","d":4,"a":"A,B,D","s":"Test continuity, equality of partials, differentiability of (x-y)^2 sin(1/(x-y))"},{"p":"2026 May","pk":"P12_2026_may","q":"Q8","t":"MSQ","m":6.0,"w":11,"aw":[9],"c":"continuity, partials, differentiability at origin","d":4,"a":"A,B,D","s":"Same piecewise (x-y)^2 sin(1/(x-y)) function tested at (0,0)"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q13","t":"SA","m":2.0,"w":11,"aw":[12],"c":"Minimising sum of squares under sum constraint","d":3,"a":"-6","s":"a+b+c=12 with a^2+b^2+c^2 minimum; find a-2b+c"},{"p":"2022 Aug","pk":"P01_2022_aug","q":"Q17","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Recognising indeterminate Hessian cases","d":3,"a":"0","s":"Same f; count points where Hessian test fails"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q17","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Classifying points as local minima by Hessian","d":3,"a":"0","s":"Which of p1..p5 are local minima of f(a,b)"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q18","t":"SA","m":2.0,"w":11,"aw":[10],"c":"Classifying points as saddle points by Hessian","d":3,"a":"34","s":"Which of p1..p5 are saddle points of f(a,b)"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q10","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Hessian test for local maxima","d":3,"a":"1","s":"Number of local maxima of that f"},{"p":"2023 Apr","pk":"P03_2023_apr","q":"Q11","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Hessian test for local minima","d":3,"a":"4","s":"Number of local minima of that f"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q25","t":"MCQ","m":2.0,"w":11,"aw":[],"c":"Hessian second-derivative test classification","d":3,"a":"C","s":"Classify critical point (1,2) of f = x^3-3x+y^3-3y^2"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q26","t":"MCQ","m":2.0,"w":11,"aw":[],"c":"Hessian second-derivative test classification","d":3,"a":"B","s":"Classify critical point (-1,2) of f = x^3-3x+y^3-3y^2"},{"p":"2023 Sep","pk":"P04_2023_sep","q":"Q27","t":"MCQ","m":2.0,"w":11,"aw":[],"c":"Hessian second-derivative test classification","d":3,"a":"D","s":"Classify critical point (-1,0) of f = x^3-3x+y^3-3y^2"},{"p":"2024 Apr","pk":"P06_2024_apr","q":"Q23","t":"SA","m":1.0,"w":11,"aw":[10],"c":"Saddle points via Hessian second-derivative test","d":3,"a":"2","s":"f=x^3+y^3-3(x+y^2); how many saddle points"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q3","t":"MSQ","m":2.0,"w":11,"aw":[9,10],"c":"Consequences of differentiability at a point","d":3,"a":"A,B,D","s":"f:R^2->R differentiable at (x0,y0); select true consequences"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q6","t":"MCQ","m":5.0,"w":11,"aw":[9],"c":"Continuous partials imply continuity","d":3,"a":"C","s":"Relate continuity of partial derivatives to continuity of f"},{"p":"2022 Dec","pk":"P02_2022_dec","q":"Q10","t":"MCQ","m":2.0,"w":11,"aw":[],"c":"Writing the Hessian matrix","d":2,"a":"B","s":"Hessian of f=x^2+y^2+z^2+xy+yz+kzx at a critical point"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q20","t":"SA","m":1.0,"w":11,"aw":[],"c":"Determinant of Hessian matrix","d":2,"a":"3","s":"Determinant of Hessian of f=x^2+xy+y^2-7x-8y"},{"p":"2024 Sep","pk":"P07_2024_sep","q":"Q21","t":"MCQ","m":1.0,"w":11,"aw":[],"c":"Second-derivative test classifying critical point","d":2,"a":"B","s":"Nature of critical point of f=x^2+xy+y^2-7x-8y"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q28","t":"SA","m":1.0,"w":11,"aw":[],"c":"Determinant of Hessian at a critical point","d":2,"a":"4","s":"det of Hessian of f=x^2+y^2-x^2y^2 at (0,0)"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q29","t":"MCQ","m":1.0,"w":11,"aw":[],"c":"Second derivative test classification via Hessian","d":2,"a":"B","s":"Conclusion of Hessian test at critical point (0,0)"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q22","t":"MCQ","m":1.0,"w":11,"aw":[10],"c":"Hessian second-derivative test classification","d":2,"a":"C","s":"Classify the interior critical point of T using the Hessian test"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q22","t":"MCQ","m":5.0,"w":11,"aw":[9],"c":"Differentiability of e^(x+y)","d":2,"a":"D","s":"Identify continuity/differentiability status of f(x,y)=e^(x+y)"},{"p":"2023 Dec","pk":"P05_2023_dec","q":"Q7","t":"MSQ","m":3.0,"w":12,"aw":[11],"c":"Absolute extrema on closed disc","d":5,"a":"A,D,E","s":"f=x^2-y^2+4 on disc x^2+y^2<=1: max, min, saddle"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q32","t":"MCQ","m":2.0,"w":12,"aw":[11],"c":"Global extrema of a radial function on a closed disc","d":5,"a":"B","s":"Counts of global minima and maxima of phi on D"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q24","t":"SA","m":2.0,"w":12,"aw":[10,11],"c":"Absolute maximum over closed bounded region","d":5,"a":"10.65-10.67","s":"Interior, boundary and corner values; find hottest temperature on plate"},{"p":"2026 May","pk":"P12_2026_may","q":"Q26","t":"SA","m":4.0,"w":12,"aw":[10,11],"c":"absolute maximum over closed rectangle","d":5,"a":"43","s":"Absolute max of x^2+xy+y^2 on [-1,1]x[2,6]"},{"p":"2026 May","pk":"P12_2026_may","q":"Q27","t":"SA","m":4.0,"w":12,"aw":[10,11],"c":"absolute minimum over closed rectangle","d":5,"a":"3","s":"Absolute min of x^2+xy+y^2 on [-1,1]x[2,6]"},{"p":"2026 May","pk":"P12_2026_may","q":"Q32","t":"SA","m":6.0,"w":12,"aw":[10],"c":"absolute maximum over closed triangular domain","d":5,"a":"1","s":"Absolute max of x^2-y on x+y<=1, x>=0, y>=0"},{"p":"2025 Aug","pk":"P10_2025_aug","q":"Q23","t":"MCQ","m":1.0,"w":12,"aw":[10],"c":"Critical points of boundary restrictions","d":4,"a":"A","s":"Restrictions f1(x)=T(x,-x^2+1), f2(x)=T(x,0); which has critical points"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q35","t":"SA","m":6.0,"w":12,"aw":[10],"c":"Absolute extrema over closed disk","d":4,"a":"1.70-1.72","s":"Find M-m for sin(x^2+y^2) on disk x^2+y^2 <= 5pi/4"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q31","t":"MCQ","m":1.0,"w":12,"aw":[10],"c":"Counting interior critical points of the distance function","d":3,"a":"B","s":"Number of critical points of phi inside open unit disc"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q33","t":"SA","m":1.0,"w":12,"aw":[10],"c":"Minimum distance from origin to a paraboloid graph","d":3,"a":"2","s":"Distance from origin to closest point on graph of f"},{"p":"2025 Apr","pk":"P09_2025_apr","q":"Q30","t":"MCQ","m":1.0,"w":12,"aw":[10],"c":"Setting up squared-distance function from a point to graph","d":2,"a":"D","s":"Choose phi measuring squared distance from origin to graph of -2-x^2-y^2"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q31","t":"SA","m":3.0,"w":12,"aw":[],"c":"Extrema of f on boundary circle","d":2,"a":"0","s":"Find M_b - m_b for sin(x^2+y^2) restricted to boundary of disk"},{"p":"2025 Dec","pk":"P11_2025_dec","q":"Q32","t":"SA","m":3.0,"w":12,"aw":[9],"c":"Global range of cos(x^2+y^2) on R^2","d":2,"a":"2","s":"Find M_b - m_b for f=cos(x^2+y^2) on all of R^2"}]
+[
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 1,
+  "aw": [],
+  "c": "Nilpotent vs symmetric 2x2 matrix existence",
+  "d": 4,
+  "a": "B",
+  "s": "P: exists 2x2 A with A^2=0, A^T=A, A!=0; Q: A^2=0, A!=0"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 1,
+  "aw": [],
+  "c": "Matrix product columns as linear combinations",
+  "d": 3,
+  "a": "A,B",
+  "s": "A,B square same order; which statements about rows/columns of AB hold"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q27",
+  "t": "SA",
+  "m": 2.0,
+  "w": 1,
+  "aw": [
+   7
+  ],
+  "c": "Angle between two lines via dot product",
+  "d": 3,
+  "a": "17",
+  "s": "Acute angle theta between 3x-5y=0 and x+y=0; find 1/cos^2(theta)"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q2",
+  "t": "SA",
+  "m": 2.0,
+  "w": 1,
+  "aw": [],
+  "c": "Matrix equality entrywise, trace computation",
+  "d": 2,
+  "a": "3",
+  "s": "Given A written two ways, find tr(A) from matching entries"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q26",
+  "t": "SA",
+  "m": 3.0,
+  "w": 1,
+  "aw": [
+   7
+  ],
+  "c": "Orthogonality condition between two lines",
+  "d": 2,
+  "a": "0.6",
+  "s": "Line ax+by=0 orthogonal to 3x-5y=0; find b/a"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q34",
+  "t": "SA",
+  "m": 4.0,
+  "w": 1,
+  "aw": [],
+  "c": "determinant of a 3x3 matrix",
+  "d": 2,
+  "a": "7",
+  "s": "Find determinant of A = [[3,0,-1],[1,2,0],[1,1,1]]"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q36",
+  "t": "SA",
+  "m": 4.0,
+  "w": 1,
+  "aw": [],
+  "c": "determinant of a 3x3 matrix",
+  "d": 2,
+  "a": "-13",
+  "s": "Find determinant of B = [[-1,0,2],[0,1,0],[3,0,7]]"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q8",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 1,
+  "aw": [],
+  "c": "Dimension of outer product x*y^T",
+  "d": 1,
+  "a": "A",
+  "s": "x,y nonzero column vectors in R^n; dimension of x*y^T"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q13",
+  "t": "SA",
+  "m": 5.0,
+  "w": 1,
+  "aw": [],
+  "c": "dot product zero, solve for unknown component",
+  "d": 1,
+  "a": "12",
+  "s": "Find c so that (2,-1,4,3) and (1,c,-2,6) are orthogonal"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q14",
+  "t": "SA",
+  "m": 5.0,
+  "w": 1,
+  "aw": [],
+  "c": "dot product zero, solve for unknown component",
+  "d": 1,
+  "a": "10",
+  "s": "Find c so that (1,3,-5) and (5,c,7) are perpendicular"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q18",
+  "t": "SA",
+  "m": 1.0,
+  "w": 2,
+  "aw": [
+   1
+  ],
+  "c": "Parameter for infinitely many solutions",
+  "d": 4,
+  "a": "2",
+  "s": "Number of a making a 3x3 homogeneous system have infinite solutions"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q13",
+  "t": "SA",
+  "m": 4.0,
+  "w": 2,
+  "aw": [
+   1
+  ],
+  "c": "Determinant of matrix polynomial via factoring",
+  "d": 4,
+  "a": "0",
+  "s": "A=[[1,2,3],[3,2,5],[-4,9,5]]; find det(A^3-3A^2+2A)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q2",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [],
+  "c": "Effect of row operations on determinant",
+  "d": 4,
+  "a": "A,C",
+  "s": "det(A)=3; which operations give det(B)=-6"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q12",
+  "t": "SA",
+  "m": 1.0,
+  "w": 2,
+  "aw": [
+   7
+  ],
+  "c": "Consistency condition via Gaussian elimination",
+  "d": 4,
+  "a": "3",
+  "s": "Same A with b=(alpha, alpha+1, 10); find alpha"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q29",
+  "t": "SA",
+  "m": 2.0,
+  "w": 2,
+  "aw": [
+   8
+  ],
+  "c": "Cramer's rule on a 3x3 system",
+  "d": 3,
+  "a": "0",
+  "s": "Solve Bz=(2,-2,1)^T by Cramer's rule; find z2+2z3"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [
+   5
+  ],
+  "c": "Solution space of a 3x3 linear system",
+  "d": 3,
+  "a": "D",
+  "s": "Solution space of the system formed by three plane equations"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q2",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 2,
+  "aw": [
+   7
+  ],
+  "c": "Effect of elementary row operations on det/rank",
+  "d": 3,
+  "a": "B,C",
+  "s": "True statements about determinant and rank of n x n matrix A"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [
+   5
+  ],
+  "c": "Determinant/parameter test for unique solution of Ax=0",
+  "d": 3,
+  "a": "A,D",
+  "s": "For A with entries c,d, decide when Ax=0 has unique solution"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [
+   1,
+   7
+  ],
+  "c": "Matrix invertibility and product properties",
+  "d": 3,
+  "a": "C",
+  "s": "Correct statement about AB, BA, A^2=I, invertibility, rank"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q4",
+  "t": "MCQ",
+  "m": 4.0,
+  "w": 2,
+  "aw": [],
+  "c": "Consistency condition via Gaussian elimination",
+  "d": 3,
+  "a": "A",
+  "s": "Conditions on b1,b2,b3 so 3x3 system has a solution"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q8",
+  "t": "SA",
+  "m": 2.0,
+  "w": 2,
+  "aw": [],
+  "c": "Determinant under elementary row operations",
+  "d": 3,
+  "a": "-2",
+  "s": "Row ops turn A (order 5) into I; compute det(A)"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [
+   1
+  ],
+  "c": "Determinant condition for invertibility",
+  "d": 3,
+  "a": "A,B",
+  "s": "A=[[a,b,b],[a,a,b],[a,a,a]] invertible; required conditions on a,b"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q3",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 2,
+  "aw": [],
+  "c": "Consistency condition via row reduction",
+  "d": 3,
+  "a": "C",
+  "s": "Find consistency condition for a 3x3 system in b1,b2,b3"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q7",
+  "t": "MCQ",
+  "m": 1.5,
+  "w": 2,
+  "aw": [
+   7
+  ],
+  "c": "Consistency of Ax=b via rank of augmented matrix",
+  "d": 3,
+  "a": "A",
+  "s": "With k=1, b=(0,2,alpha), decide uniqueness/consistency for alpha=5 or 6"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q9",
+  "t": "SA",
+  "m": 1.0,
+  "w": 2,
+  "aw": [
+   1
+  ],
+  "c": "Determinant of matrix polynomial, factoring A^5(A-I)",
+  "d": 3,
+  "a": "0",
+  "s": "A=[[7,3],[4,3]]; find det(A^6 - A^5)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q10",
+  "t": "SA",
+  "m": 1.0,
+  "w": 2,
+  "aw": [],
+  "c": "Determinant multiplicativity with A^2=2I, sign deduction",
+  "d": 3,
+  "a": "-36",
+  "s": "A,B 4x4 with A^2=2I, B^2=3I, det A<0, det B>0; find det(AB)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q18",
+  "t": "SA",
+  "m": 6.0,
+  "w": 2,
+  "aw": [],
+  "c": "reverse row operations to recover determinant",
+  "d": 3,
+  "a": "-2",
+  "s": "Find det(A) from row operations reducing A to identity"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q6",
+  "t": "SA",
+  "m": 1.5,
+  "w": 2,
+  "aw": [
+   1
+  ],
+  "c": "Determinant zero for nontrivial solutions",
+  "d": 2,
+  "a": "0",
+  "s": "Find k so Ax=0 has infinitely many solutions, A=[[1,-1,k],[1,1,1],[5,1,3]]"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q8",
+  "t": "SA",
+  "m": 1.0,
+  "w": 2,
+  "aw": [],
+  "c": "Determinant under row and column scaling",
+  "d": 2,
+  "a": "-30",
+  "s": "det(A)=5; row1 scaled by 3 and column2 by -2; find det(B)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q4",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 2,
+  "aw": [],
+  "c": "row operations effect on determinant",
+  "d": 2,
+  "a": "C",
+  "s": "Which row-operation sequence turns det(A)=-3 into det=1"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 3,
+  "aw": [
+   5
+  ],
+  "c": "Identifying vector spaces and subspaces",
+  "d": 4,
+  "a": "B,C",
+  "s": "Which listed sets form vector spaces under usual operations"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q35",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 3,
+  "aw": [
+   4
+  ],
+  "c": "Intersection of a span with a plane subspace",
+  "d": 4,
+  "a": "C",
+  "s": "Which set equals W intersect U where U={x+y+z=0}"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q26",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 3,
+  "aw": [
+   4
+  ],
+  "c": "Column space as span, full-rank case",
+  "d": 3,
+  "a": "A,D",
+  "s": "Which sets denote the column space of A"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 3,
+  "aw": [
+   5
+  ],
+  "c": "Solvability of Ax=b, column space, independence",
+  "d": 3,
+  "a": "A,D",
+  "s": "True statements about a linear system Ax = b"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 3,
+  "aw": [],
+  "c": "Subspace test in space of 2x2 matrices",
+  "d": 3,
+  "a": "A,D",
+  "s": "Which sets form subspaces of V = all 2x2 real matrices"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q8",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 3,
+  "aw": [
+   4
+  ],
+  "c": "Columns spanning R^2, rank of 2x3 matrix",
+  "d": 3,
+  "a": "A",
+  "s": "True/false: columns of A=[[3,1,-2],[1,k,1-k]] span R^2 for all k"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q10",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 3,
+  "aw": [
+   4
+  ],
+  "c": "Span of row vectors as a plane in R^3",
+  "d": 3,
+  "a": "A",
+  "s": "True/false: at k=1/3 rows of A span the plane x-3y=0"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 3,
+  "aw": [
+   2
+  ],
+  "c": "Linear dependence with parameter, determinant zero",
+  "d": 3,
+  "a": "C",
+  "s": "Find all alpha making {(1,a,0),(0,2,-a),(3,a^2,a)} linearly dependent"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q12",
+  "t": "SA",
+  "m": 1.0,
+  "w": 3,
+  "aw": [],
+  "c": "Span membership giving a parameter value",
+  "d": 3,
+  "a": "3",
+  "s": "v1=(1,-1,1), v2=(2,0,4), v3=(1,1,t); find t with v3 in span{v1,v2}"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q15",
+  "t": "SA",
+  "m": 1.0,
+  "w": 3,
+  "aw": [],
+  "c": "Vector space axioms to verify",
+  "d": 2,
+  "a": "45679",
+  "s": "Conditions needed to identify a vector space V: pick 5 terms"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 3,
+  "aw": [],
+  "c": "Linear dependence of 4 vectors in R^3",
+  "d": 2,
+  "a": "A",
+  "s": "S={v1,v2,v3,v4} subset of R^3; true statement about dependence/span"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q13",
+  "t": "SA",
+  "m": 1.0,
+  "w": 3,
+  "aw": [],
+  "c": "Solving for coefficients in a linear combination",
+  "d": 2,
+  "a": "-2",
+  "s": "With that t, v3 = a*v1 + b*v2; find a - b"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Finding dimension of given subspaces",
+  "d": 4,
+  "a": "B,C",
+  "s": "Which listed subspaces/spans have a basis of cardinality 2"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Verifying a basis for a subspace of R^4",
+  "d": 4,
+  "a": "C,D",
+  "s": "Which sets are bases for V = {(a,b,c,d): a+b=c+d}"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   5
+  ],
+  "c": "Computing dimension of given vector spaces",
+  "d": 4,
+  "a": "A,C,E",
+  "s": "Which listed vector spaces have dimension 2"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q9",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Identifying bases of a subspace of R^4",
+  "d": 4,
+  "a": "B,C",
+  "s": "Which sets are bases for W={x+z=y, y+w=z-x} in R^4"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Extending independent set to basis, dimension bound",
+  "d": 4,
+  "a": "A,B",
+  "s": "S={u1..u5} linearly independent in V; select true statements"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q37",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   5
+  ],
+  "c": "Isomorphism of vector spaces via equal dimension",
+  "d": 4,
+  "a": "A,D",
+  "s": "Which vector spaces are isomorphic to W (dim 2)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q9",
+  "t": "MSQ",
+  "m": 6.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "dimension of subspaces, isomorphic iff same dimension",
+  "d": 4,
+  "a": "A,B,D",
+  "s": "Identify which given subspaces are isomorphic to R^2"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q10",
+  "t": "MSQ",
+  "m": 7.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "dimension counting, column space dimension",
+  "d": 4,
+  "a": "A,D,E",
+  "s": "Identify which given subspaces are isomorphic to R^3"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q5",
+  "t": "SA",
+  "m": 2.0,
+  "w": 4,
+  "aw": [
+   5,
+   8
+  ],
+  "c": "Dimension of solution subspace, orthonormal basis size",
+  "d": 3,
+  "a": "2",
+  "s": "W={(x,y,z): det(A)=0}; cardinality of orthonormal basis of W"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q3",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Unique linear combination implies basis",
+  "d": 3,
+  "a": "A",
+  "s": "Every v in V uniquely a combination of v1,v2,v3; find dim(V)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 4,
+  "aw": [
+   3,
+   5
+  ],
+  "c": "Dimension of a subspace defined by linear equations",
+  "d": 3,
+  "a": "B",
+  "s": "dim of W={(x,y,z,w): x+y=z, z+w=y-x} in R^4"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q6",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Basis of a plane subspace of R^3",
+  "d": 2,
+  "a": "A",
+  "s": "Find a basis beta for W = {(x,y,z) : x-y+z=0}"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q10",
+  "t": "SA",
+  "m": 1.0,
+  "w": 4,
+  "aw": [],
+  "c": "Dimension of a solution subspace",
+  "d": 2,
+  "a": "2",
+  "s": "Find dim(W) for W={(x,y,z,w): x+z=y, y+w=z-x}"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q14",
+  "t": "SA",
+  "m": 1.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Dimension of a matrix subspace",
+  "d": 2,
+  "a": "2",
+  "s": "V={[[x,0,y],[0,0,0],[0,x+y,0]]} in M_3x3; find dim V"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q34",
+  "t": "SA",
+  "m": 1.0,
+  "w": 4,
+  "aw": [
+   3
+  ],
+  "c": "Dimension of a span via rank of vectors",
+  "d": 2,
+  "a": "2",
+  "s": "u1=(-1,1,-1), u2=(2,0,2), u3=(1,-2,1); find dim of span"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q2",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 5,
+  "aw": [
+   1,
+   3,
+   6
+  ],
+  "c": "Consistency, column space, kernel as solution space",
+  "d": 4,
+  "a": "A,D",
+  "s": "Statements on Ax=b solvability, uniqueness, kernel of S(v)=Av^T"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Rank, nullity, injectivity of linear map",
+  "d": 4,
+  "a": "A,D",
+  "s": "Statements about rank, nullity, one-one, isomorphism of T"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q9",
+  "t": "SA",
+  "m": 2.0,
+  "w": 5,
+  "aw": [
+   4
+  ],
+  "c": "Rank-nullity applied to nilpotent matrix",
+  "d": 4,
+  "a": "2",
+  "s": "Nonzero 5x5 matrix A with A^2=0; find maximum possible rank of A"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q25",
+  "t": "SA",
+  "m": 5.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Composition of maps and isomorphism",
+  "d": 4,
+  "a": "1",
+  "s": "Count true statements about S o T and T o S being isomorphisms"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q4",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 5,
+  "aw": [
+   1
+  ],
+  "c": "Injective/surjective test for linear map",
+  "d": 3,
+  "a": "B",
+  "s": "T(x,y,z)=det(A) for a parametrised A; injective/surjective/isomorphism"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q11",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [],
+  "c": "Solutions of A^T x=0 depend on rank",
+  "d": 3,
+  "a": "D",
+  "s": "A is 3x5; how many solutions does A^T x=0 have"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q12",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Injectivity/surjectivity from dimensions",
+  "d": 3,
+  "a": "A",
+  "s": "T:R^5->R^3 with matrix A; can T be one-one or onto"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 5,
+  "aw": [
+   2
+  ],
+  "c": "Solvability of Ax=b, column space, rank and uniqueness",
+  "d": 3,
+  "a": "A,D",
+  "s": "True statements about Ax=b solutions, column combinations, rank(A)=n"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q36",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   3
+  ],
+  "c": "Null space size from column dependence of A",
+  "d": 3,
+  "a": "B",
+  "s": "Correct statement about Ax=0 when u1,u2 are first two columns of A"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 5,
+  "aw": [
+   3
+  ],
+  "c": "Linear map on basis, invertibility condition",
+  "d": 3,
+  "a": "A,B",
+  "s": "T(1,0,0)=(2,-1,1), T(0,1,0)=(3,0,1); choose T(0,0,1) making T invertible"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q17",
+  "t": "SA",
+  "m": 6.0,
+  "w": 5,
+  "aw": [
+   2,
+   4
+  ],
+  "c": "Dimension of solution space of homogeneous system",
+  "d": 3,
+  "a": "2",
+  "s": "Find dimension of subspace of R^4 defined by three linear equations"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q26",
+  "t": "SA",
+  "m": 5.0,
+  "w": 5,
+  "aw": [
+   3,
+   4
+  ],
+  "c": "Nullity of T minus dimension of a span",
+  "d": 3,
+  "a": "1",
+  "s": "Compute n-m where n=nullity of T and m=dim of given span"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 5,
+  "aw": [],
+  "c": "linear map determined by action on a basis",
+  "d": 3,
+  "a": "B",
+  "s": "Find formula for T given T on three basis vectors of R^3"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q17",
+  "t": "SA",
+  "m": 6.0,
+  "w": 5,
+  "aw": [],
+  "c": "linear map determined by action on a basis",
+  "d": 3,
+  "a": "-5",
+  "s": "Given T on three vectors, compute T(1,2,-3) and a-b"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q7",
+  "t": "SA",
+  "m": 2.0,
+  "w": 5,
+  "aw": [],
+  "c": "Nullity of a linear transformation",
+  "d": 2,
+  "a": "1",
+  "s": "T(x,y,z)=(x+3z, x-y+2z, x+2y+5z); find nullity of T"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q8",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [],
+  "c": "Rank via rank-nullity theorem",
+  "d": 2,
+  "a": "2",
+  "s": "Same T; find rank of T"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Injectivity, surjectivity, rank and nullity of T",
+  "d": 2,
+  "a": "A,B",
+  "s": "For T(x,y)=(x+y, x-y), decide one-one, onto, range dim, nullity"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q13",
+  "t": "SA",
+  "m": 2.0,
+  "w": 5,
+  "aw": [
+   2
+  ],
+  "c": "Invertibility criteria: determinant and nullity",
+  "d": 2,
+  "a": "23",
+  "s": "An invertible 3x3 matrix has: pick 2 terms from the list"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q24",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 5,
+  "aw": [
+   2
+  ],
+  "c": "Null space of an invertible coefficient matrix",
+  "d": 2,
+  "a": "D",
+  "s": "Which set denotes nullspace(A) for that coefficient matrix"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q12",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Nullity of an invertible representation matrix",
+  "d": 2,
+  "a": "0",
+  "s": "Dimension of solution space of Bx=0 for isomorphism matrix B"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q19",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Injectivity and surjectivity from rank-nullity",
+  "d": 2,
+  "a": "D",
+  "s": "Is that T one-one, onto, both, or neither"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q10",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [],
+  "c": "Solutions of Ax=0 for wide matrix",
+  "d": 2,
+  "a": "B",
+  "s": "A is 3x5; how many solutions does Ax=0 have"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q13",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   7
+  ],
+  "c": "Dimension of hyperplane orthogonal to a vector",
+  "d": 2,
+  "a": "3",
+  "s": "U={x in R^4 : <x,u>=0}, u=(1,-1,2,-1); find dim U"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q15",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   2
+  ],
+  "c": "Dimension of solution space of linear system",
+  "d": 2,
+  "a": "1",
+  "s": "W={(x,y,z): x+y-2z=0, 2x-y+z=0}; find dim W"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Injectivity and surjectivity from rank",
+  "d": 2,
+  "a": "B",
+  "s": "Classify T:R^2->R^3 as injective/surjective"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q14",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   6
+  ],
+  "c": "Linear map determined by images of basis vectors",
+  "d": 2,
+  "a": "C",
+  "s": "T with T(1,1)=(4,5), T(1,0)=(3,-2); find T(x,y)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [],
+  "c": "Rank-nullity giving minimum nullity",
+  "d": 2,
+  "a": "1",
+  "s": "Minimum possible nullity of A for T:R^3->R^2"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q18",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 5,
+  "aw": [],
+  "c": "Injectivity/surjectivity from dimension comparison",
+  "d": 2,
+  "a": "B",
+  "s": "Correct option about T:R^3->R^2 being one-one or onto"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q12",
+  "t": "SA",
+  "m": 5.0,
+  "w": 5,
+  "aw": [
+   8
+  ],
+  "c": "nullity of an invertible orthogonal matrix",
+  "d": 2,
+  "a": "0",
+  "s": "Find nullity of an orthogonal matrix of order 5"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q16",
+  "t": "SA",
+  "m": 1.0,
+  "w": 5,
+  "aw": [
+   7
+  ],
+  "c": "Maximum rank of a 2x3 transformation matrix",
+  "d": 1,
+  "a": "2",
+  "s": "T:R^3->R^2 with T(x)=Ax; maximum rank of A"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q6",
+  "t": "SA",
+  "m": 2.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Matrix representation order plus nullity",
+  "d": 4,
+  "a": "6",
+  "s": "B represents T:R^3->R with order m x n, nullity r; find m+n+r"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q9",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 6,
+  "aw": [
+   4,
+   5
+  ],
+  "c": "Basis of kernel and range isomorphism",
+  "d": 4,
+  "a": "A,C",
+  "s": "Identify correct kernel basis and isomorphism of range of T"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q27",
+  "t": "SA",
+  "m": 1.0,
+  "w": 6,
+  "aw": [
+   8,
+   5
+  ],
+  "c": "Null space dimension of squared representation matrix",
+  "d": 4,
+  "a": "2",
+  "s": "A represents P_W w.r.t. orthonormal bases; find dim null space of A^2"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q17",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 6,
+  "aw": [
+   2
+  ],
+  "c": "Valid matrix representations of identity map",
+  "d": 4,
+  "a": "A,C",
+  "s": "Which matrices represent T(x)=x for some choice of bases"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q16",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 6,
+  "aw": [
+   2
+  ],
+  "c": "Matrix of inverse linear transformation",
+  "d": 4,
+  "a": "A",
+  "s": "Find matrix representation of T inverse for that T"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q22",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Rank, nullity and range of matrix of a transformation",
+  "d": 4,
+  "a": "A,C,D",
+  "s": "T:R^2->R^3 with given range; properties of matrix A"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q23",
+  "t": "MSQ",
+  "m": 7.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix representation wrt two ordered bases",
+  "d": 4,
+  "a": "B,C",
+  "s": "Select correct matrix reps of T(a,b;c,d)=a+b+c+d on M_2x2"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q24",
+  "t": "MSQ",
+  "m": 7.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix representation for T from M_2x2 to R^2",
+  "d": 4,
+  "a": "A,B",
+  "s": "Select correct matrix reps of T(a,b;c,d)=(a+b, c+d)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q5",
+  "t": "MCQ",
+  "m": 6.0,
+  "w": 6,
+  "aw": [
+   2
+  ],
+  "c": "matrix representation to transformation formula",
+  "d": 4,
+  "a": "B",
+  "s": "Recover T from its matrix w.r.t. ordered bases B1, B2"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q8",
+  "t": "SA",
+  "m": 2.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix of T w.r.t. non-standard ordered bases",
+  "d": 3,
+  "a": "3",
+  "s": "Matrix A of T(x,y)=(x+y,x-y) w.r.t. given bases; find a+d"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q13",
+  "t": "SA",
+  "m": 3.0,
+  "w": 6,
+  "aw": [
+   11
+  ],
+  "c": "Matrix representation w.r.t. standard basis",
+  "d": 3,
+  "a": "3",
+  "s": "H = Hessian at k=1 is matrix of T; find a combination of entries"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q3",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix representation w.r.t. ordered bases",
+  "d": 3,
+  "a": "C",
+  "s": "Matrix of T on 2x2 diagonal matrices, T(diag(a,b))=(a+b,4a-5b)"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q8",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix of a linear map in standard ordered basis",
+  "d": 3,
+  "a": "C,D",
+  "s": "Matrices representing shift maps L and R on R^4 in basis B"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q9",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Rank, injectivity and kernel of linear maps",
+  "d": 3,
+  "a": "B,D",
+  "s": "True statements about rank and injectivity of shifts L and R"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q10",
+  "t": "SA",
+  "m": 2.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Nilpotency index via composition of linear maps",
+  "d": 3,
+  "a": "4",
+  "s": "Smallest k with L^k and R^k the zero transformation"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q16",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix of identity map in nonstandard basis",
+  "d": 3,
+  "a": "A",
+  "s": "T(x)=x on R^2; matrix w.r.t. basis {(1,1),(-1,1)} to standard basis"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q15",
+  "t": "MSQ",
+  "m": 1.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Kernel and image of a linear transformation",
+  "d": 3,
+  "a": "A,D",
+  "s": "For that T, select true statements on kernel and image"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q6",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 6,
+  "aw": [
+   2
+  ],
+  "c": "matrix representation w.r.t. ordered bases",
+  "d": 3,
+  "a": "C",
+  "s": "Find matrix of T(x,y,z)=(x-2y,y-3z) w.r.t. B1 and B2"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Nullity of a linear transformation",
+  "d": 2,
+  "a": "1",
+  "s": "T(x,y,z)=(x+z, z-y, x-y+2z); find nullity of T"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q18",
+  "t": "SA",
+  "m": 1.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Rank of a linear transformation",
+  "d": 2,
+  "a": "2",
+  "s": "T(x,y,z)=(x+z, z-y, x-y+2z); find rank of T"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q14",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix representation in standard ordered basis",
+  "d": 2,
+  "a": "A",
+  "s": "T(x,y,z)=(x-y+z, x+z, y-2z); find matrix representation of T"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q11",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 6,
+  "aw": [],
+  "c": "Recovering T from its standard matrix representation",
+  "d": 2,
+  "a": "B",
+  "s": "Given A as matrix of T in standard basis, choose formula for T(x,y,z)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q15",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 6,
+  "aw": [],
+  "c": "Matrix representation w.r.t. standard ordered basis",
+  "d": 2,
+  "a": "C",
+  "s": "Matrix A representing the same T in the standard basis"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q11",
+  "t": "SA",
+  "m": 1.0,
+  "w": 6,
+  "aw": [
+   5
+  ],
+  "c": "Rank of matrix of an isomorphism",
+  "d": 1,
+  "a": "3",
+  "s": "T:R^3->R^3 isomorphism, A its standard matrix; find Rank(A)"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q10",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [],
+  "c": "Verifying inner product axioms",
+  "d": 4,
+  "a": "B,C,D",
+  "s": "For <(x1,x2),(y1,y2)>=x1y1-2x2y2, which axioms hold"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q12",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Matrix equivalence versus similarity",
+  "d": 4,
+  "a": "B,D",
+  "s": "Given 3x3 matrices A and B, decide equivalence and similarity"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   2,
+   3
+  ],
+  "c": "True statements on affine subspaces and systems",
+  "d": 4,
+  "a": "A",
+  "s": "Claims about intersections of affine subspaces and echelon-form systems"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   3
+  ],
+  "c": "Affine subspace and its direction subspace",
+  "d": 4,
+  "a": "B,C",
+  "s": "For L1: x+y+2z=1, L2: z=3, identify W1, W2 and their intersection"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q9",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Equivalence versus similarity of matrices",
+  "d": 4,
+  "a": "B,C",
+  "s": "Compare matrix A (non-standard bases) and B (standard) of same T"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 1.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Similarity of matrix representations",
+  "d": 4,
+  "a": "A,C",
+  "s": "B is matrix of T in different codomain basis; similarity, rank, nullity"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q17",
+  "t": "SA",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Affine subspaces and their intersection",
+  "d": 4,
+  "a": "1",
+  "s": "Affine spaces A1,A2,A3 through given points; find x1+2x2+x3"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q11",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   5
+  ],
+  "c": "Matching affine subspace to associated subspace and dimension",
+  "d": 4,
+  "a": "C",
+  "s": "Match affine subspace row (i) with its subspace U and dimension"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q14",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [],
+  "c": "Similarity versus equivalence of matrices",
+  "d": 4,
+  "a": "B,D",
+  "s": "True statements about similar and equivalent 2x2 matrices"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q13",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Similarity of matrices under change of basis",
+  "d": 4,
+  "a": "C,D",
+  "s": "Compare A and B (same T, two bases): similarity, invertibility, AB vs BA"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   6,
+   5
+  ],
+  "c": "Similarity vs equivalence of matrices, rank",
+  "d": 4,
+  "a": "C",
+  "s": "T(x,y,z)=(x+y-z,ay+2bz,x-y+z); matrix A vs given B; judge similarity/equivalence"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   3
+  ],
+  "c": "Row space and column space of product AB",
+  "d": 4,
+  "a": "B,C",
+  "s": "Choose correct inclusions among Rowspace(AB), Columnspace(AB) vs those of A,B"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q11",
+  "t": "SA",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   5,
+   2
+  ],
+  "c": "Affine solution set dimension fixes parameter",
+  "d": 4,
+  "a": "5",
+  "s": "A=[[2,2,1],[1,-2,3],[5,2,k]]; solution set of Ax=b is 1-dim affine subspace; find k"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q1",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Rank of parametrised 4x3 matrix",
+  "d": 4,
+  "a": "D",
+  "s": "Determine which statement about rank of A with parameters a,k is true"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q3",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Similarity vs equivalence of matrix of T",
+  "d": 4,
+  "a": "C",
+  "s": "Judge two statements on A being similar/equivalent to given B"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q4",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Similarity vs equivalence under non-standard bases",
+  "d": 4,
+  "a": "C",
+  "s": "Judge similarity/equivalence of matrix rep of T(x,y)=(2x+y,3x+y)"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q8",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 7,
+  "aw": [
+   2,
+   5
+  ],
+  "c": "Solvability of Ax=b via rank and column space",
+  "d": 4,
+  "a": "A,B,D",
+  "s": "Select correct statements about solutions of m-by-n system Ax=b"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q10",
+  "t": "SA",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   5
+  ],
+  "c": "Rank when A^2=0 for nonzero 3x3 matrix",
+  "d": 4,
+  "a": "1",
+  "s": "Find rank of C given A^2=0, A~B, B equivalent to C"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q37",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 7,
+  "aw": [
+   2,
+   3,
+   5
+  ],
+  "c": "equivalence vs similarity, rank, column dependence",
+  "d": 4,
+  "a": "A,C",
+  "s": "Compare A and B on equivalence, similarity, null space, column independence"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q38",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 7,
+  "aw": [
+   2,
+   3,
+   5
+  ],
+  "c": "equivalence vs similarity, rank, column dependence",
+  "d": 4,
+  "a": "B,D",
+  "s": "Compare A and B on equivalence, similarity, null space, coplanar columns"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q12",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [],
+  "c": "Matching affine subspace to subspace and dimension",
+  "d": 3,
+  "a": "B",
+  "s": "Match affine subspace row (ii) with its subspace U and dimension"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q13",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 7,
+  "aw": [],
+  "c": "Matching affine subspace to subspace and dimension",
+  "d": 3,
+  "a": "D",
+  "s": "Match affine subspace row (iii) with its subspace U and dimension"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q7",
+  "t": "SA",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   5,
+   2
+  ],
+  "c": "Dimension of affine solution set",
+  "d": 3,
+  "a": "2",
+  "s": "Dimension of affine subspace of solutions to a 3x4 system Ax=b"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q9",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 7,
+  "aw": [
+   4
+  ],
+  "c": "Rank of a 2x3 parametrised matrix",
+  "d": 3,
+  "a": "B",
+  "s": "True/false: rank of A is 1 for some k"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q12",
+  "t": "SA",
+  "m": 1.0,
+  "w": 7,
+  "aw": [
+   6
+  ],
+  "c": "Rank invariance under change of ordered basis",
+  "d": 3,
+  "a": "2",
+  "s": "Find rank of B, matrix of T in basis {(1,2,0),(0,-1,3),(2,3,1)}"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q2",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Rank conditions for 2x3 matrix",
+  "d": 3,
+  "a": "D",
+  "s": "Determine which rank statement holds for A with entries k1,k2"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q9",
+  "t": "SA",
+  "m": 3.0,
+  "w": 7,
+  "aw": [
+   5,
+   8
+  ],
+  "c": "Nullity preserved under similarity and equivalence",
+  "d": 3,
+  "a": "0",
+  "s": "Find nullity of C given A orthogonal, A~B, B equivalent to C"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q25",
+  "t": "SA",
+  "m": 2.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Rank of a coefficient matrix",
+  "d": 2,
+  "a": "3",
+  "s": "Find Rank(A) for that coefficient matrix"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q9",
+  "t": "SA",
+  "m": 1.0,
+  "w": 7,
+  "aw": [
+   1
+  ],
+  "c": "Rank of an outer product matrix",
+  "d": 2,
+  "a": "1",
+  "s": "x,y nonzero column vectors in R^n; rank of x*y^T"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q13",
+  "t": "SA",
+  "m": 1.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "Determinant invariance under similarity",
+  "d": 2,
+  "a": "0",
+  "s": "Find the determinant of B"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q21",
+  "t": "SA",
+  "m": 4.0,
+  "w": 7,
+  "aw": [
+   10
+  ],
+  "c": "affine subspace and its associated subspace dimension",
+  "d": 2,
+  "a": "2",
+  "s": "Dimension of subspace associated with tangent plane T(0,0)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q22",
+  "t": "SA",
+  "m": 4.0,
+  "w": 7,
+  "aw": [
+   10
+  ],
+  "c": "affine subspace and its associated subspace dimension",
+  "d": 2,
+  "a": "2",
+  "s": "Dimension of subspace associated with tangent plane T(0,0)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q33",
+  "t": "SA",
+  "m": 4.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "rank of a 3x3 matrix by row reduction",
+  "d": 2,
+  "a": "2",
+  "s": "Find rank of A = [[2,-2,2],[2,-4,3],[5,3,1]]"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q35",
+  "t": "SA",
+  "m": 4.0,
+  "w": 7,
+  "aw": [
+   2
+  ],
+  "c": "rank of a 3x3 matrix by row reduction",
+  "d": 2,
+  "a": "2",
+  "s": "Find rank of B = [[1,1,1],[2,4,3],[5,-3,1]]"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q28",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   2
+  ],
+  "c": "Row normalisation, orthogonality, echelon form",
+  "d": 4,
+  "a": "A,C",
+  "s": "B has normalized rows of A; judge echelon form and orthogonality"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q7",
+  "t": "SA",
+  "m": 4.0,
+  "w": 8,
+  "aw": [
+   4
+  ],
+  "c": "Gram-Schmidt and orthogonal projection",
+  "d": 4,
+  "a": "8",
+  "s": "Projection (a,b,c) of (1,0,1) onto W; find 6(a+b+c)"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q20",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 8,
+  "aw": [],
+  "c": "Orthogonal projection formula onto a plane",
+  "d": 4,
+  "a": "A",
+  "s": "Formula for projection T of R^3 onto W: x+y+z=0"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q16",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   5
+  ],
+  "c": "Projection map range, nullspace, complements",
+  "d": 4,
+  "a": "A,C",
+  "s": "Statements about projection P_W onto W={x-2y=z} and W perp"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 4.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Gram-Schmidt, orthogonal matrices, projections",
+  "d": 4,
+  "a": "A,C",
+  "s": "Statements on Gram-Schmidt output, orthogonal matrix, projection onto plane"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 8,
+  "aw": [
+   6
+  ],
+  "c": "Projection onto subspace, idempotent matrix, orthogonal complement",
+  "d": 4,
+  "a": "A,C,D",
+  "s": "Properties of projection P of inner product space V onto subspace W"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Orthogonal matrices, norms, determinants, equivalence",
+  "d": 4,
+  "a": "C,D,E",
+  "s": "Sets O1(2) with A^T A=I and O2(2) with A A^T=I; select true statements"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 8,
+  "aw": [
+   3,
+   7
+  ],
+  "c": "Mixed true/false on independence and orthogonality",
+  "d": 4,
+  "a": "B,D",
+  "s": "Select correct statements on independence, adj(A), similarity, orthogonal sets"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q25",
+  "t": "SA",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   5
+  ],
+  "c": "Nullity of a projection map",
+  "d": 3,
+  "a": "2",
+  "s": "Same setup; find dim of null space of P_W"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   4,
+   7
+  ],
+  "c": "Properties of orthogonal matrices",
+  "d": 3,
+  "a": "A,B",
+  "s": "True statements about a 3x3 orthogonal matrix A"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q6",
+  "t": "SA",
+  "m": 3.0,
+  "w": 8,
+  "aw": [],
+  "c": "Orthogonal projection onto a subspace",
+  "d": 3,
+  "a": "6",
+  "s": "Project (1,2,3) onto W={(x,y,z): x=y}; find a+b+c"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 1.0,
+  "w": 8,
+  "aw": [
+   2,
+   7
+  ],
+  "c": "Orthogonal matrix determinant and equivalence",
+  "d": 3,
+  "a": "A,C",
+  "s": "3x3 orthogonal A with det>0; det(2A), det(3A), equivalence to I"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q18",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [
+   1
+  ],
+  "c": "Determinant of an orthogonal matrix from normalised columns",
+  "d": 3,
+  "a": "1",
+  "s": "A has columns v_i/"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q19",
+  "t": "SA",
+  "m": 2.0,
+  "w": 8,
+  "aw": [],
+  "c": "Row norms of an orthogonal matrix",
+  "d": 3,
+  "a": "1",
+  "s": "Sum of squares of elements of each row of orthogonal A"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   6
+  ],
+  "c": "Basis for range and kernel of a projection",
+  "d": 3,
+  "a": "B",
+  "s": "Statement about null space, range and rank of projection T"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q18",
+  "t": "SA",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Orthogonal projection onto a line",
+  "d": 3,
+  "a": "3",
+  "s": "(a,b) is point on y=-x nearest to (2,-4); find a"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q19",
+  "t": "SA",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Orthogonal projection onto a line",
+  "d": 3,
+  "a": "-3",
+  "s": "(a,b) is point on y=-x nearest to (2,-4); find b"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q4",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 8,
+  "aw": [
+   4
+  ],
+  "c": "Orthonormal basis via Gram-Schmidt",
+  "d": 3,
+  "a": "A",
+  "s": "Which set is an orthonormal basis for span{(1,1,-1),(1,2,0)}"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q8",
+  "t": "SA",
+  "m": 3.0,
+  "w": 8,
+  "aw": [],
+  "c": "Rotation matrix about Z-axis by 45 degrees",
+  "d": 3,
+  "a": "8",
+  "s": "v=(sqrt2,-sqrt2,6) rotated 45 deg about Z-axis; find a+b+c"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q24",
+  "t": "SA",
+  "m": 1.5,
+  "w": 8,
+  "aw": [],
+  "c": "Orthogonal projection onto a plane in R^3",
+  "d": 3,
+  "a": "3",
+  "s": "P_W(0,1,2)=(a,b,c) for W: x-2y+z=0; find a+b+c"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q25",
+  "t": "SA",
+  "m": 3.0,
+  "w": 8,
+  "aw": [
+   1
+  ],
+  "c": "Orthogonal projection of point onto a line",
+  "d": 3,
+  "a": "-8",
+  "s": "Ship at (1,-2), bridge 3x-5y=0; shortest path meets at (alpha,beta); find 34(alpha+beta)"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q11",
+  "t": "SA",
+  "m": 5.0,
+  "w": 8,
+  "aw": [],
+  "c": "Orthogonal projection onto a 2D subspace",
+  "d": 3,
+  "a": "3",
+  "s": "Compute x1+x2+x3 for projection of (1,3,1) onto span W"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q12",
+  "t": "SA",
+  "m": 5.0,
+  "w": 8,
+  "aw": [],
+  "c": "Distance from point to subspace via projection",
+  "d": 3,
+  "a": "1",
+  "s": "Find minimum distance from (0,3,0) to span{(1,0,1),(1,4,-1)}"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q16",
+  "t": "SA",
+  "m": 6.0,
+  "w": 8,
+  "aw": [],
+  "c": "Counting orthogonal 2x2 matrices of given form",
+  "d": 3,
+  "a": "2",
+  "s": "Count matrices with entries 1/sqrt2, b, c, -1/sqrt2 that are orthogonal"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q18",
+  "t": "SA",
+  "m": 6.0,
+  "w": 8,
+  "aw": [
+   4
+  ],
+  "c": "Orthogonal complement dimension via rank",
+  "d": 3,
+  "a": "1",
+  "s": "Find dim W-perp for W spanned by four vectors in R^4"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q24",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [
+   6
+  ],
+  "c": "Dimension of image of a projection",
+  "d": 2,
+  "a": "1",
+  "s": "V=R^3, W={x=y, z=0}, P_W projection; find dim of image"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q26",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Projection fixes vectors already in W",
+  "d": 2,
+  "a": "3",
+  "s": "v in W with "
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q15",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Coordinates in an orthogonal basis via inner products",
+  "d": 2,
+  "a": "3",
+  "s": "Write v=(7,1,9) as a v1 + b v2 + c v3; find a"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q16",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Coordinates in an orthogonal basis via inner products",
+  "d": 2,
+  "a": "-1",
+  "s": "Write v=(7,1,9) as a v1 + b v2 + c v3; find b"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Coordinates in an orthogonal basis via inner products",
+  "d": 2,
+  "a": "2",
+  "s": "Write v=(7,1,9) as a v1 + b v2 + c v3; find c"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q14",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Dimension of orthogonal complement",
+  "d": 2,
+  "a": "1",
+  "s": "W={x-2y=z} in R^3; find dim(W perp)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q15",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [],
+  "c": "Computing a vector in orthogonal complement",
+  "d": 2,
+  "a": "0",
+  "s": "(a,b,c) in W perp for W={x-2y=z}; find 2a+b"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q25",
+  "t": "SA",
+  "m": 1.5,
+  "w": 8,
+  "aw": [
+   6
+  ],
+  "c": "Kernel of a projection is the normal direction",
+  "d": 2,
+  "a": "0",
+  "s": "If (alpha,beta,gamma) in kernel of P_W, find alpha+beta+gamma"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q11",
+  "t": "SA",
+  "m": 2.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Orthogonal projection of a vector onto a line",
+  "d": 2,
+  "a": "3",
+  "s": "(a,b) is projection of (3,1) on line y=2x; find a+b"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q15",
+  "t": "SA",
+  "m": 6.0,
+  "w": 8,
+  "aw": [
+   4
+  ],
+  "c": "Dimension of orthogonal complement",
+  "d": 2,
+  "a": "2",
+  "s": "Find dim of W-perp for W=span{(1,2,3,0),(0,1,0,0)} in R^4"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q26",
+  "t": "SA",
+  "m": 1.0,
+  "w": 8,
+  "aw": [
+   7
+  ],
+  "c": "Dimension of an orthogonal complement",
+  "d": 1,
+  "a": "1",
+  "s": "Dimension of W-perp for W: x-2y+z=0 in R^3"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q11",
+  "t": "SA",
+  "m": 5.0,
+  "w": 8,
+  "aw": [],
+  "c": "rotations are orthogonal, preserve norm",
+  "d": 1,
+  "a": "5",
+  "s": "Length of vector after 70 degree rotation about z-axis, "
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [
+   10,
+   11
+  ],
+  "c": "Continuity, directional derivatives, tangent plane at origin",
+  "d": 5,
+  "a": "A,C",
+  "s": "For f=(x-y)^2 sin(1/(x-y)): choose correct statements at (0,0)"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q11",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit existence and continuity at origin",
+  "d": 4,
+  "a": "D,E",
+  "s": "For f=x^3y/(x^6+y^2), decide limit at (0,0) and continuity"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Homogeneity, continuity, limit of piecewise f",
+  "d": 4,
+  "a": "B,C,D",
+  "s": "Piecewise f; judge linearity, scaling, continuity, limits"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q20",
+  "t": "SA",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative along (1,1)",
+  "d": 4,
+  "a": "4",
+  "s": "Directional derivative of f at (a,b); find k-l+m"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q21",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limits along paths, continuity, partials",
+  "d": 4,
+  "a": "A,D",
+  "s": "f=x^2y^2/(x^4+y^4) at origin; limit, f_x(0,0), continuity"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q5",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit existence and directional derivatives at origin",
+  "d": 4,
+  "a": "A,C,E",
+  "s": "For f=(x+y)^2/(x^2+y^2), judge limit, partials, directional derivatives"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 4.0,
+  "w": 9,
+  "aw": [],
+  "c": "Existence of limits of two-variable functions",
+  "d": 4,
+  "a": "C,D",
+  "s": "Choose the options for which the two-variable limit exists"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Existence of limit at origin for two-variable functions",
+  "d": 4,
+  "a": "B,C",
+  "s": "Which functions on R^2 minus origin have a limit at (0,0)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [
+   10,
+   11
+  ],
+  "c": "Gradient, directional derivatives, mixed partials, critical points",
+  "d": 4,
+  "a": "A,C,D",
+  "s": "True statements about a C^1 scalar function f: R^n -> R"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limits of multivariable function along curves",
+  "d": 4,
+  "a": "B,D",
+  "s": "f=(y^2-x^2)/(x^4+(y-sin^2 x)^2); choose curves where limit at (0,0) exists"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q8",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Range of multivariable function, surjectivity on disc",
+  "d": 4,
+  "a": "1.5",
+  "s": "f=sin(sqrt(x^2+y^2)) on open disc D(r); largest r with f not surjective, find r0/pi"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [
+   3,
+   4
+  ],
+  "c": "Dimension of span of zero-change directions",
+  "d": 4,
+  "a": "1",
+  "s": "S = unit directions with no change and perpendicular to given direction; dim(Span(S))"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q24",
+  "t": "SA",
+  "m": 7.0,
+  "w": 9,
+  "aw": [
+   10
+  ],
+  "c": "range, gradient domain, directional derivative count",
+  "d": 4,
+  "a": "1",
+  "s": "Count true statements about f(x,y)=e^(x^3+y^3)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q30",
+  "t": "SA",
+  "m": 7.0,
+  "w": 9,
+  "aw": [
+   10
+  ],
+  "c": "range, gradient domain, directional derivative count",
+  "d": 4,
+  "a": "1",
+  "s": "Count true statements about f(x,y,z)=e^(x^2+y^2+z^2)"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q18",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Partial derivative set to zero, ratio",
+  "d": 3,
+  "a": "C",
+  "s": "For f=x^3-xy^2 (x!=y), find x:y when df/dx=0 and y>x"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q22",
+  "t": "SA",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient and unit vector",
+  "d": 3,
+  "a": "1",
+  "s": "Directional derivative of z(cos x + sin y) at (0,0,3) toward (6,3,-2)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q22",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Counting discontinuity points of f(x,y)",
+  "d": 3,
+  "a": "0",
+  "s": "At how many points is f=cos(y)sin(x)/x discontinuous"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Sign of partial derivatives at a point",
+  "d": 3,
+  "a": "A,C",
+  "s": "f=2x^4-8*sqrt(y)-7; increasing/decreasing at (1,4) in x and y"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Partial derivatives at origin of piecewise function",
+  "d": 3,
+  "a": "C,D",
+  "s": "f=y^4/(x^2+y^2) off origin, 0 at origin; evaluate fx(0,0), fy(0,0)"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q10",
+  "t": "SA",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Continuity at a point, choosing c",
+  "d": 3,
+  "a": "0",
+  "s": "Find c making f=(x^2-xy)/(sqrt x - sqrt y) continuous at (0,0)"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q11",
+  "t": "SA",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient dot unit vector",
+  "d": 3,
+  "a": "5",
+  "s": "f=x^3y+xy^2+8 at (1,2) along (1/sqrt2,-1/sqrt2) equals p/sqrt2; find p"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q15",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Range of a multivariable function on a region",
+  "d": 3,
+  "a": "D",
+  "s": "Range of f=1/(x^2+y^2-1) on x^2+y^2<1"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q16",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Range of a multivariable function on a region",
+  "d": 3,
+  "a": "A",
+  "s": "Range of f=1/(x^2+y^2-1) on x^2+y^2>2"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q17",
+  "t": "SA",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Gradient of exponential function of two variables",
+  "d": 3,
+  "a": "14",
+  "s": "For f=e^(x^2 y+xy+2y), gradient at (3,0)=(a,b); find b-a"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q18",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient dot unit vector",
+  "d": 3,
+  "a": "-7",
+  "s": "Directional derivative of f at (3,0) along (-sqrt3/2,-1/2)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q27",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient dot unit vector",
+  "d": 3,
+  "a": "11",
+  "s": "Directional derivative of f=x^3y+xy^2+2x+y^2 at (2,-1) along (-1,-1)/sqrt2"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q32",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Existence of limit at origin for rational function",
+  "d": 3,
+  "a": "0",
+  "s": "Find k so limit of (x^3y+xy^3-x^2-y^2+k)/(x^2+y^2) exists at (0,0)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q33",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Removable discontinuity, value making f continuous",
+  "d": 3,
+  "a": "-1",
+  "s": "Find f(0,0) making f continuous on R^2"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Convergence of sequences in R^2, componentwise",
+  "d": 3,
+  "a": "A,B",
+  "s": "Which given sequences in R^2 are convergent"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q20",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Range of a composite log function on a region",
+  "d": 3,
+  "a": "B",
+  "s": "Range of f=ln(x^2+y^2-1) on D={x^2+y^2>=2}"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q25",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient set to zero",
+  "d": 3,
+  "a": "0.5",
+  "s": "f=x sin y + y cos x; directional derivative zero at (0,pi/2); find t^2"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q13",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Existence of directional derivatives at origin",
+  "d": 3,
+  "a": "A",
+  "s": "f=xy^2/(x^2+y^4) off origin; do directional derivatives exist in all directions"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q15",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative from definition at origin",
+  "d": 3,
+  "a": "3",
+  "s": "Directional derivative of f=xy^2/(x^2+y^4) at (0,0) along (1/2,-sqrt3/2)"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q14",
+  "t": "SA",
+  "m": 6.0,
+  "w": 9,
+  "aw": [],
+  "c": "Squeeze theorem for multivariable limit",
+  "d": 3,
+  "a": "0",
+  "s": "Find lim f(x,y)g(x,y) at origin with f bounded and g squeezed"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 7.0,
+  "w": 9,
+  "aw": [],
+  "c": "Level sets that are straight lines",
+  "d": 3,
+  "a": "B,C",
+  "s": "Select functions and z0 whose level set is a straight line in R^2"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q20",
+  "t": "MSQ",
+  "m": 7.0,
+  "w": 9,
+  "aw": [],
+  "c": "Level sets of exponential function e^(x+y)",
+  "d": 3,
+  "a": "A,D",
+  "s": "Select correct statements about level sets L_z0 of f=e^(x+y)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q1",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 9,
+  "aw": [],
+  "c": "limits of multivariable function, sin(r)/r",
+  "d": 3,
+  "a": "D",
+  "s": "Limit behaviour of sin(sqrt(x^2+y^2))/sqrt(x^2+y^2) at various points"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q31",
+  "t": "SA",
+  "m": 7.0,
+  "w": 9,
+  "aw": [
+   10
+  ],
+  "c": "directional derivative via gradient dot unit vector",
+  "d": 3,
+  "a": "-1.15",
+  "s": "Rate of change of e^(x^2+y^2+z^2) at (-1,-1,1) along (1,1,1)/sqrt3"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit of rational function via factoring",
+  "d": 2,
+  "a": "B",
+  "s": "Find limit of (x^3-y^3)/(x-y) as (x,y)->(1,-1)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q20",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit of a two-variable function at origin",
+  "d": 2,
+  "a": "1",
+  "s": "f=cos(y)sin(x)/x for x!=0, cos(y) at x=0; find limit at (0,0)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q21",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Continuity of a piecewise two-variable function",
+  "d": 2,
+  "a": "1",
+  "s": "Is f=cos(y)sin(x)/x continuous at (0,0)? enter 1 or 0"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q9",
+  "t": "SA",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit of multivariable function using sin t/t",
+  "d": 2,
+  "a": "4",
+  "s": "Evaluate lim at origin of sin(4x^2+4y^2)/(x^2+y^2)"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q17",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Domain of a multivariable square-root function",
+  "d": 2,
+  "a": "E",
+  "s": "Largest valid domain D for f(x,y)=sqrt(1-x^2-y^2)"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q18",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Range of multivariable function on its domain",
+  "d": 2,
+  "a": "A",
+  "s": "Range of f(x,y)=sqrt(1-x^2-y^2) on the chosen domain"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q14",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Largest valid domain of a multivariable function",
+  "d": 2,
+  "a": "C",
+  "s": "Largest domain D for f(x,y)=1/(x^2+y^2-1)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q19",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Modelling volume as function of two variables",
+  "d": 2,
+  "a": "C",
+  "s": "Volume of cuboid with perimeter 12 as phi(x,y)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q19",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Domain of ln(x^2+y^2-1), region removed",
+  "d": 2,
+  "a": "C",
+  "s": "Minimum number of points removed from R^2 for domain of ln(x^2+y^2-1)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Injectivity of a radially symmetric function",
+  "d": 2,
+  "a": "B",
+  "s": "True/False: f=ln(x^2+y^2-1) on that domain is injective"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q14",
+  "t": "SA",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit along a parametrized curve",
+  "d": 2,
+  "a": "0.5",
+  "s": "Find limit of f=xy^2/(x^2+y^4) at (0,0) along curve x=y^2"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q16",
+  "t": "SA",
+  "m": 2.0,
+  "w": 9,
+  "aw": [],
+  "c": "Zero directional derivative gives gradient dot product",
+  "d": 2,
+  "a": "-3",
+  "s": "Gradient (-9,b,c) at (-1,-1,-1); direction with no change; find c"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q18",
+  "t": "SA",
+  "m": 1.0,
+  "w": 9,
+  "aw": [],
+  "c": "Directional derivative via gradient dot product",
+  "d": 2,
+  "a": "2",
+  "s": "Directional derivative at (-1,-1,-1) along (4/5,3/5,0) equals -6; find b"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q13",
+  "t": "SA",
+  "m": 6.0,
+  "w": 9,
+  "aw": [],
+  "c": "Limit of composition with continuous outer function",
+  "d": 2,
+  "a": "9",
+  "s": "Find limit of (g o f)(x,y) at origin where g(t)=t^2, lim f=3"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 9,
+  "aw": [],
+  "c": "Injectivity versus singleton level sets",
+  "d": 2,
+  "a": "B",
+  "s": "Relate f injective and level set having exactly one element"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q3",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 9,
+  "aw": [],
+  "c": "limit at origin of sin(r)/r",
+  "d": 2,
+  "a": "D",
+  "s": "Evaluate lim of sin(sqrt(x^2+y^2))/sqrt(x^2+y^2) at (0,0)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q25",
+  "t": "SA",
+  "m": 5.0,
+  "w": 9,
+  "aw": [
+   10
+  ],
+  "c": "zero directional derivative, unit vector norm",
+  "d": 2,
+  "a": "1",
+  "s": "Unit direction of no change at (1,1); find a^2+b^2"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "domains and regions in R^2, boundary shape",
+  "d": 1,
+  "a": "B",
+  "s": "Geometric shape of boundary of -1<=x<=1, 2<=y<=6"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q28",
+  "t": "MCQ",
+  "m": 3.0,
+  "w": 9,
+  "aw": [],
+  "c": "domain region and boundary shape",
+  "d": 1,
+  "a": "A",
+  "s": "Shape of boundary of x+y<=1, x>=0, y>=0"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   1,
+   7
+  ],
+  "c": "Symmetry, idempotence, rank at critical point",
+  "d": 4,
+  "a": "B,C",
+  "s": "For f(a,b)=det[[a,b],[b,a]], judge symmetry, A^2=A, rank(A)=1"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q22",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   7
+  ],
+  "c": "Tangent line as affine subspace",
+  "d": 4,
+  "a": "C",
+  "s": "f=x^3+y^3; tangent line at (1,1) in direction (1,1) as affine subspace"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q16",
+  "t": "SA",
+  "m": 3.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Counting critical points of f(a,b)",
+  "d": 4,
+  "a": "4",
+  "s": "f(a,b)=b^3+integral_0^a (3x^2+3b^2-15)dx; number of critical points"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Steepest ascent/descent unit direction via gradient",
+  "d": 4,
+  "a": "A,D",
+  "s": "Unit directions of max derivative of u and min derivative of v at (1,1)"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q20",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Linear approximation of two-variable functions",
+  "d": 4,
+  "a": "10",
+  "s": "Lu at (2,3) and Lv at (1,2) evaluated; find (a+c)-(b+d)"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q21",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Tangent plane and tangent line equations",
+  "d": 4,
+  "a": "A,D",
+  "s": "Identify correct tangent planes/lines of u and v at (1,2)"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q8",
+  "t": "SA",
+  "m": 3.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Counting critical points of f(x,y)",
+  "d": 4,
+  "a": "9",
+  "s": "f=x^4+y^4+4x^3+4x^2-8y^2-5; number of critical points"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q22",
+  "t": "MCQ",
+  "m": 4.0,
+  "w": 10,
+  "aw": [
+   7
+  ],
+  "c": "Tangent planes and associated vector subspaces",
+  "d": 4,
+  "a": "B",
+  "s": "Match surfaces to tangent planes at (1,1,2) and to vector subspaces"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q6",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Tangent plane and linear approximation",
+  "d": 4,
+  "a": "B,C,E",
+  "s": "For f=x^3+2x^2y+y^2-2x+y+1, tangent planes at (1,-1) and (1,1)"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q27",
+  "t": "MSQ",
+  "m": 4.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Tangent planes and tangent lines to surfaces",
+  "d": 4,
+  "a": "A,B,C",
+  "s": "Identify correct tangent planes/lines for u and v at (2,3)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q28",
+  "t": "SA",
+  "m": 1.5,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Point on tangent line in a given direction",
+  "d": 4,
+  "a": "0",
+  "s": "Find a where (1,a,b) lies on tangent line to f at (2,-1)"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q29",
+  "t": "SA",
+  "m": 1.5,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Point on tangent line in a given direction",
+  "d": 4,
+  "a": "10",
+  "s": "Find b where (1,a,b) lies on tangent line to f at (2,-1)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q27",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [],
+  "c": "Finding critical points by solving gradient equals zero",
+  "d": 4,
+  "a": "C,D",
+  "s": "Critical points of f(x,y)=x^2+y^2-x^2y^2"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q10",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Tangent line data giving directional derivatives",
+  "d": 4,
+  "a": "1",
+  "s": "Tangent lines at (2,3) in two directions given; find partial derivative w.r.t. y"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   7
+  ],
+  "c": "Tangent plane as affine subspace, choosing offset vector",
+  "d": 4,
+  "a": "A,C",
+  "s": "f=x^2-xy+y^2; T(3,1)=v+U; choose possible candidates for v"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q20",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   4,
+   7
+  ],
+  "c": "Basis for direction subspace of tangent plane",
+  "d": 4,
+  "a": "D",
+  "s": "f=x^2-xy+y^2; tangent plane T(3,1)=v+U; find a basis for U"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q27",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 10,
+  "aw": [],
+  "c": "Tangent lines to graph in given directions",
+  "d": 4,
+  "a": "C,D,E",
+  "s": "Select points lying on tangent lines of f=x^2+y^2+xy+3x+1 at origin"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q28",
+  "t": "MSQ",
+  "m": 8.0,
+  "w": 10,
+  "aw": [],
+  "c": "Tangent lines to graph of 1/(1+x^2+y^2)",
+  "d": 4,
+  "a": "B,C,E",
+  "s": "Select correct statements about tangent lines of f at given points"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q34",
+  "t": "SA",
+  "m": 5.0,
+  "w": 10,
+  "aw": [],
+  "c": "Largest disk radius with unique critical point",
+  "d": 4,
+  "a": "3.13-3.15",
+  "s": "Find max R so cos(x^2+y^2) has unique critical point on disk"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q2",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   1
+  ],
+  "c": "Critical points of det-based function",
+  "d": 3,
+  "a": "1",
+  "s": "For A=[[a,b],[b,a]], f(a,b)=det(A); count critical points of f"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q14",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   8
+  ],
+  "c": "Minimising distance from origin to a plane",
+  "d": 3,
+  "a": "32",
+  "s": "Point (a,b,c) on x+y+z=1 nearest the origin; find 48(a+b)"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q14",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   11,
+   9
+  ],
+  "c": "Consequences of tangent plane existence",
+  "d": 3,
+  "a": "1314161719",
+  "s": "If tangent plane exists at a point then: pick 5 terms"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q20",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Tangent line via directional derivative",
+  "d": 3,
+  "a": "A",
+  "s": "f=x^2+xy; tangent line at (1,1) in direction (1,1)"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q24",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Counting critical points of f(x,y)",
+  "d": 3,
+  "a": "4",
+  "s": "Number of critical points of f = x^3-3x+y^3-3y^2"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q23",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Direction of steepest ascent via gradient",
+  "d": 3,
+  "a": "7",
+  "s": "f=2x^2+3y^2/2; u=(a,b) steepest increase at (1,1); find 5(a+b)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q24",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Direction of steepest descent via gradient",
+  "d": 3,
+  "a": "-7",
+  "s": "f=2x^2+3y^2/2; u=(a,b) steepest decrease at (1,1); find 5(a+b)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q25",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Direction of zero directional derivative",
+  "d": 3,
+  "a": "1",
+  "s": "f=2x^2+3y^2/2; u=(a,b) gives no change at (1,1); find 5"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q20",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Unit vector of steepest ascent via gradient",
+  "d": 3,
+  "a": "0",
+  "s": "T=xz/(x^2+y^2); unit vector of fastest increase at (1,0,1); find u1+u2+u3"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q21",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Rate of change in steepest descent direction",
+  "d": 3,
+  "a": "53",
+  "s": "f=x^3*y*z^2 at (-1,2,1); a is rate in fastest-decrease direction; find a^2"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q22",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [],
+  "c": "Counting critical points of f(x,y)",
+  "d": 3,
+  "a": "4",
+  "s": "f=x^3+y^3-3(x+y^2); how many critical points does f have"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q25",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Linear approximation of a two-variable function",
+  "d": 3,
+  "a": "9",
+  "s": "L_u linear approx of u=xy+2e^x at (1,2); L_u(2,3)=a+be; find a+b"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q26",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Linear approximation of a two-variable function",
+  "d": 3,
+  "a": "8",
+  "s": "L_v linear approx of v=y^2+y*e^x at (2,1); L_v(2,3)=c+de^2; find c+d"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q12",
+  "t": "SA",
+  "m": 3.0,
+  "w": 10,
+  "aw": [],
+  "c": "Tangent plane to a surface at a point",
+  "d": 3,
+  "a": "2",
+  "s": "Tangent plane of f=e^x(x+y) at (1,0) is Ax+By+C=z; find (A+B+C)/e"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q30",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Counting critical points of f(x,y)",
+  "d": 3,
+  "a": "C",
+  "s": "Number of critical points of f=xy^2-y^2-x+3"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q22",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Unit direction of steepest descent via negative gradient",
+  "d": 3,
+  "a": "1",
+  "s": "f=sin((x+y)/(x-y)); steepest descent unit direction at (-1,1); find sqrt(2)a"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q23",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Unit direction of steepest descent, second component",
+  "d": 3,
+  "a": "1",
+  "s": "Same setup; find sqrt(2)b"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q24",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Direction of zero change, orthogonal to gradient",
+  "d": 3,
+  "a": "0",
+  "s": "(c,d) direction with no change in f at (-1,1); find c+d"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q26",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "Parametric tangent line at a point in a direction",
+  "d": 3,
+  "a": "-1",
+  "s": "(1,b,c) on tangent line at (0,pi/2) in that direction; find b-c"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 10,
+  "aw": [],
+  "c": "Interior critical point of two-variable function",
+  "d": 3,
+  "a": "B",
+  "s": "T=10+xy+x^3-x/3 on region under y=-x^2+1; find only critical point in Int(D)"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q29",
+  "t": "SA",
+  "m": 5.0,
+  "w": 10,
+  "aw": [],
+  "c": "Limit of tangent plane normal vectors",
+  "d": 3,
+  "a": "0",
+  "s": "Find lim x_n + lim y_n for normals of tangent planes at A_n"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q30",
+  "t": "SA",
+  "m": 5.0,
+  "w": 10,
+  "aw": [
+   1
+  ],
+  "c": "Angle between tangent plane normal and axis",
+  "d": 3,
+  "a": "0",
+  "s": "Find limit of angle between normal v_n and (0,0,-1)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q15",
+  "t": "SA",
+  "m": 5.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "steepest descent direction via normalised negative gradient",
+  "d": 3,
+  "a": "3",
+  "s": "Unit steepest-descent direction of 3xyz+x^2+y^2+z^2 at (1,-1,0)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q16",
+  "t": "SA",
+  "m": 5.0,
+  "w": 10,
+  "aw": [
+   9
+  ],
+  "c": "steepest ascent direction via normalised gradient",
+  "d": 3,
+  "a": "2",
+  "s": "Unit steepest-ascent direction of xy+yz+zx+x^3+y^3+z^3 at (1,0,1)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q19",
+  "t": "MSQ",
+  "m": 6.0,
+  "w": 10,
+  "aw": [],
+  "c": "tangent plane equation and point membership",
+  "d": 3,
+  "a": "C,D",
+  "s": "Which points lie on tangent plane to x^3+y^2 at (1,1)"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q20",
+  "t": "MSQ",
+  "m": 6.0,
+  "w": 10,
+  "aw": [],
+  "c": "tangent plane equation and point membership",
+  "d": 3,
+  "a": "A,C",
+  "s": "Which points lie on tangent plane to xy^2+yx^2 at (2,3)"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q15",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   8
+  ],
+  "c": "Minimum distance from origin to a plane",
+  "d": 2,
+  "a": "9",
+  "s": "For the same plane, if d is the min distance find 27d^2"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q12",
+  "t": "SA",
+  "m": 2.0,
+  "w": 10,
+  "aw": [
+   11
+  ],
+  "c": "Classification of critical points",
+  "d": 2,
+  "a": "101112",
+  "s": "A critical point can be: pick 3 terms from the list"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 10,
+  "aw": [],
+  "c": "Direction of steepest descent as unit vector",
+  "d": 2,
+  "a": "A",
+  "s": "Direction of most rapid decrease of T=x^2+2y^2+2z^2 at (1,1,1)"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q19",
+  "t": "SA",
+  "m": 1.0,
+  "w": 10,
+  "aw": [],
+  "c": "Critical point via setting gradient zero",
+  "d": 2,
+  "a": "5",
+  "s": "f=x^2+xy+y^2-7x-8y has critical point (a,b); find a+b"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q5",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 10,
+  "aw": [],
+  "c": "Tangent plane horizontal iff critical point",
+  "d": 2,
+  "a": "B",
+  "s": "Relate tangent plane parallel to xy-plane and grad f = 0"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q29",
+  "t": "SA",
+  "m": 4.0,
+  "w": 10,
+  "aw": [],
+  "c": "critical points of f in interior of domain",
+  "d": 2,
+  "a": "0",
+  "s": "Number of interior critical points of x^2-y on triangular domain"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q22",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "Continuity and mixed second partial derivatives",
+  "d": 5,
+  "a": "B,D",
+  "s": "Piecewise g; continuity and g_xy, g_y values"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q14",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian test counting local maxima",
+  "d": 4,
+  "a": "1",
+  "s": "f=2x^3+6xy^2-3y^3-150x; count local maxima"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q15",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian test counting local minima",
+  "d": 4,
+  "a": "1",
+  "s": "Same f; count local minima"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q16",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian test counting saddle points",
+  "d": 4,
+  "a": "2",
+  "s": "Same f; count saddle points"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q11",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Second derivative test with a parameter k",
+  "d": 4,
+  "a": "A,D",
+  "s": "For which k is Hessian test inconclusive, max, min, or saddle"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q12",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   5,
+   10
+  ],
+  "c": "Hessian symmetry, rank and nullity",
+  "d": 4,
+  "a": "A,D",
+  "s": "Statements about the critical-point system and Hessian rank/nullity"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q9",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian second-derivative test, saddle points",
+  "d": 4,
+  "a": "4",
+  "s": "Number of saddle points of that f"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q16",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   12
+  ],
+  "c": "Constrained minimisation, AM-GM",
+  "d": 4,
+  "a": "9",
+  "s": "Minimum sum of three non-negative numbers whose product is 27"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q26",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian test counting local maxima",
+  "d": 4,
+  "a": "1",
+  "s": "f=x^3+3xy^2-3x^2-3y^2+5; number of local maxima"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q27",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian test counting local minima",
+  "d": 4,
+  "a": "1",
+  "s": "f=x^3+3xy^2-3x^2-3y^2+5; number of local minima"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q28",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian test counting saddle points",
+  "d": 4,
+  "a": "2",
+  "s": "f=x^3+3xy^2-3x^2-3y^2+5; number of saddle points"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q29",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Evaluating f at selected local maximum",
+  "d": 4,
+  "a": "5",
+  "s": "Local max farthest from origin; find f(a,b)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q30",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Evaluating f at selected local minimum",
+  "d": 4,
+  "a": "1",
+  "s": "Local min farthest from origin; find f(a,b)"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q24",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Classifying local extrema with Hessian",
+  "d": 4,
+  "a": "A,D",
+  "s": "f=x^3+y^3-3(x+y^2); identify local minima and maxima among given points"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q22",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Constrained maximum by substitution, three variables",
+  "d": 4,
+  "a": "4",
+  "s": "Maximize x^2yz^2 with x+y+z=10, x,y,z>0; enter x"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q23",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Constrained maximum by substitution, three variables",
+  "d": 4,
+  "a": "2",
+  "s": "Maximize x^2yz^2 with x+y+z=10; enter y"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q24",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Constrained maximum by substitution, three variables",
+  "d": 4,
+  "a": "4",
+  "s": "Maximize x^2yz^2 with x+y+z=10; enter z"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q4",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "Conditions guaranteeing all directional derivatives exist",
+  "d": 4,
+  "a": "B,C",
+  "s": "Which conditions guarantee directional derivative exists in all directions"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q20",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Maximising a constrained volume via critical points",
+  "d": 4,
+  "a": "1",
+  "s": "Maximum volume of a cuboid with perimeter 12"
+ },
+ {
+  "p": "2024 Dec",
+  "pk": "P08_2024_dec",
+  "q": "Q31",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian second-derivative test classification",
+  "d": 4,
+  "a": "E",
+  "s": "What the Hessian test concludes for f=xy^2-y^2-x+3"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q33",
+  "t": "SA",
+  "m": 5.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian determinant at a critical point",
+  "d": 4,
+  "a": "4",
+  "s": "Find det Hessian of sin(x^2+y^2) at the conclusive critical point"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q36",
+  "t": "SA",
+  "m": 6.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Minimum Hessian determinant over critical points",
+  "d": 4,
+  "a": "0",
+  "s": "Find minimum of det Hessian of cos(x^2+y^2) over its critical points"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 6.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "continuity, partial derivatives, differentiability at origin",
+  "d": 4,
+  "a": "A,B,D",
+  "s": "Test continuity, equality of partials, differentiability of (x-y)^2 sin(1/(x-y))"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q8",
+  "t": "MSQ",
+  "m": 6.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "continuity, partials, differentiability at origin",
+  "d": 4,
+  "a": "A,B,D",
+  "s": "Same piecewise (x-y)^2 sin(1/(x-y)) function tested at (0,0)"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q13",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   12
+  ],
+  "c": "Minimising sum of squares under sum constraint",
+  "d": 3,
+  "a": "-6",
+  "s": "a+b+c=12 with a^2+b^2+c^2 minimum; find a-2b+c"
+ },
+ {
+  "p": "2022 Aug",
+  "pk": "P01_2022_aug",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Recognising indeterminate Hessian cases",
+  "d": 3,
+  "a": "0",
+  "s": "Same f; count points where Hessian test fails"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q17",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Classifying points as local minima by Hessian",
+  "d": 3,
+  "a": "0",
+  "s": "Which of p1..p5 are local minima of f(a,b)"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q18",
+  "t": "SA",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Classifying points as saddle points by Hessian",
+  "d": 3,
+  "a": "34",
+  "s": "Which of p1..p5 are saddle points of f(a,b)"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q10",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian test for local maxima",
+  "d": 3,
+  "a": "1",
+  "s": "Number of local maxima of that f"
+ },
+ {
+  "p": "2023 Apr",
+  "pk": "P03_2023_apr",
+  "q": "Q11",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian test for local minima",
+  "d": 3,
+  "a": "4",
+  "s": "Number of local minima of that f"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q25",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian second-derivative test classification",
+  "d": 3,
+  "a": "C",
+  "s": "Classify critical point (1,2) of f = x^3-3x+y^3-3y^2"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q26",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian second-derivative test classification",
+  "d": 3,
+  "a": "B",
+  "s": "Classify critical point (-1,2) of f = x^3-3x+y^3-3y^2"
+ },
+ {
+  "p": "2023 Sep",
+  "pk": "P04_2023_sep",
+  "q": "Q27",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Hessian second-derivative test classification",
+  "d": 3,
+  "a": "D",
+  "s": "Classify critical point (-1,0) of f = x^3-3x+y^3-3y^2"
+ },
+ {
+  "p": "2024 Apr",
+  "pk": "P06_2024_apr",
+  "q": "Q23",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Saddle points via Hessian second-derivative test",
+  "d": 3,
+  "a": "2",
+  "s": "f=x^3+y^3-3(x+y^2); how many saddle points"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q3",
+  "t": "MSQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [
+   9,
+   10
+  ],
+  "c": "Consequences of differentiability at a point",
+  "d": 3,
+  "a": "A,B,D",
+  "s": "f:R^2->R differentiable at (x0,y0); select true consequences"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q6",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "Continuous partials imply continuity",
+  "d": 3,
+  "a": "C",
+  "s": "Relate continuity of partial derivatives to continuity of f"
+ },
+ {
+  "p": "2022 Dec",
+  "pk": "P02_2022_dec",
+  "q": "Q10",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 11,
+  "aw": [],
+  "c": "Writing the Hessian matrix",
+  "d": 2,
+  "a": "B",
+  "s": "Hessian of f=x^2+y^2+z^2+xy+yz+kzx at a critical point"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q20",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Determinant of Hessian matrix",
+  "d": 2,
+  "a": "3",
+  "s": "Determinant of Hessian of f=x^2+xy+y^2-7x-8y"
+ },
+ {
+  "p": "2024 Sep",
+  "pk": "P07_2024_sep",
+  "q": "Q21",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Second-derivative test classifying critical point",
+  "d": 2,
+  "a": "B",
+  "s": "Nature of critical point of f=x^2+xy+y^2-7x-8y"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q28",
+  "t": "SA",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Determinant of Hessian at a critical point",
+  "d": 2,
+  "a": "4",
+  "s": "det of Hessian of f=x^2+y^2-x^2y^2 at (0,0)"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q29",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 11,
+  "aw": [],
+  "c": "Second derivative test classification via Hessian",
+  "d": 2,
+  "a": "B",
+  "s": "Conclusion of Hessian test at critical point (0,0)"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q22",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 11,
+  "aw": [
+   10
+  ],
+  "c": "Hessian second-derivative test classification",
+  "d": 2,
+  "a": "C",
+  "s": "Classify the interior critical point of T using the Hessian test"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q22",
+  "t": "MCQ",
+  "m": 5.0,
+  "w": 11,
+  "aw": [
+   9
+  ],
+  "c": "Differentiability of e^(x+y)",
+  "d": 2,
+  "a": "D",
+  "s": "Identify continuity/differentiability status of f(x,y)=e^(x+y)"
+ },
+ {
+  "p": "2023 Dec",
+  "pk": "P05_2023_dec",
+  "q": "Q7",
+  "t": "MSQ",
+  "m": 3.0,
+  "w": 12,
+  "aw": [
+   11
+  ],
+  "c": "Absolute extrema on closed disc",
+  "d": 5,
+  "a": "A,D,E",
+  "s": "f=x^2-y^2+4 on disc x^2+y^2<=1: max, min, saddle"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q32",
+  "t": "MCQ",
+  "m": 2.0,
+  "w": 12,
+  "aw": [
+   11
+  ],
+  "c": "Global extrema of a radial function on a closed disc",
+  "d": 5,
+  "a": "B",
+  "s": "Counts of global minima and maxima of phi on D"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q24",
+  "t": "SA",
+  "m": 2.0,
+  "w": 12,
+  "aw": [
+   10,
+   11
+  ],
+  "c": "Absolute maximum over closed bounded region",
+  "d": 5,
+  "a": "10.65-10.67",
+  "s": "Interior, boundary and corner values; find hottest temperature on plate"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q26",
+  "t": "SA",
+  "m": 4.0,
+  "w": 12,
+  "aw": [
+   10,
+   11
+  ],
+  "c": "absolute maximum over closed rectangle",
+  "d": 5,
+  "a": "43",
+  "s": "Absolute max of x^2+xy+y^2 on [-1,1]x[2,6]"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q27",
+  "t": "SA",
+  "m": 4.0,
+  "w": 12,
+  "aw": [
+   10,
+   11
+  ],
+  "c": "absolute minimum over closed rectangle",
+  "d": 5,
+  "a": "3",
+  "s": "Absolute min of x^2+xy+y^2 on [-1,1]x[2,6]"
+ },
+ {
+  "p": "2026 May",
+  "pk": "P12_2026_may",
+  "q": "Q32",
+  "t": "SA",
+  "m": 6.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "absolute maximum over closed triangular domain",
+  "d": 5,
+  "a": "1",
+  "s": "Absolute max of x^2-y on x+y<=1, x>=0, y>=0"
+ },
+ {
+  "p": "2025 Aug",
+  "pk": "P10_2025_aug",
+  "q": "Q23",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "Critical points of boundary restrictions",
+  "d": 4,
+  "a": "A",
+  "s": "Restrictions f1(x)=T(x,-x^2+1), f2(x)=T(x,0); which has critical points"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q35",
+  "t": "SA",
+  "m": 6.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "Absolute extrema over closed disk",
+  "d": 4,
+  "a": "1.70-1.72",
+  "s": "Find M-m for sin(x^2+y^2) on disk x^2+y^2 <= 5pi/4"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q31",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "Counting interior critical points of the distance function",
+  "d": 3,
+  "a": "B",
+  "s": "Number of critical points of phi inside open unit disc"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q33",
+  "t": "SA",
+  "m": 1.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "Minimum distance from origin to a paraboloid graph",
+  "d": 3,
+  "a": "2",
+  "s": "Distance from origin to closest point on graph of f"
+ },
+ {
+  "p": "2025 Apr",
+  "pk": "P09_2025_apr",
+  "q": "Q30",
+  "t": "MCQ",
+  "m": 1.0,
+  "w": 12,
+  "aw": [
+   10
+  ],
+  "c": "Setting up squared-distance function from a point to graph",
+  "d": 2,
+  "a": "D",
+  "s": "Choose phi measuring squared distance from origin to graph of -2-x^2-y^2"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q31",
+  "t": "SA",
+  "m": 3.0,
+  "w": 12,
+  "aw": [],
+  "c": "Extrema of f on boundary circle",
+  "d": 2,
+  "a": "0",
+  "s": "Find M_b - m_b for sin(x^2+y^2) restricted to boundary of disk"
+ },
+ {
+  "p": "2025 Dec",
+  "pk": "P11_2025_dec",
+  "q": "Q32",
+  "t": "SA",
+  "m": 3.0,
+  "w": 12,
+  "aw": [
+   9
+  ],
+  "c": "Global range of cos(x^2+y^2) on R^2",
+  "d": 2,
+  "a": "2",
+  "s": "Find M_b - m_b for f=cos(x^2+y^2) on all of R^2"
+ }
+]

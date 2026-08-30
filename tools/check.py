@@ -11,11 +11,14 @@ proves three things that would each silently break the app:
                      which sits inside that region -- so there is no separate
                      colour check to false-positive on CT's syntax-highlighted
                      pseudocode.
+  * data truth    -- each record's type and marks match the labels printed on
+                     the paper it came from. This caught a question v1 had
+                     typed SA that the paper prints as MCQ.
   * no leakage    -- no green answer-highlight band, and the page footer
                      (which carries the downloader's email) painted out
                      wherever it falls inside a crop
 """
-import json, os, sys
+import json, os, re, sys
 from PIL import Image, ImageChops
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -74,7 +77,7 @@ def main():
         rows = json.load(open(os.path.join(ROOT, "data", "%s.json" % subject)))
         want = {}
         for r in rows:
-            want.setdefault(r["pk"], set()).add(r["q"])
+            want.setdefault(r["pk"], {})[r["q"]] = r
         by_token = {pk[4:]: pk for pk in want}
         outdir = os.path.join(ROOT, "questions", subject)
 
@@ -95,9 +98,19 @@ def main():
                 fails.append("%s: no paper key for %s" % (subject, fn)); continue
             pages = E.page_words(os.path.join(src, fn))
             qs = E.find_questions(pages)
-            for k, (qno, _p, _y) in enumerate(qs):
+            for k, (qno, p_idx, y_lbl) in enumerate(qs):
                 if qno not in want[pk]:
                     continue
+                rec = want[pk][qno]
+                line = [w for w in pages[p_idx] if abs(w[1] - y_lbl) < 6]
+                typ = next((w[4] for w in line if w[4] in ("MCQ", "MSQ", "SA")), None)
+                txt = " ".join(w[4] for w in sorted(line, key=lambda w: w[0]))
+                mm = re.search(r"\[(\d+(?:\.\d+)?)\s*marks?\]", txt)
+                if typ and typ != rec["t"]:
+                    fails.append("%s-%s: paper prints %s, data says %s" % (pk, qno, typ, rec["t"]))
+                if mm and abs(float(mm.group(1)) - rec["m"]) > 0.01:
+                    fails.append("%s-%s: paper prints %s marks, data says %s"
+                                 % (pk, qno, mm.group(1), rec["m"]))
                 qid = "%s-%s" % (pk, qno)
                 path = os.path.join(outdir, qid + ".webp")
                 if not os.path.exists(path):
@@ -158,7 +171,7 @@ def main():
         if len(fails) > 40:
             print("  ... and %d more" % (len(fails) - 40))
         return 1
-    print("all good: coverage, redaction, no highlight, no footer")
+    print("all good: coverage, redaction, no highlight, no footer, data matches the papers")
     return 0
 
 
