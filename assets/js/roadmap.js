@@ -85,10 +85,22 @@
       '<button class="chip" data-t="all" aria-pressed="false">All</button>';
     document.getElementById("chips").after(tierBar);
 
+    var sortWrap = document.createElement("label");
+    sortWrap.className = "sortby";
+    sortWrap.innerHTML = 'Sort <select id="sortBy">' +
+      '<option value="d-">Hardest first</option>' +
+      '<option value="d+">Easiest first</option>' +
+      '<option value="m-">Most marks</option>' +
+      '<option value="m+">Fewest marks</option>' +
+      '<option value="type">Type (SA, MSQ, MCQ)</option>' +
+      '<option value="paper">Paper, newest first</option>' +
+      '</select>';
+    tierBar.after(sortWrap);
+
     var done = state.doneQids[subKey];
     var learned = state.archetypesLearned[subKey];
-    var rowTier = {};
-    data.rows.forEach(function (r) { rowTier[r.qid] = r.tier; });
+    var rowTier = {}, byQidRow = {};
+    data.rows.forEach(function (r) { rowTier[r.qid] = r.tier; byQidRow[r.qid] = r; });
 
     var html = "";
     weeks.forEach(function (w) {
@@ -143,17 +155,27 @@
         html += '<div class="archgrid">';
         warch.forEach(function (a) {
           var isLearned = !!learned[a.id];
-          var coverChips = a.covers.map(function (qid) {
+          var nMust = a.covers.filter(function (q) { return rowTier[q] === "must"; }).length;
+          var coverChips = a.covers.slice().sort(function (x, y) {
+            var mx = rowTier[x] === "must" ? 0 : 1, my = rowTier[y] === "must" ? 0 : 1;
+            return mx - my || (byQidRow[y] ? byQidRow[y].d : 0) - (byQidRow[x] ? byQidRow[x].d : 0);
+          }).map(function (qid) {
+            var r = byQidRow[qid];
             var t = rowTier[qid] === "must" ? " must" : "";
             return '<a class="qchip' + (done[qid] ? ' done' : '') + t + '" data-qid="' + esc(qid) +
               '" href="#q/' + esc(qid) + '" title="' + esc(qid) + '">' +
+              (r ? '<span class="cp">' + esc(r.p) + '</span> ' : '') +
               esc(qid.split("-").pop()) + '</a>';
           }).join("");
           html += '<div class="archcard' + (isLearned ? " learned" : "") + '" id="arch-' + a.id + '">' +
             '<div class="ahead"><span class="an">' + a.id + '</span><div style="flex:1">' +
             '<h4>' + esc(a.title) + '</h4>' +
             '<p class="trigger">' + esc(a.trigger) + '</p>' +
-            '<p class="target">Solve with help: <b>' + esc(a.target) + '</b></p>' +
+            '<p class="target">Solve with help: <a class="tlink" href="#q/' + esc(a.target) + '">' +
+            esc(byQidRow[a.target] ? (byQidRow[a.target].p + " " + byQidRow[a.target].q) : a.target) +
+            '</a> <span class="hint">opens the question</span></p>' +
+            '<div class="coverhead">Then solve cold &mdash; <b>' + nMust + ' must</b>' +
+            (a.covers.length - nMust ? ', ' + (a.covers.length - nMust) + ' good' : '') + '</div>' +
             '<div class="covers">' + coverChips + '</div>' +
             '</div><button class="learntgl" data-arch="' + a.id + '">' + (isLearned ? "✓ Learned" : "Mark learned") + '</button></div>' +
             '</div>';
@@ -168,7 +190,8 @@
         var archBadge = archId ? '<a class="arch" href="#arch-' + archId + '" data-jump="' + archId + '">' + archId + '</a>' : "";
         var depHtml = (r.aw || []).map(function (aw) { return '<span class="dep">W' + aw + '</span>'; }).join("");
         var isDone = !!done[r.qid];
-        html += '<tr class="q' + (isDone ? " done" : "") + '" data-id="' + esc(r.qid) + '" data-d="' + r.d + '" data-tier="' + r.tier + '">' +
+        html += '<tr class="q' + (isDone ? " done" : "") + '" data-id="' + esc(r.qid) + '" data-d="' + r.d + '" data-tier="' + r.tier +
+          '" data-m="' + r.m + '" data-t="' + esc(r.t) + '" data-pk="' + esc(r.pk) + '">' +
           '<td class="c-chk"><input type="checkbox" aria-label="mark ' + esc(r.p) + ' ' + esc(r.q) + ' solved"' + (isDone ? " checked" : "") + '></td>' +
           '<td class="c-ref"><a class="qlink" href="#q/' + esc(r.qid) + '"><span class="pap">' + esc(r.p) + '</span> <span class="qn">' + esc(r.q) + '</span></a></td>' +
           '<td><span class="' + pillCls + '">' + esc(r.t) + '</span></td>' +
@@ -236,6 +259,28 @@
         s.style.display = (onWeek && (curTier === "all" || anyRows)) ? "" : "none";
       });
     }
+
+    // Re-order rows in place rather than re-rendering, so ticks and listeners survive
+    var TYPE_ORDER = { SA: 0, MSQ: 1, MCQ: 2 };
+    function applySort() {
+      var mode = document.getElementById("sortBy").value;
+      document.querySelectorAll("section.week tbody").forEach(function (tb) {
+        var rows = Array.prototype.slice.call(tb.querySelectorAll("tr.q"));
+        rows.sort(function (a, b) {
+          var ad = +a.dataset.d, bd = +b.dataset.d, am = +a.dataset.m, bm = +b.dataset.m;
+          switch (mode) {
+            case "d+": return ad - bd || bm - am;
+            case "m-": return bm - am || bd - ad;
+            case "m+": return am - bm || bd - ad;
+            case "type": return (TYPE_ORDER[a.dataset.t] - TYPE_ORDER[b.dataset.t]) || bd - ad;
+            case "paper": return (a.dataset.pk < b.dataset.pk ? 1 : -1);
+            default: return bd - ad || (a.dataset.pk < b.dataset.pk ? -1 : 1);
+          }
+        });
+        rows.forEach(function (r) { tb.appendChild(r); });
+      });
+    }
+    document.getElementById("sortBy").addEventListener("change", applySort);
 
     document.getElementById("tierChips").addEventListener("click", function (e) {
       var b = e.target.closest(".chip");
@@ -381,7 +426,7 @@
 
     window.addEventListener("hashchange", route);
 
-    syncCovers(); prog(); applyDone(); route();
+    syncCovers(); prog(); applyDone(); applySort(); route();
   }
 
   main();

@@ -252,3 +252,22 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 .wk-facts b{color:var(--ink-2)}
 .wk-facts b.gates{color:var(--warn)}
 @media (max-width:820px){.wk-brief ol.topics{columns:1}}
+
+/* archetype card: linked target + labelled cover chips */
+.archcard .target .tlink{color:var(--accent);font-weight:600;text-decoration:none;
+  border-bottom:1px solid var(--accent-line)}
+.archcard .target .tlink:hover{border-bottom-color:var(--accent)}
+.archcard .target .hint{color:var(--ink-3);font-family:"IBM Plex Sans",sans-serif;font-size:12px;margin-left:6px}
+.archcard .coverhead{font-size:12px;color:var(--ink-3);margin:10px 0 5px;
+  letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.archcard .coverhead b{color:var(--warn)}
+.archcard .qchip .cp{color:var(--ink-3);font-size:10.5px}
+.archcard .qchip.must .cp{color:inherit;opacity:.75}
+
+/* sort control */
+.sortby{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-3);
+  white-space:nowrap;margin-left:4px}
+.sortby select{font-family:"IBM Plex Sans",sans-serif;font-size:13px;color:var(--ink);
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:6px 9px;cursor:pointer}
+.sortby select:hover{border-color:var(--accent-line)}
