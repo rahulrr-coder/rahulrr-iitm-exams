@@ -112,12 +112,30 @@
 
      The target is always must. Then the hardest / heaviest questions join it,
      capped at MUST_SHARE of the archetype, so "must" stays the subset actually
-     worth marks rather than every repeat of the pattern. */
+     worth marks rather than every repeat of the pattern.
+
+     The target is also re-pointed at the hardest question in the archetype.
+     The whole loop is "learn this one with help, then clear the rest cold", so
+     the one you learn on has to be at least as hard as everything you then
+     face alone -- otherwise you are being sent in under-prepared. With the
+     archetypes as authored, 28-39% of must-solve questions were harder than
+     their own target. The original pick is kept whenever it is already joint
+     hardest, so the clustering's judgement survives where it does not clash. */
+  function pickTarget(covered, byQid, stated) {
+    var best = stated;
+    covered.forEach(function (q) {
+      if (!best || byQid[q].d > byQid[best].d ||
+          (byQid[q].d === byQid[best].d && byQid[q].m > byQid[best].m)) best = q;
+    });
+    return best;
+  }
+
   function assignTiers(rows, arch) {
     var byQid = {}, must = {};
     rows.forEach(function (r) { byQid[r.qid] = r; });
     arch.forEach(function (a) {
       var covered = a.covers.filter(function (q) { return byQid[q]; });
+      a.target = pickTarget(covered, byQid, byQid[a.target] ? a.target : null) || a.target;
       var picked = {}, n = 0;
       if (byQid[a.target]) { picked[a.target] = 1; n = 1; }
       var cap = Math.max(1, Math.round(MUST_SHARE * covered.length));
