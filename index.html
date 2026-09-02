@@ -8,12 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v=4">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
 </head>
 <body>
 <nav class="topnav"><div class="inner">
 <a class="brand" href="index.html">IITM Exams</a>
 <a class="tab active" href="index.html">Dashboard</a>
+<a class="tab" href="core.html">Core</a>
 <a class="tab" href="math2.html">Math 2</a>
 <a class="tab" href="stat1.html">Stat 1</a>
 <a class="tab" href="english1.html">English 1</a>
@@ -42,7 +43,7 @@
 <footer>Progress is stored per-browser (localStorage) &mdash; it won't follow you to a different device or browser. Exam date fixed at 13 Sep 2026; "today's plan" recomputes from your device's real clock on every load.</footer>
 </div>
 
-<script src="assets/js/app.js?v=4"></script>
+<script src="assets/js/app.js?v=5"></script>
 <script>
 (async function () {
   var E = window.EndTerm;
@@ -92,6 +93,7 @@
       }
     });
     planHtml += '</ul>';
+    planHtml += '<p class="empty">Each pick is the unlearned archetype covering the most marks in that subject. To work straight down the whole ranking, open <a href="core.html"><b>the minimum set</b></a>.</p>';
   }
   planHtml += '</div>';
   document.getElementById("planCard").innerHTML = planHtml;

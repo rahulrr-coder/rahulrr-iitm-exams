@@ -197,6 +197,36 @@
       mustRemainingM: mustM - mustDoneM, goodLeft: goodLeft };
   }
 
+  /* Rank a subject's archetypes by the total marks they cover across all papers,
+     weeks ignored. The scarce resource in the last stretch is distinct patterns
+     held in your head, not questions solved, so ranking by marks-covered answers
+     "what is the fewest patterns that reaches X% of this paper".
+
+     cum is the share of the subject's marks covered by this archetype and every
+     one above it. Cached on the data object — core.html re-ranks on every render. */
+  function rankArchetypes(data) {
+    if (data._ranked) return data._ranked;
+    var mk = {};
+    data.rows.forEach(function (r) { mk[r.qid] = r.m || 0; });
+    var totalM = data.rows.reduce(function (a, r) { return a + (r.m || 0); }, 0);
+    var ranked = data.arch.map(function (a) {
+      var m = 0;
+      a.covers.forEach(function (qid) { m += (mk[qid] || 0); });
+      return { id: a.id, week: a.week, title: a.title, trigger: a.trigger, target: a.target,
+               covers: a.covers, must: a.must || [], marks: m, n: a.covers.length, cum: 0 };
+    }).sort(function (x, y) { return y.marks - x.marks || y.n - x.n; });
+    var run = 0;
+    ranked.forEach(function (r) { run += r.marks; r.cum = totalM ? run / totalM : 0; });
+    data._ranked = { ranked: ranked, totalM: totalM };
+    return data._ranked;
+  }
+
+  // How many of the ranked archetypes it takes to reach `target` share of marks.
+  function coreCut(ranked, target) {
+    for (var i = 0; i < ranked.length; i++) if (ranked[i].cum >= target) return i + 1;
+    return ranked.length;
+  }
+
   // Planner: for each subject, find priority actions for "today"
   function buildTodaysPlan(allData, state) {
     var dl = daysLeft();
@@ -208,10 +238,14 @@
       // pace against must-solve only; the good backlog is a deliberate deferral
       if (stats.mustRemainingM <= 0 && stats.remainingM <= 0) return;
       var learned = state.archetypesLearned[sub.key] || {};
-      // find first archetype (in week order) not yet learned
+      /* Next up is the unlearned archetype covering the most marks, not the one
+         in the earliest week. With the exam close, week order spends the first
+         hours on whatever happens to be in W1; marks order spends them on the
+         patterns that actually carry the paper. core.html is the full list. */
+      var ranked = rankArchetypes(data).ranked;
       var nextArch = null;
-      for (var i = 0; i < data.arch.length; i++) {
-        if (!learned[data.arch[i].id]) { nextArch = data.arch[i]; break; }
+      for (var i = 0; i < ranked.length; i++) {
+        if (!learned[ranked[i].id]) { nextArch = ranked[i]; break; }
       }
       var pacing = stats.mustRemainingM > 0 ? stats.mustRemainingM : stats.remainingM;
       var dailyMarksTarget = dl > 0 ? Math.ceil(pacing / dl) : pacing;
@@ -259,6 +293,7 @@
     daysLeft: daysLeft, loadState: loadState, saveState: saveState,
     markDone: markDone, markLearned: markLearned,
     loadSubjectData: loadSubjectData, subjectStats: subjectStats,
+    rankArchetypes: rankArchetypes, coreCut: coreCut,
     buildTodaysPlan: buildTodaysPlan, weekBadges: weekBadges, todayStr: todayStr
   };
 })(window);

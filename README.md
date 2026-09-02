@@ -21,6 +21,13 @@ Per week, two rounds:
 4. **Final week before the exam:** one revision pass over the cross-week good-to-solve backlog,
    linked from the dashboard.
 
+**When there is not enough time left for week order.** `core.html` drops the weeks entirely and
+ranks every archetype by the total marks it covers, so working down it buys the most marks per
+pattern learned. Pick a coverage target (50 / 65 / 80% of the paper) and it draws the line at the
+archetype that reaches it; the tail below is collapsed. The order within a subject never changes
+with the target, so a lost day means stopping higher up the same list, not replanning. The
+dashboard's daily plan picks from the top of these lists too.
+
 Must vs good is computed, not hand-labelled: an archetype's target is always must, joined by its
 hardest and heaviest questions (difficulty ≥ 3 or marks ≥ 4, highest first) up to 60% of the
 archetype. The rule lives in `assignTiers()` in `assets/js/app.js` — change it there and every
@@ -30,6 +37,7 @@ view follows.
 
 ```
 index.html                     dashboard: countdown, must-solve progress, today's plan, good backlog
+core.html                      every archetype ranked by marks covered, weeks ignored — the minimum set
 math2.html stat1.html …        one page per subject (week ladder + archetype cards + question view)
 data/manifest.json             THE file that defines the current exam
 data/<subject>.json            classified questions

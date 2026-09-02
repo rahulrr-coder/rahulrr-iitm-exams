@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The minimum set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+<style>
+  /* Only the cut line is new; everything else reuses the shared system. */
+  tr.cutrow td{background:var(--accent-soft);border-top:1px solid var(--accent-line);border-bottom:1px solid var(--accent-line);
+    font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;color:var(--accent);padding:8px}
+  tr.cutrow .chip{margin-left:10px;text-transform:none;letter-spacing:0}
+  .corewrap{overflow-x:auto}
+  /* two lines is enough to recognise the trigger; the full text is on the archetype card */
+  td.c-q .stem{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  td.rk{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);width:34px;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">IITM Exams</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab active" href="core.html">Core</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab" href="ct.html">CT</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">— days to end-term</div>
+</div></nav>
+
+<div class="wrap">
+<header class="mast">
+<p class="kicker">Every archetype, ranked across all weeks</p>
+<h1 class="pagetitle">The minimum set</h1>
+<p class="lede">The subject pages are ordered by week. This one throws the weeks away and ranks every archetype by the <strong>total marks it covers across all past papers</strong>. Work straight down and each row is the most marks still buyable for one pattern learned. The line marks where you hit your target &mdash; everything below it is the long flat tail.</p>
+<div class="statline" id="overallStats"></div>
+</header>
+
+<div class="toolbar">
+  <div class="chips" id="targetChips"></div>
+  <label class="tgl"><input type="checkbox" id="hideLearned"> Hide learned</label>
+</div>
+
+<div class="note" id="realityNote"></div>
+
+<div id="blocks"></div>
+
+<footer>Ranked by marks covered, not by marks per question &mdash; the scarce resource is distinct patterns held in your head, not questions solved. <b>Must</b> is how many of that archetype's questions are must-solve: learn the pattern on its target, then clear those cold. Ticking here writes the same state as the subject pages, and the dashboard&rsquo;s daily plan now picks from the top of these lists too.</footer>
+</div>
+
+<script src="assets/js/app.js?v=5"></script>
+<script>
+(async function () {
+  var E = window.EndTerm;
+  await E.load();
+  var state = E.loadState();
+  var TARGET = 0.65;
+  var tailOpen = {};
+
+  var dl = E.daysLeft();
+  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+
+  function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  var packs = {};
+  await Promise.all(E.SUBJECTS.map(async function (sub) {
+    var data;
+    try { data = await E.loadSubjectData(sub); }
+    catch (e) { data = { rows: [], arch: [], archByQid: {} }; }
+    var r = E.rankArchetypes(data);
+    packs[sub.key] = { sub: sub, ranked: r.ranked, totalM: r.totalM };
+  }));
+
+  var TARGETS = [0.5, 0.65, 0.8];
+  document.getElementById("targetChips").innerHTML =
+    '<span class="tgl" style="border:0;background:none;padding-left:0">Cover</span>' +
+    TARGETS.map(function (t) {
+      return '<button class="chip" data-t="' + t + '" aria-pressed="' + (t === TARGET) + '">' +
+             Math.round(t * 100) + '% of marks</button>';
+    }).join("");
+
+  // Archetypes needed, across every subject, to reach a given share of the marks.
+  function archesFor(t) {
+    var n = 0;
+    E.SUBJECTS.forEach(function (s) {
+      var p = packs[s.key];
+      if (p && p.ranked.length) n += E.coreCut(p.ranked, t);
+    });
+    return n;
+  }
+
+  function renderTop() {
+    var scope = 0, scopeQ = 0, scopeM = 0, allArch = 0, allM = 0, learnedInScope = 0;
+    E.SUBJECTS.forEach(function (s) {
+      var p = packs[s.key]; if (!p || !p.ranked.length) return;
+      allArch += p.ranked.length; allM += p.totalM;
+      var learned = state.archetypesLearned[s.key] || {};
+      var k = E.coreCut(p.ranked, TARGET);
+      scope += k;
+      for (var i = 0; i < k; i++) {
+        scopeQ += p.ranked[i].n;
+        scopeM += p.ranked[i].marks;
+        if (learned[p.ranked[i].id]) learnedInScope++;
+      }
+    });
+    document.getElementById("overallStats").innerHTML =
+      '<div class="stat"><b>' + scope + '/' + allArch + '</b><span>archetypes in scope</span></div>' +
+      '<div class="stat"><b>' + learnedInScope + '/' + scope + '</b><span>of those learned</span></div>' +
+      '<div class="stat"><b>' + scopeQ + '</b><span>questions they cover</span></div>' +
+      '<div class="stat"><b>' + Math.round(scopeM) + '/' + Math.round(allM) + '</b><span>marks reached</span></div>' +
+      '<div class="stat"><b>' + dl + '</b><span>days left</span></div>';
+
+    var a50 = archesFor(0.5), a80 = archesFor(0.8);
+    document.getElementById("realityNote").innerHTML =
+      '<h3>There is no clean 80/20 here</h3>' +
+      '<p>Reaching <b>80%</b> of the marks takes <b>' + a80 + '</b> of the ' + allArch + ' archetypes (' +
+      Math.round(100 * a80 / allArch) + '%) &mdash; the tail is long and nearly flat, so the last fifth of the marks costs almost as much work as the first half. ' +
+      'The real leverage sits lower down: <b>' + a50 + '</b> archetypes (' + Math.round(100 * a50 / allArch) + '%) already carry <b>half</b> the marks. ' +
+      'With <b>' + dl + '</b> day' + (dl === 1 ? "" : "s") + ' left, 50% is the honest target and 65% is the stretch.</p>' +
+      '<p>Pick a target above and the lists resize. Within a subject the order never changes &mdash; the target only moves where the line falls, so time lost never means restarting, just stopping higher up.</p>';
+  }
+
+  function renderBlocks() {
+    var hideLearned = document.getElementById("hideLearned").checked;
+    var html = "";
+
+    E.SUBJECTS.forEach(function (s) {
+      var p = packs[s.key];
+      if (!p || !p.ranked.length) return;
+      var learned = state.archetypesLearned[s.key] || {};
+      var k = E.coreCut(p.ranked, TARGET);
+      var coreQ = 0, coreM = 0, coreMust = 0, done = 0;
+      for (var i = 0; i < k; i++) {
+        coreQ += p.ranked[i].n; coreM += p.ranked[i].marks; coreMust += p.ranked[i].must.length;
+        if (learned[p.ranked[i].id]) done++;
+      }
+
+      html += '<section class="week s-' + s.key + '">' +
+        '<div class="wk-head"><span class="wk-n">' + done + '/' + k + '</span>' +
+        '<h2 class="wk-t">' + s.emoji + " " + esc(s.label) + '</h2>' +
+        '<div class="wk-meta">' +
+          '<span><b>' + k + '</b> of ' + p.ranked.length + ' archetypes</span>' +
+          '<span><b>' + Math.round(100 * coreM / p.totalM) + '%</b> of ' + Math.round(p.totalM) + ' marks</span>' +
+          '<span><b>' + coreMust + '</b> must-solve of ' + coreQ + ' questions</span>' +
+        '</div></div>' +
+        '<div class="wk-prog"><i style="width:' + (k ? Math.round(100 * done / k) : 0) + '%"></i></div>';
+
+      function row(r, i) {
+        var isDone = !!learned[r.id];
+        if (isDone && hideLearned) return "";
+        return '<tr class="' + (isDone ? "done" : "") + (i >= k ? " tail" : "") + '"' +
+            ((i >= k && !tailOpen[s.key]) ? " hidden" : "") + '>' +
+          '<td class="c-chk"><input type="checkbox" data-sub="' + s.key + '" data-arch="' + r.id + '"' +
+            (isDone ? " checked" : "") + ' aria-label="mark ' + r.id + ' learned"></td>' +
+          '<td class="rk">' + (i + 1) + '</td>' +
+          '<td class="c-q"><span class="con">' + esc(r.title) + '</span>' +
+            '<a class="arch" href="' + s.key + '.html#arch-' + r.id + '">' + r.id + '</a>' +
+            '<span class="dep">W' + r.week + '</span>' +
+            '<span class="stem">' + esc(r.trigger) + '</span></td>' +
+          '<td class="c-mk h-mk">' + Math.round(r.marks) + '</td>' +
+          '<td class="c-mk h-mk">' + r.must.length + '/' + r.n + '</td>' +
+          '<td class="c-mk h-mk">' + Math.round(100 * r.cum) + '%</td>' +
+        '</tr>';
+      }
+
+      html += '<div class="corewrap"><table class="tbl"><thead><tr>' +
+        '<th></th><th></th><th>Archetype &middot; trigger</th>' +
+        '<th class="h-mk">Marks</th><th class="h-mk">Must/Qs</th><th class="h-mk">Cum</th>' +
+        '</tr></thead><tbody>';
+
+      for (var i = 0; i < k; i++) html += row(p.ranked[i], i);
+
+      if (k < p.ranked.length) {
+        html += '<tr class="cutrow"><td colspan="6">' +
+          Math.round(100 * coreM / p.totalM) + '% of the marks reached &middot; ' +
+          (p.ranked.length - k) + ' archetypes below for the last ' + Math.round(p.totalM - coreM) + ' marks' +
+          '<button class="chip" data-tail="' + s.key + '">' +
+            (tailOpen[s.key] ? "Hide the tail" : "Show the tail") + '</button></td></tr>';
+        for (var t = k; t < p.ranked.length; t++) html += row(p.ranked[t], t);
+      }
+
+      html += '</tbody></table></div></section>';
+    });
+
+    document.getElementById("blocks").innerHTML = html;
+  }
+
+  function renderAll() { renderTop(); renderBlocks(); }
+
+  document.getElementById("blocks").addEventListener("change", function (e) {
+    var cb = e.target.closest("input[data-arch]");
+    if (!cb) return;
+    E.markLearned(state, cb.getAttribute("data-sub"), cb.getAttribute("data-arch"), cb.checked);
+    renderAll();
+  });
+
+  document.getElementById("blocks").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-tail]");
+    if (!b) return;
+    var key = b.getAttribute("data-tail");
+    tailOpen[key] = !tailOpen[key];
+    renderBlocks();
+  });
+
+  document.getElementById("targetChips").addEventListener("click", function (e) {
+    var b = e.target.closest(".chip[data-t]");
+    if (!b) return;
+    TARGET = parseFloat(b.getAttribute("data-t"));
+    document.querySelectorAll("#targetChips .chip").forEach(function (c) {
+      c.setAttribute("aria-pressed", String(c === b));
+    });
+    renderAll();
+  });
+
+  document.getElementById("hideLearned").addEventListener("change", renderBlocks);
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
