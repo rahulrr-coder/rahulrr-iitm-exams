@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three passes to Sunday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+<style>
+  /* Only the day strip, the pass rows and the gate band are new; the rest reuses the shared system. */
+  .daystrip{margin:22px 0 0;overflow-x:auto;padding-bottom:6px}
+  .dayrow{display:flex;gap:7px;min-width:min-content}
+  .day{flex:0 0 auto;width:96px;padding:10px 11px;border:1px solid var(--line);
+       border-radius:var(--radius);background:var(--panel)}
+  .day .d{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;letter-spacing:.03em}
+  .day .k{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+  .day.grind{background:var(--accent-soft);border-color:var(--accent-line)}
+  .day.gate{border-color:var(--warn);border-width:2px}
+  .day.gate .k b{color:var(--warn)}
+  .day.rev{background:var(--warn-soft);border-color:var(--warn)}
+  .day.exam{background:var(--ink);border-color:var(--ink)}
+  .day.exam .d,.day.exam .k{color:var(--ground)}
+
+  .passblock{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
+             overflow:hidden;box-shadow:var(--shadow)}
+  .passblock .wk-prog{margin:0;border-radius:0}
+  .prow{display:grid;grid-template-columns:24px 1fr auto;gap:13px;align-items:start;
+        padding:13px 16px;border-top:1px solid var(--line-soft);cursor:pointer}
+  .prow:first-of-type{border-top:0}
+  .prow input{width:16px;height:16px;margin:3px 0 0;accent-color:var(--done);cursor:pointer}
+  .prow .subj{display:block;font-weight:600;font-size:14.5px}
+  .prow .emoji{margin-right:6px}
+  .prow .what{display:block;font-size:13px;color:var(--ink-3);margin-top:2px}
+  .prow .cnt{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);
+             white-space:nowrap;text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+  .prow.ticked{background:var(--done-soft)}
+  .prow.ticked .subj{text-decoration:line-through;text-decoration-thickness:1px}
+  .prow.ticked .subj,.prow.ticked .what,.prow.ticked .cnt{opacity:.6}
+  .ord{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);
+       border:1px solid var(--line-soft);background:var(--panel-2);border-radius:3px;
+       padding:1px 5px;margin-right:7px}
+
+  .gateband{border:2px solid var(--warn);background:var(--warn-soft);border-radius:var(--radius);padding:20px 22px}
+  .gateband h3{margin:0 0 6px;font-size:17px;color:var(--warn)}
+  .gateband p{margin:8px 0 0;font-size:14px;color:var(--ink-2);max-width:68ch}
+  .gateband ul{margin:12px 0 0;padding-left:20px}
+  .gateband li{margin:6px 0;font-size:14px;color:var(--ink-2)}
+  .gateband li b{color:var(--ink)}
+
+  .lockbox{border:1px dashed var(--line);border-radius:var(--radius);background:var(--panel-2);
+           padding:18px 20px;color:var(--ink-2);font-size:14px}
+  .lockbox p{margin:0 0 10px;max-width:68ch}
+  .lockbox p:last-child{margin-bottom:0}
+  .lockbox b{color:var(--ink)}
+  .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+  .rulelist{margin:0;padding-left:20px}
+  .rulelist li{margin:9px 0;font-size:14px;color:var(--ink-2)}
+  .rulelist li b{color:var(--ink)}
+  .resetbtn{font:inherit;font-size:12px;background:none;border:0;color:var(--accent);
+            cursor:pointer;padding:0;text-decoration:underline}
+  @media (max-width:560px){
+    .prow{grid-template-columns:22px 1fr}
+    .prow .cnt{grid-column:2;text-align:left;padding-top:5px}
+  }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">IITM Exams</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab" href="core.html">Core</a>
+<a class="tab active" href="passes.html">Passes</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab" href="ct.html">CT</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">— days to end-term</div>
+</div></nav>
+
+<div class="wrap">
+<header class="mast">
+<p class="kicker">Execution protocol &middot; four papers &middot; one rotation per pass</p>
+<h1 class="pagetitle">Three passes to Sunday</h1>
+<p class="lede">One rotation through all four subjects per pass. <strong>Core only &mdash; the tail stays shut.</strong> Every pass goes deeper on the same material rather than wider onto new material. Exploration ends Thursday; Friday and Saturday are revision with nothing new opened.</p>
+<div class="statline" id="topStats"></div>
+</header>
+
+<div class="daystrip">
+  <div class="dayrow">
+    <div class="day grind"><div class="d">SAT 5</div><div class="k">Full grind &middot; 5am</div></div>
+    <div class="day grind"><div class="d">SUN 6</div><div class="k">Full grind &middot; 5am</div></div>
+    <div class="day"><div class="d">MON 7</div><div class="k">College &middot; recognition</div></div>
+    <div class="day grind"><div class="d">TUE 8</div><div class="k">WFH &middot; execution</div></div>
+    <div class="day"><div class="d">WED 9</div><div class="k">College &middot; recognition</div></div>
+    <div class="day gate"><div class="d">THU 10</div><div class="k">WFH &middot; <b>gate closes</b></div></div>
+    <div class="day rev"><div class="d">FRI 11</div><div class="k">Half day &middot; revision</div></div>
+    <div class="day rev"><div class="d">SAT 12</div><div class="k">Revision &middot; stop 6pm</div></div>
+    <div class="day exam"><div class="d">SUN 13</div><div class="k">Exam</div></div>
+  </div>
+</div>
+
+<h2 class="sec">Pass 1 &middot; Clear the core</h2>
+<p class="sub">Learn the pattern with the answer key open. You are not testing yourself yet, you are building recognition. Finish a subject completely before moving to the next.</p>
+<div class="passblock"><div class="wk-prog"><i id="bar1"></i></div><div id="p1"></div></div>
+
+<h2 class="sec">Pass 2 &middot; Must-solve PYQs</h2>
+<p class="sub">Same rotation, same core archetypes &mdash; now the flagged must-solve questions, cold, key closed. Every miss goes in the error log with <em>why</em> you went wrong, not just the right answer.</p>
+<div class="passblock"><div class="wk-prog"><i id="bar2"></i></div><div id="p2"></div></div>
+
+<h2 class="sec">Pass 3 &middot; Good-to-solve sweep</h2>
+<p class="sub">The second tier of questions on core archetypes, same rotation. This is the first pass you are allowed to abandon mid-subject &mdash; a Pass 2 miss always outranks a Pass 3 fresh question.</p>
+<div class="passblock"><div class="wk-prog"><i id="bar3"></i></div><div id="p3"></div></div>
+
+<div class="note"><h3>Why this order</h3>
+<p>English first &mdash; the cheapest recognition material, and it starts the daily passage habit. CT second because it carries 1100 marks at the best marks-per-hour in the exam, so it has to clear before time gets tight. Math 2 sits last deliberately: worst marks-per-hour in the paper set, and the designated sacrifice if the gate arrives before the rotation finishes.</p></div>
+
+<h2 class="sec">The gate &middot; Thursday 10 September, end of day</h2>
+<div class="gateband">
+  <h3>No new material after this line</h3>
+  <p>Nothing new gets opened after Thursday. No new archetype, no new question type, no tail, no &ldquo;quick look&rdquo; at a topic you skipped.</p>
+  <ul>
+    <li><b>Allowed:</b> re-doing ticked archetypes, error-log redo, timed papers with keys, formula recall from memory, English passages.</li>
+    <li><b>Not allowed:</b> any archetype you have never seen, the core tail, rebuilding this plan.</li>
+    <li><b>Saturday stops at 6pm.</b> Bag packed, alarm set, sleep by 10:30.</li>
+  </ul>
+</div>
+
+<h2 class="sec">Locked &middot; the core tail</h2>
+<div class="lockbox">
+  <p><b>Opens only when all three passes are done for all four subjects.</b> That will not happen this term, and that is the plan working rather than failing.</p>
+  <p>The tail is <span class="mono">205</span> archetypes averaging <span class="mono">4&ndash;11 marks</span> each, against a core averaging <span class="mono">10&ndash;28</span>. A shaky core archetype has roughly twenty times more marks riding on it than a perfect tail one. Second pass on core always beats first pass on tail.</p>
+</div>
+
+<h2 class="sec">True every single day</h2>
+<div class="note">
+<ul class="rulelist">
+  <li><b>One English comprehension passage, ten minutes.</b> Including grind days, including the gate day. 295 marks depend on a skill that cannot be crammed on the 12th.</li>
+  <li><b>Ten minutes of recognition review.</b> Collocations, modals, idioms, prepositions, CT dictionary properties. This material decays &mdash; read once and it is gone by the 13th.</li>
+  <li><b>Error log before you close the session.</b> Question, your answer, correct answer, why you went wrong. A miss you do not diagnose is a miss you repeat.</li>
+  <li><b>Match the work to the day.</b> WFH days take execution &mdash; recursion traces, DFS, updateMatrix, gradients, Hessian. College days take recognition, which survives being done in fragments.</li>
+  <li><b>MSQ discipline:</b> evaluate every option independently, never stop at the first correct one. <b>SA discipline:</b> arithmetic on paper, obey the rounding instruction exactly.</li>
+</ul>
+</div>
+
+<div class="note"><h3>One timed paper, cold, by Tuesday</h3>
+<p>42 papers with answer keys are sitting unused. Recognising an archetype with the key open and producing it in the hall are different skills, and the gap between them is where marks actually die. Tuesday leaves four days to act on whatever it tells you.</p></div>
+
+<footer>
+Core counts are the 65% coverage cut from the <a href="core.html">Core</a> page. If you fall behind, the inner 50% cut is
+<span class="mono">EN 20 &middot; CT 19 &middot; ST 20 &middot; MA 23 = 82</span> &mdash; that is the line that actually matters.
+Pass ticks are stored per-browser alongside the rest of your progress. <button class="resetbtn" id="resetPasses">Reset pass ticks</button>
+</footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+(async function () {
+  var E = window.EndTerm;
+  await E.load();
+
+  var state = E.loadState();
+  if (!state.passes) state.passes = {};
+
+  /* Rotation order. English first: cheapest recognition material, and it starts the daily
+     passage habit. CT second: 1100 marks at the best marks-per-hour, must clear early.
+     Math 2 last on purpose — worst marks-per-hour, and the designated sacrifice. */
+  var ORDER = [
+    { key: "english1", core: 33, marks: 899 },
+    { key: "ct",       core: 26, marks: 1100 },
+    { key: "stat1",    core: 30, marks: 470 },
+    { key: "math2",    core: 35, marks: 900 }
+  ];
+  var WHAT = {
+    1: "Every core archetype learned, key open",
+    2: "Must-solve questions, key closed",
+    3: "Good-to-solve questions, key closed"
+  };
+  var GATE = new Date("2026-09-10T23:59:00");
+
+  function meta(key) {
+    for (var i = 0; i < E.SUBJECTS.length; i++) if (E.SUBJECTS[i].key === key) return E.SUBJECTS[i];
+    return { label: key, emoji: "" };
+  }
+
+  var dl = E.daysLeft();
+  document.getElementById("navDays").innerHTML =
+    dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+
+  function gateDays() {
+    return Math.max(0, Math.ceil((GATE - new Date()) / 86400000));
+  }
+
+  function render() {
+    var total = 0;
+    [1, 2, 3].forEach(function (p) {
+      var html = "", done = 0;
+      ORDER.forEach(function (s, i) {
+        var id = "p" + p + "-" + s.key;
+        var on = !!state.passes[id];
+        if (on) { done++; total++; }
+        var m = meta(s.key);
+        html += '<label class="prow' + (on ? " ticked" : "") + '">' +
+          '<input type="checkbox" data-id="' + id + '"' + (on ? " checked" : "") + '>' +
+          '<span><span class="subj"><span class="ord">' + (i + 1) + '</span>' +
+          '<span class="emoji">' + m.emoji + '</span>' + m.label + '</span>' +
+          '<span class="what">' + WHAT[p] + '</span></span>' +
+          '<span class="cnt">' + s.core + ' core &middot; ' + s.marks + 'm</span></label>';
+      });
+      document.getElementById("p" + p).innerHTML = html;
+      document.getElementById("bar" + p).style.width = Math.round(100 * done / ORDER.length) + "%";
+    });
+
+    document.getElementById("topStats").innerHTML =
+      '<div class="stat"><b>' + total + '/12</b><span>blocks cleared</span></div>' +
+      '<div class="stat"><b>124</b><span>core archetypes</span></div>' +
+      '<div class="stat"><b>' + gateDays() + '</b><span>days to the gate</span></div>' +
+      '<div class="stat"><b>' + dl + '</b><span>days to exam</span></div>';
+
+    Array.prototype.forEach.call(document.querySelectorAll("input[data-id]"), function (cb) {
+      cb.addEventListener("change", function () {
+        state.passes[cb.getAttribute("data-id")] = cb.checked;
+        E.saveState(state);
+        render();
+      });
+    });
+  }
+
+  document.getElementById("resetPasses").addEventListener("click", function () {
+    state.passes = {};
+    E.saveState(state);
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
