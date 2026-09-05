@@ -99,8 +99,9 @@
 
     var done = state.doneQids[subKey];
     var learned = state.archetypesLearned[subKey];
-    var rowTier = {}, byQidRow = {};
+    var rowTier = {}, byQidRow = {}, archById = {};
     data.rows.forEach(function (r) { rowTier[r.qid] = r.tier; byQidRow[r.qid] = r; });
+    data.arch.forEach(function (a) { archById[a.id] = a; });
 
     var html = "";
     weeks.forEach(function (w) {
@@ -226,7 +227,9 @@
         var archId = btn.dataset.arch;
         var card = document.getElementById("arch-" + archId);
         var nowLearned = !card.classList.contains("learned");
-        E.markLearned(state, subKey, archId, nowLearned);
+        var a = archById[archId];
+        E.markLearned(state, subKey, archId, nowLearned, a && a.target);
+        if (nowLearned && a && a.target) setDoneUI(a.target, true);
         card.classList.toggle("learned", nowLearned);
         btn.textContent = nowLearned ? "✓ Learned" : "Mark learned";
         renderStreak();
@@ -388,6 +391,11 @@
     // one place that ticks a question, so the table and the question page agree
     function setDone(qid, done) {
       E.markDone(state, subKey, qid, done);
+      setDoneUI(qid, done);
+    }
+
+    // the DOM half of setDone, reused when state changes underneath us
+    function setDoneUI(qid, done) {
       var tr = document.querySelector('tr.q[data-id="' + qid + '"]');
       if (tr) {
         tr.classList.toggle("done", done);
@@ -423,6 +431,30 @@
         if (sec) setTimeout(function () { sec.scrollIntoView({ block: "start" }); }, 50);
       }
     }
+
+    /* Core opens archetypes in a new tab, so this page and Core are usually both
+       open. Re-read and re-paint when the other one writes, instead of showing a
+       stale "Mark learned" until reload. */
+    E.onExternalChange(function (fresh) {
+      state = fresh;
+      document.querySelectorAll("tr.q").forEach(function (tr) {
+        var done = !!state.doneQids[subKey][tr.dataset.id];
+        tr.classList.toggle("done", done);
+        var cb = tr.querySelector("input");
+        if (cb) cb.checked = done;
+      });
+      document.querySelectorAll(".archcard").forEach(function (card) {
+        var learned = !!state.archetypesLearned[subKey][card.id.slice(5)];
+        card.classList.toggle("learned", learned);
+        var btn = card.querySelector(".learntgl");
+        if (btn) btn.textContent = learned ? "\u2713 Learned" : "Mark learned";
+      });
+      var qcb = document.querySelector(".qdone input");
+      if (qcb && location.hash.indexOf("#q/") === 0) {
+        qcb.checked = !!state.doneQids[subKey][decodeURIComponent(location.hash.slice(3))];
+      }
+      syncCovers(); prog(); applyDone(); renderStreak(); renderBadges(); renderStats();
+    });
 
     window.addEventListener("hashchange", route);
 

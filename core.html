@@ -221,7 +221,7 @@
             (isDone ? " checked" : "") + ' aria-label="mark ' + r.id + ' learned"></td>' +
           '<td class="rk">' + (i + 1) + '</td>' +
           '<td class="c-q"><span class="con">' + esc(r.title) + '</span>' +
-            '<a class="arch" href="' + s.key + '.html#arch-' + r.id + '">' + r.id + '</a>' +
+            '<a class="arch" href="' + s.key + '.html#arch-' + r.id + '" target="_blank" rel="noopener">' + r.id + '</a>' +
             '<span class="dep">W' + r.week + '</span>' +
             '<span class="stem">' + esc(r.trigger) + '</span></td>' +
           '<td class="c-mk h-mk">' + Math.round(r.marks) + '</td>' +
@@ -262,9 +262,14 @@
   document.getElementById("blocks").addEventListener("change", function (e) {
     var cb = e.target.closest("input[data-arch]");
     if (!cb) return;
-    E.markLearned(state, cb.getAttribute("data-sub"), cb.getAttribute("data-arch"), cb.checked);
+    var sub = cb.getAttribute("data-sub"), archId = cb.getAttribute("data-arch");
+    var row = (packs[sub] ? packs[sub].ranked : []).filter(function (r) { return r.id === archId; })[0];
+    E.markLearned(state, sub, archId, cb.checked, row && row.target);
     renderAll();
   });
+
+  // a subject tab marked something learned or solved — catch up without a reload
+  E.onExternalChange(function (fresh) { state = fresh; renderAll(); });
 
   document.getElementById("blocks").addEventListener("click", function (e) {
     var b = e.target.closest("[data-tail]");

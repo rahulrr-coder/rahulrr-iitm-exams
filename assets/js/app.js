@@ -88,15 +88,32 @@
     saveState(s);
   }
 
-  function markLearned(s, subjectKey, archId, learned) {
+  /* targetQid is the question the archetype card tells you to solve to learn the
+     pattern, so learning the archetype already implies it — ticking it again by hand
+     is the same fact entered twice. Only ever set, never cleared: unlearning an
+     archetype doesn't unsolve a question you did solve. */
+  function markLearned(s, subjectKey, archId, learned, targetQid) {
     if (learned) {
       s.archetypesLearned[subjectKey][archId] = 1;
+      if (targetQid && !s.doneQids[subjectKey][targetQid]) s.doneQids[subjectKey][targetQid] = 1;
       touchStreak(s);
     } else {
       delete s.archetypesLearned[subjectKey][archId];
     }
     saveState(s);
   }
+
+  /* Core and the subject pages are two views of one state object, and since the Core
+     links open in a new tab they are usually both on screen. The storage event fires
+     in every *other* tab on the same origin, so each view can re-read and re-render
+     instead of going stale until reload. */
+  var changeFns = [];
+  function onExternalChange(fn) { changeFns.push(fn); }
+  window.addEventListener("storage", function (e) {
+    if (!STATE_KEY || e.key !== STATE_KEY) return;
+    var fresh = loadState();
+    changeFns.forEach(function (fn) { fn(fresh); });
+  });
 
   async function fetchJSON(path) {
     var res = await fetch(path);
@@ -291,7 +308,7 @@
   global.EndTerm = {
     EXAM_DATE: EXAM_DATE, SUBJECTS: SUBJECTS, EXAM: EXAM, load: load,
     daysLeft: daysLeft, loadState: loadState, saveState: saveState,
-    markDone: markDone, markLearned: markLearned,
+    markDone: markDone, markLearned: markLearned, onExternalChange: onExternalChange,
     loadSubjectData: loadSubjectData, subjectStats: subjectStats,
     rankArchetypes: rankArchetypes, coreCut: coreCut,
     buildTodaysPlan: buildTodaysPlan, weekBadges: weekBadges, todayStr: todayStr
