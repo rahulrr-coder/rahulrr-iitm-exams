@@ -74,10 +74,14 @@ export default async (req) => {
   try {
     coll = (await connect()).db(DB).collection(COLLECTION);
   } catch (err) {
-    const blocked = /server selection|ETIMEDOUT|ECONNREFUSED|timed out/i.test(String(err && err.message));
+    /* Atlas kills the TLS handshake for a non-allowlisted IP rather than refusing
+       the connection, so it surfaces as "tlsv1 alert internal error" (SSL alert 80)
+       and looks like a certificate problem. It isn't. */
+    const msg = String(err && err.message);
+    const blocked = /server selection|ETIMEDOUT|ECONNREFUSED|timed out|alert internal error|alert number 80|tlsv1/i.test(msg);
     return Response.json({
       error: "could not reach MongoDB",
-      detail: String(err && err.message).slice(0, 300),
+      detail: msg.slice(0, 300),
       likelyCause: blocked
         ? "Atlas is refusing this connection. Netlify function IPs are dynamic, so Atlas → Network Access needs 0.0.0.0/0."
         : "Check the MONGODB_URI username and password."
