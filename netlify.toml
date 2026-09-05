@@ -5,3 +5,7 @@
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

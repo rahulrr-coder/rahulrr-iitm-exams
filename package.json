@@ -1,0 +1,9 @@
+{
+  "name": "rahulrr-iitm-exams",
+  "private": true,
+  "type": "module",
+  "description": "Static PYQ trainer. The only server-side code is netlify/functions, which syncs progress to MongoDB Atlas.",
+  "dependencies": {
+    "mongodb": "^6.12.0"
+  }
+}

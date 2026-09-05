@@ -41,10 +41,12 @@
 <p class="sub">Tap a subject to open its week-by-week roadmap.</p>
 <div class="grid4" id="subjectGrid"></div>
 
-<h2 class="sec">Carry your progress across machines</h2>
-<p class="sub">Progress lives in this browser. Export it to a file, open it on the other machine, import. Importing <strong>merges</strong> &mdash; it adds ticks, it never removes them &mdash; so it is safe to run in either direction whenever the two get out of step.</p>
+<h2 class="sec">Your progress across machines</h2>
+<p class="sub">Every tick is saved in this browser first, so the site works with no network at all, and then mirrored to MongoDB. Opening any page pulls whatever the other machine did. Syncing <strong>merges</strong> &mdash; it adds ticks, it never removes them &mdash; so it runs safely in either direction. The file export below is the offline fallback and the backup.</p>
 <div class="note" id="syncBox">
-  <p style="margin:0 0 12px"><span id="syncCount" class="mono">&mdash;</span></p>
+  <p style="margin:0 0 10px"><span id="syncCount" class="mono">&mdash;</span></p>
+  <p style="margin:0 0 12px"><span id="cloudState" class="mono" style="color:var(--ink-3)">checking sync&hellip;</span></p>
+  <button class="chip" id="syncBtn">Sync now</button>
   <button class="chip" id="exportBtn">Export progress</button>
   <label class="chip" for="importFile" style="cursor:pointer">Import progress&hellip;</label>
   <input type="file" id="importFile" accept="application/json,.json" hidden>
@@ -185,16 +187,7 @@
         say("not a progress file — no ticks found in it"); return;
       }
       var st = E.loadState(), before = counts(st);
-      E.SUBJECTS.forEach(function (sub) {
-        var k = sub.key;
-        Object.keys((incoming.doneQids || {})[k] || {}).forEach(function (qid) { st.doneQids[k][qid] = 1; });
-        Object.keys((incoming.archetypesLearned || {})[k] || {}).forEach(function (id) { st.archetypesLearned[k][id] = 1; });
-      });
-      if (incoming.passes) {
-        st.passes = st.passes || {};
-        Object.keys(incoming.passes).forEach(function (id) { if (incoming.passes[id]) st.passes[id] = true; });
-      }
-      if (incoming.streak && (incoming.streak.count || 0) > (st.streak.count || 0)) st.streak = incoming.streak;
+      E.mergeState(st, incoming);          // same union the cloud sync uses
       E.saveState(st);
       var after = counts(st);
       say("merged \u2014 added " + (after.a - before.a) + " archetypes, " +
@@ -204,6 +197,28 @@
     };
     reader.readAsText(file);
     this.value = "";
+  });
+
+  // cloud sync status — app.js pulls on load; this just reports what happened
+  var cloudEl = document.getElementById("cloudState");
+  function stamp(d) {
+    return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  }
+  E.onSync(function (info) {
+    if (!info.ok) {
+      cloudEl.textContent = "sync unreachable \u2014 working offline, this browser keeps everything";
+      cloudEl.style.color = "var(--warn)";
+      return;
+    }
+    cloudEl.style.color = "var(--ink-3)";
+    cloudEl.textContent = info.pulled
+      ? "synced " + stamp(info.at) + " \u2014 pulled " + info.pulled + " new ticks from the other machine"
+      : "synced " + stamp(info.at) + " \u2014 up to date";
+    showCount();
+  });
+  document.getElementById("syncBtn").addEventListener("click", function () {
+    cloudEl.textContent = "syncing\u2026";
+    E.push().then(E.pull).then(showCount);
   });
 
   showCount();

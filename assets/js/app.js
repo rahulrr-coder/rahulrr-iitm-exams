@@ -24,6 +24,7 @@
     });
     var E = global.EndTerm;
     E.SUBJECTS = SUBJECTS; E.EXAM_DATE = EXAM_DATE; E.EXAM = EXAM;
+    pull();          // deliberately not awaited: the page renders from localStorage
     return m;
   }
 
@@ -56,10 +57,11 @@
     return s;
   }
 
-  function saveState(s) {
+  function saveState(s, quiet) {
     try {
       localStorage.setItem(STATE_KEY, JSON.stringify(s));
     } catch (e) {}
+    if (!quiet) schedulePush();
   }
 
   function touchStreak(s) {
@@ -101,6 +103,104 @@
       delete s.archetypesLearned[subjectKey][archId];
     }
     saveState(s);
+  }
+
+  /* ---- cloud sync -------------------------------------------------------
+     localStorage stays the working store: every tick is instant and the site
+     works with no network at all. Mongo is a mirror, reached through the
+     /api/progress function — the browser cannot speak to Atlas directly, and
+     the connection string must never reach the client, so the function is the
+     only thing holding it.
+
+     Every sync is a union, both directions. Ticks are added, never removed, so
+     pushing and pulling are idempotent and order-independent: two machines can
+     sync in any order and neither erases the other's work. The cost is that an
+     untick does not propagate — clear it on each machine, or export/import.
+
+     PROGRESS_KEY is visible in this file, which makes it obfuscation rather
+     than security. It keeps drive-by scanners off the endpoint; the union rule
+     is what actually protects the data. */
+  var SYNC_PATH = "/api/progress";
+  var PROGRESS_KEY = "c7b506bab7609200e1274deb89b858c0";
+  var pushTimer = null, syncFns = [], lastSync = null;
+
+  // a pull may already have landed before the page attached its listener
+  function onSync(fn) { syncFns.push(fn); if (lastSync) fn(lastSync); }
+  function announce(info) { lastSync = info; syncFns.forEach(function (fn) { fn(info); }); }
+  function syncStatus() { return lastSync; }
+
+  // union `incoming` into `target`; returns how many ticks that added
+  function mergeState(target, incoming) {
+    var added = 0;
+    if (!incoming || typeof incoming !== "object") return 0;
+    ["doneQids", "archetypesLearned"].forEach(function (field) {
+      var from = incoming[field] || {};
+      Object.keys(from).forEach(function (subject) {
+        if (!target[field][subject]) target[field][subject] = {};
+        Object.keys(from[subject] || {}).forEach(function (id) {
+          if (from[subject][id] && !target[field][subject][id]) {
+            target[field][subject][id] = 1;
+            added++;
+          }
+        });
+      });
+    });
+    if (incoming.passes) {
+      target.passes = target.passes || {};
+      Object.keys(incoming.passes).forEach(function (id) {
+        if (incoming.passes[id] && !target.passes[id]) { target.passes[id] = true; added++; }
+      });
+    }
+    if (incoming.streak && (incoming.streak.count || 0) > (target.streak.count || 0)) {
+      target.streak = incoming.streak;
+    }
+    return added;
+  }
+
+  function syncable() {
+    return typeof fetch === "function" && location.protocol !== "file:" && STATE_KEY;
+  }
+
+  function endpoint() { return SYNC_PATH + "?exam=" + encodeURIComponent(EXAM); }
+
+  function pull() {
+    if (!syncable()) return Promise.resolve(0);
+    return fetch(endpoint(), { headers: { "x-progress-key": PROGRESS_KEY } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (doc) {
+        if (!doc) throw new Error("sync unavailable");
+        var s = loadState();
+        var added = mergeState(s, doc);
+        if (added) {
+          saveState(s, true);
+          changeFns.forEach(function (fn) { fn(s); });   // repaint every open view
+        }
+        announce({ ok: true, at: new Date(), pulled: added });
+        return added;
+      })
+      .catch(function () { announce({ ok: false, at: new Date() }); return 0; });
+  }
+
+  function push() {
+    if (!syncable()) return Promise.resolve(false);
+    return fetch(endpoint(), {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-progress-key": PROGRESS_KEY },
+      body: JSON.stringify(loadState())
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("sync unavailable");
+        announce({ ok: true, at: new Date(), pushed: true });
+        return true;
+      })
+      .catch(function () { announce({ ok: false, at: new Date() }); return false; });
+  }
+
+  // ticks arrive in bursts; one write per burst is plenty
+  function schedulePush() {
+    if (!syncable()) return;
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(push, 1500);
   }
 
   /* Core and the subject pages are two views of one state object, and since the Core
@@ -309,6 +409,7 @@
     EXAM_DATE: EXAM_DATE, SUBJECTS: SUBJECTS, EXAM: EXAM, load: load,
     daysLeft: daysLeft, loadState: loadState, saveState: saveState,
     markDone: markDone, markLearned: markLearned, onExternalChange: onExternalChange,
+    mergeState: mergeState, pull: pull, push: push, onSync: onSync, syncStatus: syncStatus,
     loadSubjectData: loadSubjectData, subjectStats: subjectStats,
     rankArchetypes: rankArchetypes, coreCut: coreCut,
     buildTodaysPlan: buildTodaysPlan, weekBadges: weekBadges, todayStr: todayStr
