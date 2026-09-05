@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CT Sample Datasets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
+<style>
+/* page-local: this is a reference sheet, meant to sit in a second window
+   beside a question, so everything here is tuned to stay readable narrow. */
+.wrap.ref{max-width:1100px}
+.dsnav{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 4px}
+.dsnav a{font-family:"IBM Plex Mono",monospace;font-size:12px;text-decoration:none;
+  color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);
+  border-radius:4px;padding:5px 10px}
+.dsnav a:hover{border-color:var(--accent)}
+
+.ds{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:18px 20px 20px;margin:18px 0;scroll-margin-top:70px}
+.ds-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:14px}
+.ds-head h2{font-size:22px;margin:0}
+.ds-head .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);
+  background:var(--panel-2);border-radius:3px;padding:2px 7px}
+.ds-head .spacer{flex:1}
+.ds-head .src{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+
+.scroller{overflow-x:auto;border:1px solid var(--line-soft);border-radius:4px}
+table.dstbl{width:100%;border-collapse:collapse;font-size:13.5px;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.dstbl th{background:var(--panel-2);color:var(--ink-2);font-weight:600;font-size:12px;
+  text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line-soft)}
+.dstbl td{padding:8px 10px;border-bottom:1px solid var(--line-soft);
+  border-right:1px solid var(--line-soft);color:var(--ink)}
+.dstbl th:last-child,.dstbl td:last-child{border-right:0}
+.dstbl tbody tr:last-child td{border-bottom:0}
+.dstbl td.num,.dstbl th.num{text-align:right}
+.dstbl .seq{font-family:"IBM Plex Mono",monospace;color:var(--ink-3)}
+.dstbl tr.gap td{text-align:center;color:var(--ink-3);letter-spacing:.5em;padding:10px 0;
+  background:var(--panel-2)}
+
+.cols{margin:14px 0 0;padding:0;list-style:none;font-size:13px;color:var(--ink-2)}
+.cols li{padding:5px 0;border-bottom:1px dotted var(--line-soft)}
+.cols li:last-child{border-bottom:0}
+.cols code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink);
+  background:var(--panel-2);border-radius:3px;padding:1px 5px;margin-right:4px}
+
+.uses{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.uses h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:600;margin:0 0 8px;font-family:"IBM Plex Sans",sans-serif}
+.uses .qchips{display:flex;flex-wrap:wrap;gap:5px}
+.uses a.qchip{font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-decoration:none;
+  color:var(--ink-2);border:1px solid var(--line);background:var(--panel-2);
+  border-radius:3px;padding:3px 7px}
+.uses a.qchip:hover{border-color:var(--accent);color:var(--accent)}
+.uses a.qchip.done{background:var(--done-soft);color:var(--done);border-color:var(--done)}
+
+/* the three printed Shopping Bills cards, kept in their paper colours -- the
+   header colour is how the paper tells one sample card from another */
+.bills{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.bill{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}
+.bill .bhead{display:flex;align-items:center;gap:8px;padding:8px 12px;color:#fff;font-weight:600;font-size:14px}
+.bill .bhead .who{margin-left:auto;font-weight:500}
+.bill .bhead .no{display:inline-flex;align-items:center;justify-content:center;
+  min-width:20px;height:20px;border-radius:50%;background:#fff;font-size:11px;font-weight:700;
+  font-family:"IBM Plex Mono",monospace;padding:0 5px}
+.bill.b-green .bhead{background:#5a9e48} .bill.b-green .bhead .no{color:#3f7a30}
+.bill.b-blue  .bhead{background:#31589e} .bill.b-blue  .bhead .no{color:#31589e}
+.bill.b-amber .bhead{background:#d9822b} .bill.b-amber .bhead .no{color:#b3661a}
+.bill table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+.bill th{font-size:11px;color:var(--ink-3);text-align:left;font-weight:600;
+  padding:6px 10px;border-bottom:1px solid var(--line-soft)}
+.bill td{padding:5px 10px;border-bottom:1px solid var(--line-soft);color:var(--ink)}
+.bill tr:last-child td{border-bottom:0}
+.bill .num{text-align:right}
+.bill tfoot td{font-weight:700;border-top:1px solid var(--line)}
+.bill.b-green tfoot td{color:#3f7a30} .bill.b-blue tfoot td{color:#31589e}
+.bill.b-amber tfoot td{color:#b3661a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  .bill.b-green tfoot td{color:#8cc47a} .bill.b-blue tfoot td{color:#8fadde}
+  .bill.b-amber tfoot td{color:#e0a95f}
+}}
+:root[data-theme="dark"]{
+  .bill.b-green tfoot td{color:#8cc47a} .bill.b-blue tfoot td{color:#8fadde}
+  .bill.b-amber tfoot td{color:#e0a95f}
+}
+
+details.scan{margin:20px 0 0}
+details.scan summary{cursor:pointer;font-size:13px;color:var(--ink-2);
+  padding:9px 12px;background:var(--panel-2);border:1px solid var(--line);border-radius:4px}
+details.scan img{width:100%;max-width:900px;height:auto;display:block;margin-top:12px;
+  border:1px solid var(--line-soft);border-radius:4px;background:#fff}
+details.scan figcaption{font-size:11.5px;color:var(--ink-3);margin-top:6px}
+
+/* compact: the same sheet squeezed for a narrow side window */
+body.compact .wrap.ref{padding:0 14px 50px}
+body.compact header.mast{padding:20px 0 14px}
+body.compact .lede,body.compact .note{display:none}
+body.compact .ds{padding:12px 13px 14px;margin:12px 0}
+body.compact .ds-head{padding-bottom:8px;margin-bottom:10px}
+body.compact .ds-head h2{font-size:18px}
+body.compact table.dstbl{font-size:12.5px}
+body.compact .dstbl th,body.compact .dstbl td{padding:6px 8px}
+body.compact .cols,body.compact .uses{display:none}
+</style>
+</head>
+<body class="s-ct">
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">IITM Exams</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab" href="core.html">Core</a>
+<a class="tab" href="passes.html">Passes</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab" href="ct.html">CT</a>
+<a class="tab active" href="ct-datasets.html">CT Data</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">— days to end-term</div>
+</div></nav>
+
+<div class="wrap ref">
+<header class="mast">
+<p class="kicker">IITM BS &middot; Computational Thinking &middot; reference data</p>
+<h1 class="pagetitle">CT sample datasets</h1>
+<p class="lede">The five datasets CT pseudocode questions run over, transcribed from the reference sheet printed with the paper (2022 Aug, Q2). The paper prints only the <strong>first and last row</strong> of each table &mdash; the rows in between are never shown, so no question can turn on a specific hidden value. What the sheet gives you is the <strong>shape</strong>: column names, their order, the row count, and how the derived columns are computed. That is what the pseudocode is written against. <strong>Open this in a second window while you solve.</strong></p>
+<label class="tgl"><input type="checkbox" id="compact"> Compact (for a narrow side window)</label>
+</header>
+
+<div class="dsnav">
+  <a href="#ds-scores">Scores</a>
+  <a href="#ds-words">Words</a>
+  <a href="#ds-library">Library</a>
+  <a href="#ds-olympics">Olympics</a>
+  <a href="#ds-bills">Shopping Bills</a>
+  <a href="ct.html">&larr; CT roadmap</a>
+</div>
+
+<div class="note"><h3>How to use this while solving</h3>
+<p>Pseudocode questions name a table and loop over its rows. Before tracing, fix three things off this sheet: <b>which columns exist</b> (a condition on a column the table does not have is a giveaway distractor), <b>how many rows</b> the loop runs for, and <b>which columns are derived</b> &mdash; <code>Total</code>, <code>LetterCount</code> and <code>Cost</code> are computed from other columns, so a question can ask about them without ever showing you a value.</p>
+<p>Row counts matter for the counting questions: Scores and Library are 30 rows, Words is 65, Olympics is 50, Shopping Bills is 30 cards. Nested pairwise loops over these run n&sup2; or n(n&minus;1)/2 comparisons &mdash; that is usually what the answer options are counting.</p></div>
+
+<section class="ds" id="ds-scores">
+  <div class="ds-head">
+    <h2>Scores</h2>
+    <span class="meta">30 rows &middot; SeqNo 0&ndash;29</span>
+    <span class="meta">9 columns</span>
+    <span class="spacer"></span>
+    <span class="src">one row per student</span>
+  </div>
+  <div class="scroller">
+  <table class="dstbl">
+    <thead><tr>
+      <th>SeqNo</th><th>Name</th><th>Gender</th><th>DateOfBirth</th><th>TownCity</th>
+      <th class="num">Mathematics</th><th class="num">Physics</th><th class="num">Chemistry</th><th class="num">Total</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="seq">0</td><td>Bhuvanesh</td><td>M</td><td>7 Nov</td><td>Erode</td>
+          <td class="num">68</td><td class="num">64</td><td class="num">78</td><td class="num">210</td></tr>
+      <tr class="gap"><td colspan="9">&#9642;&#9642;&#9642;</td></tr>
+      <tr><td class="seq">29</td><td>Naveen</td><td>M</td><td>13 Oct</td><td>Vellore</td>
+          <td class="num">72</td><td class="num">66</td><td class="num">81</td><td class="num">219</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="cols">
+    <li><code>Total</code> is derived: <b>Mathematics + Physics + Chemistry</b>. It holds on both printed rows (68+64+78 = 210, 72+66+81 = 219), so treat it as the row sum rather than a fourth subject.</li>
+    <li><code>DateOfBirth</code> is day and month only &mdash; <b>no year</b>. Questions can compare birth months, not ages.</li>
+    <li><code>Gender</code> is a single letter, <code>M</code> / <code>F</code>. <code>TownCity</code> is a Tamil Nadu town name, repeated across students &mdash; which is what makes the &ldquo;same city&rdquo; pairwise questions non-trivial.</li>
+  </ul>
+  <div class="uses" data-ds="Scores"><h3>Questions in your set that use it</h3><div class="qchips"></div></div>
+</section>
+
+<section class="ds" id="ds-words">
+  <div class="ds-head">
+    <h2>Words</h2>
+    <span class="meta">65 rows &middot; SeqNo 0&ndash;64</span>
+    <span class="meta">4 columns</span>
+    <span class="spacer"></span>
+    <span class="src">one row per word, in reading order</span>
+  </div>
+  <div class="scroller">
+  <table class="dstbl">
+    <thead><tr>
+      <th>SeqNo</th><th>Word</th><th>PartOfSpeech</th><th class="num">LetterCount</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="seq">0</td><td>It</td><td>Pronoun</td><td class="num">2</td></tr>
+      <tr class="gap"><td colspan="4">&#9642;&#9642;&#9642;</td></tr>
+      <tr><td class="seq">64</td><td>cane.</td><td>Noun</td><td class="num">4</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="cols">
+    <li>The rows are a <b>passage split into words, in order</b> &mdash; not a dictionary. Sentence boundaries are carried by punctuation stuck to the word: the last row is <code>cane.</code> with the full stop attached. That is how the &ldquo;per sentence&rdquo; pseudocode detects a sentence end.</li>
+    <li><code>LetterCount</code> counts <b>letters, not characters</b>: <code>cane.</code> is 5 characters but LetterCount is 4, so the trailing punctuation is excluded.</li>
+    <li><code>PartOfSpeech</code> is a word-class label (Pronoun, Noun, Adjective, Verb, &hellip;) &mdash; the column the noun-counting and adjective-excluding questions filter on.</li>
+  </ul>
+  <div class="uses" data-ds="Words"><h3>Questions in your set that use it</h3><div class="qchips"></div></div>
+</section>
+
+<section class="ds" id="ds-library">
+  <div class="ds-head">
+    <h2>Library</h2>
+    <span class="meta">30 rows &middot; SeqNo 0&ndash;29</span>
+    <span class="meta">8 columns</span>
+    <span class="spacer"></span>
+    <span class="src">one row per book</span>
+  </div>
+  <div class="scroller">
+  <table class="dstbl">
+    <thead><tr>
+      <th>SeqNo</th><th>Name</th><th>Author</th><th>Genre</th><th>Language</th>
+      <th class="num">Pages</th><th>Publisher</th><th class="num">Year</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="seq">0</td><td>Igniting Minds</td><td>Kalam</td><td>Nonfiction</td><td>English</td>
+          <td class="num">178</td><td>Penguin</td><td class="num">2002</td></tr>
+      <tr class="gap"><td colspan="8">&#9642;&#9642;&#9642;</td></tr>
+      <tr><td class="seq">29</td><td>Malgudi Days</td><td>Narayan</td><td>Fiction</td><td>English</td>
+          <td class="num">150</td><td>Indian Thought</td><td class="num">1943</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="cols">
+    <li><code>Name</code> is the <b>book title</b>, not a person &mdash; the author is its own column. Both printed rows use a surname only for <code>Author</code> (Kalam, Narayan).</li>
+    <li><code>Genre</code> is Fiction / Nonfiction, <code>Language</code> is English or another language. The classic filter here is an OR over two of these, then the complement (<code>count &minus; A</code>).</li>
+    <li><code>Year</code> is the year of publication, four digits &mdash; the column the &ldquo;latest year per author&rdquo; dictionary questions maximise over.</li>
+  </ul>
+  <div class="uses" data-ds="Library"><h3>Questions in your set that use it</h3><div class="qchips"></div></div>
+</section>
+
+<section class="ds" id="ds-olympics">
+  <div class="ds-head">
+    <h2>Olympics</h2>
+    <span class="meta">50 rows &middot; SeqNo 0&ndash;49</span>
+    <span class="meta">8 columns</span>
+    <span class="spacer"></span>
+    <span class="src">one row per medal won</span>
+  </div>
+  <div class="scroller">
+  <table class="dstbl">
+    <thead><tr>
+      <th>SeqNo</th><th>Name</th><th>Gender</th><th>Nationality</th><th>Host country</th>
+      <th class="num">Year</th><th>Sport</th><th>Medal</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="seq">0</td><td>Karnam Malleswari</td><td>F</td><td>Indian</td><td>Australia</td>
+          <td class="num">2000</td><td>Weightlifting</td><td>Bronze</td></tr>
+      <tr class="gap"><td colspan="8">&#9642;&#9642;&#9642;</td></tr>
+      <tr><td class="seq">49</td><td>Michael Phelps</td><td>M</td><td>American</td><td>China</td>
+          <td class="num">2008</td><td>Swimming</td><td>Gold</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul class="cols">
+    <li>A row is <b>a medal, not an athlete</b>. The same athlete appears on several rows (Phelps most of all), which is exactly what the nested-loop &ldquo;duplicate athlete entries&rdquo; question counts.</li>
+    <li><code>Nationality</code> is an adjective (Indian, American), not a country name. <code>Host country</code> is the country the games were held in &mdash; a different column from the athlete's own.</li>
+    <li><code>Medal</code> is Gold / Silver / Bronze; <code>Year</code> is the games year, so <code>Year</code> and <code>Host country</code> move together.</li>
+  </ul>
+  <div class="uses" data-ds="Olympics"><h3>Questions in your set that use it</h3><div class="qchips"></div></div>
+</section>
+
+<section class="ds" id="ds-bills">
+  <div class="ds-head">
+    <h2>Shopping Bills</h2>
+    <span class="meta">30 cards</span>
+    <span class="meta">5 columns per item</span>
+    <span class="spacer"></span>
+    <span class="src">three sample cards printed out of 30</span>
+  </div>
+  <p class="lede" style="font-size:14px;margin:0 0 14px">Not a flat table &mdash; a list of <b>30 bill cards</b>, each with a shop, a customer, a bill number, and its own item list. So the loops here are two-level: over bills, then over the items inside a bill. These three are the only cards the paper prints.</p>
+  <div class="bills">
+
+    <div class="bill b-green">
+      <div class="bhead">SV Stores<span class="who">Srivatsan</span><span class="no">1</span></div>
+      <table>
+        <thead><tr><th>Item</th><th>Category</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Carrots</td><td>Vegetables/Food</td><td class="num">1.5</td><td class="num">50</td><td class="num">75</td></tr>
+          <tr><td>Soap</td><td>Toiletries</td><td class="num">4</td><td class="num">32</td><td class="num">128</td></tr>
+          <tr><td>Tomatoes</td><td>Vegetables/Food</td><td class="num">2</td><td class="num">40</td><td class="num">80</td></tr>
+          <tr><td>Bananas</td><td>Vegetables/Food</td><td class="num">8</td><td class="num">8</td><td class="num">64</td></tr>
+          <tr><td>Socks</td><td>Footwear/Apparel</td><td class="num">3</td><td class="num">56</td><td class="num">168</td></tr>
+          <tr><td>Curd</td><td>Dairy/Food</td><td class="num">0.5</td><td class="num">32</td><td class="num">16</td></tr>
+          <tr><td>Milk</td><td>Dairy/Food</td><td class="num">1.5</td><td class="num">24</td><td class="num">36</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Bill total</td><td class="num">567</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="bill b-blue">
+      <div class="bhead">Sun General<span class="who">Vignesh</span><span class="no">14</span></div>
+      <table>
+        <thead><tr><th>Item</th><th>Category</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Phone Charger</td><td>Utilities</td><td class="num">1</td><td class="num">230</td><td class="num">230</td></tr>
+          <tr><td>Razor Blades</td><td>Grooming</td><td class="num">1</td><td class="num">12</td><td class="num">12</td></tr>
+          <tr><td>Razor</td><td>Grooming</td><td class="num">1</td><td class="num">45</td><td class="num">45</td></tr>
+          <tr><td>Shaving Lotion</td><td>Grooming</td><td class="num">0.8</td><td class="num">180</td><td class="num">144</td></tr>
+          <tr><td>Earphones</td><td>Electronics</td><td class="num">1</td><td class="num">210</td><td class="num">210</td></tr>
+          <tr><td>Pencils</td><td>Stationery</td><td class="num">3</td><td class="num">5</td><td class="num">15</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Bill total</td><td class="num">656</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="bill b-amber">
+      <div class="bhead">Big Bazaar<span class="who">Sudeep</span><span class="no">2</span></div>
+      <table>
+        <thead><tr><th>Item</th><th>Category</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Baked Beans</td><td>Canned/Food</td><td class="num">1</td><td class="num">125</td><td class="num">125</td></tr>
+          <tr><td>Chicken Wings</td><td>Meat/Food</td><td class="num">0.5</td><td class="num">600</td><td class="num">300</td></tr>
+          <tr><td>Cocoa powder</td><td>Canned/Food</td><td class="num">1</td><td class="num">160</td><td class="num">160</td></tr>
+          <tr><td>Capsicum</td><td>Vegetables/Food</td><td class="num">0.8</td><td class="num">180</td><td class="num">144</td></tr>
+          <tr><td>Tie</td><td>Apparel</td><td class="num">2</td><td class="num">390</td><td class="num">780</td></tr>
+          <tr><td>Clips</td><td>Household</td><td class="num">0.5</td><td class="num">32</td><td class="num">16</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Bill total</td><td class="num">1525</td></tr></tfoot>
+      </table>
+    </div>
+
+  </div>
+  <ul class="cols">
+    <li><code>Cost</code> is derived: <b>Qty &times; Price</b>, and the bill total is the sum of Cost. Both hold on all three printed cards (567, 656, 1525), so you can reconstruct any figure a question withholds.</li>
+    <li><code>Qty</code> is <b>not always an integer</b> &mdash; 1.5 kg of carrots, 0.8 of shaving lotion. Anything that assumes a whole count is wrong.</li>
+    <li>A bill carries a <b>shop</b>, a <b>customer</b> and a <b>bill number</b>; a customer can hold more than one bill, which is what the &ldquo;most bills issued to one customer&rdquo; nested loops are grouping on. Categories are slash-joined labels (<code>Vegetables/Food</code>, <code>Dairy/Food</code>) &mdash; several distinct categories end in <code>/Food</code>, so a &ldquo;food&rdquo; filter is a substring test, not an equality test.</li>
+  </ul>
+  <div class="uses" data-ds="Shopping Bills"><h3>Questions in your set that use it</h3><div class="qchips"></div></div>
+</section>
+
+<details class="scan">
+  <summary>Show the sheet exactly as printed in the paper (2022 Aug, Q2)</summary>
+  <figure style="margin:0">
+    <img src="questions/ct/C01_2022_aug-Q2.webp" alt="The five CT sample datasets as printed in the 2022 Aug question paper">
+    <figcaption>Cropped from the original paper. Everything above is transcribed from this scan &mdash; if a glyph looks doubtful, this is the source of truth.</figcaption>
+  </figure>
+</details>
+
+<footer>Transcribed from the reference sheet the CT paper prints with the questions. The tables show the first and last row only, because that is all the paper shows; the derived-column rules (<code>Total</code>, <code>LetterCount</code>, <code>Cost</code>) were checked against every printed row. Row counts come from the SeqNo of the last row. The question chips are live &mdash; they read the same progress store as the rest of the site.</footer>
+</div>
+
+<script src="assets/js/app.js?v=7"></script>
+<script>
+(async function () {
+  var E = window.EndTerm;
+  await E.load();
+  var dl = E.daysLeft();
+  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+
+  /* compact mode: this page's whole point is living in a second window, so the
+     narrow layout is a choice you make once and it sticks. */
+  var COMPACT = "rahulrr-iitm-exams.ct-datasets.compact";
+  var box = document.getElementById("compact");
+  try { box.checked = localStorage.getItem(COMPACT) === "1"; } catch (e) {}
+  function applyCompact() { document.body.classList.toggle("compact", box.checked); }
+  applyCompact();
+  box.addEventListener("change", function () {
+    applyCompact();
+    try { localStorage.setItem(COMPACT, box.checked ? "1" : "0"); } catch (e) {}
+  });
+
+  /* Which PYQs actually run over each dataset. Matched on the classified cluster
+     and stem rather than hand-listed, so a new exam's questions wire themselves
+     up. Solved rows are ticked off the same state the roadmap writes. */
+  var PATTERNS = {
+    "Scores": /\bscores?\b/i,
+    "Words": /\bwords?\b/i,
+    "Library": /\blibrar/i,
+    "Olympics": /\bolympic/i,
+    "Shopping Bills": /\bshopping\b|\bbills?\b/i
+  };
+
+  var sub = E.SUBJECTS.filter(function (s) { return s.key === "ct"; })[0];
+  if (!sub) return;
+  var data, state;
+  try { data = await E.loadSubjectData(sub); } catch (e) { return; }
+  state = E.loadState();
+  var done = (state.doneQids && state.doneQids.ct) || {};
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  document.querySelectorAll(".uses").forEach(function (box) {
+    var re = PATTERNS[box.getAttribute("data-ds")];
+    var hits = data.rows.filter(function (r) {
+      return re.test((r.c || "") + " " + (r.s || ""));
+    }).sort(function (a, b) {
+      return a.w - b.w || (a.pk < b.pk ? -1 : a.pk > b.pk ? 1 : 0);
+    });
+    if (!hits.length) { box.hidden = true; return; }
+    box.querySelector("h3").textContent =
+      hits.length + " question" + (hits.length === 1 ? "" : "s") + " in your set use it";
+    box.querySelector(".qchips").innerHTML = hits.map(function (r) {
+      return '<a class="qchip' + (done[r.qid] ? " done" : "") + '" target="_blank" rel="noopener"' +
+        ' href="ct.html#q/' + encodeURIComponent(r.qid) + '"' +
+        ' title="' + esc(r.s) + '">W' + r.w + " &middot; " + esc(r.p) + " " + esc(r.q) + '</a>';
+    }).join("");
+  });
+})();
+</script>
+</body>
+</html>

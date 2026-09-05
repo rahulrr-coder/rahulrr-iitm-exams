@@ -396,6 +396,13 @@
         '<div class="qpage">' +
           '<div class="qnav">' +
             '<a class="back" href="#w' + r.w + '">&larr; Week ' + r.w + ' ladder</a>' +
+            // CT pseudocode is written against five sample datasets the paper prints
+            // once, at the front. Reaching them from the question is the whole point,
+            // so it opens in its own window rather than replacing the question.
+            (subKey === "ct"
+              ? '<a class="ds" href="ct-datasets.html" target="_blank" rel="noopener"'
+                + ' title="Scores, Words, Library, Olympics, Shopping Bills">Datasets &#8599;</a>'
+              : "") +
             '<span class="spacer"></span>' +
             (prev ? '<a class="pn" href="#q/' + esc(prev) + '">&larr; Prev</a>'
                   : '<span class="pn off">&larr; Prev</span>') +

@@ -64,6 +64,12 @@ nav.topnav a.tab{font-size:14px;color:var(--ink-3);text-decoration:none;padding:
 nav.topnav a.tab:hover{color:var(--ink);background:var(--panel-2)}
 nav.topnav a.tab.active{color:var(--ink);background:var(--accent-soft);border:1px solid var(--accent-line)}
 nav.topnav .spacer{flex:1}
+/* the tab row is wider than a narrow window (a popped-out reference sheet, a
+   phone). Scroll it inside the bar rather than letting it widen the page and
+   drag every section sideways with it. */
+nav.topnav .inner{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none}
+nav.topnav .inner::-webkit-scrollbar{display:none}
+nav.topnav .brand,nav.topnav a.tab,nav.topnav .daysleft{flex:0 0 auto;white-space:nowrap}
 nav.topnav .daysleft{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);white-space:nowrap}
 nav.topnav .daysleft b{color:var(--warn);font-weight:600}
 
@@ -281,3 +287,8 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 .qset .tbl tr.here td{font-weight:600;color:var(--ink)}
 .qset .tbl tr.here td:first-child a{color:var(--accent)}
 .qset .qn a{text-decoration:none}
+
+/* pop-out reference sheet link (CT datasets) */
+a.dslink{font-weight:600;color:var(--accent);text-decoration:none;
+  border-bottom:1px solid var(--accent-line)}
+a.dslink:hover{border-bottom-color:var(--accent)}

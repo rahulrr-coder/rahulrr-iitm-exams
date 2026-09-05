@@ -39,6 +39,7 @@ view follows.
 index.html                     dashboard: countdown, must-solve progress, today's plan, good backlog
 core.html                      every archetype ranked by marks covered, weeks ignored — the minimum set
 math2.html stat1.html …        one page per subject (week ladder + archetype cards + question view)
+ct-datasets.html               the five sample datasets CT pseudocode runs over — a pop-out reference sheet
 data/manifest.json             THE file that defines the current exam
 data/<subject>.json            classified questions
 data/<subject>_archetypes.json archetype clusters
@@ -51,9 +52,31 @@ assets/js/roadmap.js           subject page + single-question view
 
 No build step, no dependencies, no backend. Progress lives in `localStorage`, per browser.
 
-CSS and JS are referenced with a `?v=N` query. **Bump that number in all five HTML files
+CSS and JS are referenced with a `?v=N` query. **Bump that number in every HTML file
 whenever you change `style.css`, `app.js`, or `roadmap.js`** — otherwise browsers keep serving the
 cached copy and your change appears not to have deployed.
+
+## The CT datasets sheet
+
+CT pseudocode questions do not carry their own data: they loop over five datasets — **Scores,
+Words, Library, Olympics, Shopping Bills** — printed once as a reference sheet with the paper and
+then referred to by name for the rest of it. Solving a question without the sheet in front of you
+means guessing which columns exist.
+
+`ct-datasets.html` is that sheet, transcribed from the scan the site already carries
+(`questions/ct/C01_2022_aug-Q2.webp`, still linked at the bottom of the page as the source of
+truth). It is a standalone page with no dependency on the roadmap: open it in a second window and
+leave it there. Each dataset shows the columns in paper order, the first and last row — the only
+rows the paper prints — the row count taken from the last `SeqNo`, and notes on the derived
+columns (`Total` = M+P+C, `LetterCount` counts letters not characters, `Cost` = Qty × Price), all
+checked against every printed row. **Compact** shrinks it for a narrow side window and the choice
+sticks.
+
+Each section also lists the PYQs in the current set that run over that dataset. Those are matched
+on the classified cluster and stem at load time rather than hand-listed, so swapping in a new exam
+rewires them with no edit here. It is reachable from the **CT Data** nav tab on every page, from
+the CT roadmap masthead, and from a `Datasets ↗` link on every CT question page — all of which
+open it in a new window.
 
 ## Run locally
 
