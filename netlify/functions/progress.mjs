@@ -16,10 +16,21 @@ const DB = "iitm_exams";
 const COLLECTION = "progress";
 const EMPTY = { doneQids: {}, archetypesLearned: {}, passes: {}, streak: { count: 0, lastDay: null } };
 
-// one client per warm container, reused across invocations
+/* One client per warm container, reused across invocations.
+   Fail fast: the driver's 30s default server-selection timeout outlives the
+   function itself, so a blocked IP burned the whole budget and surfaced as an
+   opaque 502 instead of saying what was wrong. And a rejected promise must not
+   stay cached — otherwise one failed connect poisons every later invocation on
+   that container until it recycles. */
 let connecting;
 function connect() {
-  if (!connecting) connecting = new MongoClient(process.env.MONGODB_URI, { maxPoolSize: 1 }).connect();
+  if (!connecting) {
+    connecting = new MongoClient(process.env.MONGODB_URI, {
+      maxPoolSize: 1,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000
+    }).connect().catch((err) => { connecting = null; throw err; });
+  }
   return connecting;
 }
 
@@ -58,7 +69,20 @@ export default async (req) => {
   }
 
   const exam = new URL(req.url).searchParams.get("exam") || "End Term Sep 2026";
-  const coll = (await connect()).db(DB).collection(COLLECTION);
+
+  let coll;
+  try {
+    coll = (await connect()).db(DB).collection(COLLECTION);
+  } catch (err) {
+    const blocked = /server selection|ETIMEDOUT|ECONNREFUSED|timed out/i.test(String(err && err.message));
+    return Response.json({
+      error: "could not reach MongoDB",
+      detail: String(err && err.message).slice(0, 300),
+      likelyCause: blocked
+        ? "Atlas is refusing this connection. Netlify function IPs are dynamic, so Atlas → Network Access needs 0.0.0.0/0."
+        : "Check the MONGODB_URI username and password."
+    }, { status: 502 });
+  }
 
   if (req.method === "GET") {
     const doc = await coll.findOne({ _id: exam });
