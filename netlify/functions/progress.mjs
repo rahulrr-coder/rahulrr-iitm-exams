@@ -43,7 +43,15 @@ function merge(base, incoming) {
 
 export default async (req) => {
   if (!process.env.MONGODB_URI) {
-    return Response.json({ error: "MONGODB_URI is not set" }, { status: 503 });
+    /* Names only, never values. Distinguishes "set under a different name" and
+       "set but not scoped to Functions" from "never set at all", which otherwise
+       look identical from out here. */
+    const near = Object.keys(process.env).filter((k) => /mongo|progress|atlas|db/i.test(k));
+    return Response.json({
+      error: "MONGODB_URI is not visible to this function",
+      similarVariablesThisFunctionCanSee: near,
+      check: "Netlify → Site configuration → Environment variables: the variable must be scoped to Functions, set for the Production context, and followed by a redeploy."
+    }, { status: 503 });
   }
   if (process.env.PROGRESS_KEY && req.headers.get("x-progress-key") !== process.env.PROGRESS_KEY) {
     return Response.json({ error: "bad key" }, { status: 401 });
