@@ -271,3 +271,13 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
   background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
   padding:6px 9px;cursor:pointer}
 .sortby select:hover{border-color:var(--accent-line)}
+
+/* matching-set reveal on the question page */
+.qset{margin:14px 0 0;padding:14px 16px;border:1px solid var(--accent-line);
+  background:var(--accent-soft);border-radius:var(--radius);font-size:13.5px;color:var(--ink-2)}
+.qset b{color:var(--ink)}
+.qset table.tbl{margin-top:10px;font-size:13.5px}
+.qset .tbl td{padding:6px 8px;border-bottom:1px solid var(--line-soft)}
+.qset .tbl tr.here td{font-weight:600;color:var(--ink)}
+.qset .tbl tr.here td:first-child a{color:var(--accent)}
+.qset .qn a{text-decoration:none}

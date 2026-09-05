@@ -337,6 +337,51 @@
       qview.hidden = on;
     }
 
+    /* Matching sets print one shared table, then ask about each List A word as its
+       own sub-question. Answering them one letter at a time hides the fact that the
+       set is a bijection — and the bijection is the thing worth learning, since it
+       teaches five words instead of one and lets you check by elimination. The
+       option text lives only in the question image, so this pairs each List A word
+       with its answer letter and leaves you to read List B off the table once. */
+    /* Matching sets print one shared table, then ask about each List A word as its
+       own sub-question. Answering one letter at a time hides that the set is a
+       bijection — which is both the thing worth learning (five words, not one) and a
+       free checking rule in the hall. Group on the stem with the word redacted, not
+       on the cluster label: labels drift between papers ("Synonym matching: plume"
+       vs "Collocation matching tacit") but the stem is written to a template. The
+       option text lives only in the question image, so this pairs each List A word
+       with its letter and leaves you to read List B off the table once. */
+    var SET_MATCH = /^\s*match\s+(?:the\s+words?\s+)?(.+?)\s+with\s+/i;
+    var SET_NYM = /\b(?:antonym|synonym)\s+(?:of|for)\s+(?:the\s+word\s+)?([A-Za-z][\w'-]*)/i;
+
+    function setTerm(x) {
+      var stem = String(x.s || "");
+      var m = SET_MATCH.exec(stem) || SET_NYM.exec(stem);
+      return m ? m[1] : null;
+    }
+
+    // the stem with its own word blanked out — two questions from one table match
+    function setFamily(x) {
+      var term = setTerm(x);
+      if (!term) return null;
+      var stem = String(x.s || "");
+      var at = stem.toLowerCase().indexOf(term.toLowerCase());
+      if (at < 0) return null;
+      return (stem.slice(0, at) + "_" + stem.slice(at + term.length))
+        .toLowerCase().replace(/\s+/g, " ").trim();
+    }
+
+    function matchingSet(r) {
+      var family = setFamily(r);
+      if (!family) return null;
+      var sibs = data.rows.filter(function (x) {
+        return x.pk === r.pk && x.w === r.w && setFamily(x) === family;
+      }).sort(function (a, b) {
+        return (parseInt(a.q.replace(/\D/g, ""), 10) || 0) - (parseInt(b.q.replace(/\D/g, ""), 10) || 0);
+      });
+      return sibs.length >= 3 ? { family: family, rows: sibs } : null;
+    }
+
     function renderQuestion(qid) {
       var r = rowByQid[qid];
       if (!r) { location.hash = ""; return; }
@@ -373,6 +418,7 @@
           '<div class="qtests"><b>What it tests:</b> ' + esc(r.c) + ' &mdash; ' + esc(r.s) + '</div>' +
           '<div class="qans"><button class="reveal" type="button">Reveal answer</button>' +
             '<span class="ansval" hidden>' + esc(r.a) + '</span></div>' +
+          setHtml(r, qid) +
           '<label class="qdone"><input type="checkbox"' + (isDone ? " checked" : "") + '> ' +
             'Solved this one' + '</label>' +
         '</div>';
@@ -380,12 +426,30 @@
       qview.querySelector(".reveal").addEventListener("click", function () {
         this.hidden = true;
         qview.querySelector(".ansval").hidden = false;
+        var set = qview.querySelector(".qset");
+        if (set) set.hidden = false;
       });
       qview.querySelector(".qdone input").addEventListener("change", function () {
         setDone(qid, this.checked);
       });
       setBrowseVisible(false);
       window.scrollTo(0, 0);
+    }
+
+    function setHtml(r, qid) {
+      var set = matchingSet(r);
+      if (!set) return "";
+      var rowsHtml = set.rows.map(function (x) {
+        return '<tr' + (x.qid === qid ? ' class="here"' : '') + '>' +
+          '<td class="qn"><a href="#q/' + esc(x.qid) + '">' + esc(x.q) + '</a></td>' +
+          '<td>' + esc(setTerm(x)) + '</td>' +
+          '<td class="c-mk">' + esc(x.a) + '</td></tr>';
+      }).join("");
+      return '<div class="qset" hidden>All <b>' + set.rows.length + '</b> pairings in this set. ' +
+        'It is a bijection &mdash; every option letter is used exactly once, so a letter ' +
+        'already spent elsewhere in the set cannot be the answer here. Read List B off ' +
+        'the table above once, then check the whole mapping at a glance.' +
+        '<table class="tbl"><tbody>' + rowsHtml + '</tbody></table></div>';
     }
 
     // one place that ticks a question, so the table and the question page agree
