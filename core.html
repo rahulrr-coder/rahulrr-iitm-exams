@@ -32,6 +32,20 @@
   .f-scan{--fam:#6a8fb5} .f-pairwise{--fam:#8a6ab5} .f-matrix{--fam:#b5736a}
   .f-dict{--fam:#5f9e7a} .f-list{--fam:#b59a4a} .f-recursion{--fam:#a8578f}
   .f-ref{--fam:#8a8f85}
+  .f-descriptive{--fam:#6a8fb5} .f-correlation{--fam:#5f9e7a} .f-counting{--fam:#b59a4a}
+  .f-probability{--fam:#8a6ab5} .f-randomvar{--fam:#b5736a} .f-moments{--fam:#a8578f}
+  .f-discretedist{--fam:#4f8f8a} .f-contdist{--fam:#9e7a4a}
+  .f-matrixdet{--fam:#6a8fb5} .f-subspace{--fam:#5f9e7a} .f-linearmap{--fam:#8a6ab5}
+  .f-rankaffine{--fam:#b59a4a} .f-orthogonal{--fam:#b5736a} .f-mvlimits{--fam:#a8578f}
+  .f-tangent{--fam:#4f8f8a} .f-optimization{--fam:#9e7a4a}
+  /* family header: a band you can find again after looking away, not a row to tick */
+  tr.famrow td{background:var(--panel-2);border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line-soft);padding:7px 10px}
+  tr.famrow .fam{font-size:12px;padding:2px 8px}
+  tr.famrow.done .fam{opacity:.55}
+  .famn{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-left:8px}
+  /* inside a group the header already names the family; repeating it on every row is noise */
+  .corewrap.grouped td.c-q .fam{display:none}
 </style>
 </head>
 <body>
@@ -61,6 +75,7 @@
   <div class="chips" id="subjectChips"></div>
   <div class="chips" id="targetChips"></div>
   <div class="chips" id="sortChips"></div>
+  <div class="chips" id="groupChips"></div>
   <label class="tgl"><input type="checkbox" id="hideLearned"> Hide learned</label>
 </div>
 
@@ -91,14 +106,34 @@
      and puts the sibling archetypes of one shape next to each other visually.
      Only tagged subjects show a label; the rest render exactly as before. */
   var FAMILY = {
+    // CT — the loop skeleton you actually write
     scan:      "single-pass scan",
     pairwise:  "nested pairwise",
     matrix:    "matrix / graph",
     dict:      "dictionary",
     list:      "list building",
     recursion: "recursion",
-    ref:       "reference data"
+    ref:       "reference data",
+    // Stat 1 — the machinery the question runs on
+    descriptive:  "descriptive",
+    correlation:  "correlation",
+    counting:     "counting",
+    probability:  "probability rules",
+    randomvar:    "PMF / CDF",
+    moments:      "expectation & variance",
+    discretedist: "binomial / Poisson",
+    contdist:     "continuous dists",
+    // Math 2 — linear algebra, then multivariable calculus
+    matrixdet:    "matrices & determinants",
+    subspace:     "subspace & basis",
+    linearmap:    "linear maps",
+    rankaffine:   "rank & affine",
+    orthogonal:   "orthogonality",
+    mvlimits:     "limits & derivatives",
+    tangent:      "gradient & tangent plane",
+    optimization: "optimization"
   };
+  function famOf(r) { return FAMILY[r.family] ? r.family : null; }
 
   var packs = {};
   await Promise.all(E.SUBJECTS.map(async function (sub) {
@@ -184,6 +219,15 @@
              (s.key === SORT) + '">' + s.label + '</button>';
     }).join("");
 
+  /* Grouping is on by default: working a whole family in one sitting is much
+     cheaper than meeting its skeleton five times scattered down the list, and
+     that is what this page is for. It only reorders *within* a subject's
+     in-scope set — which archetypes are in scope is still decided by marks, so
+     the cut line and the coverage target mean exactly what they did before. */
+  var GROUP = true;
+  document.getElementById("groupChips").innerHTML =
+    '<button class="chip" id="groupBtn" aria-pressed="' + GROUP + '">Group by family</button>';
+
   document.getElementById("subjectChips").innerHTML =
     '<span class="tgl" style="border:0;background:none;padding-left:0">Subject</span>' +
     '<button class="chip" data-sub="all" aria-pressed="true">All subjects</button>' +
@@ -257,12 +301,43 @@
         '</tr>';
       }
 
-      html += '<div class="corewrap"><table class="tbl"><thead><tr>' +
+      html += '<div class="corewrap' + (GROUP ? " grouped" : "") + '"><table class="tbl"><thead><tr>' +
         '<th></th><th></th><th>Archetype &middot; trigger</th>' +
         '<th class="h-mk">Marks</th><th class="h-mk">Must/Qs</th><th class="h-mk">Cum</th>' +
         '</tr></thead><tbody>';
 
-      for (var i = 0; i < k; i++) html += row(p.ranked[i], i);
+      /* In-scope rows, grouped by family when the toggle is on. Families are
+         ordered by the marks they carry in scope, and rows keep their marks
+         order inside a family, so the top of the page is still the best hour
+         you can spend — it just no longer makes you re-learn one skeleton in
+         five separate sittings. The rank number stays the marks rank, so a row
+         still says how it ranks overall, not merely where it sits on screen. */
+      var scoped = [];
+      for (var i = 0; i < k; i++) scoped.push({ r: p.ranked[i], i: i });
+
+      var anyFam = scoped.some(function (x) { return famOf(x.r); });
+      if (GROUP && anyFam) {
+        var groups = {}, order = [];
+        scoped.forEach(function (x) {
+          var f = famOf(x.r) || "_";
+          if (!groups[f]) { groups[f] = { rows: [], marks: 0, done: 0 }; order.push(f); }
+          groups[f].rows.push(x);
+          groups[f].marks += x.r.marks;
+          if (learned[x.r.id]) groups[f].done++;
+        });
+        order.sort(function (a, b) { return groups[b].marks - groups[a].marks; });
+        order.forEach(function (f) {
+          var g = groups[f];
+          html += '<tr class="famrow' + (g.done === g.rows.length ? " done" : "") + '"><td></td><td></td>' +
+            '<td><span class="fam f-' + f + '">' + (FAMILY[f] || "other") + '</span>' +
+            '<span class="famn">' + g.done + '/' + g.rows.length + ' learned</span></td>' +
+            '<td class="c-mk h-mk">' + Math.round(g.marks) + '</td>' +
+            '<td class="c-mk h-mk"></td><td class="c-mk h-mk"></td></tr>';
+          g.rows.forEach(function (x) { html += row(x.r, x.i); });
+        });
+      } else {
+        scoped.forEach(function (x) { html += row(x.r, x.i); });
+      }
 
       if (k < p.ranked.length) {
         html += '<tr class="cutrow"><td colspan="6">' +
@@ -333,6 +408,14 @@
     document.querySelectorAll("#sortChips .chip").forEach(function (c) {
       c.setAttribute("aria-pressed", String(c === b));
     });
+    renderBlocks();
+  });
+
+  document.getElementById("groupChips").addEventListener("click", function (e) {
+    var b = e.target.closest("#groupBtn");
+    if (!b) return;
+    GROUP = !GROUP;
+    b.setAttribute("aria-pressed", String(GROUP));
     renderBlocks();
   });
 
