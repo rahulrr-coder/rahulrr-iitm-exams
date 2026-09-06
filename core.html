@@ -44,8 +44,14 @@
   tr.famrow .fam{font-size:12px;padding:2px 8px}
   tr.famrow.done .fam{opacity:.55}
   .famn{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-left:8px}
-  /* inside a group the header already names the family; repeating it on every row is noise */
+  /* the band or the picker already names the family; repeating it per row is noise */
   .corewrap.grouped td.c-q .fam{display:none}
+  /* family picker sits where the sort chips do — you never need both */
+  .famsel{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink);
+    background:var(--panel);border:1px solid var(--line);border-radius:5px;
+    padding:6px 9px;cursor:pointer;max-width:230px}
+  .famsel:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .wk-fam{vertical-align:middle;margin-left:8px;font-size:12px}
 </style>
 </head>
 <body>
@@ -75,11 +81,11 @@
   <div class="chips" id="subjectChips"></div>
   <div class="chips" id="targetChips"></div>
   <div class="chips" id="sortChips"></div>
-  <div class="chips" id="groupChips"></div>
+  <div class="chips" id="famChips"></div>
   <label class="tgl"><input type="checkbox" id="hideLearned"> Hide learned</label>
 </div>
 
-<div class="note" id="realityNote"></div>
+<details class="note" id="realityNote"></details>
 
 <div id="blocks"></div>
 
@@ -219,14 +225,53 @@
              (s.key === SORT) + '">' + s.label + '</button>';
     }).join("");
 
-  /* Grouping is on by default: working a whole family in one sitting is much
+  /* Rows always group by family: working a whole family in one sitting is much
      cheaper than meeting its skeleton five times scattered down the list, and
-     that is what this page is for. It only reorders *within* a subject's
+     that is what this page is for. Grouping only reorders *within* a subject's
      in-scope set — which archetypes are in scope is still decided by marks, so
-     the cut line and the coverage target mean exactly what they did before. */
-  var GROUP = true;
-  document.getElementById("groupChips").innerHTML =
-    '<button class="chip" id="groupBtn" aria-pressed="' + GROUP + '">Group by family</button>';
+     the cut line and the coverage target mean exactly what they did before.
+
+     FAMILY_FILTER narrows to one family so a sitting is the whole page rather
+     than a band you have to keep scrolling back to. Families belong to a
+     subject, so the picker only appears once a subject is chosen, and resets
+     when you switch — and it takes the sort control's place, since sorting
+     reorders subjects and is meaningless when you are inside one. */
+  var FAMILY_FILTER = "all";
+
+  // families present in a subject's in-scope set, richest first — the same
+  // order the groups render in, so the picker reads like the page.
+  function familiesInScope(key) {
+    var p = packs[key];
+    if (!p) return [];
+    var k = E.coreCut(p.ranked, TARGET), seen = {}, out = [];
+    for (var i = 0; i < k; i++) {
+      var f = famOf(p.ranked[i]);
+      if (!f) continue;
+      if (!seen[f]) { seen[f] = { id: f, n: 0, marks: 0 }; out.push(seen[f]); }
+      seen[f].n++; seen[f].marks += p.ranked[i].marks;
+    }
+    return out.sort(function (a, b) { return b.marks - a.marks; });
+  }
+
+  function renderControls() {
+    var single = SUBJECT !== "all";
+    var fams = single ? familiesInScope(SUBJECT) : [];
+    document.getElementById("sortChips").hidden = single;
+    var box = document.getElementById("famChips");
+    box.hidden = !fams.length;
+    if (!fams.length) return;
+    var total = fams.reduce(function (a, f) { return a + f.n; }, 0);
+    box.innerHTML =
+      '<span class="tgl" style="border:0;background:none;padding-left:0">Family</span>' +
+      '<select id="famSel" class="famsel">' +
+        '<option value="all"' + (FAMILY_FILTER === "all" ? " selected" : "") + '>' +
+          'All families (' + total + ')</option>' +
+        fams.map(function (f) {
+          return '<option value="' + f.id + '"' + (FAMILY_FILTER === f.id ? " selected" : "") + '>' +
+            esc(FAMILY[f.id]) + ' (' + f.n + ')</option>';
+        }).join("") +
+      '</select>';
+  }
 
   document.getElementById("subjectChips").innerHTML =
     '<span class="tgl" style="border:0;background:none;padding-left:0">Subject</span>' +
@@ -253,13 +298,17 @@
 
     var a50 = archesFor(0.5), a80 = archesFor(0.8);
     document.getElementById("realityNote").innerHTML =
-      '<h3>There is no clean 80/20 here</h3>' +
+      '<summary>There is no clean 80/20 here &mdash; ' + a50 +
+        ' archetypes carry half the marks, ' + a80 + ' carry 80%</summary>' +
       '<p>Reaching <b>80%</b> of the marks takes <b>' + a80 + '</b> of the ' + allArch + ' archetypes (' +
       Math.round(100 * a80 / allArch) + '%) &mdash; the tail is long and nearly flat, so the last fifth of the marks costs almost as much work as the first half. ' +
       'The real leverage sits lower down: <b>' + a50 + '</b> archetypes (' + Math.round(100 * a50 / allArch) + '%) already carry <b>half</b> the marks. ' +
       'With <b>' + dl + '</b> day' + (dl === 1 ? "" : "s") + ' left, 50% is the honest target and 65% is the stretch.</p>' +
-      '<p>Pick a target above and the lists resize. Within a subject the order never changes &mdash; the target only moves where the line falls, so time lost never means restarting, just stopping higher up. ' +
-      'The sort reorders the subjects, not the rows: <b>cheapest marks</b> puts the subject buying the most marks per archetype first, <b>furthest behind</b> the one you have learned least of.</p>';
+      '<p>Pick a target above and the lists resize. Within a subject the order never changes &mdash; the target only moves where the line falls, so time lost never means restarting, just stopping higher up.</p>' +
+      '<p>Rows are grouped by <b>family</b> &mdash; the skeleton the archetype reduces to. Work a family in one sitting: the ninth dictionary trace costs a fraction of the first, because only the detail changes. Pick one subject to filter down to a single family.</p>' +
+      (SUBJECT === "all"
+        ? '<p>The sort reorders the subjects, not the rows: <b>cheapest marks</b> puts the subject buying the most marks per archetype first, <b>furthest behind</b> the one you have learned least of.</p>'
+        : "");
   }
 
   function renderBlocks() {
@@ -272,15 +321,39 @@
       var sc = scopeOf(p, learned);
       var k = sc.k, coreQ = sc.q, coreM = sc.m, coreMust = sc.must, done = sc.done;
 
+      /* One family selected: the picker already names it, so the page is just
+         that list — no group band to re-read, no cut line and no tail, because
+         the tail is a different decision from the one you are making now. */
+      var oneFam = SUBJECT === s.key && FAMILY_FILTER !== "all";
+
+      // in one-family view every number in the header is about that family,
+      // so the header answers "how much of THIS sitting is left"
+      var fq = 0, fm = 0, fmust = 0, fdone = 0, ftot = 0;
+      if (oneFam) {
+        for (var z = 0; z < k; z++) {
+          var rz = p.ranked[z];
+          if (famOf(rz) !== FAMILY_FILTER) continue;
+          ftot++; fq += rz.n; fm += rz.marks; fmust += rz.must.length;
+          if (learned[rz.id]) fdone++;
+        }
+      }
+      var hN = oneFam ? ftot : k, hDone = oneFam ? fdone : done;
+
       html += '<section class="week s-' + s.key + '">' +
-        '<div class="wk-head"><span class="wk-n">' + done + '/' + k + '</span>' +
-        '<h2 class="wk-t">' + s.emoji + " " + esc(s.label) + '</h2>' +
+        '<div class="wk-head"><span class="wk-n">' + hDone + '/' + hN + '</span>' +
+        '<h2 class="wk-t">' + s.emoji + " " + esc(s.label) +
+          (oneFam ? ' <span class="wk-fam fam f-' + FAMILY_FILTER + '">' + FAMILY[FAMILY_FILTER] + '</span>' : "") +
+        '</h2>' +
         '<div class="wk-meta">' +
-          '<span><b>' + k + '</b> of ' + p.ranked.length + ' archetypes</span>' +
-          '<span><b>' + Math.round(100 * coreM / p.totalM) + '%</b> of ' + Math.round(p.totalM) + ' marks</span>' +
-          '<span><b>' + coreMust + '</b> must-solve of ' + coreQ + ' questions</span>' +
+          (oneFam
+            ? '<span><b>' + ftot + '</b> archetypes in this family</span>' +
+              '<span><b>' + Math.round(fm) + '</b> marks</span>' +
+              '<span><b>' + fmust + '</b> must-solve of ' + fq + ' questions</span>'
+            : '<span><b>' + k + '</b> of ' + p.ranked.length + ' archetypes</span>' +
+              '<span><b>' + Math.round(100 * coreM / p.totalM) + '%</b> of ' + Math.round(p.totalM) + ' marks</span>' +
+              '<span><b>' + coreMust + '</b> must-solve of ' + coreQ + ' questions</span>') +
         '</div></div>' +
-        '<div class="wk-prog"><i style="width:' + (k ? Math.round(100 * done / k) : 0) + '%"></i></div>';
+        '<div class="wk-prog"><i style="width:' + (hN ? Math.round(100 * hDone / hN) : 0) + '%"></i></div>';
 
       function row(r, i) {
         var isDone = !!learned[r.id];
@@ -297,16 +370,15 @@
             '<span class="stem">' + esc(r.trigger) + '</span></td>' +
           '<td class="c-mk h-mk">' + Math.round(r.marks) + '</td>' +
           '<td class="c-mk h-mk">' + r.must.length + '/' + r.n + '</td>' +
-          '<td class="c-mk h-mk">' + Math.round(100 * r.cum) + '%</td>' +
         '</tr>';
       }
 
-      html += '<div class="corewrap' + (GROUP ? " grouped" : "") + '"><table class="tbl"><thead><tr>' +
+      html += '<div class="corewrap grouped"><table class="tbl"><thead><tr>' +
         '<th></th><th></th><th>Archetype &middot; trigger</th>' +
-        '<th class="h-mk">Marks</th><th class="h-mk">Must/Qs</th><th class="h-mk">Cum</th>' +
+        '<th class="h-mk">Marks</th><th class="h-mk">Must/Qs</th>' +
         '</tr></thead><tbody>';
 
-      /* In-scope rows, grouped by family when the toggle is on. Families are
+      /* In-scope rows, grouped by family. Families are
          ordered by the marks they carry in scope, and rows keep their marks
          order inside a family, so the top of the page is still the best hour
          you can spend — it just no longer makes you re-learn one skeleton in
@@ -315,8 +387,10 @@
       var scoped = [];
       for (var i = 0; i < k; i++) scoped.push({ r: p.ranked[i], i: i });
 
-      var anyFam = scoped.some(function (x) { return famOf(x.r); });
-      if (GROUP && anyFam) {
+      if (oneFam) scoped = scoped.filter(function (x) { return famOf(x.r) === FAMILY_FILTER; });
+
+      var anyFam = !oneFam && scoped.some(function (x) { return famOf(x.r); });
+      if (anyFam) {
         var groups = {}, order = [];
         scoped.forEach(function (x) {
           var f = famOf(x.r) || "_";
@@ -332,15 +406,15 @@
             '<td><span class="fam f-' + f + '">' + (FAMILY[f] || "other") + '</span>' +
             '<span class="famn">' + g.done + '/' + g.rows.length + ' learned</span></td>' +
             '<td class="c-mk h-mk">' + Math.round(g.marks) + '</td>' +
-            '<td class="c-mk h-mk"></td><td class="c-mk h-mk"></td></tr>';
+            '<td class="c-mk h-mk"></td></tr>';
           g.rows.forEach(function (x) { html += row(x.r, x.i); });
         });
       } else {
         scoped.forEach(function (x) { html += row(x.r, x.i); });
       }
 
-      if (k < p.ranked.length) {
-        html += '<tr class="cutrow"><td colspan="6">' +
+      if (k < p.ranked.length && !oneFam) {
+        html += '<tr class="cutrow"><td colspan="5">' +
           Math.round(100 * coreM / p.totalM) + '% of the marks reached &middot; ' +
           (p.ranked.length - k) + ' archetypes below for the last ' + Math.round(p.totalM - coreM) + ' marks' +
           '<button class="chip" data-tail="' + s.key + '">' +
@@ -355,8 +429,13 @@
   }
 
   function renderAll() {
-    // nothing to order when the page is down to one subject
-    document.getElementById("sortChips").hidden = (SUBJECT !== "all");
+    // a family belongs to a subject and to the current cut, so a filter that no
+    // longer names a family in scope is dropped rather than left showing nothing
+    if (FAMILY_FILTER !== "all" &&
+        !familiesInScope(SUBJECT).some(function (f) { return f.id === FAMILY_FILTER; })) {
+      FAMILY_FILTER = "all";
+    }
+    renderControls();
     renderTop();
     renderBlocks();
   }
@@ -395,6 +474,7 @@
     var b = e.target.closest(".chip[data-sub]");
     if (!b) return;
     SUBJECT = b.getAttribute("data-sub");
+    FAMILY_FILTER = "all";
     document.querySelectorAll("#subjectChips .chip").forEach(function (c) {
       c.setAttribute("aria-pressed", String(c === b));
     });
@@ -411,11 +491,9 @@
     renderBlocks();
   });
 
-  document.getElementById("groupChips").addEventListener("click", function (e) {
-    var b = e.target.closest("#groupBtn");
-    if (!b) return;
-    GROUP = !GROUP;
-    b.setAttribute("aria-pressed", String(GROUP));
+  document.getElementById("famChips").addEventListener("change", function (e) {
+    if (!e.target.closest("#famSel")) return;
+    FAMILY_FILTER = e.target.value;
     renderBlocks();
   });
 
