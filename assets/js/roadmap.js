@@ -103,6 +103,50 @@
     data.rows.forEach(function (r) { rowTier[r.qid] = r.tier; byQidRow[r.qid] = r; });
     data.arch.forEach(function (a) { archById[a.id] = a; });
 
+    /* Family picker. The page groups by week, but a family cuts across weeks —
+       so filtering to one turns the ladder into "every question in the exam
+       that runs on this skeleton", which is the unit you sit down to work.
+       Built here rather than beside the other controls because it counts real
+       questions, and byQidRow is only populated above. Subjects with no family
+       tags never get the control. */
+    var FAMILY = {
+      scan: "single-pass scan", pairwise: "nested pairwise", matrix: "matrix / graph",
+      dict: "dictionary", list: "list building", recursion: "recursion", ref: "reference data",
+      descriptive: "descriptive", correlation: "correlation", counting: "counting",
+      probability: "probability rules", randomvar: "PMF / CDF", moments: "expectation & variance",
+      discretedist: "binomial / Poisson", contdist: "continuous dists",
+      matrixdet: "matrices & determinants", subspace: "subspace & basis", linearmap: "linear maps",
+      rankaffine: "rank & affine", orthogonal: "orthogonality", mvlimits: "limits & derivatives",
+      tangent: "gradient & tangent plane", optimization: "optimization"
+    };
+
+    var famList = (function () {
+      var seen = {}, out = [];
+      data.arch.forEach(function (a) {
+        if (!a.family || !FAMILY[a.family]) return;
+        if (!seen[a.family]) { seen[a.family] = { id: a.family, n: 0, marks: 0 }; out.push(seen[a.family]); }
+        a.covers.forEach(function (qid) {
+          var r = byQidRow[qid];
+          if (!r) return;
+          seen[a.family].n++;
+          seen[a.family].marks += r.m || 0;
+        });
+      });
+      return out.sort(function (a, b) { return b.marks - a.marks; });
+    })();
+
+    if (famList.length) {
+      var famWrap = document.createElement("label");
+      famWrap.className = "sortby";
+      famWrap.innerHTML = 'Family <select id="famBy">' +
+        '<option value="all">All families</option>' +
+        famList.map(function (f) {
+          return '<option value="' + f.id + '">' + esc(FAMILY[f.id]) + ' (' + f.n + ')</option>';
+        }).join("") +
+        '</select>';
+      tierBar.after(famWrap);   // after Sort was inserted, so it lands before it
+    }
+
     var html = "";
     weeks.forEach(function (w) {
       var wrows = byWeek[w].slice().sort(function (a, b) { return b.d - a.d || (a.pk < b.pk ? -1 : 1); });
@@ -168,7 +212,8 @@
               (r ? '<span class="cp">' + esc(r.p) + '</span> ' : '') +
               esc(qid.split("-").pop()) + '</a>';
           }).join("");
-          html += '<div class="archcard' + (isLearned ? " learned" : "") + '" id="arch-' + a.id + '">' +
+          html += '<div class="archcard' + (isLearned ? " learned" : "") + '" id="arch-' + a.id + '"' +
+            (a.family ? ' data-fam="' + a.family + '"' : "") + '>' +
             '<div class="ahead"><span class="an">' + a.id + '</span><div style="flex:1">' +
             '<h4>' + esc(a.title) + '</h4>' +
             '<p class="trigger">' + esc(a.trigger) + '</p>' +
@@ -191,8 +236,10 @@
         var archBadge = archId ? '<a class="arch" href="#arch-' + archId + '" data-jump="' + archId + '">' + archId + '</a>' : "";
         var depHtml = (r.aw || []).map(function (aw) { return '<span class="dep">W' + aw + '</span>'; }).join("");
         var isDone = !!done[r.qid];
+        var rowFam = archId && archById[archId] ? archById[archId].family : null;
         html += '<tr class="q' + (isDone ? " done" : "") + '" data-id="' + esc(r.qid) + '" data-d="' + r.d + '" data-tier="' + r.tier +
-          '" data-m="' + r.m + '" data-t="' + esc(r.t) + '" data-pk="' + esc(r.pk) + '">' +
+          '" data-m="' + r.m + '" data-t="' + esc(r.t) + '" data-pk="' + esc(r.pk) + '"' +
+          (rowFam ? ' data-fam="' + rowFam + '"' : "") + '>' +
           '<td class="c-chk"><input type="checkbox" aria-label="mark ' + esc(r.p) + ' ' + esc(r.q) + ' solved"' + (isDone ? " checked" : "") + '></td>' +
           '<td class="c-ref"><a class="qlink" href="#q/' + esc(r.qid) + '"><span class="pap">' + esc(r.p) + '</span> <span class="qn">' + esc(r.q) + '</span></a></td>' +
           '<td><span class="' + pillCls + '">' + esc(r.t) + '</span></td>' +
@@ -238,15 +285,22 @@
 
     var hideDone = document.getElementById("hideDone");
     var curTier = "must";
+    var curFam = "all";
     function applyDone() {
       document.querySelectorAll("tr.q").forEach(function (tr) {
         var hidden = (hideDone.checked && tr.classList.contains("done")) ||
-                     (curTier !== "all" && tr.dataset.tier !== curTier);
+                     (curTier !== "all" && tr.dataset.tier !== curTier) ||
+                     (curFam !== "all" && tr.dataset.fam !== curFam);
         tr.style.display = hidden ? "none" : "";
       });
       // archetype cards are a Round-1 tool; they only clutter the good backlog
       document.querySelectorAll(".archgrid").forEach(function (g) {
         g.style.display = curTier === "good" ? "none" : "";
+      });
+      // a family filter applies to the cards too, or the week still opens with
+      // every pattern it has and only the table underneath is the one family
+      document.querySelectorAll(".archcard").forEach(function (c) {
+        c.style.display = (curFam !== "all" && c.dataset.fam !== curFam) ? "none" : "";
       });
       filterWeek();
     }
@@ -259,7 +313,8 @@
         // with a tier filter on, an empty week is noise -- this is what makes
         // "Good-to-solve + All weeks" read as the cross-week backlog
         var anyRows = s.querySelectorAll("tr.q:not([style*='none'])").length > 0;
-        s.style.display = (onWeek && (curTier === "all" || anyRows)) ? "" : "none";
+        var mayEmpty = curTier !== "all" || curFam !== "all";
+        s.style.display = (onWeek && (!mayEmpty || anyRows)) ? "" : "none";
       });
     }
 
@@ -284,6 +339,13 @@
       });
     }
     document.getElementById("sortBy").addEventListener("change", applySort);
+
+    if (document.getElementById("famBy")) {
+      document.getElementById("famBy").addEventListener("change", function () {
+        curFam = this.value;
+        applyDone();
+      });
+    }
 
     document.getElementById("tierChips").addEventListener("click", function (e) {
       var b = e.target.closest(".chip");
