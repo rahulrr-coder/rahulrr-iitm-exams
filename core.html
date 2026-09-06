@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v=7">
+<link rel="stylesheet" href="assets/css/style.css?v=8">
 <style>
   /* Only the cut line is new; everything else reuses the shared system. */
   tr.cutrow td{background:var(--accent-soft);border-top:1px solid var(--accent-line);border-bottom:1px solid var(--accent-line);
@@ -22,6 +22,16 @@
   /* the chip groups wrap to several rows on a phone; sticky would cost a third of the screen */
   @media (max-width:620px){ .toolbar{position:static} }
   td.rk{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);width:34px;font-variant-numeric:tabular-nums}
+  /* The loop shape an archetype reduces to. Carried on a colour bar rather than a
+     tinted chip so a run of one shape is scannable down the column without seven
+     loud backgrounds fighting the tier and difficulty colours already in the row.
+     These hues sit mid-lightness, so they hold on the light and dark panel alike. */
+  .fam{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+    color:var(--ink-2);background:var(--panel-2);border-radius:3px;
+    border-left:3px solid var(--fam,var(--ink-3));padding:1px 6px;margin:3px 4px 0 0}
+  .f-scan{--fam:#6a8fb5} .f-pairwise{--fam:#8a6ab5} .f-matrix{--fam:#b5736a}
+  .f-dict{--fam:#5f9e7a} .f-list{--fam:#b59a4a} .f-recursion{--fam:#a8578f}
+  .f-ref{--fam:#8a8f85}
 </style>
 </head>
 <body>
@@ -61,7 +71,7 @@
 <footer>Ranked by marks covered, not by marks per question &mdash; the scarce resource is distinct patterns held in your head, not questions solved. <b>Must</b> is how many of that archetype's questions are must-solve: learn the pattern on its target, then clear those cold. Ticking here writes the same state as the subject pages, and the dashboard&rsquo;s daily plan now picks from the top of these lists too.</footer>
 </div>
 
-<script src="assets/js/app.js?v=7"></script>
+<script src="assets/js/app.js?v=8"></script>
 <script>
 (async function () {
   var E = window.EndTerm;
@@ -74,6 +84,21 @@
   document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
 
   function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  /* Archetypes cluster by solving technique, but several clusters share one
+     underlying skeleton — the loop shape you actually write. Naming the shape
+     turns a long list of distinct patterns into a handful of things to hold,
+     and puts the sibling archetypes of one shape next to each other visually.
+     Only tagged subjects show a label; the rest render exactly as before. */
+  var FAMILY = {
+    scan:      "single-pass scan",
+    pairwise:  "nested pairwise",
+    matrix:    "matrix / graph",
+    dict:      "dictionary",
+    list:      "list building",
+    recursion: "recursion",
+    ref:       "reference data"
+  };
 
   var packs = {};
   await Promise.all(E.SUBJECTS.map(async function (sub) {
@@ -224,6 +249,7 @@
           '<td class="c-q"><span class="con">' + esc(r.title) + '</span>' +
             '<a class="arch" href="' + s.key + '.html#arch-' + r.id + '" target="_blank" rel="noopener">' + r.id + '</a>' +
             '<span class="dep">W' + r.week + '</span>' +
+            (FAMILY[r.family] ? '<span class="fam f-' + r.family + '">' + FAMILY[r.family] + '</span>' : "") +
             '<span class="stem">' + esc(r.trigger) + '</span></td>' +
           '<td class="c-mk h-mk">' + Math.round(r.marks) + '</td>' +
           '<td class="c-mk h-mk">' + r.must.length + '/' + r.n + '</td>' +

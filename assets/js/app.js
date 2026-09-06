@@ -330,6 +330,7 @@
       var m = 0;
       a.covers.forEach(function (qid) { m += (mk[qid] || 0); });
       return { id: a.id, week: a.week, title: a.title, trigger: a.trigger, target: a.target,
+               family: a.family || null,
                covers: a.covers, must: a.must || [], marks: m, n: a.covers.length, cum: 0 };
     }).sort(function (x, y) { return y.marks - x.marks || y.n - x.n; });
     var run = 0;
