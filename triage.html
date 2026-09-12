@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exam Eve Triage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=9">
+<style>
+
+.wrap.tri{max-width:900px}
+.trihead{padding:30px 0 8px}
+.trihead h1{font-size:clamp(30px,5.4vw,44px);margin:0 0 10px;line-height:1.05;text-wrap:balance}
+.trihead .lede{font-size:17.5px;color:var(--ink-2);max-width:64ch;margin:0}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:14px 17px;margin:18px 0;font-size:15.5px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.note.warn{background:var(--warn-soft);border-left-color:var(--warn)}
+.note p{margin:0 0 9px}.note p:last-child{margin:0}
+h2.sec{font-size:26px;margin:38px 0 4px}
+p.sub{font-size:16px;color:var(--ink-2);margin:0 0 14px;max-width:68ch}
+h3{font-size:18px;margin:24px 0 8px}
+/* marks scoreboard */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:20px 0 6px}
+.bc{background:var(--panel);padding:14px 15px}
+.bc .k{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.bc .v{font-family:Spectral,Georgia,serif;font-size:30px;font-weight:700;line-height:1.1;margin:3px 0 1px;font-variant-numeric:tabular-nums}
+.bc .s{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.bc .hi{font-family:"IBM Plex Mono",monospace;font-size:11.5px;margin-top:5px;font-variant-numeric:tabular-nums}
+.bc.ok{--c:var(--done)}.bc.mid{--c:var(--d3)}.bc.bad{--c:var(--warn)}
+.bc .v{color:var(--c)}
+/* exam day rail */
+.rail{list-style:none;padding:0;margin:16px 0 0;border-left:2px solid var(--line)}
+.rail li{position:relative;padding:0 0 19px 26px}
+.rail li::before{content:"";position:absolute;left:-6px;top:8px;width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--ground)}
+.rail li.paper::before{background:var(--done)}
+.rail li.stop::before{background:var(--warn)}
+.rail li.brk::before{background:var(--d3)}
+.rail .t{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+.rail li.paper .t{color:var(--done)}.rail li.stop .t{color:var(--warn)}.rail li.brk .t{color:var(--d3)}
+.rail .h{font-family:"IBM Plex Sans",sans-serif;font-size:17.5px;font-weight:600;line-height:1.28;margin:1px 0 3px}
+.rail .d{font-size:15px;color:var(--ink-2);line-height:1.52;max-width:66ch}
+/* pick list */
+.picks{display:flex;flex-direction:column;border-top:1px solid var(--line-soft);margin:12px 0 0}
+.pk{border-bottom:1px solid var(--line-soft);padding:11px 0;display:grid;grid-template-columns:auto auto 1fr;gap:3px 10px;align-items:baseline}
+.pk .aid{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--accent);white-space:nowrap}
+.pk .am{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ground);background:var(--accent);
+  border-radius:3px;padding:1.5px 6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pk .at{font-family:"IBM Plex Sans",sans-serif;font-size:16px;font-weight:600;line-height:1.3}
+.pk .ab{grid-column:3;font-size:15px;line-height:1.55;color:var(--ink-2);margin:3px 0 0;max-width:70ch}
+.pk .ab b{color:var(--ink);font-weight:600}
+.fx{font-family:"IBM Plex Mono",monospace;font-size:13.5px;background:var(--panel-2);border-radius:4px;padding:2px 6px;display:inline-block;margin:1px 0}
+.scroll{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--line);border-radius:var(--radius)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:540px}
+th{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);text-align:left;
+  padding:9px 12px;background:var(--panel-2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t-ok{background:var(--done-soft);color:var(--done)}
+.t-mid{background:var(--accent-soft);color:var(--d3)}
+.t-bad{background:var(--warn-soft);color:var(--warn)}
+.verdict{font-size:15.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:14px;margin:12px 0 0;max-width:70ch}
+.verdict b{color:var(--ink)}
+hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+.foot{font-size:13.5px;color:var(--ink-3);text-align:center;margin-top:32px}
+@media (max-width:600px){.wrap.tri{padding:0 15px 70px}.pk{grid-template-columns:auto 1fr}.pk .at{grid-column:1/-1}.pk .ab{grid-column:1/-1}}
+@media print{.topnav{display:none}}
+
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">IITM Exams</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab" href="core.html">Core</a>
+<a class="tab" href="passes.html">Passes</a>
+<a class="tab active" href="triage.html">Triage</a>
+<a class="tab" href="cram.html">Cram</a>
+<a class="tab" href="math2.html">Math 2</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="english1.html">English 1</a>
+<a class="tab" href="ct.html">CT</a>
+<a class="tab" href="ct-datasets.html">CT Data</a>
+<div class="daysleft" id="navDays">&mdash; days to end-term</div>
+</div></nav>
+
+<div class="wrap tri">
+<header class="trihead"><h1>Exam Eve Triage</h1>
+<p class="lede">Four papers tomorrow in two sittings. This is what tonight, the 6am window and the lunch break are each worth, ranked by <b>marks</b> against your Mongo progress &mdash; not by question count, which flatters English and hides CT.</p></header>
+<h2 class="sec">Did you cover the high-yielding ones?</h2>
+<p class="sub">Short answer: <b>yes for English 1 and Stat 1, no for CT, half for Math 2.</b> Ranking every archetype by the marks it covers and checking how far down you are solid:</p>
+<div class="board">
+<div class="bc ok s-english1"><div class="k">English 1</div><div class="v">81%</div><div class="s">728/899 marks</div><div class="hi">top 50 by marks: <b>100%</b></div></div>
+<div class="bc ok s-stat1"><div class="k">Stat 1</div><div class="v">66%</div><div class="s">312/470 marks</div><div class="hi">top 20 by marks: <b>95%</b></div></div>
+<div class="bc mid s-math2"><div class="k">Math 2</div><div class="v">43%</div><div class="s">390/900 marks</div><div class="hi">top 20 by marks: <b>73%</b></div></div>
+<div class="bc bad s-ct"><div class="k">CT</div><div class="v">24%</div><div class="s">264/1100 marks</div><div class="hi">top 20 by marks: <b>41%</b></div></div>
+</div>
+<div class="scroll"><table><thead><tr><th>Solid through…</th><th class="n">top 10</th><th class="n">top 20</th><th class="n">top 30</th><th class="n">top 40</th><th class="n">top 50</th></tr></thead><tbody><tr><td>English 1</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td></tr><tr><td>Stat 1</td><td class="n">92%</td><td class="n">95%</td><td class="n">92%</td><td class="n">86%</td><td class="n">76%</td></tr><tr><td>Math 2</td><td class="n">81%</td><td class="n">73%</td><td class="n">65%</td><td class="n">61%</td><td class="n">54%</td></tr><tr><td>CT</td><td class="n">64%</td><td class="n">41%</td><td class="n">34%</td><td class="n">28%</td><td class="n">26%</td></tr></tbody></table></div>
+<p class="verdict"><b>English 1 is the clean one.</b> Every single one of the fifty highest-marks archetypes is ticked. That is not luck &mdash; that is the core ranking working exactly as you built it. Your largest remaining English gap is worth <b>6 marks</b>. There is almost nothing left to buy here.</p>
+<p class="verdict"><b>Stat 1 is close behind.</b> 19 of the top 20 by marks. The one miss is W4-A1, Pearson r, worth 11 marks and the anchor of a family you have nothing else in. Take it tonight.</p>
+<p class="verdict"><b>Math 2 is half-done and lopsided.</b> 14 of 20, but the misses are big: W6-A3 at 30 marks is your <b>second-heaviest Math 2 archetype</b> and it is untouched.</p>
+<p class="verdict"><b>CT is the problem, and it is the biggest paper.</b> 1100 marks, and you hold 41% of even the top 20. It degrades fast below that &mdash; 34% at top 30. Six CT gaps are worth 26&ndash;32 marks each; <b>176 marks sit in the top six alone.</b> Nothing else in the exam set has that density of unearned marks.</p>
+<div class="note warn"><p><b>This changes the plan you proposed.</b> You suggested revising CT and Math 2 in the lunch break. Ranked by marks, that gets the order backwards: the lunch break is maybe 40&ndash;50 usable minutes, and you cannot meet six new CT shapes for the first time in it. Stat and English are already strong <em>and</em> they are the morning papers &mdash; so they belong in the 6am window, minutes before they are tested, not tonight.</p><p>So: <b>tonight goes to CT and Math 2. The 6am window goes to Stat and English. The lunch break reviews what you learned tonight rather than opening anything new.</b> Same hours, roughly double the marks.</p></div>
+<hr>
+<h2 class="sec">Exam day, end to end</h2>
+<p class="sub">Stat 1 and English 1 in the morning, lunch, then Math 2 and CT.</p>
+<ul class="rail">
+<li class=""><div class="t">19:00 — 20:10 · 70 min</div><div class="h">CT — the six heavy shapes</div><div class="d">Highest marks-per-minute in the whole set. Six archetypes, 176 marks, all procedural pseudocode patterns rather than theory. Listed below with what to check first. Do not trace whole programs &mdash; learn to <em>name the shape</em>.</div></li>
+<li class=""><div class="t">20:10 — 21:05 · 55 min</div><div class="h">Math 2 — three heavy gaps, then defend the strong block</div><div class="d">W6-A3 (30 marks, your #2 archetype, untouched), W11-A2 (19 marks, and you already own its easier sibling), W8-A8 (17 marks, pure identity checking). Then re-read the W7/W9/W10 triggers &mdash; that block is 185 questions and you own it.</div></li>
+<li class=""><div class="t">21:05 — 21:35 · 30 min</div><div class="h">Stat 1 — Pearson r and the variance formula</div><div class="d">Only two real gaps worth the time: <span class="fx">r = [nΣxy − ΣxΣy] / √([nΣx²−(Σx)²][nΣy²−(Σy)²])</span> and <span class="fx">Var(X) = E(X²) − [E(X)]²</span>. Also fix at-least-one vs disjoint. The rest of Stat is a 6am job.</div></li>
+<li class=""><div class="t">21:35 — 21:50 · 15 min</div><div class="h">English 1 — skim the gap rules, nothing more</div><div class="d">Your English is 100% of the top fifty by marks. Skim the W2 rules (noun subtype, degrees, adjective-vs-adverb, 5 marks each) and stop. Spending an hour here tonight would be the most expensive mistake available to you.</div></li>
+<li class="stop"><div class="t">21:50 · stop</div><div class="h">Bag packed, two alarms, laptop shut</div><div class="d">Your own plan said 6pm and sleep by 10:30. You are past the first line; hold the second. On a four-paper day sleep is a scoring input.</div></li>
+<li class=""><div class="t">06:00 — 08:30 · morning</div><div class="h">Stat 1 formulas cold, then English rules</div><div class="d">Open the cram sheet at Stat 1. Cover each week's formula box, write it out, check. Then English W1/W2/W5/W8/W10 rule boxes. This is the right hour for both &mdash; they are about to be tested.</div></li>
+<li class="paper"><div class="t">Paper 1</div><div class="h">Stat 1 — 470 marks, 66% held</div><div class="d">Your strength is the back half: W12 continuous, W11 discrete, W10 moments. If a correlation question appears, you learned it last night.</div></li>
+<li class="paper"><div class="t">Paper 2</div><div class="h">English 1 — 899 marks, 81% held</div><div class="d">Read questions before passages. W6 comprehension is 148 questions and you hold 145 of them.</div></li>
+<li class="brk"><div class="t">Lunch break · 40–50 min</div><div class="h">Review, do not learn</div><div class="d">Re-read last night's six CT shapes and three Math 2 gaps &mdash; nothing new. A shape you met twelve hours ago and review now is worth several you meet cold. Then eat, and take ten minutes away from paper.</div></li>
+<li class="paper"><div class="t">Paper 3</div><div class="h">Math 2 — 900 marks, 43% held</div><div class="d">Lead with W9/W10/W11: limits, gradients, tangent planes, Hessian. That is where your marks live. W3&ndash;W6 and W12 are the accepted sacrifice.</div></li>
+<li class="paper"><div class="t">Paper 4</div><div class="h">CT — 1100 marks, biggest paper</div><div class="d">Classify before you trace: matrix, dict, scan, recursion, list, pairwise. Name the shape, then step through. Field names are in CT Data if you need them.</div></li>
+</ul>
+<hr>
+<h2 class="sec">Tonight&rsquo;s CT picks · 176 marks</h2>
+<p class="sub">Ranked by marks. Each is a shape, not a program &mdash; learn what to check first and you can classify it tomorrow under time pressure.</p>
+<div class="picks">
+<div class="pk"><span class="aid">W8-A1</span><span class="am">32 marks</span><span class="at">Symmetric comparison-matrix from equality/range condition</span><p class="ab">A condition that is <b>symmetric</b> in i and j (equality, or "within range") sets <b>both</b> cells M[i][j] and M[j][i]. Diagonal depends on whether i = j satisfies the condition. Count edges as (nonzero entries)/2.</p></div>
+<div class="pk"><span class="aid">W9-A3</span><span class="am">31 marks</span><span class="at">Recursive trace on two integers (Euclidean-style)</span><p class="ab">Give each argument <b>its own column</b> and write one row per call. Find the base case first (usually one argument hitting 0 or the two becoming equal), then unwind upward. Do not try to hold it in your head.</p></div>
+<div class="pk"><span class="aid">W8-A6</span><span class="am">29 marks</span><span class="at">updateMatrix single pass: 2-step reachability</span><p class="ab">One pass of updateMatrix gives <b>one-hop-extended</b> reach &mdash; paths of length ≤ 2, <b>not</b> full transitive closure. The trap is assuming it closes everything; it does not. Two passes gives ≤ 4.</p></div>
+<div class="pk"><span class="aid">W9-A1</span><span class="am">29 marks</span><span class="at">DFS traversal trace on adjacency matrix</span><p class="ab">DFS goes deep with a <b>stack</b>, BFS level-wise with a <b>queue</b>. Track the visited set in a column beside the stack. Row order in the matrix decides which neighbour is taken first &mdash; that is what the answer usually turns on.</p></div>
+<div class="pk"><span class="aid">W7-A5</span><span class="am">28 marks</span><span class="at">Cliques in an undirected graph</span><p class="ab">A clique needs <b>every pair</b> inside the set joined, not a path through them. To verify a claimed k-clique, check all kC2 pairs. To disprove, one missing edge is enough.</p></div>
+<div class="pk"><span class="aid">W5-A10</span><span class="am">27 marks</span><span class="at">What outList (a list of lists) represents</span><p class="ab">Before tracing anything, say out loud what <b>one inner list</b> holds. Then trace only the first two outer iterations. Most of these questions are answered by naming the structure correctly, without completing the trace.</p></div>
+</div>
+<h2 class="sec">Tonight&rsquo;s Math 2 picks · 66 marks</h2>
+<div class="picks">
+<div class="pk"><span class="aid">W6-A3</span><span class="am">30 marks</span><span class="at">General [T] with respect to two bases B1 → B2</span><p class="ab">Your <b>second-heaviest Math 2 archetype and completely untouched.</b> It is a procedure, not a theory: apply T to each vector of B1, express each result in B2 coordinates, stack those coordinate vectors as columns. That is the whole method &mdash; the only hard part is the B2 coordinate solve, which is one small linear system per column.</p></div>
+<div class="pk"><span class="aid">W11-A2</span><span class="am">19 marks</span><span class="at">Find and classify ALL critical points, then tally</span><p class="ab">You already hold W11-A1, the Hessian test at <em>one given</em> point. This is the same test run over every point you find yourself. Solve <span class="fx">f_x = 0, f_y = 0</span> simultaneously, then <span class="fx">D = f_xx·f_yy − (f_xy)²</span>: D&gt;0 &amp; f_xx&gt;0 → min · D&gt;0 &amp; f_xx&lt;0 → max · D&lt;0 → saddle · D=0 → inconclusive. <b>The only new work is the simultaneous solve.</b></p></div>
+<div class="pk"><span class="aid">W8-A8</span><span class="am">17 marks</span><span class="at">Orthogonal matrix identities</span><p class="ab">All of it falls out of <span class="fx">AᵀA = I</span>: rows and columns are orthonormal, so <span class="fx">det(A) = ±1</span>, <span class="fx">det(kA) = kⁿdet(A)</span>, and every row's squared entries sum to 1. Most questions here are answered by imposing those row conditions on unknown entries &mdash; no projection theory needed.</p></div>
+</div>
+<div class="note"><p><b>What the night buys.</b> CT roughly 176 marks of newly recognisable shapes on an 1100-mark paper, Math 2 about 66 on top of a block you already own, Stat the two formulas that anchor its weakest families, English almost nothing &mdash; because there is almost nothing left to buy. None of it opens a subject you have never seen, which was the rule you set on Thursday.</p><p>The full weekwise formula sheet for all four subjects is on the <a href="cram.html"><b>Cram</b></a> tab.</p></div>
+<p class="foot">Built from your Mongo progress mirror &middot; 12 Sep 2026, 13:07 &middot; 329 archetypes, 1302 questions, 3369 marks classified</p>
+</div>
+<script>
+(function(){
+  var d=new Date("2026-09-13T09:00:00"), n=new Date();
+  var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");
+  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to end-term") : "End-term day";
+})();
+</script>
+</body>
+</html>
