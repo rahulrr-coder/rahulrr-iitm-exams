@@ -30,17 +30,20 @@
 /* subject accents */
 .s-math2{ --accent:#2f4a7c; --accent-soft:#e7ecf5; --accent-line:#c3d0e6; }
 .s-stat1{ --accent:#7a3350; --accent-soft:#f3e6ec; --accent-line:#dcb9c9; }
+.s-python{ --accent:#2d6a4f; --accent-soft:#e3f1ea; --accent-line:#b4d6c4; }
 .s-english1{ --accent:#2f6b52; --accent-soft:#e4f0e9; --accent-line:#b9d8c6; }
 .s-ct{ --accent:#8a5a1f; --accent-soft:#f3ead9; --accent-line:#e0c99a; }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   .s-math2{ --accent:#94b3e0; --accent-soft:#1f2733; --accent-line:#33455e; }
   .s-stat1{ --accent:#e0a0b8; --accent-soft:#2a1c22; --accent-line:#4a2e3a; }
+  .s-python{ --accent:#8fd1ae; --accent-soft:#1a2a22; --accent-line:#2f4a3c; }
   .s-english1{ --accent:#8fd0ab; --accent-soft:#1a2b21; --accent-line:#2b4536; }
   .s-ct{ --accent:#e0b46a; --accent-soft:#2b2114; --accent-line:#4a3a1f; }
 }}
 :root[data-theme="dark"]{
   .s-math2{ --accent:#94b3e0; --accent-soft:#1f2733; --accent-line:#33455e; }
   .s-stat1{ --accent:#e0a0b8; --accent-soft:#2a1c22; --accent-line:#4a2e3a; }
+  .s-python{ --accent:#8fd1ae; --accent-soft:#1a2a22; --accent-line:#2f4a3c; }
   .s-english1{ --accent:#8fd0ab; --accent-soft:#1a2b21; --accent-line:#2b4536; }
   .s-ct{ --accent:#e0b46a; --accent-soft:#2b2114; --accent-line:#4a3a1f; }
 }

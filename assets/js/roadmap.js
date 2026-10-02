@@ -16,7 +16,7 @@
     var state = E.loadState();
     var data = await E.loadSubjectData(sub);
     var dl = E.daysLeft();
-    document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+    document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 1") : "Quiz 1 week";
 
     function renderStats() {
       var st = E.subjectStats(sub, data, state);
@@ -112,6 +112,12 @@
     var FAMILY = {
       scan: "single-pass scan", pairwise: "nested pairwise", matrix: "matrix / graph",
       dict: "dictionary", list: "list building", recursion: "recursion", ref: "reference data",
+      pyexpr: "expressions & types",
+      pybool: "boolean logic",
+      pyflow: "if / elif tracing",
+      pycode: "pick the right code",
+      pydigit: "digit loops",
+      pyloop: "loop tracing",
       descriptive: "descriptive", correlation: "correlation", counting: "counting",
       probability: "probability rules", randomvar: "PMF / CDF", moments: "expectation & variance",
       discretedist: "binomial / Poisson", contdist: "continuous dists",
@@ -458,13 +464,6 @@
         '<div class="qpage">' +
           '<div class="qnav">' +
             '<a class="back" href="#w' + r.w + '">&larr; Week ' + r.w + ' ladder</a>' +
-            // CT pseudocode is written against five sample datasets the paper prints
-            // once, at the front. Reaching them from the question is the whole point,
-            // so it opens in its own window rather than replacing the question.
-            (subKey === "ct"
-              ? '<a class="ds" href="ct-datasets.html" target="_blank" rel="noopener"'
-                + ' title="Scores, Words, Library, Olympics, Shopping Bills">Datasets &#8599;</a>'
-              : "") +
             '<span class="spacer"></span>' +
             (prev ? '<a class="pn" href="#q/' + esc(prev) + '">&larr; Prev</a>'
                   : '<span class="pn off">&larr; Prev</span>') +

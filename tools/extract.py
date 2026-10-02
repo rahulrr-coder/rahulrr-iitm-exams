@@ -26,8 +26,8 @@ import json, os, re, subprocess, tempfile
 from PIL import Image, ImageChops, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PDF_ROOT = os.path.expanduser("~/Documents/IITM-T2-Q1/End Term PYQs")
-SUBJECTS = {"Math2": "math2", "Stat1": "stat1", "CT": "ct", "Eng1": "english1"}
+PDF_ROOT = os.environ.get("PDF_ROOT") or os.path.expanduser("~/Documents/IITM-T2-Q1/End Term PYQs")
+SUBJECTS = {"Stat1": "stat1"}
 
 DPI = 150
 SCALE = DPI / 72.0
@@ -70,20 +70,22 @@ def page_words(pdf):
     return pages
 
 
-def footer_boxes(words):
-    """Boxes covering the 'Downloaded by <name> <email>' footer words.
+FOOTER_TOKENS = ("Downloaded", "by", "RAHUL", "R")
 
-    One box per word rather than a full-width band: the papers stamp this line
-    at a fixed height, and on a full page it can overlap the option printed
-    beside it (seen in Eng1, where option A runs 722.8-734.3 and the footer
-    733.2-742.3). A band across the page would paint out that whole option;
-    per-word boxes touch only the few points where they genuinely overlap.
+
+def footer_boxes(words):
+    """Boxes covering the 'Downloaded by <name> <email>' footer tokens only.
+
+    The papers stamp this line at a fixed height, so on a full page it can sit on
+    the same y as real content (an option label, an SA answer value). Painting every
+    word on that y would erase the content, so only the footer's own tokens are boxed.
     """
     line = [w for w in words if w[4] == "Downloaded" or "quizpractice.space" in w[4]]
     if not line:
         return []
     y = min(w[1] for w in line)
-    return [(w[0], w[1], w[2], w[3]) for w in words if abs(w[1] - y) < 4]
+    return [(w[0], w[1], w[2], w[3]) for w in words
+            if abs(w[1] - y) < 4 and (w[4] in FOOTER_TOKENS or "@" in w[4] or "quizpractice" in w[4])]
 
 
 def body_top(words):
@@ -109,6 +111,30 @@ def flatten(img):
     mask = darkest.point(lambda v: 255 if v >= FLATTEN_MIN else 0)
     img.paste((255, 255, 255), mask=mask)
     return img
+
+
+LABEL_SLATE = (74, 85, 105)    # colour of the un-highlighted option letters
+
+
+def neutralise_labels(page_imgs, pages):
+    """Recolour every option letter (A. B. C. ...) to the same slate.
+
+    The portal prints the CORRECT option's letter in green and the others in slate.
+    Flattening backgrounds and removing the checkmark text still leaves that colour cue,
+    which is an answer leak. Map each letter's ink to one colour so they are identical.
+    """
+    for img, words in zip(page_imgs, pages):
+        for x0, y0, x1, y1, t in words:
+            if x0 < 120 and re.fullmatch(r"[A-Z]\.", t):
+                box = (max(0, int(x0 * SCALE) - 3), max(0, int(y0 * SCALE) - 3),
+                       min(img.width, int(x1 * SCALE) + 3), min(img.height, int(y1 * SCALE) + 3))
+                reg = img.crop(box).convert("RGB")
+                lum = reg.convert("L")
+                out = Image.new("RGB", reg.size, (255, 255, 255))
+                a = lum.point(lambda v: int(max(0, min(255, (255 - v) * 255 / 165.0))))
+                out.paste(Image.new("RGB", reg.size, LABEL_SLATE), mask=a)
+                img.paste(out, box[:2])
+    return page_imgs
 
 
 def render_pages(pdf, outdir):
@@ -235,6 +261,7 @@ def main():
             with tempfile.TemporaryDirectory() as td:
                 page_imgs = [flatten(Image.open(f).convert("RGB"))
                              for f in render_pages(pdf, td)]
+                neutralise_labels(page_imgs, pages)
                 if len(page_imgs) != len(pages):
                     print("  !! page count mismatch", fn, len(page_imgs), len(pages)); continue
                 n = 0

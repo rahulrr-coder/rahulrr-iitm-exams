@@ -1,0 +1,192 @@
+[
+{
+"title": "Expression type and operator tracing",
+"target": "P21_2026_jul-Q2",
+"trigger": "Any \"what type / what value / what output\" on straight-line code: work inside-out. int op int is int except / (float) and ** with a negative power; int op float is float; a quoted literal is str even if it looks like a number; // floors, % keeps the remainder (days = n // 7, rest = n % 7); + joins str only with str; int(), str(), len() change the type BEFORE the next operator sees it.",
+"covers": [
+"P01_2023_feb-Q13",
+"P01_2023_feb-Q14",
+"P01_2023_feb-Q15",
+"P03_2023_jul-Q5",
+"P05_2023_oct-Q8",
+"P13_2025_feb-Q8",
+"P17_2025_oct-Q5",
+"P21_2026_jul-Q2"
+],
+"id": "W1-A1",
+"week": 1,
+"family": "pyexpr"
+},
+{
+"title": "Chained comparison and bool-as-type results",
+"target": "P13_2025_feb-Q5",
+"trigger": "The question asks for the TYPE or value of a comparison expression. a < b < c means (a < b) and (b < c); any comparison gives bool, and bool is an int (True == 1, True + True == 2). Evaluate each link, then combine; the result is bool unless an arithmetic operator is applied afterwards.",
+"covers": [
+"P09_2024_jul-Q5",
+"P13_2025_feb-Q5"
+],
+"id": "W2-A1",
+"week": 2,
+"family": "pybool"
+},
+{
+"title": "Single if/else trace and unassigned-variable trap",
+"target": "P01_2023_feb-Q3",
+"trigger": "One or two ifs with assignments inside. Substitute the inputs, follow ONE branch, print. If a name is assigned only inside an if and then used outside, it raises NameError exactly when every guarding condition is False.",
+"covers": [
+"P01_2023_feb-Q3",
+"P09_2024_jul-Q9"
+],
+"id": "W2-A2",
+"week": 2,
+"family": "pyflow"
+},
+{
+"title": "Boolean expression evaluation: not before and before or",
+"target": "P02_2023_apr-Q28",
+"trigger": "Printed boolean expressions mixing not/and/or. Precedence is not, then and, then or; parenthesise mentally, substitute True/False, reduce innermost first. For \"deduce the variable\" questions, undo not by not: not not x is x.",
+"covers": [
+"P02_2023_apr-Q25",
+"P02_2023_apr-Q26",
+"P02_2023_apr-Q27",
+"P02_2023_apr-Q28",
+"P04_2023_sep-Q14",
+"P04_2023_sep-Q15",
+"P04_2023_sep-Q16",
+"P04_2023_sep-Q17",
+"P01_2023_feb-Q2"
+],
+"id": "W3-A1",
+"week": 3,
+"family": "pybool"
+},
+{
+"title": "if / elif / else tracing and input-set questions",
+"target": "P15_2025_jul-Q8",
+"trigger": "Given inputs (or asked for which inputs), walk the chain top to bottom: the FIRST true condition runs and the rest are skipped. For \"which inputs give output X\", write the interval each branch owns (earlier conditions carve out later ones) and test boundary values (=, +-1) explicitly. For a count of inputs, count integers in the rectangle/interval, inclusive of ends.",
+"covers": [
+"P01_2023_feb-Q16",
+"P01_2023_feb-Q17",
+"P01_2023_feb-Q18",
+"P01_2023_feb-Q19",
+"P03_2023_jul-Q3",
+"P03_2023_jul-Q6",
+"P03_2023_jul-Q7",
+"P05_2023_oct-Q13",
+"P09_2024_jul-Q6",
+"P11_2024_oct-Q9",
+"P12_2024_dec-Q7",
+"P13_2025_feb-Q9",
+"P13_2025_feb-Q12",
+"P13_2025_feb-Q13",
+"P14_2025_apr-Q15",
+"P15_2025_jul-Q8"
+],
+"id": "W3-A2",
+"week": 3,
+"family": "pyflow"
+},
+{
+"title": "Choose the snippet that is actually correct",
+"target": "P07_2024_feb-Q5",
+"trigger": "Four or five candidate programs for one spec (min of three, age/marks bands, abs value). Test each with the boundary and tie inputs (equal values, exactly on a threshold, negative). The common bugs: independent ifs that print twice, an elif chain with the wrong order, > where >= is needed, a missing else.",
+"covers": [
+"P07_2024_feb-Q5",
+"P10_2024_sep-Q3",
+"P14_2025_apr-Q8",
+"P11_2024_oct-Q6"
+],
+"id": "W3-A3",
+"week": 3,
+"family": "pycode"
+},
+{
+"title": "Separate ifs vs elif: equivalence and possible outputs",
+"target": "P13_2025_feb-Q6",
+"trigger": "Compare two blocks or list the possible outputs. Separate ifs are tested independently (several can fire, or none); elif/else makes the branches mutually exclusive. Look for inputs that satisfy two conditions at once — that is where the two versions differ.",
+"covers": [
+"P05_2023_oct-Q9",
+"P06_2023_dec-Q10",
+"P12_2024_dec-Q3",
+"P13_2025_feb-Q6",
+"P17_2025_oct-Q9"
+],
+"id": "W3-A4",
+"week": 3,
+"family": "pyflow"
+},
+{
+"title": "Truthiness, isinstance and short-circuit",
+"target": "P19_2026_mar-Q17",
+"trigger": "Conditions on non-boolean values. Falsy: 0, 0.0, \"\", empty collections, None; everything else truthy. a or b returns the first truthy operand, a and b the first falsy one (not necessarily a bool). isinstance(True, int) is True. Trace the counter line by line.",
+"covers": [
+"P16_2025_aug-Q3",
+"P17_2025_oct-Q4",
+"P19_2026_mar-Q17",
+"P19_2026_mar-Q18",
+"P22_2026_sep-Q1"
+],
+"id": "W3-A5",
+"week": 3,
+"family": "pybool"
+},
+{
+"title": "Digit extraction loop (% 10 and // 10)",
+"target": "P19_2026_mar-Q5",
+"trigger": "While n > 0: d = n % 10 peels the last digit, n = n // 10 drops it. Whatever sits between those two lines (sum, product, reverse via r = r*10 + d, position weights, odd-digit filter) is the only part that changes. Start the accumulator at the identity (0 for sum, 1 for product) — a wrong start is the standard trap.",
+"covers": [
+"P02_2023_apr-Q3",
+"P02_2023_apr-Q18",
+"P03_2023_jul-Q11",
+"P04_2023_sep-Q8",
+"P09_2024_jul-Q11",
+"P13_2025_feb-Q11",
+"P19_2026_mar-Q5",
+"P19_2026_mar-Q6",
+"P21_2026_jul-Q10"
+],
+"id": "W4-A1",
+"week": 4,
+"family": "pydigit"
+},
+{
+"title": "Pick the loop that prints or accumulates a series",
+"target": "P03_2023_jul-Q10",
+"trigger": "Match the loop bounds to the count: range(1, 11) gives 10 values (stop is exclusive), \"first hundred powers\" means 100 iterations with the multiplier updated every pass. Check the first value, the last value and the number of iterations of each option.",
+"covers": [
+"P01_2023_feb-Q6",
+"P03_2023_jul-Q10",
+"P05_2023_oct-Q15",
+"P13_2025_feb-Q4"
+],
+"id": "W4-A2",
+"week": 4,
+"family": "pyloop"
+},
+{
+"title": "While-loop tracing: final value and iteration count",
+"target": "P07_2024_feb-Q8",
+"trigger": "Make a table: one row per iteration with every variable. Stop when the condition first fails and report the value requested (loop variable after exit, count of passes, last term). The exit value is the first value that violates the condition.",
+"covers": [
+"P05_2023_oct-Q16",
+"P07_2024_feb-Q8",
+"P12_2024_dec-Q10",
+"P22_2026_sep-Q10"
+],
+"id": "W4-A3",
+"week": 4,
+"family": "pyloop"
+},
+{
+"title": "Two-pointer while loop",
+"target": "P12_2024_dec-Q17",
+"trigger": "i starts at the left end, j at the right end; compare the pair sum with the target and move the pointer that can fix it (sum too big -> j -= 1, too small -> i += 1). Trace both pointers per iteration; None/False is returned when they cross.",
+"covers": [
+"P12_2024_dec-Q17",
+"P12_2024_dec-Q18"
+],
+"id": "W4-A4",
+"week": 4,
+"family": "pyloop"
+}
+]

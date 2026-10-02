@@ -3,34 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>End Term Roadmap</title>
+<title>Quiz 1 Prep</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v=9">
+<link rel="stylesheet" href="assets/css/style.css?v=10">
 </head>
 <body>
 <nav class="topnav"><div class="inner">
 <a class="brand" href="index.html">IITM Exams</a>
 <a class="tab active" href="index.html">Dashboard</a>
 <a class="tab" href="core.html">Core</a>
-<a class="tab" href="passes.html">Passes</a>
-<a class="tab" href="triage.html">Triage</a>
 <a class="tab" href="cram.html">Cram</a>
-<a class="tab" href="math2.html">Math 2</a>
 <a class="tab" href="stat1.html">Stat 1</a>
-<a class="tab" href="english1.html">English 1</a>
-<a class="tab" href="ct.html">CT</a>
-<a class="tab" href="ct-datasets.html">CT Data</a>
+<a class="tab" href="python.html">Python</a>
 <div class="spacer"></div>
-<div class="daysleft" id="navDays">— days to end-term</div>
+<div class="daysleft" id="navDays">— days to Quiz 1</div>
 </div></nav>
 <div class="wrap">
 <header class="mast">
-<p class="kicker">IITM BS &middot; End-term Sep 2026 &middot; archetype-based PYQ trainer</p>
+<p class="kicker">IITM BS &middot; Quiz 1 &middot; 15 Nov 2026 &middot; Stat 1 + Python &middot; archetype-based PYQ trainer</p>
 <h1 class="pagetitle">Learn the pattern, crush the rest</h1>
-<p class="lede">Every PYQ across four subjects, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then clear the <strong>must-solve</strong> set cold. Every question opens on its own page with the real question image and the answer hidden until you ask for it. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
+<p class="lede">Every Stat 1 and Python PYQ, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then clear the <strong>must-solve</strong> set cold. Every question opens on its own page with the real question image and the answer hidden until you ask for it. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
 <div class="statline" id="overallStats"></div>
 </header>
 
@@ -56,17 +51,17 @@
   <span id="syncMsg" class="mono" style="margin-left:10px;color:var(--ink-3)"></span>
 </div>
 
-<footer>Exam date fixed at 13 Sep 2026; "today's plan" recomputes from your device's real clock on every load.</footer>
+<footer>Countdown set to Quiz 1 (15 Nov 2026); "today's plan" recomputes from your device's real clock on every load.</footer>
 </div>
 
-<script src="assets/js/app.js?v=9"></script>
+<script src="assets/js/app.js?v=10"></script>
 <script>
 (async function () {
   var E = window.EndTerm;
   await E.load();
   var state = E.loadState();
   var dl = E.daysLeft();
-  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to end-term") : "End-term week";
+  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 1") : "Quiz 1 week";
 
   var allData = {};
   await Promise.all(E.SUBJECTS.map(async function (sub) {

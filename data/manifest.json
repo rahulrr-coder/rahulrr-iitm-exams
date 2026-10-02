@@ -1,11 +1,19 @@
 {
-  "exam": "End Term Sep 2026",
-  "shortName": "end-term",
-  "examDate": "2026-09-13",
-  "subjects": [
-    { "key": "math2",    "label": "Math 2",    "emoji": "📐", "weeks": 12 },
-    { "key": "stat1",    "label": "Stat 1",    "emoji": "📊", "weeks": 12 },
-    { "key": "english1", "label": "English 1", "emoji": "📖", "weeks": 12 },
-    { "key": "ct",       "label": "CT",        "emoji": "🧮", "weeks": 9 }
-  ]
+ "exam": "Quiz 1 Nov 2026",
+ "shortName": "quiz-1",
+ "examDate": "2026-11-15",
+ "subjects": [
+  {
+   "key": "stat1",
+   "label": "Stat 1",
+   "emoji": "📊",
+   "weeks": 4
+  },
+  {
+   "key": "python",
+   "label": "Python",
+   "emoji": "🐍",
+   "weeks": 4
+  }
+ ]
 }
