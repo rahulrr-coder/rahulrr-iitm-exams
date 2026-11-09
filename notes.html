@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crib Sheets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css?v=10">
+<style>
+.wrap.notes{max-width:900px}
+.noteshead{padding:30px 0 10px}
+.noteshead h1{font-size:clamp(30px,5.4vw,44px);margin:0 0 10px;line-height:1.05;text-wrap:balance}
+.noteshead .lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin:0 0 16px}
+.notesctl{position:sticky;top:53px;z-index:30;background:var(--ground);border-bottom:1px solid var(--line);
+  padding:9px 0;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.notesctl a,.notesctl button{font-family:"IBM Plex Mono",monospace;font-size:12px;text-decoration:none;cursor:pointer;
+  color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:4px;padding:5px 10px}
+.notesctl .sp{flex:1}
+.sheet{margin:30px 0 0;scroll-margin-top:104px}
+.sheeth{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;padding:0 0 6px;border-bottom:2px solid var(--accent);margin:0 0 4px}
+.sheeth h2{font-size:21px;margin:0}
+.sheeth .kind{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:4px;padding:3px 7px}
+.sheeth .sp{flex:1}
+.sheeth .src{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+.sheeth .blurb{font-size:13px;color:var(--ink-3);flex-basis:100%}
+/* the rendered markdown */
+.md{font-size:16px;line-height:1.62;color:var(--ink-2)}
+.md h1{display:none}            /* the sheet band already names it */
+.md h2{font-size:19px;color:var(--ink);margin:30px 0 10px;padding-top:6px;border-top:1px solid var(--line-soft)}
+.md h3{font-size:16px;color:var(--ink);margin:22px 0 8px;font-family:"IBM Plex Sans",sans-serif;font-weight:600}
+.md h4{font-size:14px;color:var(--ink);margin:18px 0 6px}
+.md p{margin:0 0 12px;max-width:74ch}
+.md strong{color:var(--ink);font-weight:600}
+.md em{color:var(--ink)}
+.md hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+.md a{color:var(--accent)}
+.md ul,.md ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+.md li{margin:0 0 6px}
+.md li>ul,.md li>ol{margin:6px 0 0}
+.md code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--panel-2);
+  border:1px solid var(--line-soft);border-radius:4px;padding:1px 4px;color:var(--ink)}
+.md pre{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:13px 15px;overflow-x:auto;margin:0 0 16px;box-shadow:var(--shadow)}
+.md pre code{background:none;border:0;padding:0;font-size:13px;line-height:1.55;white-space:pre}
+.md blockquote{margin:0 0 14px;padding:2px 0 2px 14px;border-left:3px solid var(--accent-line);color:var(--ink-3)}
+.md table{border-collapse:collapse;width:100%;margin:0 0 16px;font-size:14px;display:block;overflow-x:auto}
+.md thead th{text-align:left;font-weight:600;color:var(--ink);background:var(--panel-2);
+  border-bottom:1px solid var(--line);padding:7px 10px;white-space:nowrap}
+.md tbody td{border-bottom:1px solid var(--line-soft);padding:7px 10px;vertical-align:top}
+.md tbody tr:last-child td{border-bottom:0}
+/* practice checklists: "- [ ] item" in the markdown */
+.md li.task{list-style:none;margin-left:-16px}
+.md li.task::before{content:"\2610";font-family:"IBM Plex Mono",monospace;color:var(--ink-3);margin-right:7px}
+@media (max-width:620px){
+  .md{font-size:15px}
+  .md pre code{font-size:12px}
+  /* the jump links wrap to four rows on a phone; sticky would eat the screen
+     and hide the heading you just jumped to */
+  .notesctl{position:static}
+  .sheet{scroll-margin-top:60px}
+}
+@media print{
+  nav.topnav,.notesctl,.noteshead .lede{display:none}
+  .sheet{break-before:page}
+  .md{font-size:11pt;color:#000}
+}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+<a class="brand" href="index.html">IITM Exams</a>
+<a class="tab" href="index.html">Dashboard</a>
+<a class="tab" href="core.html">Core</a>
+<a class="tab" href="cram.html">Cram</a>
+<a class="tab" href="stat1.html">Stat 1</a>
+<a class="tab" href="python.html">Python</a>
+<a class="tab active" href="notes.html">Notes</a>
+<div class="spacer"></div>
+<div class="daysleft" id="navDays">&mdash; days to Quiz 1</div>
+</div></nav>
+<div class="wrap notes">
+<header class="noteshead">
+<p class="kicker">IITM BS &middot; Quiz 1 &middot; 15 Nov 2026 &middot; weeks 1&ndash;4</p>
+<h1>Crib sheets</h1>
+<p class="lede">The four revision sheets, rendered from the markdown in <code>notes/</code>. Read the crib sheet while you revise; read the <strong>must-know</strong> sheet last, right before you walk in.</p>
+</header>
+<div class="notesctl">
+<a href="#python-crib">🐍 Python &middot; crib sheet</a>
+<a href="#python-mustknow">🐍 Python &middot; must-know</a>
+<a href="#stat1-crib">📊 Stat 1 &middot; crib sheet</a>
+<a href="#stat1-mustknow">📊 Stat 1 &middot; must-know</a>
+<span class="sp"></span>
+<button id="tPrint">Print</button>
+</div>
+<section class="sheet s-python" id="python-crib">
+<div class="sheeth">
+<h2>🐍 Python</h2>
+<span class="kind">Crib sheet</span>
+<span class="sp"></span>
+<span class="src">notes/python-crib.md</span>
+<span class="blurb">Pattern, weeks 1-4 concept map, formula page, curated practice</span>
+</div>
+<div class="md">
+<h1>Programming in Python (BSCS1002) — Quiz 1 Crib Sheet</h1>
+<p><em>Built from <code>WEEK_MAP.md</code> (weeks 1–4) + the 70 week-1–4 questions tagged across 11 Quiz 1 papers and 8 End Term papers (2023 Feb → 2026 Sep). Exam: </em><em>Sun 15 Nov 2026, 2:00–6:00 PM</em><em>, weeks 1–4 only.</em></p>
+<p>Companion file: <code>Python_MustKnow_Before_Exam.md</code> — read that one last, right before you walk in.</p>
+<hr />
+<h2>Part 1 — Exam pattern (from 19 papers in scope)</h2>
+<p>70 questions fall inside weeks 1–4, worth 186 marks. Split: <strong>MCQ 63% · SA 20% · MSQ 17%</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Topic</th>
+<th>Questions</th>
+<th>Marks</th>
+<th>Share</th>
+<th>Avg difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W1</td>
+<td>Introduction to algorithms — expressions, types, <code>//</code> and <code>%</code></td>
+<td>8</td>
+<td>17</td>
+<td>9%</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>W2</td>
+<td>Conditionals — single <code>if</code>/<code>else</code>, chained comparison</td>
+<td>4</td>
+<td>12</td>
+<td>6%</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td><strong>W3</strong></td>
+<td><strong>Conditionals (cont.) — boolean logic, <code>if</code>/<code>elif</code> chains, nesting</strong></td>
+<td><strong>39</strong></td>
+<td><strong>95</strong></td>
+<td><strong>51%</strong></td>
+<td><strong>2.4</strong></td>
+</tr>
+<tr>
+<td><strong>W4</strong></td>
+<td><strong>Iterations and ranges — <code>while</code> tracing, digit extraction</strong></td>
+<td><strong>19</strong></td>
+<td><strong>62</strong></td>
+<td><strong>33%</strong></td>
+<td><strong>2.3</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>W3 + W4 = 84% of the marks.</strong> Everything is code tracing — there is no theory to recite. The entire exam is "substitute the inputs, walk the lines, report what prints".</p>
+<p>Recurring clusters, ranked by how often they appear:</p>
+<table>
+<thead>
+<tr>
+<th>Frequency</th>
+<th>Cluster</th>
+<th>Week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 questions</td>
+<td>Boolean expression evaluation (<code>not</code>/<code>and</code>/<code>or</code> precedence)</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>9 questions</td>
+<td>Digit extraction loop (<code>% 10</code> and <code>// 10</code>)</td>
+<td>W4</td>
+</tr>
+<tr>
+<td>16 questions</td>
+<td><code>if</code>/<code>elif</code>/<code>else</code> tracing and "which inputs give output X"</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>5 questions</td>
+<td>Separate <code>if</code>s vs <code>elif</code> — equivalence and possible outputs</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>5 questions</td>
+<td>Truthiness, <code>isinstance</code>, short-circuit</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>4 questions</td>
+<td>Pick the loop that prints/accumulates a series</td>
+<td>W4</td>
+</tr>
+<tr>
+<td>4 questions</td>
+<td><code>while</code>-loop final value / iteration count</td>
+<td>W4</td>
+</tr>
+<tr>
+<td>4 questions</td>
+<td>"Choose the snippet that is actually correct"</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>3 questions</td>
+<td>Expression type inference</td>
+<td>W1</td>
+</tr>
+<tr>
+<td>2 questions</td>
+<td>Two-pointer <code>while</code> loop</td>
+<td>W4</td>
+</tr>
+<tr>
+<td>2 questions</td>
+<td>Chained comparison type</td>
+<td>W2</td>
+</tr>
+<tr>
+<td>2 questions</td>
+<td>Unassigned-variable <code>NameError</code> trap</td>
+<td>W2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Takeaway:</strong> 2 of the 4 hardest-rated questions in the whole pool (<code>Q1 2026 Mar</code> Q17, Q18) are the <em>same</em> archetype — <code>isinstance</code> + truthiness counters. Learn that one pattern and you own 8 marks of the hardest material on the paper.</p>
+<hr />
+<h2>Part 2 — Concept Map by Week</h2>
+<h3>Week 1 — Algorithms, expressions and types</h3>
+<ul>
+<li><strong>Type rules — the whole of W1 in five lines:</strong></li>
+<li><code>int op int</code> → <code>int</code>, <strong>except</strong> <code>/</code> (always <code>float</code>) and <code>**</code> with a negative exponent (<code>2**-3</code> → <code>0.125</code>, a float).</li>
+<li><code>int op float</code> → <code>float</code>. Any float anywhere in the expression poisons the result to float: <code>7.0 // 2</code> → <code>3.0</code>, not <code>3</code>.</li>
+<li>A quoted literal is <code>str</code> even when it looks like a number: <code>"7" + "2"</code> is <code>"72"</code>, not <code>9</code>.</li>
+<li><code>+</code> joins <code>str</code> with <code>str</code> only. <code>"a" + 1</code> → <code>TypeError</code>. <code>"ab" * 3</code> → <code>"ababab"</code> (str × int is legal).</li>
+<li><code>int()</code>, <code>str()</code>, <code>float()</code>, <code>len()</code> change the type <strong>before the next operator sees it</strong> — that's the point of the question.</li>
+<li><strong><code>//</code> and <code>%</code>:</strong> <code>//</code> floors, <code>%</code> keeps the remainder. The classic decomposition: <code>years = n // 365</code>, <code>weeks = (n % 365) // 7</code>, <code>days = (n % 365) % 7</code>.</li>
+<li>⚠️ <code>//</code> <strong>floors toward −∞</strong>, it does not truncate: <code>-7 // 2</code> is <code>-4</code>, not <code>-3</code>. And <code>%</code> takes the <strong>sign of the divisor</strong>: <code>-7 % 2</code> is <code>1</code>, not <code>-1</code>.</li>
+<li><strong>String slicing:</strong> <code>s[a:b]</code> includes <code>a</code>, excludes <code>b</code> → length <code>b − a</code> (clipped at the ends). <code>s[:k]</code> is the first <code>k</code> characters. Count spaces you concatenate in — they're characters too.</li>
+<li><strong>f-strings with a width:</strong> <code>f"{5:3}"</code> pads to 3 columns → <code>"  5"</code> (two spaces). The width is part of the output length.</li>
+<li><strong>Work inside-out.</strong> Every W1 question is one expression. Evaluate the innermost call first, note its type, then apply the next operator to <em>that</em>.</li>
+</ul>
+<h3>Week 2 — Conditionals (single branch)</h3>
+<ul>
+<li><strong>Chained comparison:</strong> <code>a &lt; b &lt; c</code> means <code>(a &lt; b) and (b &lt; c)</code> — and <code>b</code> is evaluated only once. The result is <code>bool</code>.</li>
+<li><strong><code>bool</code> <em>is</em> an <code>int</code>:</strong> <code>True == 1</code>, <code>False == 0</code>, <code>True + True == 2</code>. So <code>type(1 &lt; 2)</code> is <code>bool</code>, but <code>(1 &lt; 2) + 1</code> is <code>2</code>, an <code>int</code>. A comparison stays <code>bool</code> <em>unless an arithmetic operator is applied afterwards</em>.</li>
+<li><strong>Single <code>if</code>/<code>else</code> tracing:</strong> substitute the inputs, follow exactly <strong>one</strong> branch, print. Write the variable values in the margin — don't do it in your head.</li>
+<li><strong>The unassigned-variable trap:</strong> if a name is assigned <em>only</em> inside an <code>if</code> body and then used after the block, the code raises <code>NameError</code> <strong>exactly when every guarding condition is False</strong>. The question is almost always "for which inputs does this error?" — answer: the inputs that satisfy none of the conditions.</li>
+</ul>
+<h3>Week 3 — Conditionals continued (the half of the paper)</h3>
+<ul>
+<li><strong>Operator precedence — memorize cold:</strong> comparisons (<code>&lt;</code>, <code>==</code>, …) → <code>not</code> → <code>and</code> → <code>or</code>.</li>
+<li>So <code>not True and False</code> is <code>(not True) and False</code> = <code>False</code>.</li>
+<li>And <code>True or False and False</code> is <code>True or (False and False)</code> = <code>True</code>.</li>
+<li>Parenthesise mentally before you substitute, then reduce innermost first.</li>
+<li>For "deduce the variable" questions: <strong><code>not not x</code> is <code>x</code></strong> — undo <code>not</code> by <code>not</code>.</li>
+<li><strong><code>if</code>/<code>elif</code>/<code>else</code> chains: the FIRST true condition runs, every later one is skipped.</strong> This is the single most-tested fact in the course.</li>
+<li><strong>Separate <code>if</code>s vs <code>elif</code> — the difference that the MSQs live on:</strong></li>
+<li>Separate <code>if</code>s are each tested independently → <strong>several can fire, or none</strong>. Output can print twice.</li>
+<li><code>elif</code>/<code>else</code> makes branches <strong>mutually exclusive</strong> → exactly one fires (with an <code>else</code>), at most one (without).</li>
+<li>To find where two versions differ: <strong>look for an input that satisfies two conditions at once.</strong> That input is the answer.</li>
+<li><strong>"Which inputs give output X" questions:</strong> write down the interval each branch actually owns, remembering that earlier conditions <strong>carve out</strong> later ones. <code>if x &gt; 10</code> then <code>elif x &gt; 5</code> means the second branch owns <code>5 &lt; x &lt;= 10</code>, not <code>x &gt; 5</code>. Then test boundary values explicitly: the threshold itself, and ±1.</li>
+<li><strong>Counting inputs:</strong> for a nested-range question ("how many integer pairs print Yes"), count integers in the rectangle/interval <strong>inclusive of both ends</strong> — <code>a &lt;= x &lt;= b</code> has <code>b − a + 1</code> integers.</li>
+<li><strong>Truthiness:</strong> falsy values are <code>0</code>, <code>0.0</code>, <code>""</code>, <code>[]</code>, <code>{}</code>, <code>()</code>, <code>None</code>. <strong>Everything else is truthy</strong> — including <code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code>, and <code>[0]</code>.</li>
+<li><strong>Short-circuit returns the operand, not a bool:</strong></li>
+<li><code>a or b</code> → the <strong>first truthy</strong> operand (or the last one if all falsy): <code>0 or "x"</code> is <code>"x"</code>, <code>3 or 5</code> is <code>3</code>.</li>
+<li><code>a and b</code> → the <strong>first falsy</strong> operand (or the last one if all truthy): <code>"" and 5</code> is <code>""</code>, <code>3 and 5</code> is <code>5</code>.</li>
+<li><strong><code>isinstance</code>:</strong> <code>isinstance(True, int)</code> is <strong><code>True</code></strong> (bool subclasses int) but <code>isinstance(1, bool)</code> is <strong><code>False</code></strong>. This asymmetry is the whole point of the two hardest questions in the pool.</li>
+<li><strong>Bitwise <code>&amp;</code>/<code>|</code> are not <code>and</code>/<code>or</code>:</strong> they operate on the integer bits — <code>5 &amp; 3</code> is <code>1</code>. On two bools they do behave like logical ops (<code>True &amp; False</code> is <code>False</code>) and return <code>bool</code>, but they <strong>do not short-circuit</strong> and they bind <em>tighter</em> than comparisons would suggest. If you see <code>&amp;</code> or <code>|</code>, slow down.</li>
+<li><strong><code>return</code> inside an <code>if</code> exits the function immediately</strong> — nothing after it in the function runs, including later <code>elif</code>s.</li>
+<li><strong>"Choose the snippet that is correct" questions:</strong> don't read for elegance, <strong>test each candidate with the nasty inputs</strong> — equal values (ties), exactly on the threshold, and a negative. The bugs planted are always one of: independent <code>if</code>s printing twice, an <code>elif</code> chain in the wrong order, <code>&gt;</code> where <code>&gt;=</code> is needed, or a missing <code>else</code>.</li>
+</ul>
+<h3>Week 4 — Iterations and ranges</h3>
+<ul>
+<li><strong><code>range(start, stop, step)</code> excludes <code>stop</code>.</strong> <code>range(1, 11)</code> yields 10 values, 1 through 10. <code>range(10, 0, -2)</code> yields <code>10, 8, 6, 4, 2</code>. Number of values = <code>ceil((stop − start) / step)</code>.</li>
+<li><strong>"First hundred powers of two" means 100 iterations</strong>, with the multiplier updated every pass. Check three things on every candidate loop: the <strong>first</strong> value printed, the <strong>last</strong> value printed, and the <strong>number</strong> of iterations. One of the distractors is always off by one at exactly one of those three.</li>
+<li>
+<p><strong>The digit-extraction skeleton — this is 9 questions:</strong>
+  <code>python
+  while n &gt; 0:
+      d = n % 10        # peel the last digit
+      # &lt;&lt;&lt; the only line that changes between questions &gt;&gt;&gt;
+      n = n // 10       # drop it</code>
+  What sits in the middle is sum (<code>s += d</code>), product (<code>p *= d</code>), reverse (<code>r = r*10 + d</code>), positional weight (<code>t += d * w; w *= 10</code>), or a filter (<code>if d % 2: s += d</code>).</p>
+</li>
+<li>
+<p>⚠️ <strong>Start the accumulator at the identity: <code>0</code> for a sum, <code>1</code> for a product.</strong> A product started at <code>0</code> returns <code>0</code> for every input — that is the standard planted trap, and <code>Q1 2023 Jul</code> Q11 is exactly it.</p>
+</li>
+<li>⚠️ <code>while n &gt; 0</code> means <strong>input <code>0</code> runs the body zero times</strong> → you get the accumulator's initial value back.</li>
+<li>⚠️ Digit loops assume a positive <code>n</code>. On a negative input the loop body never runs.</li>
+<li><strong><code>while</code>-loop tracing — do not do it in your head. Make a table</strong>, one row per iteration, one column per variable, plus a column for the condition's truth value. Stop when the condition <strong>first fails</strong>.</li>
+<li>"Final value of the loop variable" = the <strong>first value that violates the condition</strong>, not the last one that satisfied it.</li>
+<li>"Iteration count" = the number of rows in your table. Count rows, don't estimate.</li>
+<li><strong>Two-pointer loop:</strong> <code>i</code> starts at the left end, <code>j</code> at the right end, and you compare <code>a[i] + a[j]</code> with the target:</li>
+<li>sum too <strong>big</strong> → <code>j -= 1</code> (shrink from the right)</li>
+<li>sum too <strong>small</strong> → <code>i += 1</code> (grow from the left)</li>
+<li>loop runs <code>while i &lt; j</code>; when the pointers <strong>cross</strong>, nothing was found → returns <code>None</code>/<code>False</code>. The "for which arguments does it return None" question is asking you to find the input with no valid pair.</li>
+<li><strong>Fibonacci-style loops</strong> (<code>a, b = b, a + b</code>): the simultaneous assignment uses the <strong>old</strong> values of both on the right-hand side. Write both variables per row or you will get it wrong.</li>
+</ul>
+<hr />
+<h2>Part 3 — One-Page Reference</h2>
+<pre><code>PRECEDENCE (low to high):   or  &lt;  and  &lt;  not  &lt;  comparisons  &lt;  arithmetic
+                            not True and False  ==  (not True) and False  ==  False
+                            True or False and False  ==  True or (False and False)  ==  True
+
+TYPES    int/int -&gt; float ALWAYS        7/2 = 3.5
+         int//int -&gt; int                7//2 = 3        -7//2 = -4   (floors, not truncates)
+         int%int  -&gt; sign of DIVISOR    -7%2 = 1
+         int**neg -&gt; float              2**-1 = 0.5
+         any float in -&gt; float out      7.0//2 = 3.0
+         bool IS int                    True+True = 2    isinstance(True,int) -&gt; True
+                                                          isinstance(1,bool)  -&gt; False
+
+FALSY (exactly these)   0   0.0   &quot;&quot;   []   {}   ()   None
+TRUTHY (watch out)      &quot;0&quot;   &quot; &quot;   &quot;False&quot;   -1   [0]   0.1
+
+SHORT-CIRCUIT returns an OPERAND, not a bool
+         a or  b  -&gt; first TRUTHY (else last)     0 or &quot;x&quot; -&gt; &quot;x&quot;     3 or 5 -&gt; 3
+         a and b  -&gt; first FALSY  (else last)     &quot;&quot; and 5 -&gt; &quot;&quot;      3 and 5 -&gt; 5
+
+RANGE    range(a, b)        -&gt; b-a values, a .. b-1          range(1,11) -&gt; 10 values
+         range(a, b, s)     -&gt; ceil((b-a)/s) values          range(10,0,-2) -&gt; 10,8,6,4,2
+
+DIGIT LOOP                            SERIES LOOP CHECKLIST
+  s = 0        # 1 for product          1. first value printed?
+  while n &gt; 0:                          2. last value printed?
+      d = n % 10                        3. how many iterations?
+      s += d   # the variable line
+      n = n // 10
+
+BRANCHES  elif chain  -&gt; FIRST true wins, rest skipped, at most one fires
+          separate ifs -&gt; each tested independently, MANY or NONE can fire
+          difference shows up only on inputs satisfying TWO conditions
+          name assigned only inside an if -&gt; NameError when all conditions False
+          return inside an if -&gt; function exits, later elifs never run
+</code></pre>
+<p><strong>Paper label → file map</strong> (for the pointers in Part 4):</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>File</th>
+<th>Label</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1 2023 Feb</td>
+<td><code>PYQs/Quiz1/Quiz1_2023-02-26.pdf</code></td>
+<td>ET 2023 Apr</td>
+<td><code>PYQs/EndTerm/EndTerm_2023-04-30.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2023 Jul</td>
+<td><code>PYQs/Quiz1/Quiz1_2023-07-16.pdf</code></td>
+<td>ET 2023 Sep</td>
+<td><code>PYQs/EndTerm/EndTerm_2023-09-03.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2023 Oct</td>
+<td><code>PYQs/Quiz1/Quiz1_2023-10-29.pdf</code></td>
+<td>ET 2023 Dec</td>
+<td><code>PYQs/EndTerm/EndTerm_2023-12-24.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2024 Feb</td>
+<td><code>PYQs/Quiz1/Quiz1_2024-02-25.pdf</code></td>
+<td>ET 2024 Sep</td>
+<td><code>PYQs/EndTerm/EndTerm_2024-09-01.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2024 Jul</td>
+<td><code>PYQs/Quiz1/Quiz1_2024-07-07.pdf</code></td>
+<td>ET 2024 Dec</td>
+<td><code>PYQs/EndTerm/EndTerm_2024-12-22.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2024 Oct</td>
+<td><code>PYQs/Quiz1/Quiz1_2024-10-27.pdf</code></td>
+<td>ET 2025 Apr</td>
+<td><code>PYQs/EndTerm/EndTerm_2025-04-13.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2025 Feb</td>
+<td><code>PYQs/Quiz1/Quiz1_2025-02-23.pdf</code></td>
+<td>ET 2025 Aug</td>
+<td><code>PYQs/EndTerm/EndTerm_2025-08-31.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2025 Jul</td>
+<td><code>PYQs/Quiz1/Quiz1_2025-07-13.pdf</code></td>
+<td>ET 2026 Sep</td>
+<td><code>PYQs/EndTerm/EndTerm_2026-09-13_session2.pdf</code></td>
+</tr>
+<tr>
+<td>Q1 2025 Oct</td>
+<td><code>PYQs/Quiz1/Quiz1_2025-10-26.pdf</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Q1 2026 Mar</td>
+<td><code>PYQs/Quiz1/Quiz1_2026-03-15.pdf</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Q1 2026 Jul</td>
+<td><code>PYQs/Quiz1/Quiz1_2026-07-16.pdf</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Or skip the PDFs and use the trainer: <code>python3 -m http.server 8000</code> in <code>rahulrr-iitm-exams/</code>, then <code>python.html</code> — same questions as images with the answer hidden until you ask, and tick-off tracking.</p>
+<hr />
+<h2>Part 4 — Curated Practice (aim: 90–120 min)</h2>
+<p>Ordered by marks bought per minute. <strong>Trace with a pen — one table per loop, one margin note per branch.</strong> Guessing from the shape of the code is how this paper gets you.</p>
+<h3>A. The two big archetypes — do these first (≈60 min, 100+ marks of pattern)</h3>
+<p><strong>A1. <code>if</code>/<code>elif</code>/<code>else</code> tracing and input-set questions</strong> — 16 questions, the largest single cluster:</p>
+<ul>
+<li class="task"><strong>Q1 2023 Feb Q16, Q17, Q18, Q19</strong> — four 1-mark warm-ups on the same chain. Start here, they calibrate you.</li>
+<li class="task"><strong>Q1 2023 Jul Q6</strong> — if/elif/else comparison result.</li>
+<li class="task"><strong>Q1 2023 Jul Q3</strong> — find the inputs where nested ifs print <strong>nothing</strong>.</li>
+<li class="task"><strong>Q1 2024 Jul Q6</strong> — MSQ: which inputs produce a given category (boundary hunting).</li>
+<li class="task"><strong>Q1 2024 Oct Q9</strong> — SA: nested if with integer division.</li>
+<li class="task"><strong>Q1 2025 Feb Q9</strong> — SA: conditional using <code>min()</code>.</li>
+<li class="task"><strong>Q1 2025 Feb Q12 + Q13</strong> — MSQ pair: which boolean inputs print True / print False.</li>
+<li class="task"><strong>Q1 2023 Oct Q13</strong> — SA: <strong>count</strong> the integer points satisfying nested range conditions.</li>
+<li class="task"><strong>ET 2025 Apr Q15</strong> — MSQ: verify statements about temperature-band output.</li>
+<li class="task"><strong>Q1 2025 Jul Q8</strong> — MSQ: parity output of a function with an if/elif chain.</li>
+<li class="task"><strong>Q1 2025 Oct Q9</strong> — MSQ: possible outputs of a nested conditional over all inputs.</li>
+<li class="task"><strong>Q1 2023 Jul Q7</strong> — identify the correct statement about nested if/else outputs.</li>
+<li class="task"><strong>ET 2024 Dec Q7</strong> — which <code>return</code> executes when the arguments are equal.</li>
+</ul>
+<p><strong>A2. Digit extraction (<code>% 10</code> / <code>// 10</code>)</strong> — 9 questions, and once you've seen the skeleton they're free marks:</p>
+<ul>
+<li class="task"><strong>Q1 2024 Jul Q11</strong> — SA: trace a digit-sum loop.</li>
+<li class="task"><strong>Q1 2025 Feb Q11</strong> — SA: product of digits.</li>
+<li class="task"><strong>Q1 2026 Jul Q10</strong> — SA: sum of <strong>odd</strong> digits only (the filter variant).</li>
+<li class="task"><strong>Q1 2026 Mar Q5 + Q6</strong> — pair: each digit weighted by its position.</li>
+<li class="task"><strong>ET 2023 Apr Q3</strong> and <strong>ET 2023 Sep Q8</strong> — pick the loop computing the product of digits (same question, two papers).</li>
+<li class="task"><strong>Q1 2023 Jul Q11</strong> — digit reversal traced with a <strong>wrong initial value</strong>. This is the accumulator-identity trap; get it wrong once here, never again.</li>
+<li class="task"><strong>ET 2023 Apr Q18</strong> — MSQ: pick the snippets that correctly reverse an integer.</li>
+</ul>
+<h3>B. Boolean logic blitz — 8 questions, 5 seconds each once precedence is reflex (≈15 min)</h3>
+<p>Two papers ask the <strong>same four questions</strong>. Do one set, then use the other as a self-test.</p>
+<ul>
+<li class="task"><strong>ET 2023 Apr Q25, Q26, Q27, Q28</strong></li>
+<li class="task"><strong>ET 2023 Sep Q14, Q15, Q16, Q17</strong></li>
+<li class="task"><strong>Q1 2023 Feb Q2</strong> — deduce the variable from repeated <code>not</code> (<code>not not x</code> is <code>x</code>).</li>
+</ul>
+<h3>C. The separate-<code>if</code>s-vs-<code>elif</code> family — where the MSQ marks hide (≈20 min)</h3>
+<ul>
+<li class="task"><strong>Q1 2023 Oct Q9</strong> — MSQ: which inputs produce the <em>fourth</em> output, because the <code>if</code>s are independent.</li>
+<li class="task"><strong>ET 2024 Dec Q3</strong> — compare outputs when the second condition is <code>if</code> vs <code>elif</code>.</li>
+<li class="task"><strong>ET 2023 Dec Q10</strong> — MSQ: is an if/else block equivalent to sequential prints?</li>
+<li class="task"><strong>Q1 2025 Feb Q6</strong> — MSQ: which <strong>lines execute</strong> across separate if blocks.</li>
+<li class="task"><strong>Q1 2024 Oct Q6</strong> — MSQ: correct statements about an abs/add branch.</li>
+</ul>
+<h3>D. Truthiness, <code>isinstance</code>, short-circuit — the 4-mark hard end (≈20 min)</h3>
+<p>Do these even if they feel slow. They are the only difficulty-4 questions in the pool and they repeat.</p>
+<ul>
+<li class="task"><strong>Q1 2026 Mar Q17 + Q18</strong> — SA, 4 marks each: counter after <code>isinstance</code> checks combined with truthiness. <strong>The two hardest questions on record, same pattern.</strong></li>
+<li class="task"><strong>Q1 2025 Oct Q4</strong> — <code>or</code>/<code>and</code> over strings and integers (short-circuit returns an operand).</li>
+<li class="task"><strong>ET 2025 Aug Q3</strong> — elif chain driven by falsy values.</li>
+<li class="task"><strong>ET 2026 Sep Q1</strong> — bool/int conversions mixed with logical <strong>and bitwise</strong> operators.</li>
+</ul>
+<h3>E. <code>while</code>-loop tracing and series selection (≈20 min)</h3>
+<ul>
+<li class="task"><strong>Q1 2023 Oct Q16</strong> — SA: loop variable's value after the loop ends (the easiest of the group — start here).</li>
+<li class="task"><strong>ET 2024 Dec Q10</strong> — SA: count the iterations.</li>
+<li class="task"><strong>ET 2026 Sep Q10</strong> — SA: count iterations of a loop that halves evens and decrements odds.</li>
+<li class="task"><strong>Q1 2024 Feb Q8</strong> — SA: Fibonacci-like <code>while</code>; print the final term. (Write both variables per row.)</li>
+<li class="task"><strong>Q1 2023 Oct Q15</strong> and <strong>Q1 2025 Feb Q4</strong> — select the loop printing the first hundred powers of two / of three.</li>
+<li class="task"><strong>Q1 2023 Feb Q6</strong> — MSQ: which loops print the first ten positive even numbers.</li>
+<li class="task"><strong>Q1 2023 Jul Q10</strong> — sum of a concatenated-digit series.</li>
+<li class="task"><strong>ET 2024 Dec Q17 + Q18</strong> — the two-pointer pair: trace it, then find the arguments returning <code>None</code>.</li>
+</ul>
+<h3>F. "Choose the correct snippet" + W1/W2 mop-up (≈15 min)</h3>
+<p>Cheap marks. Leave them to last but don't skip them — 29 marks sit in W1+W2 alone.</p>
+<ul>
+<li class="task"><strong>Q1 2024 Feb Q5</strong> — minimum of three integers (test with ties).</li>
+<li class="task"><strong>ET 2024 Sep Q3</strong> — age categorisation (test on the boundaries).</li>
+<li class="task"><strong>ET 2025 Apr Q8</strong> — marks into ranges.</li>
+<li class="task"><strong>Q1 2023 Feb Q13, Q14, Q15</strong> — expression type inference, 1 mark each.</li>
+<li class="task"><strong>Q1 2023 Jul Q5</strong> — days → years/weeks/days via <code>//</code> and <code>%</code>.</li>
+<li class="task"><strong>Q1 2023 Oct Q8</strong> — output of concatenated string literals.</li>
+<li class="task"><strong>Q1 2025 Feb Q8</strong> — SA: length of a string built from slices plus a space.</li>
+<li class="task"><strong>Q1 2025 Oct Q5</strong> — type conversions through list operations.</li>
+<li class="task"><strong>Q1 2026 Jul Q2</strong> — f-string with a width after <code>int()</code> and <code>len()</code>.</li>
+<li class="task"><strong>Q1 2024 Jul Q5</strong> and <strong>Q1 2025 Feb Q5</strong> — type produced by a chained comparison.</li>
+<li class="task"><strong>Q1 2023 Feb Q3</strong> — when does conditionally-assigned-variable code raise an error.</li>
+<li class="task"><strong>Q1 2024 Jul Q9</strong> — SA: trace a conditional on two numbers.</li>
+</ul>
+<h3>Suggested order for your session</h3>
+<ol>
+<li>Skim Part 2's W3 and W4 sections only (~15 min). W1/W2 you can read at the end — they're small and easy.</li>
+<li><strong>Section B</strong> (boolean blitz) first — 15 minutes, and it makes every W3 question afterwards faster.</li>
+<li><strong>Section A1</strong>, starting with the four 1-mark <code>Q1 2023 Feb</code> warm-ups, then the MSQs (~35 min).</li>
+<li><strong>Section A2</strong> (digit loops) — write the skeleton from memory once before you start (~25 min).</li>
+<li><strong>Section C</strong>, then <strong>E</strong>, then <strong>D</strong>. Stop at D if you run out of time; it's 16 marks and the hardest.</li>
+<li><strong>Section F</strong> last, fast.</li>
+<li>Re-read Part 3's precedence line, the falsy list and the digit-loop skeleton right before the exam.</li>
+</ol>
+<p>Log every slip — what you thought, what it actually was — in <code>Stat1/error_log.md</code> (or start a <code>Python/error_log.md</code> beside it). Tracing errors repeat unless they're written down.</p>
+</div>
+</section>
+<section class="sheet s-python" id="python-mustknow">
+<div class="sheeth">
+<h2>🐍 Python</h2>
+<span class="kind">Must-know</span>
+<span class="sp"></span>
+<span class="src">notes/python-mustknow.md</span>
+<span class="blurb">The 10 traps - read this one last</span>
+</div>
+<div class="md">
+<h1>Python Quiz 1 — Must-Know List (read this last, right before you walk in)</h1>
+<p>One screen. No new material — just the things that show up in nearly every paper and the places this exam takes marks off people who actually know Python.</p>
+<h2>Highest-probability topics (weeks 1–4, 70 questions across 19 papers)</h2>
+<ol>
+<li><strong><code>if</code>/<code>elif</code>/<code>else</code> tracing + "which inputs give output X"</strong> — 16 questions, the biggest cluster in the course.</li>
+<li><strong>Digit extraction loops (<code>% 10</code>, <code>// 10</code>)</strong> — 9 questions.</li>
+<li><strong>Boolean expression evaluation (<code>not</code>/<code>and</code>/<code>or</code> precedence)</strong> — 8 questions.</li>
+<li><strong>Separate <code>if</code>s vs <code>elif</code></strong> — 5 questions, nearly always MSQ.</li>
+<li><strong>Truthiness / <code>isinstance</code> / short-circuit</strong> — 5 questions, including both difficulty-4 questions on record.</li>
+</ol>
+<p>W3 + W4 are <strong>84% of the marks</strong>. If time runs out, W1 and W2 are what you drop.</p>
+<h2>The 10 traps that cost the most marks</h2>
+<ol>
+<li><strong>Precedence is <code>not</code> → <code>and</code> → <code>or</code>.</strong> <code>not True and False</code> is <code>(not True) and False</code> = <code>False</code>. <code>True or False and False</code> is <code>True</code>. Parenthesise on paper <em>before</em> substituting.</li>
+<li><strong>In an <code>elif</code> chain the FIRST true condition wins and the rest are skipped.</strong> Separate <code>if</code>s are each tested independently — several can fire, or none. The exam's favourite MSQ is an input that satisfies <strong>two</strong> conditions, because that's the only place the two versions differ.</li>
+<li><strong>Earlier conditions carve out later ones.</strong> <code>if x &gt; 10</code> / <code>elif x &gt; 5</code> means branch two owns <code>5 &lt; x &lt;= 10</code>, not <code>x &gt; 5</code>. Always test the threshold itself and ±1.</li>
+<li><strong>Accumulator identity: <code>0</code> for a sum, <code>1</code> for a product.</strong> A product started at <code>0</code> returns <code>0</code> for every input — that's the planted bug, and it's an exam question twice.</li>
+<li><strong><code>while n &gt; 0</code> never runs on input <code>0</code></strong> — you get the initial accumulator value straight back.</li>
+<li><strong>Falsy is exactly <code>0</code>, <code>0.0</code>, <code>""</code>, <code>[]</code>, <code>{}</code>, <code>()</code>, <code>None</code>.</strong> <code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code> are all <strong>truthy</strong>.</li>
+<li><strong><code>a or b</code> returns the first truthy operand, <code>a and b</code> the first falsy one — not a bool.</strong> <code>0 or "x"</code> is <code>"x"</code>. <code>3 and 5</code> is <code>5</code>.</li>
+<li><strong><code>isinstance(True, int)</code> is <code>True</code>, but <code>isinstance(1, bool)</code> is <code>False</code>.</strong> That asymmetry is the whole content of the two hardest questions in the pool.</li>
+<li><strong><code>/</code> always returns a float, even <code>4/2</code>.</strong> And <code>//</code> <strong>floors toward −∞</strong> (<code>-7 // 2</code> is <code>-4</code>, not <code>-3</code>), while <code>%</code> takes the <strong>sign of the divisor</strong> (<code>-7 % 2</code> is <code>1</code>).</li>
+<li><strong><code>range(a, b)</code> excludes <code>b</code></strong> → <code>range(1, 11)</code> is ten values. The "final value of the loop variable" is the <strong>first value that breaks the condition</strong>, not the last one that passed.</li>
+</ol>
+<h2>Quick-hit reference</h2>
+<pre><code>not True and False -&gt; False          True or False and False -&gt; True
+7/2 -&gt; 3.5 (float)    7//2 -&gt; 3    -7//2 -&gt; -4    -7%2 -&gt; 1    2**-1 -&gt; 0.5
+True + True -&gt; 2      type(1&lt;2&lt;3) -&gt; bool      a&lt;b&lt;c  ==  (a&lt;b) and (b&lt;c)
+0 or &quot;x&quot; -&gt; &quot;x&quot;       &quot;&quot; and 5 -&gt; &quot;&quot;           3 and 5 -&gt; 5     3 or 5 -&gt; 3
+isinstance(True,int) -&gt; True         isinstance(1,bool) -&gt; False
+range(1,11) -&gt; 10 values             range(10,0,-2) -&gt; 10,8,6,4,2
+
+while n &gt; 0:            # input 0 -&gt; body never runs
+    d = n % 10          # peel
+    s += d              # 0 for sum, 1 for product  &lt;-- the trap
+    n = n // 10         # drop
+</code></pre>
+<h2>The two rules that matter more than any fact above</h2>
+<ul>
+<li><strong>Make the table.</strong> Every <code>while</code> question: one row per iteration, one column per variable, plus the condition's truth value. Stop when it first fails. Never trace a loop in your head — that is where the marks actually go.</li>
+<li><strong>Test the boundaries.</strong> For every "choose the correct snippet" question, run each candidate on the tie (equal values), the exact threshold, and a negative. The four planted bugs are always: independent <code>if</code>s printing twice, an <code>elif</code> chain in the wrong order, <code>&gt;</code> where <code>&gt;=</code> was needed, or a missing <code>else</code>.</li>
+</ul>
+<h2>Last check before you open the paper</h2>
+<ul>
+<li><code>return</code> inside an <code>if</code> exits the function — later <code>elif</code>s never run.</li>
+<li>A variable assigned only inside an <code>if</code> raises <code>NameError</code> exactly when <strong>every</strong> condition is False.</li>
+<li><code>&amp;</code> and <code>|</code> are bitwise, not logical: <code>5 &amp; 3</code> is <code>1</code>. If you see them, slow down.</li>
+<li>SA answers are exact numeric entry — do the arithmetic once carefully rather than twice fast.</li>
+<li>Read every MSQ option word by word. Most wrong options are one flipped token from correct (<code>if</code>↔<code>elif</code>, <code>&gt;</code>↔<code>&gt;=</code>, <code>and</code>↔<code>or</code>, <code>//</code>↔<code>/</code>).</li>
+</ul>
+<p>63% MCQ · 20% SA · 17% MSQ. It's a tracing exam, and you've traced them all. Go.</p>
+</div>
+</section>
+<section class="sheet s-stat1" id="stat1-crib">
+<div class="sheeth">
+<h2>📊 Stat 1</h2>
+<span class="kind">Crib sheet</span>
+<span class="sp"></span>
+<span class="src">notes/stat1-crib.md</span>
+<span class="blurb">Pattern, weeks 1-4 concept map, formula page, curated practice</span>
+</div>
+<div class="md">
+<h1>Stat 1 (IITM BS Foundation) — Exam Crib Sheet</h1>
+<p><em>Built from Weeks 1–4 PPTs/Transcripts + 9 PYQ practice papers. Exam: tomorrow.</em></p>
+<hr />
+<h2>Part 1 — Exam pattern (from 9 practice papers)</h2>
+<p>Every paper: 17–23 questions, 36–40 marks, mix of MCQ (single answer), MSQ (multi-select), SA (numeric entry, often with a decimal-accuracy tolerance). First question is always the "confirm your subject" dummy (0 marks). Recurring topic clusters, ranked by how often they appear across the 9 papers:</p>
+<table>
+<thead>
+<tr>
+<th>Frequency</th>
+<th>Topic cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every paper</td>
+<td>Descriptive vs. inferential stats; population vs. sample (representativeness)</td>
+</tr>
+<tr>
+<td>Every paper</td>
+<td>Scales of measurement (nominal/ordinal/interval/ratio) + categorical vs. numerical, discrete vs. continuous, cross-sectional vs. time series</td>
+</tr>
+<tr>
+<td>Almost every paper</td>
+<td>Mean/median/mode + effect of transformations (add/multiply constant)</td>
+</tr>
+<tr>
+<td>Almost every paper</td>
+<td>Variance &amp; SD (population vs. sample) + effect of transformations</td>
+</tr>
+<tr>
+<td>Most papers</td>
+<td>Percentiles, quartiles, IQR, outliers</td>
+</tr>
+<tr>
+<td>Most papers</td>
+<td>Contingency tables &amp; association (row/column relative frequency)</td>
+</tr>
+<tr>
+<td>Most papers</td>
+<td>Covariance &amp; correlation coefficient (r)</td>
+</tr>
+<tr>
+<td>~4 of 9</td>
+<td>Point bi-serial correlation coefficient</td>
+</tr>
+<tr>
+<td>Frequent as MCQ/MSQ</td>
+<td>Charts: pie/bar/Pareto/stacked bar, area principle, misleading graphs</td>
+</tr>
+<tr>
+<td>Occasional</td>
+<td>Stem-and-leaf plots, frequency/relative-frequency tables</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Takeaway:</strong> Weeks 1, 3, and 4 dominate the marks. Week 2 (charts) shows up mostly as quick conceptual MCQs, not calculations. Prioritize accordingly if time gets tight.</p>
+<hr />
+<h2>Part 2 — Concept Map by Week</h2>
+<h3>Week 1 — Foundations of Data</h3>
+<ul>
+<li><strong>Statistics</strong>: "the art of learning from data" (collection → description → analysis → conclusions).</li>
+<li><strong>Descriptive vs. inferential</strong>: descriptive = summarize; inferential = generalize from sample to population (needs probability). A study on a <em>sample</em> can still be purely descriptive if you don't generalize beyond it.</li>
+<li><strong>Population vs. sample</strong>: sample must be <em>representative</em> — missing an entire subgroup breaks representativeness even if it's technically a subset.</li>
+<li><strong>Data</strong>: facts/figures collected &amp; summarized; doesn't "speak" by itself. Comments, likes, multimedia all count as data.</li>
+<li><strong>Structured vs. unstructured data</strong>: structured = organized rows/columns; unstructured = scattered, no context.</li>
+<li><strong>Variables &amp; cases (tidy data rules)</strong>: each variable → one column; each case → one row; consistent unit per variable column. A column constant across all cases is <em>not</em> a variable.</li>
+<li><strong>Missing (NA) ≠ 0</strong>: a bowler who never bowled → NA; a bowler who bowled and took 0 wickets → 0. Don't conflate.</li>
+<li><strong>Categorical vs. numerical</strong>: categorical = group membership (gender, blood group); numerical = has measurement units (marks, height). Gotcha: jersey number / mobile number <em>look</em> numeric but are categorical (arithmetic on them is meaningless).</li>
+<li><strong>Discrete vs. continuous</strong> (numerical only): discrete = whole-number counts; continuous = any fractional value.</li>
+<li><strong>Measurement units</strong>: must be consistent across all observations of a variable (don't mix cm and feet).</li>
+<li><strong>Cross-sectional vs. time series</strong>: time series = same variable tracked over time (→ timeplot); cross-sectional = observed at one point in time.</li>
+<li><strong>Scales of measurement</strong> (the single most-tested Week 1 concept):</li>
+<li><strong>Nominal</strong>: labels only, no order (gender, blood group, jersey number).</li>
+<li><strong>Ordinal</strong>: labels + order, but unequal/undefined gaps between ranks (poor/good/excellent).</li>
+<li><strong>Interval</strong>: order + meaningful differences (subtraction valid), but <strong>no true zero</strong> → ratios meaningless. Classic example: °C/°F — 40°C is <em>not</em> twice as hot as 20°C (only Kelvin has an absolute zero).</li>
+<li><strong>Ratio</strong>: interval + true zero → ratios <em>are</em> meaningful; full arithmetic valid (height, weight, marks, runs). 300 runs really is twice 150 runs.</li>
+<li>Categorical data → nominal/ordinal only. Numerical data → interval/ratio only.</li>
+</ul>
+<h3>Week 2 — Describing Categorical Data (single variable)</h3>
+<ul>
+<li><strong>Frequency distribution</strong>: count per distinct category. <strong>Relative frequency</strong> = frequency ÷ total n; always sums to 1 (used to compare datasets of different sizes).</li>
+<li><strong>Pie chart</strong>: wedge angle = relative frequency × 360°. Shows <strong>share of a whole</strong>. Avoid exploding/3D slices.</li>
+<li><strong>Bar chart</strong>: bar height = frequency; bars equal width, <strong>not touching</strong>. Shows <strong>comparison across groups</strong>, not proportions of a whole.</li>
+<li><strong>Pareto chart</strong>: bar chart sorted by frequency (descending) — but <strong>only valid for nominal data</strong>. If the variable is ordinal (e.g., S/M/L), you must keep the natural order instead of sorting by frequency.</li>
+<li><strong>Area principle</strong>: area shown must be proportional to the data it represents. Violations: <em>decorated graphics</em> (icons of uneven size) and <em>truncated graphs</em> (non-zero baseline exaggerates differences) — if you must truncate, explicitly mark the axis break.</li>
+<li><strong>Round-off errors</strong>: individually-rounded percentages may not sum to exactly 100% — always check totals (matters for pie chart degrees summing to 360°).</li>
+<li><strong>Mode</strong>: highest-frequency category; works for nominal <em>and</em> ordinal. Can be bimodal/multimodal.</li>
+<li><strong>Median (ordinal data only)</strong>: middle value once ranked; undefined for nominal data. <strong>Mode ≠ median in general</strong> — mode = most frequent, median = middle-ranked; they need not coincide.</li>
+<li><strong>Best practice</strong>: use "Other" bucket for many small categories instead of silently dropping them; always label axes/title/legend.</li>
+</ul>
+<h3>Week 3 — Describing Numerical Data (the calculation-heavy core)</h3>
+<ul>
+<li><strong>Frequency tables</strong>: discrete data with few distinct values → one class per value. Continuous data → grouped into classes (5–20 classes, rule of thumb); convention: interval includes its <strong>left</strong> end, excludes its <strong>right</strong> end (e.g., "30–40" includes 30, not 40).</li>
+<li><strong>Histogram</strong>: bars touch (no gaps) since data is continuous — this is the key visual difference from a bar chart.</li>
+<li><strong>Stem-and-leaf plot</strong>: stem = all digits except last, leaf = last digit; leaves sorted ascending within each stem row. Retains actual values (unlike histogram).</li>
+<li><strong>Mean</strong>: x̄ = Σx/n (sample), μ = Σx/N (population). Grouped discrete: x̄ = Σfᵢxᵢ/n (exact). Grouped continuous: x̄ = Σfᵢmᵢ/n using class <strong>midpoints</strong> (approximation only).</li>
+<li>⚠️ Mean is <strong>highly sensitive to outliers</strong>.</li>
+<li><strong>Median</strong>: middle of sorted data. n odd → the ((n+1)/2)-th value. n even → average of the two middle values.</li>
+<li>⚠️ Median is <strong>NOT</strong> sensitive to outliers.</li>
+<li><strong>Mode</strong>: most frequent value; may not exist, may be multiple.</li>
+<li><strong>Transformation rules</strong> (memorize this table cold — tested constantly):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Transform yᵢ = xᵢ + c</th>
+<th>Transform yᵢ = xᵢ × c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean: ȳ = x̄ + c</td>
+<td>Mean: ȳ = x̄ × c</td>
+</tr>
+<tr>
+<td>Median: +c</td>
+<td>Median: ×c</td>
+</tr>
+<tr>
+<td>Mode: +c</td>
+<td>Mode: ×c</td>
+</tr>
+<tr>
+<td>Variance: <strong>unchanged</strong></td>
+<td>Variance: × c²</td>
+</tr>
+<tr>
+<td>SD: <strong>unchanged</strong></td>
+<td>SD: × c (not c²)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Why dispersion measures matter</strong>: {3,3,3,3,3} and {1,2,3,4,5} have identical mean/median/mode but obviously different spread.</li>
+<li><strong>Range</strong> = Max − Min. Extremely outlier-sensitive (uses only 2 points).</li>
+<li><strong>Variance</strong>: uses <em>all</em> points, squared deviations from the mean.</li>
+<li>Population: σ² = Σ(xᵢ−μ)²/N</li>
+<li>Sample: s² = Σ(xᵢ−x̄)²/<strong>(n−1)</strong> ← don't forget n−1 for sample variance.</li>
+<li><strong>SD</strong> = √variance. Restores original units (variance has squared units).</li>
+<li><strong>Percentiles</strong> — two different valid algorithms give different answers, know both:</li>
+<li><em>Manual</em>: sort data; compute n·p. If not integer → round <strong>up</strong>, take that ranked value. If integer → average that rank and the next.</li>
+<li><em>Google Sheets</em> <code>PERCENTILE()</code>: rank = p(n−1)+1; interpolate between the integer and fractional parts.</li>
+<li><strong>Quartiles</strong>: Q1 = 25th pct, Q2 = median, Q3 = 75th pct. <strong>Five-number summary</strong>: Min, Q1, Q2, Q3, Max.</li>
+<li><strong>IQR</strong> = Q3 − Q1. More outlier-robust than range/SD.</li>
+</ul>
+<h3>Week 4 — Association Between Two Variables</h3>
+<ul>
+<li><strong>Association ≠ causality</strong> — course only ever claims association.</li>
+<li><strong>Contingency table</strong>: rows/columns = category levels, cells = counts, margins = row/column totals. Preserve natural order for ordinal variables (don't let software alphabetize).</li>
+<li><strong>Row/column relative frequency</strong>: divide cell by its row (or column) total.</li>
+<li><strong>Rule</strong>: if relative frequencies are ~same across all rows → <strong>no association</strong>. If they differ noticeably → <strong>associated</strong>. (Row-wise and column-wise checks agree.)</li>
+<li><strong>Stacked bar chart</strong> (raw counts) vs. <strong>100% stacked bar chart</strong> (normalized proportions — best for comparing shares across groups).</li>
+<li><strong>Scatter plot</strong>: explanatory variable (x) vs. response variable (y). Describe using <strong>D-C-V-O</strong>: Direction, Curvature, Variation, Outliers. Course only quantifies <strong>linear</strong> association.</li>
+<li><strong>Covariance</strong>: Cov(x,y) = Σ(xᵢ−x̄)(yᵢ−ȳ)/(n−1) [sample] or /N [population]. Sign tells direction; magnitude hard to interpret (has mixed units).</li>
+<li><strong>Correlation (Pearson's r)</strong> = Cov(x,y)/(sₓ·sᵥ). Unitless, always in [−1, +1]. |r| near 1 → strong linear association; near 0 → weak/none. Sign = direction, doesn't depend on axis choice.</li>
+<li><strong>Best-fit line</strong>: y = mx + c. Sign of slope m = direction. <strong>R² = r²</strong> (proportion of variance explained); R² tells fit <em>strength</em>, not direction.</li>
+<li>
+<p><strong>Point bi-serial correlation</strong> (numerical variable X vs. <strong>dichotomous</strong> categorical Y, coded 0/1):
+  rpb = (Ȳ₀ − Ȳ₁)/sₓ × √(p₀p₁) — split by group, use group means and group proportions.</p>
+</li>
+<li>
+<p>⚠️ Sign flips if you swap which category is coded 0 vs 1 — only |rpb| indicates strength.</p>
+</li>
+<li>Line-fitting doesn't apply here (x only takes two values).</li>
+</ul>
+<hr />
+<h2>Part 3 — One-Page Formula Sheet</h2>
+<pre><code>Mean (sample):        x̄ = Σx / n
+Mean (grouped):        x̄ = Σ(f·x) / n   [exact, discrete]  or  Σ(f·midpoint) / n  [approx, continuous]
+Median:                n odd → ((n+1)/2)-th value; n even → avg of two middle values
+Sample variance:        s² = Σ(x − x̄)² / (n − 1)
+Population variance:    σ² = Σ(x − μ)² / N
+SD:                    s = √s²
+Percentile (manual):    n·p not integer → round up, take that rank; integer → avg that rank &amp; next
+IQR:                    Q3 − Q1  (Q1, Q3 via percentile method, p = 0.25, 0.75)
+Sample covariance:      Σ(x−x̄)(y−ȳ) / (n − 1)
+Correlation r:          Cov(x,y) / (sx · sy)      [always −1 ≤ r ≤ 1]
+R²:                    r²
+Point bi-serial:        rpb = (Ȳ0 − Ȳ1)/sx × √(p0·p1)
+Pie slice angle:        relative frequency × 360°
+
+Transform y = x + c:    mean/median/mode shift by c; variance &amp; SD UNCHANGED
+Transform y = c·x:      mean/median/mode scale by c; variance scales by c²; SD scales by c
+</code></pre>
+<hr />
+<h2>Part 4 — Curated Practice (aim: 60–90 min)</h2>
+<p>Papers are in your <code>PYQs</code> folder. Short codes used below:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>2023_july_iit_m_foundation_an4_exam...</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>2023_oct_iit_m_qualifier_exam_qpq2...</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2024_feb25_iit_m_an4_exam_qdf4... (1)</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>2024_july07_iit_m_an_exam_qdf4...</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>2024_oct27_iit_m_an_exam_qdd2...</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>2025_feb23_iit_m_an_exam_qip4... (1)</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>2025_jul13_iit_m_an_exam_qio4...</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>2025_oct26_iit_m_an_exam_qim4...</td>
+</tr>
+<tr>
+<td>P9</td>
+<td>statistics1_15_mar_26... (most recent — closest in style to your exam)</td>
+</tr>
+</tbody>
+</table>
+<h3>A. Calculation problems — solve by hand, then check the answer key in that PDF</h3>
+<p>Fully self-contained (all numbers given in the question, no missing table/image needed). Do these first — together they cover mean/median/mode, transformations, variance/SD, percentiles/IQR, and correlation.</p>
+<ul>
+<li class="task"><strong>P1 Q6</strong> — mean/variance correction after a mis-recorded value; find corrected sample SD.</li>
+<li class="task"><strong>P1 Q14–16</strong> — t-shirt prices; Q1, Q3, outlier count.</li>
+<li class="task"><strong>P2 Q15</strong> — 5-value dataset; IQR.</li>
+<li class="task"><strong>P2 Q13</strong> — t-shirt sizes; effect of adding a value on median/mode.</li>
+<li class="task"><strong>P4 Q13–15</strong> — two students' marks related by a constant shift; mean and correlation.</li>
+<li class="task"><strong>P6 Q8</strong> — 6-value dataset; range, median, 25th percentile, IQR.</li>
+<li class="task"><strong>P6 Q10–11</strong> — snack prices; Q1, Q3, IQR.</li>
+<li class="task"><strong>P7 Q2</strong> — adding a 7th test score; effect on mean/median/mode.</li>
+<li class="task"><strong>P7 Q7</strong> — two small datasets; compare variability (range &amp; variance).</li>
+<li class="task"><strong>P7 Q8</strong> — solve for a missing value from the mean, then SD after a shift.</li>
+<li class="task"><strong>P7 Q9</strong> — test times; percentile cutoff for top 20%.</li>
+<li class="task"><strong>P8 Q12</strong> — mean &amp; population variance given; solve for two unknown values.</li>
+<li class="task"><strong>P9 Q12</strong> — 9-value dataset; IQR.</li>
+<li class="task"><strong>P9 Q15</strong> — 10-value dataset; median.</li>
+</ul>
+<h3>B. Conceptual pattern-recognition — flip to these in the PDFs (5–10 sec each, just check you'd pick the right option)</h3>
+<p>Go fast here — you already know the concepts from Part 2, this is just pattern-matching practice on how IITM phrases the traps.</p>
+<p><strong>Descriptive vs. inferential / population vs. sample</strong>:</p>
+<ul>
+<li class="task">P1 Q2</li>
+<li class="task">P2 Q3</li>
+<li class="task">P2 Q4</li>
+<li class="task">P3 Q6</li>
+<li class="task">P4 Q9</li>
+<li class="task">P5 Q2</li>
+<li class="task">P6 Q6</li>
+<li class="task">P7 Q3</li>
+<li class="task">P7 Q5</li>
+<li class="task">P8 Q6</li>
+<li class="task">P9 Q4</li>
+</ul>
+<p><strong>Scales of measurement / data types (nominal/ordinal/interval/ratio, discrete/continuous, cross-sectional/time-series)</strong>:</p>
+<ul>
+<li class="task">P1 Q3</li>
+<li class="task">P1 Q10</li>
+<li class="task">P1 Q11</li>
+<li class="task">P2 Q12</li>
+<li class="task">P3 Q7</li>
+<li class="task">P4 Q3</li>
+<li class="task">P4 Q8</li>
+<li class="task">P6 Q2</li>
+<li class="task">P6 Q5</li>
+<li class="task">P7 Q3</li>
+<li class="task">P7 Q4</li>
+<li class="task">P8 Q5</li>
+<li class="task">P8 Q7</li>
+<li class="task">P9 Q2</li>
+<li class="task">P9 Q5</li>
+</ul>
+<p><strong>Mode/median on categorical or small datasets (traps around "not defined")</strong>:</p>
+<ul>
+<li class="task">P1 Q4</li>
+<li class="task">P2 Q6</li>
+<li class="task">P2 Q13</li>
+<li class="task">P3 Q8</li>
+<li class="task">P3 Q9</li>
+<li class="task">P4 Q2</li>
+</ul>
+<p><strong>Contingency tables &amp; association (row/column relative frequency)</strong>:</p>
+<ul>
+<li class="task">P3 Q2</li>
+<li class="task">P3 Q10</li>
+<li class="task">P4 Q6</li>
+<li class="task">P4 Q7</li>
+<li class="task">P7 Q6</li>
+<li class="task">P9 Q7</li>
+<li class="task">P9 Q8</li>
+</ul>
+<p><strong>Covariance/correlation conceptual (sign, ranking scatter plots by r, unitless-ness)</strong>:</p>
+<ul>
+<li class="task">P1 Q12</li>
+<li class="task">P1 Q13</li>
+<li class="task">P4 Q10</li>
+<li class="task">P4 Q12</li>
+<li class="task">P9 Q6</li>
+<li class="task">P9 Q13</li>
+<li class="task">P9 Q16</li>
+</ul>
+<p><strong>Point bi-serial correlation</strong>:</p>
+<ul>
+<li class="task">P2 Q7</li>
+<li class="task">P2 Q8</li>
+<li class="task">P7 Q11</li>
+<li class="task">P9 Q6</li>
+</ul>
+<p><strong>Charts / area principle / Pareto / stacked bar (mostly Week 2, quick MCQs)</strong>:</p>
+<ul>
+<li class="task">P5 Q4</li>
+<li class="task">P5 Q14</li>
+<li class="task">P9 Q1</li>
+<li class="task">P9 Q3</li>
+</ul>
+<p><strong>Transformation-effect questions (add/multiply constant → mean/variance/SD)</strong>:</p>
+<ul>
+<li class="task">P2 Q9</li>
+<li class="task">P2 Q10</li>
+<li class="task">P6 Q14</li>
+<li class="task">P6 Q15</li>
+<li class="task">P7 Q10</li>
+</ul>
+<h3>Suggested order for your 1–2 hours</h3>
+<ol>
+<li>Skim Part 2 concept map once, top to bottom (~15–20 min).</li>
+<li>Do all 14 problems in Section A, then check each against the answer key at the end of its source PDF (~35–45 min).</li>
+<li>Blitz through Section B's pointer list in the actual PDFs — don't re-derive, just confirm you instantly see the right answer (~20–25 min).</li>
+<li>Re-read the transformation table and the scales-of-measurement bullets one more time right before the exam — these two are the highest-frequency "free marks" across all 9 papers.</li>
+</ol>
+<p>You've got this — the pattern across 9 papers is extremely consistent, and you now have it mapped end to end.</p>
+</div>
+</section>
+<section class="sheet s-stat1" id="stat1-mustknow">
+<div class="sheeth">
+<h2>📊 Stat 1</h2>
+<span class="kind">Must-know</span>
+<span class="sp"></span>
+<span class="src">notes/stat1-mustknow.md</span>
+<span class="blurb">The 8 traps - read this one last</span>
+</div>
+<div class="md">
+<h1>Stat 1 — Must-Know List (read this last, right before you walk in)</h1>
+<p>One screen. No new material, no derivations — just the things that show up in nearly every paper and are the most common places to lose an otherwise-easy mark.</p>
+<h2>Highest-probability topics (appear in 8-9 of 9 papers)</h2>
+<ol>
+<li>Descriptive vs. inferential + population vs. sample</li>
+<li>Scales of measurement (nominal/ordinal/interval/ratio) + data types</li>
+<li>Mean/median/mode + transformation effects (+c, ×c)</li>
+<li>Variance &amp; SD (population vs sample) + transformation effects</li>
+</ol>
+<h2>The 8 traps that cost the most marks (from every paper reviewed)</h2>
+<ol>
+<li><strong>Sample variance uses n−1, population variance uses n.</strong> Mixing these up is the single most common silent error.</li>
+<li><strong>Transformation rules</strong> — memorize cold:
+   - <code>+c</code>: mean/median/mode shift by c · variance &amp; SD <strong>unchanged</strong>
+   - <code>×c</code>: mean/median/mode scale by c · variance scales by <strong>c²</strong> · SD scales by <strong>c</strong> (not c²)</li>
+<li><strong>Percentile rule</strong>: sort → compute n·p → not integer = round <strong>up</strong>, take that rank → integer = average that rank and the next.</li>
+<li><strong>"Sample" ≠ automatically inferential.</strong> A study is only inferential if it generalizes BEYOND the sample to a larger population. Analyzing the sample itself = descriptive.</li>
+<li><strong>Interval vs ratio</strong>: the only question that matters is "does zero mean true absence, and are ratios meaningful?" (40°C isn't twice 20°C — no true zero → interval. 300 runs is twice 150 runs — true zero → ratio.)</li>
+<li><strong>Mode works on nominal data; median does NOT</strong> (median needs order, nominal has none). This nominal/ordinal swap is the most repeated wrong-option trap across every paper.</li>
+<li><strong>Mean is never valid for categorical data</strong> — only mode (any categorical) and median (ordinal only). "Mean, median, mode can all summarize a categorical variable" is a recurring false MSQ option.</li>
+<li><strong>y = x + c always gives correlation r = 1</strong> (or −1 for y = −x + c) — don't recompute, just recognize the shape.</li>
+</ol>
+<h2>Formula quick-hit</h2>
+<pre><code>Sample variance: s² = Σ(x−x̄)²/(n−1)         Population variance: σ² = Σ(x−μ)²/N
+SD = √variance
+IQR = Q3 − Q1                                 Outlier fences = Q1−1.5·IQR, Q3+1.5·IQR
+Correlation r = Cov(x,y)/(sx·sy)              R² = r²
+Point bi-serial: pairs ONE numeric + ONE binary (0/1) categorical variable — nothing else
+Pie slice angle = relative frequency × 360°
+</code></pre>
+<h2>Contingency table association — the one-line rule</h2>
+<p>Row (or column) relative frequencies <strong>similar across all rows</strong> → NOT associated. <strong>Different across rows</strong> → associated. Check either direction, they agree.</p>
+<h2>Last check before you open the exam</h2>
+<ul>
+<li>Read every option letter-by-letter — most wrong options are one flipped word away from correct (nominal↔ordinal, n↔n−1, Q1↔Q2, "at least"↔"at most").</li>
+<li>For SA questions with decimal tolerance, do the arithmetic once carefully rather than fast twice — most tolerance bands are narrow (±0.02 to ±0.05).</li>
+<li>If a question gives mean+variance instead of raw numbers, it wants you to work backward through Σx and Σx² — that's not a sign you're missing information.</li>
+</ul>
+<p>You know this. Go.</p>
+</div>
+</section>
+</div>
+<script>
+(function(){
+  var b=document.getElementById("tPrint");
+  if(b) b.addEventListener("click",function(){window.print();});
+  var d=new Date("2026-11-15T14:00:00"), n=new Date();
+  var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");
+  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 1") : "Quiz day";
+})();
+</script>
+</body>
+</html>
