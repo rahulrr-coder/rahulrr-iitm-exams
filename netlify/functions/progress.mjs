@@ -74,18 +74,25 @@ export default async (req) => {
   try {
     coll = (await connect()).db(DB).collection(COLLECTION);
   } catch (err) {
-    /* Atlas kills the TLS handshake for a non-allowlisted IP rather than refusing
-       the connection, so it surfaces as "tlsv1 alert internal error" (SSL alert 80)
-       and looks like a certificate problem. It isn't. */
+    /* Three failures that look alike from out here and need opposite fixes:
+       - DNS never resolves      -> the cluster is gone, or the host is misspelt
+       - handshake dies / times out -> the IP is not in Atlas Network Access.
+         Atlas kills the TLS handshake for a non-allowlisted IP rather than
+         refusing the connection, so it reads as "tlsv1 alert internal error"
+         (SSL alert 80) and looks like a certificate problem. It isn't.
+       - explicit auth failure   -> the credentials really are wrong. */
     const msg = String(err && err.message);
-    const blocked = /server selection|ETIMEDOUT|ECONNREFUSED|timed out|alert internal error|alert number 80|tlsv1/i.test(msg);
-    return Response.json({
-      error: "could not reach MongoDB",
-      detail: msg.slice(0, 300),
-      likelyCause: blocked
-        ? "Atlas is refusing this connection. Netlify function IPs are dynamic, so Atlas → Network Access needs 0.0.0.0/0."
-        : "Check the MONGODB_URI username and password."
-    }, { status: 502 });
+    let likelyCause;
+    if (/ENOTFOUND|querySrv|EAI_AGAIN|getaddrinfo/i.test(msg)) {
+      likelyCause = "The cluster hostname does not resolve, so MONGODB_URI points at a cluster that no longer exists. " +
+        "Atlas pauses idle M0 clusters after 60 days and removes them after that. Create a new cluster and update MONGODB_URI.";
+    } else if (/authentication failed|bad auth|not authorized/i.test(msg)) {
+      likelyCause = "The username or password in MONGODB_URI is wrong.";
+    } else {
+      likelyCause = "Atlas is refusing this connection — a timeout or a TLS alert both mean the IP is not allowed. " +
+        "Netlify function IPs are dynamic, so Atlas → Network Access needs an ACTIVE 0.0.0.0/0 entry.";
+    }
+    return Response.json({ error: "could not reach MongoDB", detail: msg.slice(0, 300), likelyCause }, { status: 502 });
   }
 
   if (req.method === "GET") {
