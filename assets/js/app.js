@@ -5,6 +5,7 @@
    Call EndTerm.load() before touching SUBJECTS or EXAM_DATE. */
 (function (global) {
   "use strict";
+  try { var th = localStorage.getItem("theme"); if (th) document.documentElement.setAttribute("data-theme", th); } catch (e) {}
 
   var LEGACY_KEY = "endterm-app.v1";   // v1 stored everything under one key
   var MUST_SHARE = 0.6;                // ceiling on how much of an archetype is must-solve

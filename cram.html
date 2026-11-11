@@ -9,10 +9,28 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css?v=10">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 
 /* page-local: a cram sheet, read in long vertical sweeps and on a phone */
-.wrap.cram{max-width:980px}
+.wrap.cram{max-width:1680px;padding:0 clamp(14px,3vw,48px) 90px}
+/* style.css caps the generic .sub (a muted caption) at 70ch; here it is a full-width section */
+.sub{max-width:none;color:var(--ink);font-size:inherit}
+.cramhead .lede,.ar .ab{max-width:none}
+.howto{max-width:none}
+.cap dd,.traps li,.dq p,.dq .ans,.ar .ab{font-size:16.5px}
+.cap pre,.dq pre{font-size:14px}
+/* wide screens: concepts left, traps + drills right, archetypes full width below */
+@media (min-width:1100px){
+  .wk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 22px;align-items:start}
+  .wk>.wkh,.wk>.arows{grid-column:1/-1}
+  .wk>.cap{grid-column:1;grid-row:2/span 2}
+  .wk>.traps{grid-column:2;grid-row:2}
+  .wk>.drills{grid-column:2;grid-row:3}
+  .arows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px}
+}
+.themebtn{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;color:var(--accent);
+  border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:4px;padding:5px 10px}
 .cramhead{padding:30px 0 14px}
 .cramhead h1{font-size:clamp(30px,5.4vw,44px);margin:0 0 10px;line-height:1.05;text-wrap:balance}
 .cramhead .lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin:0 0 16px}
@@ -145,6 +163,7 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <a href="#s-stat1">📊 Stat 1</a>
 <a href="#s-python">🐍 Python</a>
 <span class="sp"></span>
+<button id="tTheme" class="themebtn" type="button" aria-label="Toggle light or dark mode">Theme</button>
 <button id="tPrint" type="button">Print</button>
 </div>
 <section class="sub s-stat1" id="s-stat1">
@@ -857,6 +876,15 @@ print(j)</pre></p>
     E.onExternalChange(repaint);   // another tab ticked something
     E.onSync(repaint);             // a pull landed after first paint
   }).catch(function () { /* static sheet still reads fine without state */ });
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById("tTheme"),r=document.documentElement;
+  function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
+  function label(){b.textContent=cur()==="dark"?"\u2600 Light":"\u263E Dark"}
+  b.onclick=function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}label()};
+  label();
 })();
 </script>
 </body>
