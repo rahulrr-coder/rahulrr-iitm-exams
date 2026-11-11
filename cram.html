@@ -68,6 +68,44 @@ body.gapsonly .ar.have{display:none}
 body.gapsonly .cap{display:block}
 .wkempty{font-size:14.5px;color:var(--ink-3);font-style:italic;padding:8px 0}
 body:not(.gapsonly) .wkempty{display:none}
+/* concepts, traps and drills — the read-and-grasp half of the sheet */
+.cap dd code,.cap dd kbd{font-family:"IBM Plex Mono",monospace;font-size:13.5px;background:var(--panel-2);
+  border-radius:3px;padding:1px 4px}
+.cap dd ul{margin:4px 0 0;padding-left:20px}
+.cap dd li{margin:0 0 3px}
+.cap pre{font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.5;background:var(--panel-2);
+  border-radius:var(--radius);padding:10px 12px;margin:6px 0 0;overflow-x:auto}
+.traps{background:var(--warn-soft);border-left:3px solid var(--warn);border-radius:0 var(--radius) var(--radius) 0;
+  padding:11px 15px;margin:0 0 12px}
+.traps h4{font-family:"IBM Plex Sans",sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--warn);margin:0 0 6px}
+.traps ol{margin:0;padding-left:19px}
+.traps li{font-size:15px;line-height:1.55;color:var(--ink);margin:0 0 5px}
+.traps li:last-child{margin-bottom:0}
+.traps b{font-weight:600}
+.traps code{font-family:"IBM Plex Mono",monospace;font-size:13.5px}
+.drills{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
+  box-shadow:var(--shadow);padding:4px 16px 12px;margin:0 0 12px}
+.drills h4{font-family:"IBM Plex Sans",sans-serif;font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent);margin:12px 0 8px}
+.dq{border-top:1px solid var(--line-soft);padding:10px 0 2px}
+.dq:first-of-type{border-top:0;padding-top:0}
+.dq .qn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);
+  border:1px solid var(--line);border-radius:3px;padding:1px 5px;margin-right:7px}
+.dq p{font-size:15.5px;line-height:1.58;color:var(--ink);margin:0 0 6px}
+.dq pre{font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.5;background:var(--panel-2);
+  border-radius:var(--radius);padding:10px 12px;margin:6px 0;overflow-x:auto;white-space:pre}
+.dq code{font-family:"IBM Plex Mono",monospace;font-size:13.5px;background:var(--panel-2);border-radius:3px;padding:1px 4px}
+.dq details{margin:4px 0 0}
+.dq summary{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);cursor:pointer;
+  border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:4px;padding:4px 9px;
+  display:inline-block;list-style:none}
+.dq summary::-webkit-details-marker{display:none}
+.dq details[open] summary{background:var(--done-soft);color:var(--done);border-color:var(--done)}
+.dq .ans{font-size:15px;line-height:1.6;color:var(--ink-2);margin:8px 0 0;
+  border-left:3px solid var(--done);padding-left:12px}
+.dq .ans b{color:var(--ink);font-weight:600}
+body.gapsonly .traps,body.gapsonly .drills{display:none}
 @media (max-width:600px){
   .wrap.cram{padding:0 15px 70px}
   .ar{grid-template-columns:auto 1fr}
@@ -76,7 +114,8 @@ body:not(.gapsonly) .wkempty{display:none}
 }
 @media print{
   .topnav,.cramctl,.howto{display:none}
-  .cap{box-shadow:none;break-inside:avoid}
+  .cap,.traps,.drills{box-shadow:none;break-inside:avoid}
+  .dq details{display:none}
   .wk{break-inside:avoid}
   body{font-size:11pt}
 }
@@ -123,7 +162,41 @@ body:not(.gapsonly) .wkempty{display:none}
 <div class="cap"><dl>
 <dt>Scales</dt><dd><b>Nominal</b> labels, no order · <b>Ordinal</b> ranked, gaps unequal · <b>Interval</b> equal gaps, NO true zero (ratios meaningless, 40°C ≠ 2×20°C) · <b>Ratio</b> equal gaps AND true zero (ratios valid)</dd>
 <dt>Descriptive vs inferential</dt><dd>Summarises data collected → descriptive. Uses a sample to generalise to a population → inferential. Trigger words: generalise, population, sampling error, test a claim</dd>
+<!--x-start-->
+<dt>The four scales, in one pass</dt><dd><ul><li><b>Nominal</b> &mdash; labels only, no order. Gender, blood group, jersey number.</li><li><b>Ordinal</b> &mdash; ordered labels, gaps unequal or undefined. poor/good/excellent, S/M/L.</li><li><b>Interval</b> &mdash; equal gaps, differences meaningful, <b>no true zero</b> &rarr; ratios meaningless. &deg;C, &deg;F.</li><li><b>Ratio</b> &mdash; equal gaps <b>and</b> a true zero &rarr; ratios valid. Height, weight, marks, runs, income.</li></ul>Categorical data can only be nominal or ordinal. Numerical data can only be interval or ratio.</dd>
+<dt>Data and variables</dt><dd>Statistics is the art of learning from data: collect &rarr; describe &rarr; analyse &rarr; conclude. Data does not speak by itself &mdash; comments, likes and multimedia are all data. <b>Structured</b> = organised rows and columns; <b>unstructured</b> = scattered, no fixed shape.</dd>
+<dt>Tidy data</dt><dd>One variable per column, one case per row, one consistent unit down a column. A column that is constant across every case is <b>not a variable</b>. Never mix cm and feet in one column.</dd>
+<dt>NA is not zero</dt><dd>A bowler who never bowled &rarr; <b>NA</b>. A bowler who bowled and took no wickets &rarr; <b>0</b>. Conflating them changes the mean and the count.</dd>
+<dt>Categorical vs numerical, discrete vs continuous</dt><dd>Categorical = group membership. Numerical = has measurement units. <b>Numeric-looking but categorical:</b> jersey number, mobile number, pin code, patient ID &mdash; arithmetic on them is meaningless. Within numerical: <b>discrete</b> = whole-number counts, <b>continuous</b> = any fractional value.</dd>
+<dt>Cross-sectional vs time series</dt><dd><b>Time series</b> = the same variable tracked over successive time points (plot it as a timeplot). <b>Cross-sectional</b> = many units observed at one point in time.</dd>
+<dt>Descriptive vs inferential</dt><dd><b>Descriptive</b> summarises the data you actually collected. <b>Inferential</b> uses a sample to make a claim about a larger population, and needs probability. Trigger words for inferential: generalise, population, sampling error, test a claim, estimate.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>A sample does not make it inferential.</b> Analysing the sample and stopping there is descriptive. It is inferential only when the claim reaches beyond the sample.</li>
+<li><b>Interval vs ratio</b> turns on one question: does zero mean true absence, so that ratios mean something? 40&deg;C is not twice 20&deg;C &rarr; interval. 300 runs is twice 150 &rarr; ratio.</li>
+<li><b>Mode works on nominal, median does not.</b> Median needs order; nominal has none. The nominal/ordinal swap is the most repeated wrong option across every paper.</li>
+<li><b>Mean is never valid for categorical data.</b> Mode for any categorical, median for ordinal only. &ldquo;Mean, median and mode can all summarise a categorical variable&rdquo; is a recurring false MSQ option.</li>
+<li><b>Numeric-looking identifiers are categorical.</b> Jersey number, pin code, room number &mdash; the average of them is meaningless.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>A hospital records, for each patient: <code>patient ID</code>, <code>blood group</code>, <code>pain level</code> (mild / moderate / severe), <code>body temperature</code> in &deg;C, and <code>weight</code> in kg. Give the scale of measurement for each, and say which are categorical.</p>
+<details><summary>Show answer</summary>
+<div class="ans"><b>patient ID</b> &mdash; nominal, categorical (numeric-looking, but arithmetic on it is meaningless).<br><b>blood group</b> &mdash; nominal, categorical.<br><b>pain level</b> &mdash; ordinal, categorical (ordered, but the gap from mild to moderate is not a measured quantity).<br><b>body temperature &deg;C</b> &mdash; interval, numerical. No true zero, so 40&deg; is not twice 20&deg;.<br><b>weight kg</b> &mdash; ratio, numerical. True zero, so 60 kg really is twice 30 kg.<br>Only <b>mode</b> can summarise ID and blood group; pain level also admits a <b>median</b>.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>A researcher surveys 500 of a college's 4000 students and reports that 62% of those surveyed own a laptop. She then writes: &ldquo;about 62% of students at this college own a laptop.&rdquo; Which statement is descriptive and which is inferential, and why?</p>
+<details><summary>Show answer</summary>
+<div class="ans"><b>Descriptive:</b> &ldquo;62% of those surveyed own a laptop&rdquo; &mdash; it only summarises the 500 actually measured.<br><b>Inferential:</b> &ldquo;about 62% of students at this college&rdquo; &mdash; it generalises from the 500 to all 4000, which needs probability and carries sampling error.<br>The giveaway is not that a sample was used &mdash; both sentences use the same sample. It is whether the claim <b>leaves</b> the sample.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -156,7 +229,40 @@ body:not(.gapsonly) .wkempty{display:none}
 <div class="cap"><dl>
 <dt>Pie chart</dt><dd>amount = (percent/100) × total</dd>
 <dt>Relative frequency</dt><dd>rel freq = class freq / Σ freq</dd>
+<!--x-start-->
+<dt>Frequency and relative frequency</dt><dd><b>Frequency</b> = count per distinct category. <b>Relative frequency</b> = frequency &divide; n, and always sums to 1. Use relative frequency whenever you compare two datasets of different sizes.</dd>
+<dt>Which chart does what</dt><dd><ul><li><b>Pie</b> &mdash; share of a whole. Wedge angle = relative frequency &times; 360&deg;. No 3D, no exploded slices.</li><li><b>Bar</b> &mdash; comparison across groups. Equal widths, bars <b>do not touch</b>.</li><li><b>Pareto</b> &mdash; a bar chart sorted by descending frequency. Valid for <b>nominal only</b>.</li></ul></dd>
+<dt>Area principle</dt><dd>The area drawn must be proportional to the number it represents. Two standard violations: decorative icons scaled on both dimensions at once, and a <b>truncated axis</b> whose baseline is not zero, which exaggerates differences. If you must truncate, mark the axis break explicitly.</dd>
+<dt>Round-off</dt><dd>Percentages rounded one at a time need not total exactly 100%, and pie angles need not total exactly 360&deg;. Check the total.</dd>
+<dt>Centre for categorical data</dt><dd><b>Mode</b> = the highest-frequency category; defined for nominal and ordinal, and may be bimodal or multimodal. <b>Median</b> = the middle value once ranked; needs order, so <b>ordinal only</b>. Mode and median need not coincide.</dd>
+<dt>Presentation</dt><dd>Collapse many tiny categories into an explicit &ldquo;Other&rdquo; bucket rather than silently dropping them. Always label axes, title and legend.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>Pareto on ordinal data is wrong.</b> Sorting S/M/L/XL by frequency destroys the order that makes the variable ordinal. Keep the natural order.</li>
+<li><b>A truncated baseline is an area-principle violation</b>, not a style preference. It is the answer to &ldquo;what is misleading about this chart?&rdquo;</li>
+<li><b>Median is undefined for nominal data.</b> Mode is the only centre a nominal variable has.</li>
+<li><b>Bars touch in a histogram, not in a bar chart.</b> Gaps mean categories; touching means a continuous axis.</li>
+<li><b>Individually rounded percentages need not sum to 100.</b> If an option says they must, it is false.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>In a survey of 240 people, 54 chose tea as their preferred drink. Give the relative frequency of tea and the angle of its wedge in a pie chart.</p>
+<details><summary>Show answer</summary>
+<div class="ans">Relative frequency = 54 / 240 = <b>0.225</b> (22.5%).<br>Angle = 0.225 &times; 360&deg; = <b>81&deg;</b>.<br>Carry the fraction, not the rounded percentage &mdash; rounding to 23% first gives 82.8&deg;, outside a tight tolerance band.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>Shirt sizes sold: S 12, M 30, L 25, XL 8. (a) Is a Pareto chart appropriate? (b) What is the mode? (c) What is the median size?</p>
+<details><summary>Show answer</summary>
+<div class="ans"><b>(a) No.</b> Size is <b>ordinal</b>, and a Pareto chart sorts bars by descending frequency, which would print M, L, S, XL and destroy the natural order. Pareto is for nominal data; here keep S, M, L, XL.<br><b>(b) Mode = M</b> (30, the highest frequency).<br><b>(c)</b> n = 75, so the median is the 38th value in <b>size order</b>. Cumulative counts: S 12, M 42 &mdash; the 38th falls inside M, so <b>median = M</b>. A median exists here precisely because the variable is ordinal; for a nominal variable this part would have no answer.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -198,7 +304,42 @@ body:not(.gapsonly) .wkempty{display:none}
 <dt>Combined mean</dt><dd>x̄ = (n₁x̄₁ + n₂x̄₂)/(n₁+n₂) — weight by size, never average the averages</dd>
 <dt>Quartiles / IQR</dt><dd>order data, locate Q₁ Q₃ by position, IQR = Q₃ − Q₁</dd>
 <dt>Linear transform y = ax+b</dt><dd>mean → a·mean+b · median → a·median+b · percentile → a·p+b · <b>Var → a²·Var</b> · <b>SD → |a|·SD</b> · <b>IQR → |a|·IQR</b>. Location takes b, spread ignores b.</dd>
+<!--x-start-->
+<dt>Tables and plots</dt><dd>Discrete with few distinct values &rarr; one class per value. Continuous &rarr; grouped classes, 5&ndash;20 as a rule of thumb. Convention: a class <b>includes its left end and excludes its right</b>, so &ldquo;30&ndash;40&rdquo; contains 30 but not 40. <b>Histogram</b> bars touch (continuous axis). <b>Stem-and-leaf</b> keeps the actual values: stem = all digits but the last, leaf = the last digit, leaves sorted within a row.</dd>
+<dt>Mean</dt><dd>Sample x&#772; = &Sigma;x / n, population &mu; = &Sigma;x / N. Grouped discrete: &Sigma;f&middot;x / n, which is <b>exact</b>. Grouped continuous: &Sigma;f&middot;midpoint / n, which is an <b>approximation</b>. Highly sensitive to outliers.</dd>
+<dt>Median and mode</dt><dd>Sort first. n odd &rarr; the ((n+1)/2)-th value. n even &rarr; the average of the two middle values. Median is <b>not</b> sensitive to outliers. Mode may not exist and may be multiple.</dd>
+<dt>Transformations &mdash; learn this cold</dt><dd><ul><li><b>y = x + c</b> &rarr; mean, median and mode all shift by c. <b>Variance and SD unchanged.</b></li><li><b>y = c&middot;x</b> &rarr; mean, median and mode scale by c. <b>Variance scales by c&sup2;, SD scales by c</b> (not c&sup2;).</li></ul>Combined y = c&middot;x + d: centre scales then shifts; spread only scales.</dd>
+<dt>Spread</dt><dd><b>Range</b> = Max &minus; Min, uses two points, extremely outlier-sensitive. <b>Sample variance</b> s&sup2; = &Sigma;(x &minus; x&#772;)&sup2; / (n &minus; 1). <b>Population variance</b> &sigma;&sup2; = &Sigma;(x &minus; &mu;)&sup2; / N. <b>SD</b> = &radic;variance, which restores the original units. Why it matters: {3,3,3,3,3} and {1,2,3,4,5} share a mean, median and mode but differ entirely in spread.</dd>
+<dt>Percentiles &mdash; two valid algorithms</dt><dd><b>Manual:</b> sort, compute n&middot;p. Not an integer &rarr; round up and take that rank. An integer &rarr; average that rank and the next.<br><b>Spreadsheet PERCENTILE():</b> rank = p(n &minus; 1) + 1, then interpolate between the whole and fractional parts.<br>They disagree, so read which one the question wants.</dd>
+<dt>Quartiles</dt><dd>Q1 = 25th percentile, Q2 = median, Q3 = 75th. Five-number summary: Min, Q1, Q2, Q3, Max. <b>IQR</b> = Q3 &minus; Q1, more robust than range or SD. Outlier fences: Q1 &minus; 1.5&middot;IQR and Q3 + 1.5&middot;IQR.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>n &minus; 1 for a sample, n for a population.</b> This is the single most common silent error in the whole course &mdash; it never announces itself, the number just comes out wrong.</li>
+<li><b>Adding a constant does not change spread.</b> y = x + c leaves variance and SD exactly as they were.</li>
+<li><b>Scaling hits variance by c&sup2; but SD only by c.</b> Squaring the SD change is the planted wrong option.</li>
+<li><b>Percentile rule:</b> n&middot;p integer &rarr; average that rank and the next; not an integer &rarr; round <b>up</b>. Rounding to nearest is wrong.</li>
+<li><b>Mean moves with an outlier, median does not.</b> &ldquo;Which measure is resistant?&rdquo; is always asking this.</li>
+<li><b>Grouped continuous mean is an approximation</b>, because midpoints replace the real values. Grouped discrete is exact.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>For the sample <code>4, 8, 6, 10, 12</code>, compute the mean, the sample variance and SD, and the population variance and SD. Say which pair the exam means by default when it says &ldquo;this sample&rdquo;.</p>
+<details><summary>Show answer</summary>
+<div class="ans">Mean = (4+8+6+10+12)/5 = 40/5 = <b>8</b>.<br>Deviations: &minus;4, 0, &minus;2, 2, 4 &rarr; squares 16, 0, 4, 4, 16 &rarr; &Sigma; = <b>40</b>.<br><b>Sample:</b> s&sup2; = 40 / (5 &minus; 1) = <b>10</b>, s = &radic;10 &asymp; <b>3.16</b>.<br><b>Population:</b> &sigma;&sup2; = 40 / 5 = <b>8</b>, &sigma; = &radic;8 &asymp; <b>2.83</b>.<br>The word <i>sample</i> means divide by n &minus; 1. The two answers differ by 25% here &mdash; far wider than any tolerance band.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>A dataset has mean 50 and SD 6. Every value is transformed by <code>y = 3x &minus; 10</code>. Give the new mean, variance and SD.</p>
+<details><summary>Show answer</summary>
+<div class="ans"><b>Mean</b> = 3(50) &minus; 10 = <b>140</b> &mdash; scales, then shifts.<br><b>SD</b> = |3| &times; 6 = <b>18</b> &mdash; scales by c, and the &minus;10 does nothing.<br><b>Variance</b> = 3&sup2; &times; 6&sup2; = 9 &times; 36 = <b>324</b> (= 18&sup2;).<br>The two planted wrong answers: scaling the SD by c&sup2; (giving 54), and shifting the spread by &minus;10.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -239,7 +380,43 @@ body:not(.gapsonly) .wkempty{display:none}
 <dt>Pearson r</dt><dd>r = [nΣxy − ΣxΣy] / √([nΣx² − (Σx)²][nΣy² − (Σy)²]) — build the 5 columns x, y, xy, x², y²</dd>
 <dt>Invariance</dt><dd>r unchanged by positive linear transforms; a negative multiplier flips the sign only</dd>
 <dt>Contingency table</dt><dd>row totals, column totals, grand total — then decide if the question wants joint, marginal or conditional</dd>
+<!--x-start-->
+<dt>Association is not causality</dt><dd>The course only ever claims <b>association</b>. Any option asserting cause from a correlation or a contingency table is false.</dd>
+<dt>Contingency tables</dt><dd>Rows and columns are category levels, cells are counts, margins are row and column totals. Keep the natural order for ordinal variables &mdash; do not let alphabetising reorder S/M/L. <b>Row (or column) relative frequency</b> = cell &divide; its row (or column) total.</dd>
+<dt>The association rule, in one line</dt><dd>If the row relative frequencies are roughly the same across all rows &rarr; <b>no association</b>. If they differ noticeably &rarr; <b>associated</b>. Checking by column gives the same verdict.</dd>
+<dt>Bar charts for two variables</dt><dd><b>Stacked</b> shows raw counts. <b>100% stacked</b> normalises each bar to the same height, which is what you want for comparing shares across groups of different sizes.</dd>
+<dt>Scatter plots</dt><dd>x = explanatory, y = response. Describe with <b>D-C-V-O</b>: Direction, Curvature, Variation, Outliers. The course only quantifies <b>linear</b> association.</dd>
+<dt>Covariance and correlation</dt><dd>Cov(x,y) = &Sigma;(x &minus; x&#772;)(y &minus; y&#772;) / (n &minus; 1) for a sample, / N for a population. The sign gives direction; the magnitude is hard to read because the units are mixed.<br><b>r = Cov(x,y) / (s<sub>x</sub>&middot;s<sub>y</sub>)</b> &mdash; unitless, always in [&minus;1, +1]. |r| near 1 is strong linear association, near 0 is weak. Swapping which variable is on which axis does not change r.</dd>
+<dt>Line of best fit and R&sup2;</dt><dd>y = mx + c. The sign of m gives the direction. <b>R&sup2; = r&sup2;</b> is the proportion of variance explained &mdash; it measures fit strength and carries <b>no direction</b>.</dd>
+<dt>Point bi-serial</dt><dd>For one numerical x against one <b>dichotomous</b> categorical y coded 0/1: r<sub>pb</sub> = (Y&#772;<sub>0</sub> &minus; Y&#772;<sub>1</sub>) / s<sub>x</sub> &times; &radic;(p<sub>0</sub>p<sub>1</sub>), using group means and group proportions. Line fitting does not apply, because x takes only two values.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>Association never licenses a causal claim</b>, however strong r is.</li>
+<li><b>y = x + c has r = 1 exactly</b> (and y = &minus;x + c has r = &minus;1). Recognise the shape instead of recomputing.</li>
+<li><b>R&sup2; has no direction.</b> R&sup2; = 0.64 is consistent with r = +0.8 and with r = &minus;0.8 alike.</li>
+<li><b>The sign of r<sub>pb</sub> flips</b> if you swap which category is coded 0 and which 1. Only |r<sub>pb</sub>| means anything.</li>
+<li><b>Point bi-serial needs exactly one numeric and one binary variable.</b> Two categorical variables, or a three-level category, do not qualify.</li>
+<li><b>Correlation is unitless and axis-independent.</b> Changing units or swapping axes leaves r alone.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>A sample gives Cov(x, y) = 12.6, s<sub>x</sub> = 4.2 and s<sub>y</sub> = 5.0. Find r and R&sup2;, and state what each one tells you.</p>
+<details><summary>Show answer</summary>
+<div class="ans">r = 12.6 / (4.2 &times; 5.0) = 12.6 / 21 = <b>0.6</b>.<br>R&sup2; = 0.6&sup2; = <b>0.36</b>.<br><b>r = 0.6</b> &mdash; a moderate <b>positive</b> linear association; as x rises, y tends to rise.<br><b>R&sup2; = 0.36</b> &mdash; 36% of the variation in y is explained by the linear fit. It says nothing about direction; an r of &minus;0.6 would give the same 0.36.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>Of students who attended the revision session, 60 passed and 20 failed. Of those who did not attend, 15 passed and 45 failed. Is attendance associated with passing? Can you conclude the session caused the passes?</p>
+<details><summary>Show answer</summary>
+<div class="ans">Row totals: attended 80, did not attend 60.<br>Row relative frequencies for <i>passed</i>: attended 60/80 = <b>0.75</b>; did not attend 15/60 = <b>0.25</b>.<br>The two rows differ sharply, so the variables <b>are associated</b>.<br><b>No causal conclusion.</b> Students who choose to attend a revision session are likely to be the ones already studying harder, so the comparison is confounded. The course claims association only.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -280,7 +457,50 @@ body:not(.gapsonly) .wkempty{display:none}
 <dt>Operators</dt><dd><b>/</b> always gives float · <b>//</b> floors · <b>%</b> remainder (days = n // 7, rest = n % 7) · <b>**</b> power · int op float → float</dd>
 <dt>Types</dt><dd><b>int float str bool</b> · a quoted number is str · <b>int('5')+1 = 6</b>, <b>'5'+1</b> is a TypeError · str + str joins, str * int repeats</dd>
 <dt>Output formats</dt><dd><b>len(s)</b> counts characters · f-string width <b>f'{x:5}'</b> right-aligns numbers in 5 columns · print(a, b) puts a space between</dd>
+<!--x-start-->
+<dt>Type rules &mdash; the whole of W1</dt><dd><ul><li><code>int</code> op <code>int</code> &rarr; int, <b>except</b> <code>/</code> (always float) and <code>**</code> with a negative exponent (<code>2**-3</code> &rarr; 0.125, a float).</li><li><code>int</code> op <code>float</code> &rarr; float. One float anywhere poisons the whole expression: <code>7.0 // 2</code> &rarr; <b>3.0</b>, not 3.</li><li>A quoted literal is <code>str</code> even when it looks numeric: <code>"7" + "2"</code> &rarr; <code>"72"</code>, not 9.</li><li><code>+</code> joins str with str only. <code>"a" + 1</code> &rarr; <b>TypeError</b>. But <code>"ab" * 3</code> &rarr; <code>"ababab"</code> is legal.</li><li><code>int()</code>, <code>str()</code>, <code>float()</code>, <code>len()</code> change the type before the next operator sees it &mdash; that is usually the point of the question.</li></ul></dd>
+<dt>Floor division and modulo</dt><dd><code>//</code> floors, <code>%</code> keeps the remainder. The standard decomposition: <code>years = n // 365</code>, <code>weeks = (n % 365) // 7</code>, <code>days = (n % 365) % 7</code>.<br><b>&#9888; <code>//</code> floors toward &minus;&infin;, it does not truncate:</b> <code>-7 // 2</code> is <b>&minus;4</b>, not &minus;3. And <code>%</code> takes the sign of the <b>divisor</b>: <code>-7 % 2</code> is <b>1</b>, not &minus;1.</dd>
+<dt>Strings</dt><dd><code>s[a:b]</code> includes a and excludes b, so the length is b &minus; a, clipped at the ends. <code>s[:k]</code> is the first k characters. <code>len(s)</code> counts characters &mdash; spaces you concatenated in are characters too.</dd>
+<dt>f-string widths</dt><dd><code>f"{5:3}"</code> pads to 3 columns and right-aligns numbers &rarr; <code>"&nbsp;&nbsp;5"</code>. The padding counts toward the output length.</dd>
+<dt>Method</dt><dd>Every W1 question is one expression. Work <b>inside-out</b>: evaluate the innermost call, note its <b>type</b>, then apply the next operator to that.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b><code>/</code> always returns a float</b>, even <code>4/2</code> &rarr; 2.0. If the options show 2 and 2.0, that is the whole question.</li>
+<li><b><code>-7 // 2</code> is &minus;4</b>, because floor division rounds down, not toward zero.</li>
+<li><b><code>-7 % 2</code> is 1</b>, because the result takes the sign of the divisor.</li>
+<li><b>One float poisons the expression.</b> <code>7.0 // 2</code> &rarr; 3.0, and the answer 3 is marked wrong.</li>
+<li><b>Quoted numbers are strings.</b> <code>"5" + 1</code> is a TypeError; <code>int("5") + 1</code> is 6.</li>
+<li><b>Field width adds characters.</b> <code>f"{7:4}"</code> is four characters long, three of them spaces.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>Give the exact value <b>and type</b> of each:<pre>7 // 2
+-7 // 2
+7 % 2
+-7 % 2
+7 / 2
+2 ** -2
+7.0 // 2</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans"><code>7 // 2</code> &rarr; <b>3</b> (int)<br><code>-7 // 2</code> &rarr; <b>-4</b> (int) &mdash; floors toward &minus;&infin;<br><code>7 % 2</code> &rarr; <b>1</b> (int)<br><code>-7 % 2</code> &rarr; <b>1</b> (int) &mdash; sign of the divisor<br><code>7 / 2</code> &rarr; <b>3.5</b> (float)<br><code>2 ** -2</code> &rarr; <b>0.25</b> (float) &mdash; negative exponent forces a float<br><code>7.0 // 2</code> &rarr; <b>3.0</b> (float) &mdash; floor division still returns a float if either operand is one</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>What does each line print?<pre>s = "12"
+print(s * 2)
+print(int(s) * 2)
+print(len(s + "3"))
+print(f"[{7:4}]")</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans"><code>s * 2</code> &rarr; <b>1212</b> &mdash; str &times; int repeats the string.<br><code>int(s) * 2</code> &rarr; <b>24</b> &mdash; the conversion runs first, so this is arithmetic.<br><code>len(s + "3")</code> &rarr; <b>3</b> &mdash; <code>"12" + "3"</code> is <code>"123"</code>, three characters.<br><code>f"[{7:4}]"</code> &rarr; <b>[&nbsp;&nbsp;&nbsp;7]</b> &mdash; width 4, right-aligned, so three spaces then 7.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -299,7 +519,48 @@ body:not(.gapsonly) .wkempty{display:none}
 <div class="cap"><dl>
 <dt>Comparisons</dt><dd>== != &lt; &lt;= &gt; &gt;= give <b>bool</b> · chained <b>a &lt; b &lt; c</b> = (a &lt; b) and (b &lt; c) · bool is an int: True + True = 2</dd>
 <dt>Branch tracing</dt><dd>Substitute inputs, follow ONE branch. A name assigned only inside an if raises <b>NameError</b> when no guarding condition held</dd>
+<!--x-start-->
+<dt>Comparisons give bool</dt><dd><code>==</code> <code>!=</code> <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> all produce a <code>bool</code>.</dd>
+<dt>Chained comparison</dt><dd><code>a &lt; b &lt; c</code> means <code>(a &lt; b) and (b &lt; c)</code>, and <b>b is evaluated only once</b>. The result is a bool.</dd>
+<dt>bool is an int</dt><dd><code>True == 1</code>, <code>False == 0</code>, <code>True + True == 2</code>. So <code>type(1 &lt; 2)</code> is <code>bool</code>, but <code>(1 &lt; 2) + 1</code> is <code>2</code>, an int. A comparison stays a bool until an arithmetic operator is applied to it.</dd>
+<dt>Tracing a single if/else</dt><dd>Substitute the inputs, follow <b>exactly one</b> branch, print. Write the variable values in the margin &mdash; not in your head.</dd>
+<dt>The unassigned-variable trap</dt><dd>If a name is assigned only inside an <code>if</code> body and then used after the block, the code raises <b>NameError</b> precisely for the inputs that satisfy <b>none</b> of the conditions. The question is almost always &ldquo;for which inputs does this error?&rdquo;<br><b>Precision:</b> at module level that is a <code>NameError</code>. Inside a function it surfaces as <code>UnboundLocalError</code>, which is a subclass of NameError &mdash; if both appear as options, the function case wants UnboundLocalError.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b><code>True + True</code> is 2</b>, not <code>True</code>. Arithmetic on bools gives ints.</li>
+<li><b><code>a &lt; b &lt; c</code> is not <code>(a &lt; b) &lt; c</code>.</b> It expands to an <code>and</code>, and b is evaluated once.</li>
+<li><b>The NameError fires when every condition is False</b> &mdash; find the inputs that no branch covers, and that set is the answer.</li>
+<li><b>An <code>if</code> with no <code>else</code> can produce no output at all.</b> &ldquo;Nothing is printed&rdquo; is a real option, not a trick.</li>
+<li><b><code>=</code> is assignment, <code>==</code> is comparison.</b> A planted <code>=</code> inside a condition is a SyntaxError, not a silent bug.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>What does this print, and for which values of <code>x</code> would it instead raise an error?<pre>x = 3
+if x &gt; 10:
+    y = "big"
+elif x &gt; 5:
+    y = "mid"
+print(y)</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans">With <code>x = 3</code> it raises <b>NameError: name 'y' is not defined</b>. Neither condition held, so <code>y</code> was never assigned.<br>It errors for <b>every x &le; 5</b>. It prints <code>mid</code> for 5 &lt; x &le; 10, and <code>big</code> for x &gt; 10.<br>Note the boundary: <code>x = 5</code> errors, because <code>5 &gt; 5</code> is False. Had the same code sat inside a function, the error would be <code>UnboundLocalError</code>.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>Give the value and the type of each expression, with <code>a, b, c = 2, 5, 9</code>:<pre>a &lt; b &lt; c
+(a &lt; b) + (b &lt; c)
+type(a &lt; b &lt; c)
+True + True
+(1 &lt; 2) + 1</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans"><code>a &lt; b &lt; c</code> &rarr; <b>True</b> (bool) &mdash; expands to <code>(2&lt;5) and (5&lt;9)</code>.<br><code>(a &lt; b) + (b &lt; c)</code> &rarr; <b>2</b> (int) &mdash; True + True.<br><code>type(a &lt; b &lt; c)</code> &rarr; <b>&lt;class 'bool'&gt;</b>.<br><code>True + True</code> &rarr; <b>2</b> (int).<br><code>(1 &lt; 2) + 1</code> &rarr; <b>2</b> (int) &mdash; the comparison is a bool until the <code>+</code> turns it into an int.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -326,7 +587,61 @@ body:not(.gapsonly) .wkempty{display:none}
 <dt>Precedence</dt><dd><b>not</b> then <b>and</b> then <b>or</b> · reduce innermost brackets first · not not x = x</dd>
 <dt>elif vs if</dt><dd>elif chain: FIRST true branch runs, the rest are skipped · separate ifs are each tested, several (or none) can fire · test boundary values (=, ±1)</dd>
 <dt>Truthiness</dt><dd>Falsy: 0, 0.0, '', [], None · <b>a or b</b> = first truthy · <b>a and b</b> = first falsy · isinstance(True, int) is True</dd>
+<!--x-start-->
+<dt>Precedence &mdash; memorise cold</dt><dd><b>arithmetic &rarr; comparisons &rarr; not &rarr; and &rarr; or</b> (loosest last).<br><code>not True and False</code> is <code>(not True) and False</code> = <b>False</b>.<br><code>True or False and False</code> is <code>True or (False and False)</code> = <b>True</b>.<br>Parenthesise on paper before substituting, then reduce innermost first. To undo a double negative: <code>not not x</code> is <code>x</code>.</dd>
+<dt>elif chains vs separate ifs &mdash; the half of the paper</dt><dd>In an <code>if/elif/else</code> chain the <b>first</b> true condition runs and every later one is skipped. Separate <code>if</code>s are each tested independently, so several can fire, or none &mdash; output can print twice.<br><b>To find where two versions differ, look for an input that satisfies two conditions at once.</b> That input is the answer.</dd>
+<dt>Intervals that branches actually own</dt><dd>Earlier conditions carve out later ones. <code>if x &gt; 10</code> then <code>elif x &gt; 5</code> means branch two owns <b>5 &lt; x &le; 10</b>, not x &gt; 5. Write each branch's real interval down, then test the threshold itself and &plusmn;1.<br>Counting integers in an inclusive interval a &le; x &le; b: <b>b &minus; a + 1</b> values.</dd>
+<dt>Truthiness</dt><dd>Falsy is exactly: <code>0</code>, <code>0.0</code>, <code>""</code>, <code>[]</code>, <code>{}</code>, <code>()</code>, <code>None</code>. Everything else is truthy &mdash; including <code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code>.</dd>
+<dt>Short-circuit returns the operand, not a bool</dt><dd><code>a or b</code> &rarr; the first truthy operand, or the last one if all are falsy. <code>0 or "x"</code> is <code>"x"</code>; <code>3 or 5</code> is <code>3</code>.<br><code>a and b</code> &rarr; the first falsy operand, or the last one if all are truthy. <code>"" and 5</code> is <code>""</code>; <code>3 and 5</code> is <code>5</code>.</dd>
+<dt>isinstance</dt><dd><code>isinstance(True, int)</code> is <b>True</b> (bool subclasses int), but <code>isinstance(1, bool)</code> is <b>False</b>. That asymmetry is the entire content of the two hardest questions in the pool.</dd>
+<dt>Two things that look like operators you know</dt><dd><code>&amp;</code> and <code>|</code> are <b>bitwise</b>, not logical: <code>5 &amp; 3</code> is <b>1</b>. On two bools they behave logically and return a bool, but they do not short-circuit and they bind tighter than you expect. If you see them, slow down.<br><code>return</code> inside an <code>if</code> exits the function immediately &mdash; nothing after it runs, including later elifs.</dd>
+<dt>&ldquo;Choose the correct snippet&rdquo;</dt><dd>Do not read for elegance. Test each candidate on the nasty inputs: equal values (ties), exactly the threshold, and a negative. The planted bug is always one of four: independent ifs printing twice, an elif chain in the wrong order, <code>&gt;</code> where <code>&gt;=</code> was needed, or a missing else.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>Precedence is not &rarr; and &rarr; or.</b> <code>not True and False</code> is False, and <code>True or False and False</code> is True.</li>
+<li><b>First true branch wins in an elif chain</b>; separate ifs are all tested. The favourite MSQ is an input satisfying two conditions, because that is the only place the versions differ.</li>
+<li><b>Earlier conditions carve out later ones.</b> Branch two of <code>&gt;10 / &gt;5</code> owns 5 &lt; x &le; 10. Always test the threshold and &plusmn;1.</li>
+<li><b><code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code> are all truthy.</b> Only the seven falsy values are falsy.</li>
+<li><b><code>or</code> and <code>and</code> return an operand, not a bool.</b> <code>0 or "x"</code> is <code>"x"</code>, not True.</li>
+<li><b><code>isinstance(True, int)</code> is True but <code>isinstance(1, bool)</code> is False.</b> The asymmetry is the question.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>Evaluate each, giving the exact value (not just True/False where an operand is returned):<pre>not True and False
+True or False and False
+0 or "x"
+"" and 5
+3 and 5
+3 or 5
+isinstance(True, int)
+isinstance(1, bool)
+bool("0")</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans"><code>not True and False</code> &rarr; <b>False</b> &mdash; <code>(not True) and False</code>.<br><code>True or False and False</code> &rarr; <b>True</b> &mdash; <code>True or (False and False)</code>; <code>or</code> short-circuits immediately.<br><code>0 or "x"</code> &rarr; <b>"x"</b> (the operand, not True).<br><code>"" and 5</code> &rarr; <b>""</b> (the first falsy operand).<br><code>3 and 5</code> &rarr; <b>5</b> (all truthy &rarr; the last).<br><code>3 or 5</code> &rarr; <b>3</b> (the first truthy).<br><code>isinstance(True, int)</code> &rarr; <b>True</b>.<br><code>isinstance(1, bool)</code> &rarr; <b>False</b>.<br><code>bool("0")</code> &rarr; <b>True</b> &mdash; a non-empty string, whatever it contains.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>For exactly which values of <code>x</code> do these two functions behave differently?<pre>def a(x):
+    if x &gt; 10:
+        print("A")
+    if x &gt; 5:
+        print("B")
+
+def b(x):
+    if x &gt; 10:
+        print("A")
+    elif x &gt; 5:
+        print("B")</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans">They differ for <b>x &gt; 10</b>, and nowhere else.<br><b>x &gt; 10:</b> <code>a</code> prints <b>A then B</b> (both ifs are tested); <code>b</code> prints <b>A only</b> (the elif is skipped).<br><b>5 &lt; x &le; 10:</b> both print <b>B</b>.<br><b>x &le; 5:</b> both print <b>nothing</b>.<br>The method generalises: find the inputs that satisfy <b>two</b> conditions at once, because that is the only region where an elif chain and a run of separate ifs can disagree.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -374,7 +689,58 @@ body:not(.gapsonly) .wkempty{display:none}
 <dt>range</dt><dd><b>range(a, b, step)</b>: stop is exclusive · range(1, 11) has 10 values · range(n) = 0..n-1</dd>
 <dt>while template</dt><dd>init → test → body → update · trace one row per pass · exit value is the first value that fails the test</dd>
 <dt>Digits</dt><dd><b>d = n % 10</b> peels the last digit, <b>n = n // 10</b> drops it · reverse: r = r*10 + d · start sum at 0, product at 1</dd>
+<!--x-start-->
+<dt>range</dt><dd><code>range(start, stop, step)</code> <b>excludes stop</b>. <code>range(1, 11)</code> yields 10 values, 1 through 10. <code>range(10, 0, -2)</code> yields 10, 8, 6, 4, 2. Number of values = <b>ceil((stop &minus; start) / step)</b>.</dd>
+<dt>Checking a candidate loop</dt><dd>&ldquo;First hundred powers of two&rdquo; means 100 iterations with the multiplier updated every pass. Check exactly three things on every candidate: the <b>first</b> value printed, the <b>last</b> value printed, and the <b>number</b> of iterations. One distractor is always off by one at exactly one of those three.</dd>
+<dt>The digit-extraction skeleton &mdash; nine questions ride on this</dt><dd><pre>while n &gt; 0:
+    d = n % 10        # peel the last digit
+    # &lt;&lt;&lt; the only line that changes &gt;&gt;&gt;
+    n = n // 10       # drop it</pre>What sits in the middle is a sum (<code>s += d</code>), a product (<code>p *= d</code>), a reversal (<code>r = r*10 + d</code>), a positional weight (<code>t += d*w; w *= 10</code>), or a filter (<code>if d % 2: s += d</code>).</dd>
+<dt>Accumulator identity</dt><dd><b>Start a sum at 0 and a product at 1.</b> A product started at 0 returns 0 for every input &mdash; that is the standard planted bug. <code>while n &gt; 0</code> on input 0 runs the body zero times, so you get the initial accumulator straight back. Digit loops also assume a positive n: on a negative input the body never runs.</dd>
+<dt>Tracing &mdash; do not do it in your head</dt><dd>Make a table: one row per iteration, one column per variable, plus a column for the condition's truth value. Stop when it first fails.<br><b>&ldquo;Final value of the loop variable&rdquo;</b> = the first value that <b>violates</b> the condition, not the last one that satisfied it.<br><b>&ldquo;Iteration count&rdquo;</b> = the number of rows in your table. Count them, do not estimate.</dd>
+<dt>Two-pointer loop</dt><dd><code>i</code> starts at the left end, <code>j</code> at the right, and you compare <code>a[i] + a[j]</code> with the target. Sum too big &rarr; <code>j -= 1</code>. Too small &rarr; <code>i += 1</code>. The loop runs while <code>i &lt; j</code>; when the pointers cross, nothing was found and it returns None/False. &ldquo;For which arguments does it return None?&rdquo; is asking which input has no valid pair.</dd>
+<dt>Simultaneous assignment</dt><dd><code>a, b = b, a + b</code> uses the <b>old</b> values of both on the right-hand side. Write both variables on every row of your table or you will get it wrong.</dd>
+<!--x-end-->
 </dl></div>
+<div class="traps" data-injected="1">
+<h4>Traps that cost marks</h4>
+<ol>
+<li><b>A product accumulator started at 0 returns 0 for every input.</b> Sums start at 0, products start at 1 &mdash; this is an exam question twice over.</li>
+<li><b><code>while n &gt; 0</code> never runs on input 0</b>, so the printed answer is the initial accumulator value.</li>
+<li><b><code>range(a, b)</code> excludes b.</b> <code>range(1, 11)</code> is ten values, not eleven.</li>
+<li><b>The final loop variable is the first value that breaks the condition</b>, not the last one that passed it.</li>
+<li><b><code>a, b = b, a + b</code> uses the old values of both.</b> Updating them one at a time gives a different, wrong sequence.</li>
+<li><b>Off-by-one lives in three places:</b> the first value, the last value, and the iteration count. Check all three on every candidate.</li>
+</ol>
+</div>
+<div class="drills" data-injected="1">
+<h4>Practice &mdash; solve before you read the answer</h4>
+<div class="dq">
+<p><span class="qn">Q1</span>What does this print? Then fix it, and say what the fixed version prints for <code>n = 234</code> and for <code>n = 0</code>.<pre>n = 234
+p = 0
+while n &gt; 0:
+    d = n % 10
+    p *= d
+    n = n // 10
+print(p)</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans">As written it prints <b>0</b>. The accumulator starts at 0, so the very first <code>p *= d</code> gives 0 and every later multiply keeps it there &mdash; the loop runs correctly and the answer is still 0 for every input.<br><b>Fix:</b> <code>p = 1</code>. Then n = 234 peels 4, 3, 2 and prints <b>24</b>.<br><b>n = 0:</b> <code>while 0 &gt; 0</code> is False immediately, the body never runs, and it prints the initial value &mdash; <b>1</b> for the fixed version, 0 for the broken one. Both are &ldquo;correct&rdquo; outputs of their own code, which is why this pair shows up as an MSQ.</div>
+</details>
+</div>
+<div class="dq">
+<p><span class="qn">Q2</span>Give the values printed, the iteration count, and the value of the variable after each loop.<pre>for i in range(10, 0, -3):
+    print(i)
+
+# and separately:
+j = 1
+while j &lt; 20:
+    j = j * 3
+print(j)</pre></p>
+<details><summary>Show answer</summary>
+<div class="ans"><b>for loop:</b> prints <b>10, 7, 4, 1</b> &mdash; stop is excluded, so it never reaches 0. Count = ceil((0 &minus; 10) / &minus;3) = ceil(3.33) = <b>4</b> iterations. After the loop <code>i</code> is <b>1</b>, the last value yielded.<br><b>while loop:</b> j goes 1 &rarr; 3 &rarr; 9 &rarr; 27. The test fails at 27, so it prints <b>27</b> &mdash; the <b>first value that violates</b> the condition, not 9, the last one that satisfied it. That distinction between a for-loop variable and a while-loop variable is exactly what the question is testing.</div>
+</details>
+</div>
+</div>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -407,6 +773,7 @@ body:not(.gapsonly) .wkempty{display:none}
 </div></div>
 </section>
 </div>
+<script src="assets/js/app.js"></script>
 <script>
 (function(){
   var g=document.getElementById("tGaps");
@@ -424,6 +791,72 @@ body:not(.gapsonly) .wkempty{display:none}
   var d=new Date("2026-11-15T14:00:00"), n=new Date();
   var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");
   if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 1") : "End-term day";
+})();
+
+/* The sheet is generated as a static snapshot — every row ships as a gap with a
+   0/N count. Without this it never reflects anything you tick, which is exactly
+   what it looked like: solving a question greened the roadmap and left the cram
+   sheet unchanged. Repaint from the same state object the other pages use.
+
+   A row counts as covered when the archetype is marked learned OR its whole
+   must-solve set is done, because "I solved all of these" and "I ticked learned"
+   are the same claim from the reader's side. */
+(function(){
+  var E = window.EndTerm;
+  if (!E) return;
+
+  /* Netlify's Pretty URLs rewrites stat1.html#arch-W1-A1 to /stat1#arch-W1-A1 on
+     the deployed site, so the extension is not there to split on. Take the last
+     path segment with any .html stripped, which reads both forms. */
+  function subjectOf(href) {
+    return (href || "").split("#")[0].replace(/\.html$/, "").split("/").pop();
+  }
+
+  function covered(state, sub, id, data) {
+    var learned = (state.archetypesLearned[sub] || {})[id];
+    if (learned) return true;
+    if (!data) return false;
+    var arch = null;
+    for (var i = 0; i < data.arch.length; i++) if (data.arch[i].id === id) { arch = data.arch[i]; break; }
+    if (!arch || !arch.must || !arch.must.length) return false;
+    var done = state.doneQids[sub] || {};
+    return arch.must.every(function (q) { return !!done[q]; });
+  }
+
+  function paint(state, dataBy) {
+    [].forEach.call(document.querySelectorAll(".wk"), function (wk) {
+      var rows = [].slice.call(wk.querySelectorAll(".ar")), have = 0;
+      rows.forEach(function (row) {
+        var a = row.querySelector(".aid");
+        if (!a) return;
+        var sub = subjectOf(a.getAttribute("href"));
+        var ok = covered(state, sub, a.textContent.trim(), dataBy[sub]);
+        row.classList.toggle("have", ok);
+        row.classList.toggle("gap", !ok);
+        var t = row.querySelector(".tick");
+        if (t) t.innerHTML = ok ? "&check;" : "&times;";
+        if (ok) have++;
+      });
+      var wm = wk.querySelector(".wm");
+      if (wm && rows.length) {
+        wm.innerHTML = wm.innerHTML.replace(/^\s*\d+\s*\/\s*\d+ learned/, have + "/" + rows.length + " learned");
+      }
+    });
+  }
+
+  E.load().then(function () {
+    return Promise.all(E.SUBJECTS.map(function (s) {
+      return E.loadSubjectData(s).then(function (d) { return [s.key, d]; },
+                                       function () { return [s.key, null]; });
+    }));
+  }).then(function (pairs) {
+    var dataBy = {};
+    pairs.forEach(function (p) { dataBy[p[0]] = p[1]; });
+    var repaint = function () { paint(E.loadState(), dataBy); };
+    repaint();
+    E.onExternalChange(repaint);   // another tab ticked something
+    E.onSync(repaint);             // a pull landed after first paint
+  }).catch(function () { /* static sheet still reads fine without state */ });
 })();
 </script>
 </body>

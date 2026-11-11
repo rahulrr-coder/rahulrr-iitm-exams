@@ -2,7 +2,16 @@
 """Rebuild cram.html for the Quiz 1 scope: Stat 1 weeks 1-4 (kept from the existing sheet) + Python weeks 1-4 (generated)."""
 import json, re, html, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-src = open(sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "cram.html")).read()
+
+# This was a one-shot migration of the end-term sheet into the Quiz 1 sheet. Since
+# then cram.html has gained hand-written concepts, trap lists and drills per week
+# that live nowhere else, so a rerun would silently delete them.
+args = [a for a in sys.argv[1:] if a != "--force"]
+if "--force" not in sys.argv:
+    sys.exit("refusing to run: cram.html carries per-week concepts, traps and drills that this\n"
+             "generator does not know about, and rerunning would drop them. Pass --force if you mean it.")
+
+src = open(args[0] if args else os.path.join(ROOT, "cram.html")).read()
 head = src[:src.index('<div class="wrap cram">')]
 head = head.replace("assets/css/style.css?v=9", "assets/css/style.css?v=10")
 s1 = src[src.index('<section class="sub s-stat1"'):src.index('<div class="wk" id="w-stat1-5">')] + "</section>\n"
@@ -56,6 +65,7 @@ body = '''<div class="wrap cram">
 <button id="tPrint" type="button">Print</button>
 </div>
 '''
-tail = src[src.index('</div>\n<script>'):] if '</div>\n<script>' in src else src[src.rindex('<script>'):]
+ANCHOR = '</div>\n<script src="assets/js/app.js">'
+tail = src[src.index(ANCHOR):] if ANCHOR in src else src[src.rindex('<script>'):]
 tail = tail.replace('2026-09-13T09:00:00', '2026-11-15T14:00:00')
 open(os.path.join(ROOT, "cram.html"), "w").write(head + body + s1 + "".join(out) + tail)
