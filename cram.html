@@ -20,15 +20,6 @@
 .howto{max-width:none}
 .cap dd,.traps li,.dq p,.dq .ans,.ar .ab{font-size:16.5px}
 .cap pre,.dq pre{font-size:14px}
-/* wide screens: concepts left, traps + drills right, archetypes full width below */
-@media (min-width:1100px){
-  .wk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 22px;align-items:start}
-  .wk>.wkh,.wk>.arows{grid-column:1/-1}
-  .wk>.cap{grid-column:1;grid-row:2/span 2}
-  .wk>.traps{grid-column:2;grid-row:2}
-  .wk>.drills{grid-column:2;grid-row:3}
-  .arows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px}
-}
 .themebtn{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;color:var(--accent);
   border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:4px;padding:5px 10px}
 .cramhead{padding:30px 0 14px}
@@ -138,6 +129,83 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
   body{font-size:11pt}
 }
 
+/* ---- lesson layout ---- */
+.cramgrid{display:block}
+.toc{display:none}
+@media (min-width:1200px){
+  .cramgrid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0 44px;align-items:start}
+  .toc{display:block;position:sticky;top:112px;max-height:calc(100vh - 128px);overflow:auto;padding:22px 0 30px;font-size:13.5px}
+}
+.toc .ts{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:16px 0 4px}
+.toc a{display:block;text-decoration:none;color:var(--ink-2);padding:3px 8px;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.35}
+.toc a:hover{color:var(--ink);background:var(--panel-2)}
+.toc a.w{font-weight:600;color:var(--ink);margin-top:6px}
+.toc a.c{padding-left:18px;font-size:12.5px}
+.toc a.on{border-left-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.wk{margin:44px 0 0}
+.wkh h3{font-size:26px}
+.lesson{margin:10px 0 0}
+.lesson h4{font-family:Spectral,Georgia,serif;letter-spacing:-.01em;color:var(--ink)}
+.ov{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;padding:18px 22px;margin:0 0 8px}
+.ov h4{font-size:20px;margin:0 0 8px}
+.ov p{font-size:17px;line-height:1.7;margin:0 0 10px;max-width:100ch}
+.ov ul{margin:0 0 10px;padding-left:22px;font-size:16.5px;line-height:1.6}
+@media (min-width:900px){.ov ul{columns:2;column-gap:36px}.ov li{break-inside:avoid}}
+.ov .time{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin:0}
+.cn{border-top:1px solid var(--line);padding:22px 0 8px;scroll-margin-top:110px}
+.cn h4{font-size:22px;margin:0 0 12px;display:flex;align-items:baseline;gap:10px}
+.cnum{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--accent);
+  border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:4px;padding:1px 7px}
+.cbody{display:grid;gap:4px 32px}
+@media (min-width:1000px){.cbody.two{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+.prose p,.prose li{font-size:17px;line-height:1.72;color:var(--ink)}
+.prose p{margin:0 0 12px}
+.prose ul,.prose ol{margin:0 0 12px;padding-left:24px}
+.prose li{margin:0 0 5px}
+.lesson code{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--panel-2);border-radius:3px;padding:1px 5px}
+.lesson pre{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.55;background:var(--panel-2);
+  border-radius:6px;padding:11px 14px;margin:6px 0 10px;overflow-x:auto;white-space:pre}
+.lesson pre code,.dq pre code{background:none;padding:0}
+.fx,.ex{border-radius:8px;padding:12px 16px;margin:0 0 12px}
+.fx{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent)}
+.ex{background:var(--done-soft);border:1px solid var(--line-soft);border-left:4px solid var(--done)}
+.fx p,.ex p{font-size:16px;line-height:1.65;margin:0 0 8px}
+.fx p:last-child,.ex p:last-child{margin-bottom:0}
+.lbl{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.ex .lbl{color:var(--done)}
+.tw{overflow-x:auto;margin:4px 0 12px}
+.tbl{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.45}
+.tbl th{text-align:left;font-weight:600;border-bottom:2px solid var(--line);padding:6px 10px;white-space:nowrap}
+.tbl td{border-bottom:1px solid var(--line-soft);padding:6px 10px;vertical-align:top}
+.tested{font-size:15.5px;line-height:1.6;color:var(--ink-2);background:var(--panel);border:1px dashed var(--line);
+  border-radius:6px;padding:8px 12px;margin:4px 0 6px}
+.recap{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 22px;margin:18px 0 14px}
+.recap h4{font-size:20px;margin:0 0 10px}
+.recap ul{margin:0;padding-left:20px;font-size:16px;line-height:1.6}
+.recap li{margin:0 0 6px;break-inside:avoid}
+@media (min-width:1000px){.recap ul{columns:2;column-gap:40px}}
+.traps{border-radius:0 10px 10px 0;padding:14px 20px}
+.traps h4{font-size:12px}
+@media (min-width:1000px){.traps ol{columns:2;column-gap:40px}.traps li{break-inside:avoid}}
+.drills{border-radius:10px;padding:6px 20px 16px}
+.drills h4{font-size:12px}
+.dqgrid{display:grid;gap:0 32px}
+@media (min-width:1000px){.dqgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dq{border-top:1px solid var(--line-soft);padding:14px 0 6px}
+.dq:first-of-type{border-top:1px solid var(--line-soft);padding-top:14px}
+.dqq{font-size:16.5px;line-height:1.62;color:var(--ink);margin:0 0 6px}
+.dq .ans{font-size:16px}
+.arh{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin:22px 0 4px}
+body.gapsonly .lesson>:not(.recap){display:none}
+@media (max-width:600px){
+  .ov,.recap,.drills,.traps{padding-left:14px;padding-right:14px}
+  .prose p,.prose li,.ov p{font-size:16.5px}
+  .cn h4{font-size:20px}
+  .wkh h3{font-size:22px}
+}
+@media print{.toc{display:none}.cramgrid{display:block}.dq details{display:block}}
 </style>
 </head>
 <body>
@@ -155,8 +223,8 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <div class="wrap cram">
 <header class="cramhead">
 <h1>Quiz 1 Cram Sheet</h1>
-<p class="lede">Weeks 1–4 of Stat 1 and Python, in exam order (Sun 15 Nov 2026): the formulas first, then every archetype underneath with the trigger that fires it. Built from every Quiz 1 and End Term PYQ since 2023 that falls inside weeks 1–4.</p>
-<div class="howto"><b>How to use it.</b> Read a week's formula box, cover it, write the formulas out, then check. The archetype rows below each box tell you which pattern each formula is actually tested by &mdash; <b>&check;</b> is one you have ticked, <b>&times;</b> is a gap. Hit <b>Gaps only</b> to strip it down to what you have never marked learned.</div>
+<p class="lede">Weeks 1&ndash;4 of Stat 1 and Python for Sun 15 Nov 2026, written to be learned from start to finish. Each week opens with an overview, teaches every concept with a worked example, then gives a recap, the traps, practice problems, and the past-paper patterns built from every Quiz 1 and End Term PYQ since 2023.</p>
+<div class="howto"><b>How to use it (1&ndash;2 hours).</b> Per week: read the overview, then each numbered concept and its worked example. Do the practice problems <b>on paper</b> before opening the answers. Night before the exam, read only the recaps and traps. In the past-paper rows, <b>&check;</b> is a pattern you have ticked and <b>&times;</b> is a gap; <b>Gaps only</b> strips the sheet down to recaps and unticked patterns.</div>
 </header>
 <div class="cramctl">
 <button id="tGaps" type="button">Gaps only</button>
@@ -166,6 +234,9 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <button id="tTheme" class="themebtn" type="button" aria-label="Toggle light or dark mode">Theme</button>
 <button id="tPrint" type="button">Print</button>
 </div>
+<div class="cramgrid">
+<nav class="toc" id="toc" aria-label="Contents"></nav>
+<main>
 <section class="sub s-stat1" id="s-stat1">
 <div class="subband">
 <h2>📊 Stat 1</h2>
@@ -178,44 +249,18 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <h3>Data types &amp; scales</h3>
 <span class="wm">0/3 learned &middot; 21 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Scales</dt><dd><b>Nominal</b> labels, no order · <b>Ordinal</b> ranked, gaps unequal · <b>Interval</b> equal gaps, NO true zero (ratios meaningless, 40°C ≠ 2×20°C) · <b>Ratio</b> equal gaps AND true zero (ratios valid)</dd>
-<dt>Descriptive vs inferential</dt><dd>Summarises data collected → descriptive. Uses a sample to generalise to a population → inferential. Trigger words: generalise, population, sampling error, test a claim</dd>
-<!--x-start-->
-<dt>The four scales, in one pass</dt><dd><ul><li><b>Nominal</b> &mdash; labels only, no order. Gender, blood group, jersey number.</li><li><b>Ordinal</b> &mdash; ordered labels, gaps unequal or undefined. poor/good/excellent, S/M/L.</li><li><b>Interval</b> &mdash; equal gaps, differences meaningful, <b>no true zero</b> &rarr; ratios meaningless. &deg;C, &deg;F.</li><li><b>Ratio</b> &mdash; equal gaps <b>and</b> a true zero &rarr; ratios valid. Height, weight, marks, runs, income.</li></ul>Categorical data can only be nominal or ordinal. Numerical data can only be interval or ratio.</dd>
-<dt>Data and variables</dt><dd>Statistics is the art of learning from data: collect &rarr; describe &rarr; analyse &rarr; conclude. Data does not speak by itself &mdash; comments, likes and multimedia are all data. <b>Structured</b> = organised rows and columns; <b>unstructured</b> = scattered, no fixed shape.</dd>
-<dt>Tidy data</dt><dd>One variable per column, one case per row, one consistent unit down a column. A column that is constant across every case is <b>not a variable</b>. Never mix cm and feet in one column.</dd>
-<dt>NA is not zero</dt><dd>A bowler who never bowled &rarr; <b>NA</b>. A bowler who bowled and took no wickets &rarr; <b>0</b>. Conflating them changes the mean and the count.</dd>
-<dt>Categorical vs numerical, discrete vs continuous</dt><dd>Categorical = group membership. Numerical = has measurement units. <b>Numeric-looking but categorical:</b> jersey number, mobile number, pin code, patient ID &mdash; arithmetic on them is meaningless. Within numerical: <b>discrete</b> = whole-number counts, <b>continuous</b> = any fractional value.</dd>
-<dt>Cross-sectional vs time series</dt><dd><b>Time series</b> = the same variable tracked over successive time points (plot it as a timeplot). <b>Cross-sectional</b> = many units observed at one point in time.</dd>
-<dt>Descriptive vs inferential</dt><dd><b>Descriptive</b> summarises the data you actually collected. <b>Inferential</b> uses a sample to make a claim about a larger population, and needs probability. Trigger words for inferential: generalise, population, sampling error, test a claim, estimate.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>A sample does not make it inferential.</b> Analysing the sample and stopping there is descriptive. It is inferential only when the claim reaches beyond the sample.</li>
-<li><b>Interval vs ratio</b> turns on one question: does zero mean true absence, so that ratios mean something? 40&deg;C is not twice 20&deg;C &rarr; interval. 300 runs is twice 150 &rarr; ratio.</li>
-<li><b>Mode works on nominal, median does not.</b> Median needs order; nominal has none. The nominal/ordinal swap is the most repeated wrong option across every paper.</li>
-<li><b>Mean is never valid for categorical data.</b> Mode for any categorical, median for ordinal only. &ldquo;Mean, median and mode can all summarise a categorical variable&rdquo; is a recurring false MSQ option.</li>
-<li><b>Numeric-looking identifiers are categorical.</b> Jersey number, pin code, room number &mdash; the average of them is meaningless.</li>
-</ol>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 1 is the vocabulary of the whole course: what data is, how a dataset is laid out, what <b>kind</b> of variable each column holds, and which <b>scale of measurement</b> it sits on.</p><p>It looks easy, and it is where marks leak. The scale decides which summaries are allowed (mode, median, mean) and which charts make sense, so every later week leans on this one. Quiz questions are classification MCQs and MSQs where one option is subtly wrong.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Classify any variable as categorical or numerical, and numerical ones as discrete or continuous</li><li>Place a variable on the nominal / ordinal / interval / ratio ladder and say what that permits</li><li>Tell cross-sectional data from time-series data</li><li>Tell a descriptive statement from an inferential one</li></ul><p class="time">About 12 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-stat1-1-c1"><h4><span class="cnum">1.1</span>Data, cases and variables</h4><div class="cbody two"><div class="prose"><p><b>Statistics</b> is learning from data: you <b>collect</b> it, <b>describe</b> it, <b>analyse</b> it, and <b>conclude</b> something. Data is anything recorded &mdash; numbers, text, likes, images.</p><p>A dataset is <b>structured</b> when it sits in rows and columns, and <b>unstructured</b> when it has no fixed shape (a pile of tweets, photos). The course works with structured data.</p><p>In a well-organised (&ldquo;tidy&rdquo;) table:</p><ul><li>each <b>row</b> is one <b>case</b> (one student, one match, one patient);</li><li>each <b>column</b> is one <b>variable</b> &mdash; a characteristic that <i>varies</i> across cases;</li><li>each column uses <b>one unit</b> throughout (never mix cm and feet).</li></ul><p>A column with the same value for every case is <b>not a variable</b> &mdash; nothing varies.</p></div><div class="side"><div class="fx"><span class="lbl">Missing is not zero</span><p>A bowler who <b>never bowled</b> has wickets = <b>NA</b> (not applicable / missing).<br>A bowler who bowled and took none has wickets = <b>0</b>.</p><p>Writing 0 for NA drags the mean down and changes the count of cases.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;Which of these is a variable in this table?&rdquo; or &ldquo;how many cases?&rdquo; with a constant column or a missing value planted in it.</p></section>
+<section class="cn" id="w-stat1-1-c2"><h4><span class="cnum">1.2</span>Categorical vs numerical, discrete vs continuous</h4><div class="cbody two"><div class="prose"><p>A <b>categorical</b> variable records <b>which group</b> a case belongs to: blood group, city, grade, shirt size. A <b>numerical</b> variable records a <b>measured or counted quantity</b>, usually with units: height in cm, runs, income in &#8377;.</p><p>The trap is variables that <i>look</i> numeric but are labels: <b>jersey number, roll number, PIN code, mobile number, patient ID</b>. Averaging them is meaningless, so they are <b>categorical</b>.</p><p>Numerical variables split once more:</p><ul><li><b>Discrete</b> &mdash; counts; only whole-number values. Number of siblings, goals, students in a class.</li><li><b>Continuous</b> &mdash; measurements; any value in a range, including fractions. Height, time taken, temperature.</li></ul></div><div class="side"><div class="fx"><span class="lbl">Two questions that settle it</span><p>1. <b>Does averaging it make sense?</b> No &rarr; categorical.<br>2. If numerical: <b>is it counted or measured?</b> Counted &rarr; discrete, measured &rarr; continuous.</p></div><div class="ex"><span class="lbl">Worked example</span><div class="tw"><table class="tbl"><thead><tr><th>Variable</th><th>Type</th></tr></thead><tbody><tr><td>Number of siblings</td><td>numerical, discrete</td></tr><tr><td>Time to finish a 5 km run</td><td>numerical, continuous</td></tr><tr><td>PIN code</td><td>categorical</td></tr><tr><td>Shirt size S/M/L</td><td>categorical</td></tr><tr><td>Monthly rainfall in mm</td><td>numerical, continuous</td></tr></tbody></table></div></div></div></div></section>
+<section class="cn" id="w-stat1-1-c3"><h4><span class="cnum">1.3</span>The four scales of measurement</h4><div class="cbody two"><div class="prose"><p>Each scale adds one property to the one below it. Learn the ladder, not four separate definitions:</p><div class="tw"><table class="tbl"><thead><tr><th>Scale</th><th>Order?</th><th>Equal gaps?</th><th>True zero?</th><th>Examples</th></tr></thead><tbody><tr><td><b>Nominal</b></td><td>&times;</td><td>&times;</td><td>&times;</td><td>gender, blood group, jersey no.</td></tr><tr><td><b>Ordinal</b></td><td>&check;</td><td>&times;</td><td>&times;</td><td>grade A/B/C, ratings poor&ndash;excellent, S/M/L</td></tr><tr><td><b>Interval</b></td><td>&check;</td><td>&check;</td><td>&times;</td><td>temperature in &deg;C/&deg;F, calendar year</td></tr><tr><td><b>Ratio</b></td><td>&check;</td><td>&check;</td><td>&check;</td><td>height, weight, marks, runs, income, age</td></tr></tbody></table></div><p><b>Interval vs ratio</b> is the one people get wrong. Ask: <i>does zero mean &ldquo;none of it&rdquo;?</i> 0&deg;C is not &ldquo;no temperature&rdquo;, so 40&deg;C is <b>not</b> twice as hot as 20&deg;C &rarr; interval. 0 kg really is no weight, so 60 kg <b>is</b> twice 30 kg &rarr; ratio.</p><p>Categorical variables are always nominal or ordinal. Numerical variables are always interval or ratio.</p></div><div class="side"><div class="fx"><span class="lbl">What each scale lets you compute</span><div class="tw"><table class="tbl"><thead><tr><th>Scale</th><th>Allowed summaries</th></tr></thead><tbody><tr><td>Nominal</td><td>mode, counts</td></tr><tr><td>Ordinal</td><td>+ median, percentiles</td></tr><tr><td>Interval</td><td>+ mean, SD, differences</td></tr><tr><td>Ratio</td><td>+ ratios (&ldquo;twice as much&rdquo;)</td></tr></tbody></table></div></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;Which scale is X?&rdquo; and MSQs like &ldquo;which summaries are valid for this variable?&rdquo;</p></section>
+<section class="cn" id="w-stat1-1-c4"><h4><span class="cnum">1.4</span>Cross-sectional vs time-series data</h4><div class="cbody two"><div class="prose"><p><b>Cross-sectional</b> data observes <b>many units at one point in time</b>: marks of 200 students in this quiz, prices of 50 stocks on 1 Jan.</p><p><b>Time-series</b> data follows <b>one variable over successive time points</b>: one stock's closing price every day of 2025, India's yearly GDP. It is plotted as a line over time (a timeplot).</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p>&ldquo;Daily closing price of Infosys through 2025&rdquo; &rarr; <b>time series</b>.<br>&ldquo;Closing prices of the 50 Nifty stocks on 1 Jan 2025&rdquo; &rarr; <b>cross-sectional</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-1-c5"><h4><span class="cnum">1.5</span>Descriptive vs inferential statistics</h4><div class="cbody two"><div class="prose"><p><b>Descriptive</b> statistics summarises the data you actually have &mdash; tables, charts, averages of <i>those</i> cases.</p><p><b>Inferential</b> statistics uses a <b>sample</b> to make a claim about a larger <b>population</b>. Because the sample could have come out differently, inference needs probability and carries sampling error.</p><p>The test is <b>not</b> whether a sample was used. It is whether the claim <b>leaves</b> the data that was collected.</p></div><div class="side"><div class="fx"><span class="lbl">Trigger words for inferential</span><p>generalise &middot; population &middot; estimate &middot; predict &middot; sampling error &middot; test a claim &middot; &ldquo;all students&rdquo; when only some were asked</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>Case / variable</b> &mdash; row / column; a constant column is not a variable</li><li><b>NA &ne; 0</b> &mdash; missing is not the same as a measured zero</li><li><b>Categorical</b> &mdash; group labels, including numeric-looking IDs</li><li><b>Discrete / continuous</b> &mdash; counted / measured</li><li><b>Nominal &rarr; ordinal &rarr; interval &rarr; ratio</b> &mdash; each adds order, then equal gaps, then a true zero</li><li><b>Interval vs ratio</b> &mdash; does zero mean none? &deg;C no (interval), kg yes (ratio)</li><li><b>Valid centres</b> &mdash; nominal: mode &middot; ordinal: + median &middot; numerical: + mean</li><li><b>Descriptive vs inferential</b> &mdash; does the claim reach beyond the cases measured?</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>A sample does not make it inferential.</b> Analysing the sample and stopping there is descriptive. It is inferential only when the claim reaches beyond the sample.</li><li><b>Interval vs ratio</b> turns on one question: does zero mean true absence, so that ratios mean something? 40&deg;C is not twice 20&deg;C &rarr; interval. 300 runs is twice 150 &rarr; ratio.</li><li><b>Mode works on nominal, median does not.</b> Median needs order; nominal has none.</li><li><b>Mean is never valid for categorical data.</b> &ldquo;Mean, median and mode can all summarise a categorical variable&rdquo; is a recurring false MSQ option.</li><li><b>Numeric-looking identifiers are categorical.</b> Jersey number, PIN code, room number &mdash; the average of them is meaningless.</li><li><b>Calendar year is interval, age is ratio.</b> Year 0 is an arbitrary starting point; age 0 is a real zero.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>A hospital records, for each patient: <code>patient ID</code>, <code>blood group</code>, <code>pain level</code> (mild / moderate / severe), <code>body temperature</code> in &deg;C, and <code>weight</code> in kg. Give the scale of measurement for each, and say which are categorical.</div><details><summary>Show answer</summary><div class="ans"><b>patient ID</b> &mdash; nominal, categorical (numeric-looking, but arithmetic on it is meaningless).<br><b>blood group</b> &mdash; nominal, categorical.<br><b>pain level</b> &mdash; ordinal, categorical.<br><b>body temperature &deg;C</b> &mdash; interval, numerical. No true zero.<br><b>weight kg</b> &mdash; ratio, numerical. True zero.<br>Only <b>mode</b> can summarise ID and blood group; pain level also admits a <b>median</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>A researcher surveys 500 of a college's 4000 students and finds that 62% of them own a laptop. She writes: &ldquo;about 62% of students at this college own a laptop.&rdquo; Which statement is descriptive and which is inferential?</div><details><summary>Show answer</summary><div class="ans"><b>Descriptive:</b> &ldquo;62% of those surveyed own a laptop&rdquo; &mdash; it only summarises the 500 actually measured.<br><b>Inferential:</b> &ldquo;about 62% of students at this college&rdquo; &mdash; it generalises to all 4000 and carries sampling error.<br>Both sentences use the same sample. The difference is whether the claim <b>leaves</b> it.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Classify each as categorical / discrete / continuous, and give its scale: (a) year of birth (b) a 1&ndash;5 satisfaction rating (c) number of WhatsApp messages sent today (d) rainfall in mm (e) mobile number.</div><details><summary>Show answer</summary><div class="ans">(a) <b>numerical, interval</b> &mdash; differences between years are meaningful, but year 0 is arbitrary, so &ldquo;twice the year&rdquo; is nonsense.<br>(b) <b>categorical, ordinal</b> &mdash; ordered, but the gap from 1 to 2 is not a measured quantity.<br>(c) <b>numerical, discrete, ratio</b> &mdash; a count with a real zero.<br>(d) <b>numerical, continuous, ratio</b> &mdash; 0 mm means no rain.<br>(e) <b>categorical, nominal</b> &mdash; a label.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>A column records customer satisfaction as <i>very poor / poor / average / good / excellent</i>. Which are meaningful: (i) mode (ii) median (iii) mean (iv) &ldquo;good is twice as satisfied as poor&rdquo;? And is &ldquo;satisfaction scores of 300 customers collected on 5 Nov&rdquo; cross-sectional or time series?</div><details><summary>Show answer</summary><div class="ans">(i) <b>yes</b> and (ii) <b>yes</b> &mdash; the variable is ordinal, so it has a most common level and a middle level.<br>(iii) <b>no</b> &mdash; the gaps between levels are not equal measured amounts.<br>(iv) <b>no</b> &mdash; ratios need a ratio scale.<br>One date, many customers &rarr; <b>cross-sectional</b>.</div></details></div></div></div>
 </div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>A hospital records, for each patient: <code>patient ID</code>, <code>blood group</code>, <code>pain level</code> (mild / moderate / severe), <code>body temperature</code> in &deg;C, and <code>weight</code> in kg. Give the scale of measurement for each, and say which are categorical.</p>
-<details><summary>Show answer</summary>
-<div class="ans"><b>patient ID</b> &mdash; nominal, categorical (numeric-looking, but arithmetic on it is meaningless).<br><b>blood group</b> &mdash; nominal, categorical.<br><b>pain level</b> &mdash; ordinal, categorical (ordered, but the gap from mild to moderate is not a measured quantity).<br><b>body temperature &deg;C</b> &mdash; interval, numerical. No true zero, so 40&deg; is not twice 20&deg;.<br><b>weight kg</b> &mdash; ratio, numerical. True zero, so 60 kg really is twice 30 kg.<br>Only <b>mode</b> can summarise ID and blood group; pain level also admits a <b>median</b>.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>A researcher surveys 500 of a college's 4000 students and reports that 62% of those surveyed own a laptop. She then writes: &ldquo;about 62% of students at this college own a laptop.&rdquo; Which statement is descriptive and which is inferential, and why?</p>
-<details><summary>Show answer</summary>
-<div class="ans"><b>Descriptive:</b> &ldquo;62% of those surveyed own a laptop&rdquo; &mdash; it only summarises the 500 actually measured.<br><b>Inferential:</b> &ldquo;about 62% of students at this college&rdquo; &mdash; it generalises from the 500 to all 4000, which needs probability and carries sampling error.<br>The giveaway is not that a sample was used &mdash; both sentences use the same sample. It is whether the claim <b>leaves</b> the sample.</div>
-</details>
-</div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -245,43 +290,18 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <h3>Charts &amp; frequency</h3>
 <span class="wm">0/4 learned &middot; 11 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Pie chart</dt><dd>amount = (percent/100) × total</dd>
-<dt>Relative frequency</dt><dd>rel freq = class freq / Σ freq</dd>
-<!--x-start-->
-<dt>Frequency and relative frequency</dt><dd><b>Frequency</b> = count per distinct category. <b>Relative frequency</b> = frequency &divide; n, and always sums to 1. Use relative frequency whenever you compare two datasets of different sizes.</dd>
-<dt>Which chart does what</dt><dd><ul><li><b>Pie</b> &mdash; share of a whole. Wedge angle = relative frequency &times; 360&deg;. No 3D, no exploded slices.</li><li><b>Bar</b> &mdash; comparison across groups. Equal widths, bars <b>do not touch</b>.</li><li><b>Pareto</b> &mdash; a bar chart sorted by descending frequency. Valid for <b>nominal only</b>.</li></ul></dd>
-<dt>Area principle</dt><dd>The area drawn must be proportional to the number it represents. Two standard violations: decorative icons scaled on both dimensions at once, and a <b>truncated axis</b> whose baseline is not zero, which exaggerates differences. If you must truncate, mark the axis break explicitly.</dd>
-<dt>Round-off</dt><dd>Percentages rounded one at a time need not total exactly 100%, and pie angles need not total exactly 360&deg;. Check the total.</dd>
-<dt>Centre for categorical data</dt><dd><b>Mode</b> = the highest-frequency category; defined for nominal and ordinal, and may be bimodal or multimodal. <b>Median</b> = the middle value once ranked; needs order, so <b>ordinal only</b>. Mode and median need not coincide.</dd>
-<dt>Presentation</dt><dd>Collapse many tiny categories into an explicit &ldquo;Other&rdquo; bucket rather than silently dropping them. Always label axes, title and legend.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>Pareto on ordinal data is wrong.</b> Sorting S/M/L/XL by frequency destroys the order that makes the variable ordinal. Keep the natural order.</li>
-<li><b>A truncated baseline is an area-principle violation</b>, not a style preference. It is the answer to &ldquo;what is misleading about this chart?&rdquo;</li>
-<li><b>Median is undefined for nominal data.</b> Mode is the only centre a nominal variable has.</li>
-<li><b>Bars touch in a histogram, not in a bar chart.</b> Gaps mean categories; touching means a continuous axis.</li>
-<li><b>Individually rounded percentages need not sum to 100.</b> If an option says they must, it is false.</li>
-</ol>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 2 describes <b>one categorical variable</b>. There are three moves: <b>tabulate</b> it (frequency table), <b>picture</b> it (bar, pie or Pareto chart), and <b>summarise</b> it (mode, and median if it is ordinal).</p><p>The quiz questions are mostly arithmetic on a chart &mdash; turning pie percentages into amounts, reading a relative frequency off a bar chart &mdash; plus true/false statements that test whether you know which chart and which summary suits which kind of variable.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Build a frequency and relative-frequency table and check it</li><li>Convert between counts, relative frequencies, percentages and pie-chart angles</li><li>Choose between bar, pie and Pareto charts, and spot a misleading chart</li><li>Find the mode of any categorical variable and the median of an ordinal one</li></ul><p class="time">About 12 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-stat1-2-c1"><h4><span class="cnum">2.1</span>Frequency tables</h4><div class="cbody two"><div class="prose"><p>List each distinct category once and count how many cases fall in it. That count is the <b>frequency</b> f.</p><p>The <b>relative frequency</b> is the share of all cases: f &divide; n. Relative frequencies always add to <b>1</b> (or 100%). Use them whenever you compare two groups of different sizes &mdash; 30 out of 50 and 30 out of 200 are the same count but very different shares.</p><p>For an <b>ordinal</b> variable keep the categories in their natural order (S, M, L, XL), and you can add a <b>cumulative frequency</b> column &mdash; you need it for the median.</p></div><div class="side"><div class="fx"><span class="lbl">Formulas</span><p>relative frequency = f / n<br>percentage = 100 &times; f / n<br>&Sigma; f = n, &nbsp; &Sigma; relative frequency = 1</p></div><div class="ex"><span class="lbl">Worked example</span><div class="tw"><table class="tbl"><thead><tr><th>Drink</th><th>f</th><th>Rel. freq</th><th>%</th></tr></thead><tbody><tr><td>Tea</td><td>54</td><td>0.225</td><td>22.5</td></tr><tr><td>Coffee</td><td>120</td><td>0.500</td><td>50</td></tr><tr><td>Juice</td><td>66</td><td>0.275</td><td>27.5</td></tr><tr><td><b>Total</b></td><td><b>240</b></td><td><b>1</b></td><td><b>100</b></td></tr></tbody></table></div></div></div></div></section>
+<section class="cn" id="w-stat1-2-c2"><h4><span class="cnum">2.2</span>Bar charts and Pareto charts</h4><div class="cbody two"><div class="prose"><p>A <b>bar chart</b> draws one bar per category, height = frequency (or relative frequency). Bars have equal width and <b>do not touch</b> &mdash; the gaps say these are separate categories.</p><p>Reading one: relative frequency of a bar = its height &divide; the sum of all bar heights.</p><p>A <b>Pareto chart</b> is a bar chart with the bars sorted from tallest to shortest, often with a cumulative-percentage line, so you can see which few categories account for most cases. Because it reorders the bars, it is valid <b>only for nominal</b> data. Sorting an ordinal variable by frequency destroys its order.</p></div><div class="side"><div class="fx"><span class="lbl">Bar chart vs histogram</span><p><b>Bar chart</b>: categories, gaps between bars.<br><b>Histogram</b> (week 3): a continuous numerical axis, bars touch.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;Compute the relative frequency of category B from this bar chart&rdquo; and &ldquo;is a Pareto chart appropriate here?&rdquo;</p></section>
+<section class="cn" id="w-stat1-2-c3"><h4><span class="cnum">2.3</span>Pie charts</h4><div class="cbody two"><div class="prose"><p>A pie chart shows <b>shares of one whole</b>. Each wedge's angle is its relative frequency times 360&deg;. Every question is one of three conversions:</p><ul><li><b>count &rarr; angle:</b> angle = (f / n) &times; 360&deg;</li><li><b>percentage &rarr; amount:</b> amount = (p / 100) &times; total</li><li><b>angle &rarr; count:</b> f = (angle / 360&deg;) &times; n</li></ul><p>Pies get hard to read with many small slices; group them into an explicit &ldquo;Other&rdquo;. Comparing two pies side by side is also weak &mdash; a bar chart of relative frequencies is clearer.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p>A household budget of &#8377;48,000 is drawn as a pie. Rent has a 90&deg; wedge; food is 30%.</p><p>Rent = 90/360 &times; 48,000 = <b>&#8377;12,000</b>.<br>Food = 0.30 &times; 48,000 = <b>&#8377;14,400</b>, wedge = 0.30 &times; 360 = <b>108&deg;</b>.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> Pie percentages given, total given, &ldquo;how much was spent on X?&rdquo; or &ldquo;how much more on X than Y?&rdquo;</p></section>
+<section class="cn" id="w-stat1-2-c4"><h4><span class="cnum">2.4</span>Misleading charts: the area principle</h4><div class="cbody"><div class="prose"><p>The <b>area principle</b>: the area of ink must be proportional to the number it represents. Common violations:</p><ul><li><b>Truncated axis</b> &mdash; the bars start at, say, 80 instead of 0, so a 5% difference looks like a 3&times; difference.</li><li><b>Picture icons scaled in both width and height</b> &mdash; doubling the value quadruples the area.</li><li><b>3D and exploded pies</b> &mdash; the front slices look bigger.</li></ul><p><b>Round-off:</b> percentages rounded one by one need not add to exactly 100, and angles need not add to exactly 360&deg;. That alone does not make a chart wrong.</p></div></div></section>
+<section class="cn" id="w-stat1-2-c5"><h4><span class="cnum">2.5</span>Mode and median of a categorical variable</h4><div class="cbody two"><div class="prose"><p><b>Mode</b> = the category with the highest frequency. It works for nominal and ordinal data. There can be two (bimodal) or more.</p><p><b>Median</b> = the middle case once the data is put in order. It needs an order, so it exists <b>only for ordinal</b> data. To find it, use the cumulative frequency: the median is the category containing case number (n + 1) / 2.</p><p>The mean does not exist for categorical data.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p>Shirt sizes: S 12, M 30, L 25, XL 8, so n = 75.</p><p>Mode = <b>M</b> (30).<br>Median position = (75 + 1)/2 = 38th. Cumulative: S 12, M 42 &mdash; the 38th shirt is an M, so median = <b>M</b>.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>Relative frequency</b> &mdash; f / n; sums to 1; use it to compare groups of different size</li><li><b>Pie</b> &mdash; angle = f/n &times; 360&deg;; amount = % &times; total</li><li><b>Bar chart</b> &mdash; gaps between bars; rel. freq = bar / sum of bars</li><li><b>Pareto</b> &mdash; sorted bar chart, nominal only</li><li><b>Area principle</b> &mdash; ink &prop; value; truncated axes and 2-D icons break it</li><li><b>Mode</b> &mdash; any categorical variable</li><li><b>Median</b> &mdash; ordinal only, via cumulative frequency</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>Pareto on ordinal data is wrong.</b> Sorting S/M/L/XL by frequency destroys the order that makes the variable ordinal.</li><li><b>A truncated baseline is an area-principle violation</b>, not a style choice. It is the answer to &ldquo;what is misleading about this chart?&rdquo;</li><li><b>Median is undefined for nominal data.</b> Mode is the only centre a nominal variable has.</li><li><b>Bars touch in a histogram, not in a bar chart.</b></li><li><b>Individually rounded percentages need not sum to 100.</b> An option claiming they must is false.</li><li><b>Carry the fraction, not the rounded percentage.</b> Rounding 22.5% to 23% before multiplying moves a pie angle by almost 2&deg;.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>In a survey of 240 people, 54 chose tea. Give the relative frequency of tea and the angle of its wedge in a pie chart.</div><details><summary>Show answer</summary><div class="ans">Relative frequency = 54 / 240 = <b>0.225</b> (22.5%).<br>Angle = 0.225 &times; 360&deg; = <b>81&deg;</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>Shirt sizes sold: S 12, M 30, L 25, XL 8. (a) Is a Pareto chart appropriate? (b) What is the mode? (c) What is the median size?</div><details><summary>Show answer</summary><div class="ans"><b>(a) No.</b> Size is ordinal; Pareto would print M, L, S, XL and destroy the order.<br><b>(b) M</b> (30).<br><b>(c)</b> n = 75, so the 38th value in size order. Cumulative: S 12, M 42 &rarr; <b>M</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>A company's annual spend of &#8377;2,40,000 is shown in a pie chart. Salaries are 35%, the rent wedge is 72&deg;, and the rest is &ldquo;other&rdquo;. Find the amount spent on salaries, on rent and on other, and the angle of the &ldquo;other&rdquo; wedge.</div><details><summary>Show answer</summary><div class="ans">Salaries = 0.35 &times; 2,40,000 = <b>&#8377;84,000</b> (angle 126&deg;).<br>Rent = 72/360 &times; 2,40,000 = 0.2 &times; 2,40,000 = <b>&#8377;48,000</b>.<br>Other = 2,40,000 &minus; 84,000 &minus; 48,000 = <b>&#8377;1,08,000</b>, which is 45%, so its angle = 360 &minus; 126 &minus; 72 = <b>162&deg;</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>A bar chart of favourite sport shows Cricket 42, Football 24, Hockey 18, Tennis 36. Which statements are true? (i) The relative frequency of cricket is 0.35. (ii) Football and hockey together are more popular than tennis. (iii) The mode is cricket. (iv) The median sport is football.</div><details><summary>Show answer</summary><div class="ans">n = 42 + 24 + 18 + 36 = 120.<br>(i) <b>True</b> &mdash; 42/120 = 0.35.<br>(ii) <b>True</b> &mdash; 24 + 18 = 42 &gt; 36.<br>(iii) <b>True</b>.<br>(iv) <b>False</b> &mdash; sport is nominal, so there is no median at all.</div></details></div></div></div>
 </div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>In a survey of 240 people, 54 chose tea as their preferred drink. Give the relative frequency of tea and the angle of its wedge in a pie chart.</p>
-<details><summary>Show answer</summary>
-<div class="ans">Relative frequency = 54 / 240 = <b>0.225</b> (22.5%).<br>Angle = 0.225 &times; 360&deg; = <b>81&deg;</b>.<br>Carry the fraction, not the rounded percentage &mdash; rounding to 23% first gives 82.8&deg;, outside a tight tolerance band.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>Shirt sizes sold: S 12, M 30, L 25, XL 8. (a) Is a Pareto chart appropriate? (b) What is the mode? (c) What is the median size?</p>
-<details><summary>Show answer</summary>
-<div class="ans"><b>(a) No.</b> Size is <b>ordinal</b>, and a Pareto chart sorts bars by descending frequency, which would print M, L, S, XL and destroy the natural order. Pareto is for nominal data; here keep S, M, L, XL.<br><b>(b) Mode = M</b> (30, the highest frequency).<br><b>(c)</b> n = 75, so the median is the 38th value in <b>size order</b>. Cumulative counts: S 12, M 42 &mdash; the 38th falls inside M, so <b>median = M</b>. A median exists here precisely because the variable is ordinal; for a nominal variable this part would have no answer.</div>
-</details>
-</div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -318,47 +338,19 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <h3>Central tendency &amp; dispersion</h3>
 <span class="wm">0/4 learned &middot; 41 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Mean</dt><dd>x̄ = Σx / n, so Σx = n·x̄ (use to back out a missing value)</dd>
-<dt>Combined mean</dt><dd>x̄ = (n₁x̄₁ + n₂x̄₂)/(n₁+n₂) — weight by size, never average the averages</dd>
-<dt>Quartiles / IQR</dt><dd>order data, locate Q₁ Q₃ by position, IQR = Q₃ − Q₁</dd>
-<dt>Linear transform y = ax+b</dt><dd>mean → a·mean+b · median → a·median+b · percentile → a·p+b · <b>Var → a²·Var</b> · <b>SD → |a|·SD</b> · <b>IQR → |a|·IQR</b>. Location takes b, spread ignores b.</dd>
-<!--x-start-->
-<dt>Tables and plots</dt><dd>Discrete with few distinct values &rarr; one class per value. Continuous &rarr; grouped classes, 5&ndash;20 as a rule of thumb. Convention: a class <b>includes its left end and excludes its right</b>, so &ldquo;30&ndash;40&rdquo; contains 30 but not 40. <b>Histogram</b> bars touch (continuous axis). <b>Stem-and-leaf</b> keeps the actual values: stem = all digits but the last, leaf = the last digit, leaves sorted within a row.</dd>
-<dt>Mean</dt><dd>Sample x&#772; = &Sigma;x / n, population &mu; = &Sigma;x / N. Grouped discrete: &Sigma;f&middot;x / n, which is <b>exact</b>. Grouped continuous: &Sigma;f&middot;midpoint / n, which is an <b>approximation</b>. Highly sensitive to outliers.</dd>
-<dt>Median and mode</dt><dd>Sort first. n odd &rarr; the ((n+1)/2)-th value. n even &rarr; the average of the two middle values. Median is <b>not</b> sensitive to outliers. Mode may not exist and may be multiple.</dd>
-<dt>Transformations &mdash; learn this cold</dt><dd><ul><li><b>y = x + c</b> &rarr; mean, median and mode all shift by c. <b>Variance and SD unchanged.</b></li><li><b>y = c&middot;x</b> &rarr; mean, median and mode scale by c. <b>Variance scales by c&sup2;, SD scales by c</b> (not c&sup2;).</li></ul>Combined y = c&middot;x + d: centre scales then shifts; spread only scales.</dd>
-<dt>Spread</dt><dd><b>Range</b> = Max &minus; Min, uses two points, extremely outlier-sensitive. <b>Sample variance</b> s&sup2; = &Sigma;(x &minus; x&#772;)&sup2; / (n &minus; 1). <b>Population variance</b> &sigma;&sup2; = &Sigma;(x &minus; &mu;)&sup2; / N. <b>SD</b> = &radic;variance, which restores the original units. Why it matters: {3,3,3,3,3} and {1,2,3,4,5} share a mean, median and mode but differ entirely in spread.</dd>
-<dt>Percentiles &mdash; two valid algorithms</dt><dd><b>Manual:</b> sort, compute n&middot;p. Not an integer &rarr; round up and take that rank. An integer &rarr; average that rank and the next.<br><b>Spreadsheet PERCENTILE():</b> rank = p(n &minus; 1) + 1, then interpolate between the whole and fractional parts.<br>They disagree, so read which one the question wants.</dd>
-<dt>Quartiles</dt><dd>Q1 = 25th percentile, Q2 = median, Q3 = 75th. Five-number summary: Min, Q1, Q2, Q3, Max. <b>IQR</b> = Q3 &minus; Q1, more robust than range or SD. Outlier fences: Q1 &minus; 1.5&middot;IQR and Q3 + 1.5&middot;IQR.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>n &minus; 1 for a sample, n for a population.</b> This is the single most common silent error in the whole course &mdash; it never announces itself, the number just comes out wrong.</li>
-<li><b>Adding a constant does not change spread.</b> y = x + c leaves variance and SD exactly as they were.</li>
-<li><b>Scaling hits variance by c&sup2; but SD only by c.</b> Squaring the SD change is the planted wrong option.</li>
-<li><b>Percentile rule:</b> n&middot;p integer &rarr; average that rank and the next; not an integer &rarr; round <b>up</b>. Rounding to nearest is wrong.</li>
-<li><b>Mean moves with an outlier, median does not.</b> &ldquo;Which measure is resistant?&rdquo; is always asking this.</li>
-<li><b>Grouped continuous mean is an approximation</b>, because midpoints replace the real values. Grouped discrete is exact.</li>
-</ol>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 3 describes <b>one numerical variable</b>, and it carries the most marks in Stat 1. You summarise a list of numbers by its <b>centre</b> (mean, median, mode) and its <b>spread</b> (range, variance, standard deviation, interquartile range).</p><p>Expect to compute these from raw data, to work backwards from a given mean to a missing value, to merge two groups' means, and &mdash; the single most tested idea &mdash; to say what happens to each summary when every value is transformed by y = a&middot;x + b.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Compute mean, median and mode, and say which one resists outliers</li><li>Use &Sigma;x = n&middot;x&#772; to find missing values, correct a misrecorded value, and combine groups</li><li>Compute variance and SD for a sample and for a population</li><li>Find percentiles, quartiles and the IQR, and flag outliers</li><li>State the effect of y = a&middot;x + b on every summary without recomputing</li></ul><p class="time">About 20 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-stat1-3-c1"><h4><span class="cnum">3.1</span>Tables, histograms and stem-and-leaf plots</h4><div class="cbody"><div class="prose"><p>A <b>discrete</b> variable with few values gets one row per value. A <b>continuous</b> variable is grouped into classes (about 5&ndash;20). The convention: a class <b>includes its left end and excludes its right</b>, so &ldquo;30&ndash;40&rdquo; contains 30 but not 40.</p><p>A <b>histogram</b> draws those classes as bars that <b>touch</b>, because the axis is continuous.</p><p>A <b>stem-and-leaf plot</b> keeps every actual value: the stem is all digits but the last, the leaf is the last digit. 42, 47, 51 &rarr; <code>4 | 2 7</code>, <code>5 | 1</code>.</p></div></div></section>
+<section class="cn" id="w-stat1-3-c2"><h4><span class="cnum">3.2</span>The mean, and the one identity that solves most questions</h4><div class="cbody two"><div class="prose"><p>The <b>mean</b> is the sum divided by the count. Rearranged, it gives the identity behind a whole family of questions:</p><p style='text-align:center;font-size:19px'><b>&Sigma;x = n &middot; x&#772;</b></p><ul><li><b>Missing value:</b> the total must equal n &times; mean, so subtract the known values.</li><li><b>Misrecorded value:</b> fix the total (remove the wrong value, add the right one), then divide again.</li><li><b>Combined mean:</b> add the two totals and divide by the combined count. Never average the two means &mdash; that only works when the groups are the same size.</li></ul><p>For a frequency table the mean is &Sigma;f&middot;x / &Sigma;f. With grouped continuous classes, use class midpoints, and the result is only an approximation.</p><p>The mean is pulled hard by outliers.</p></div><div class="side"><div class="fx"><span class="lbl">Formulas</span><p>x&#772; = &Sigma;x / n (sample), &mu; = &Sigma;x / N (population)<br>combined: x&#772; = (n&#8321;x&#772;&#8321; + n&#8322;x&#772;&#8322;) / (n&#8321; + n&#8322;)</p></div><div class="ex"><span class="lbl">Worked example</span><p>Class A: 30 students, mean 60. Class B: 20 students, mean 70.</p><p>Totals: 30 &times; 60 = 1800 and 20 &times; 70 = 1400.<br>Combined mean = 3200 / 50 = <b>64</b> &mdash; not 65, which is the average of the two means.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;The mean of 10 values is 25; one value was wrongly recorded &hellip; find the correct mean&rdquo;, or find a subgroup's mean from the overall mean.</p></section>
+<section class="cn" id="w-stat1-3-c3"><h4><span class="cnum">3.3</span>Median and mode</h4><div class="cbody two"><div class="prose"><p><b>Median</b>: sort the data first. If n is odd, take the value at position (n + 1)/2. If n is even, average the two middle values (positions n/2 and n/2 + 1).</p><p>The median ignores how extreme the extreme values are, so it is <b>resistant to outliers</b>. If a dataset is skewed or has outliers, the median is the better centre.</p><p><b>Mode</b>: the most frequent value. A dataset may have none, one or several.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p>Data: 3, 7, 8, 12, 50.</p><p>Mean = 80/5 = <b>16</b>, but median = <b>8</b>. Change 50 to 500 and the mean jumps to 106 while the median stays 8.</p></div></div></div></section>
+<section class="cn" id="w-stat1-3-c4"><h4><span class="cnum">3.4</span>Spread: range, variance and standard deviation</h4><div class="cbody two"><div class="prose"><p>{3, 3, 3, 3, 3} and {1, 2, 3, 4, 5} have the same mean, median and mode but are clearly different. Spread measures capture that.</p><p><b>Range</b> = max &minus; min. It uses only two values, so a single outlier wrecks it.</p><p><b>Variance</b> is the average squared distance from the mean. For a <b>sample</b> you divide by <b>n &minus; 1</b>, for a <b>population</b> by <b>N</b>. When a question says &ldquo;sample&rdquo;, use n &minus; 1.</p><p><b>Standard deviation</b> = &radic;variance, which puts the spread back in the original units.</p><p>A shortcut that saves time with awkward means: &Sigma;(x &minus; x&#772;)&sup2; = &Sigma;x&sup2; &minus; n&middot;x&#772;&sup2;.</p></div><div class="side"><div class="fx"><span class="lbl">Formulas</span><p>s&sup2; = &Sigma;(x &minus; x&#772;)&sup2; / (n &minus; 1) &nbsp;&nbsp; &sigma;&sup2; = &Sigma;(x &minus; &mu;)&sup2; / N<br>s = &radic;s&sup2;, &sigma; = &radic;&sigma;&sup2;</p></div><div class="ex"><span class="lbl">Worked example</span><p>Sample 4, 8, 6, 10, 12. Mean 8.<br>Deviations &minus;4, 0, &minus;2, 2, 4 &rarr; squares 16, 0, 4, 4, 16 &rarr; sum 40.</p><p>Sample: s&sup2; = 40/4 = <b>10</b>, s &asymp; 3.16.<br>Population: &sigma;&sup2; = 40/5 = <b>8</b>, &sigma; &asymp; 2.83.</p></div></div></div></section>
+<section class="cn" id="w-stat1-3-c5"><h4><span class="cnum">3.5</span>Percentiles, quartiles, IQR and outliers</h4><div class="cbody two"><div class="prose"><p>The <b>p-th percentile</b> is the value below which about p% of the data lies. The course method:</p><ol><li>Sort the data.</li><li>Compute the rank n &middot; p (p as a fraction, e.g. 0.25).</li><li>If n&middot;p is <b>not</b> a whole number, round it <b>up</b> and take that value.</li><li>If n&middot;p <b>is</b> a whole number, average that value and the next one.</li></ol><p>Spreadsheets use a different rule (rank = p(n &minus; 1) + 1, then interpolate), and some questions use position (n + 1)p. They can disagree, so use the method the question names; with none named, use the course method.</p><p><b>Quartiles:</b> Q1 = 25th percentile, Q2 = median, Q3 = 75th percentile. <b>IQR</b> = Q3 &minus; Q1, the spread of the middle half, and it is resistant to outliers.</p><p><b>Five-number summary:</b> min, Q1, median, Q3, max &mdash; exactly what a box plot draws.</p></div><div class="side"><div class="fx"><span class="lbl">Outlier fences</span><p>lower fence = Q1 &minus; 1.5 &times; IQR<br>upper fence = Q3 + 1.5 &times; IQR<br>Anything outside a fence is an outlier.</p></div><div class="ex"><span class="lbl">Worked example</span><p>Data 5, 7, 8, 10, 12, 15, 18, 40 (n = 8).</p><p>Q1: 8 &times; 0.25 = 2, a whole number &rarr; average of 2nd and 3rd = (7 + 8)/2 = <b>7.5</b>.<br>Q3: 8 &times; 0.75 = 6 &rarr; average of 6th and 7th = (15 + 18)/2 = <b>16.5</b>.<br>IQR = <b>9</b>. Upper fence = 16.5 + 13.5 = 30, so <b>40 is an outlier</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-3-c6"><h4><span class="cnum">3.6</span>What y = a&middot;x + b does to every summary</h4><div class="cbody two"><div class="prose"><p>This is the most-tested idea of the week. Split the summaries into two kinds:</p><ul><li><b>Location</b> (mean, median, mode, any percentile, Q1, Q3) &mdash; these are <i>positions</i>, so they move exactly like a single value: multiply by a, then add b.</li><li><b>Spread</b> (range, IQR, SD) &mdash; these are <i>distances between values</i>, so adding b cancels out. They scale by |a|. Variance is a squared distance, so it scales by a&sup2;.</li></ul></div><div class="side"><div class="fx"><span class="lbl">y = a&middot;x + b</span><div class="tw"><table class="tbl"><thead><tr><th>Summary</th><th>New value</th></tr></thead><tbody><tr><td>mean, median, mode, percentiles</td><td>a &times; old + b</td></tr><tr><td>range, IQR, SD</td><td>|a| &times; old</td></tr><tr><td>variance</td><td>a&sup2; &times; old</td></tr></tbody></table></div></div><div class="ex"><span class="lbl">Worked example</span><p>Mean 50, SD 6, and y = 3x &minus; 10.</p><p>Mean = 3 &times; 50 &minus; 10 = <b>140</b>.<br>SD = 3 &times; 6 = <b>18</b> (the &minus;10 does nothing).<br>Variance = 9 &times; 36 = <b>324</b>.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> Marks converted to a new scale, temperatures converted &deg;C &rarr; &deg;F (F = 1.8C + 32), a bonus added to every salary.</p></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>&Sigma;x = n&middot;x&#772;</b> &mdash; missing value, corrected mean, combined mean</li><li><b>Combined mean</b> &mdash; add totals, divide by total count; never average the averages</li><li><b>Median</b> &mdash; sort first; resistant to outliers; the mean is not</li><li><b>Variance</b> &mdash; sample &divide; (n &minus; 1), population &divide; N; SD = &radic;variance</li><li><b>Percentile</b> &mdash; rank n&middot;p: not whole &rarr; round up; whole &rarr; average with the next</li><li><b>IQR</b> &mdash; Q3 &minus; Q1; fences at Q1 &minus; 1.5&middot;IQR and Q3 + 1.5&middot;IQR</li><li><b>y = ax + b</b> &mdash; location: a&middot;old + b; SD/IQR/range: |a|&middot;old; variance: a&sup2;&middot;old</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>n &minus; 1 for a sample, n for a population.</b> The most common silent error in the course.</li><li><b>Adding a constant does not change spread.</b> y = x + c leaves variance, SD and IQR exactly as they were.</li><li><b>Scaling hits variance by a&sup2; but SD only by |a|.</b> Squaring the SD change is the planted wrong option.</li><li><b>Percentile rule:</b> n&middot;p whole &rarr; average that rank and the next; not whole &rarr; round <b>up</b>. Rounding to nearest is wrong.</li><li><b>Never average two group means</b> unless the groups are the same size.</li><li><b>Sort before taking a median or percentile.</b> The question will list the data unsorted on purpose.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>For the sample <code>4, 8, 6, 10, 12</code>, compute the mean, the sample variance and SD, and the population variance and SD.</div><details><summary>Show answer</summary><div class="ans">Mean = 40/5 = <b>8</b>. Squared deviations sum to <b>40</b>.<br><b>Sample:</b> s&sup2; = 40/4 = <b>10</b>, s &asymp; <b>3.16</b>.<br><b>Population:</b> &sigma;&sup2; = 40/5 = <b>8</b>, &sigma; &asymp; <b>2.83</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>A dataset has mean 50 and SD 6. Every value is transformed by <code>y = 3x &minus; 10</code>. Give the new mean, variance and SD.</div><details><summary>Show answer</summary><div class="ans">Mean = 3(50) &minus; 10 = <b>140</b>.<br>SD = 3 &times; 6 = <b>18</b>.<br>Variance = 9 &times; 36 = <b>324</b>.<br>Wrong options to expect: scaling the SD by 9 (54), or subtracting 10 from the SD.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Find the IQR of <code>42, 51, 62, 47, 38, 50, 54, 43</code>. (A past paper question.)</div><details><summary>Show answer</summary><div class="ans">Sort: 38, 42, 43, 47, 50, 51, 54, 62 (n = 8).<br>Q1: 8 &times; 0.25 = 2, whole &rarr; (42 + 43)/2 = <b>42.5</b>.<br>Q3: 8 &times; 0.75 = 6, whole &rarr; (51 + 54)/2 = <b>52.5</b>.<br>IQR = <b>10</b>.<br>With the (n + 1)/4 position rule instead, Q1 = 42.25 and Q3 = 53.25, so IQR = 11. If only one of 10 or 11 is among the options, that settles which method the paper used.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>(a) The mean of 10 values is 25. Later it is found that one value, 32, was recorded as 23. What is the correct mean? (b) The mean of 5 numbers is 6. Four of them are 3, 5, 9 and 8. Find the fifth number and the median of all five.</div><details><summary>Show answer</summary><div class="ans">(a) Recorded total = 10 &times; 25 = 250. Correct total = 250 &minus; 23 + 32 = 259. Correct mean = <b>25.9</b>.<br>(b) Total = 5 &times; 6 = 30, so the fifth = 30 &minus; 25 = <b>5</b>. Sorted: 3, 5, 5, 8, 9 &rarr; median = <b>5</b>.</div></details></div></div></div>
 </div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>For the sample <code>4, 8, 6, 10, 12</code>, compute the mean, the sample variance and SD, and the population variance and SD. Say which pair the exam means by default when it says &ldquo;this sample&rdquo;.</p>
-<details><summary>Show answer</summary>
-<div class="ans">Mean = (4+8+6+10+12)/5 = 40/5 = <b>8</b>.<br>Deviations: &minus;4, 0, &minus;2, 2, 4 &rarr; squares 16, 0, 4, 4, 16 &rarr; &Sigma; = <b>40</b>.<br><b>Sample:</b> s&sup2; = 40 / (5 &minus; 1) = <b>10</b>, s = &radic;10 &asymp; <b>3.16</b>.<br><b>Population:</b> &sigma;&sup2; = 40 / 5 = <b>8</b>, &sigma; = &radic;8 &asymp; <b>2.83</b>.<br>The word <i>sample</i> means divide by n &minus; 1. The two answers differ by 25% here &mdash; far wider than any tolerance band.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>A dataset has mean 50 and SD 6. Every value is transformed by <code>y = 3x &minus; 10</code>. Give the new mean, variance and SD.</p>
-<details><summary>Show answer</summary>
-<div class="ans"><b>Mean</b> = 3(50) &minus; 10 = <b>140</b> &mdash; scales, then shifts.<br><b>SD</b> = |3| &times; 6 = <b>18</b> &mdash; scales by c, and the &minus;10 does nothing.<br><b>Variance</b> = 3&sup2; &times; 6&sup2; = 9 &times; 36 = <b>324</b> (= 18&sup2;).<br>The two planted wrong answers: scaling the SD by c&sup2; (giving 54), and shifting the spread by &minus;10.</div>
-</details>
-</div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -395,47 +387,18 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <h3>Correlation</h3>
 <span class="wm">0/3 learned &middot; 17 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Pearson r</dt><dd>r = [nΣxy − ΣxΣy] / √([nΣx² − (Σx)²][nΣy² − (Σy)²]) — build the 5 columns x, y, xy, x², y²</dd>
-<dt>Invariance</dt><dd>r unchanged by positive linear transforms; a negative multiplier flips the sign only</dd>
-<dt>Contingency table</dt><dd>row totals, column totals, grand total — then decide if the question wants joint, marginal or conditional</dd>
-<!--x-start-->
-<dt>Association is not causality</dt><dd>The course only ever claims <b>association</b>. Any option asserting cause from a correlation or a contingency table is false.</dd>
-<dt>Contingency tables</dt><dd>Rows and columns are category levels, cells are counts, margins are row and column totals. Keep the natural order for ordinal variables &mdash; do not let alphabetising reorder S/M/L. <b>Row (or column) relative frequency</b> = cell &divide; its row (or column) total.</dd>
-<dt>The association rule, in one line</dt><dd>If the row relative frequencies are roughly the same across all rows &rarr; <b>no association</b>. If they differ noticeably &rarr; <b>associated</b>. Checking by column gives the same verdict.</dd>
-<dt>Bar charts for two variables</dt><dd><b>Stacked</b> shows raw counts. <b>100% stacked</b> normalises each bar to the same height, which is what you want for comparing shares across groups of different sizes.</dd>
-<dt>Scatter plots</dt><dd>x = explanatory, y = response. Describe with <b>D-C-V-O</b>: Direction, Curvature, Variation, Outliers. The course only quantifies <b>linear</b> association.</dd>
-<dt>Covariance and correlation</dt><dd>Cov(x,y) = &Sigma;(x &minus; x&#772;)(y &minus; y&#772;) / (n &minus; 1) for a sample, / N for a population. The sign gives direction; the magnitude is hard to read because the units are mixed.<br><b>r = Cov(x,y) / (s<sub>x</sub>&middot;s<sub>y</sub>)</b> &mdash; unitless, always in [&minus;1, +1]. |r| near 1 is strong linear association, near 0 is weak. Swapping which variable is on which axis does not change r.</dd>
-<dt>Line of best fit and R&sup2;</dt><dd>y = mx + c. The sign of m gives the direction. <b>R&sup2; = r&sup2;</b> is the proportion of variance explained &mdash; it measures fit strength and carries <b>no direction</b>.</dd>
-<dt>Point bi-serial</dt><dd>For one numerical x against one <b>dichotomous</b> categorical y coded 0/1: r<sub>pb</sub> = (Y&#772;<sub>0</sub> &minus; Y&#772;<sub>1</sub>) / s<sub>x</sub> &times; &radic;(p<sub>0</sub>p<sub>1</sub>), using group means and group proportions. Line fitting does not apply, because x takes only two values.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>Association never licenses a causal claim</b>, however strong r is.</li>
-<li><b>y = x + c has r = 1 exactly</b> (and y = &minus;x + c has r = &minus;1). Recognise the shape instead of recomputing.</li>
-<li><b>R&sup2; has no direction.</b> R&sup2; = 0.64 is consistent with r = +0.8 and with r = &minus;0.8 alike.</li>
-<li><b>The sign of r<sub>pb</sub> flips</b> if you swap which category is coded 0 and which 1. Only |r<sub>pb</sub>| means anything.</li>
-<li><b>Point bi-serial needs exactly one numeric and one binary variable.</b> Two categorical variables, or a three-level category, do not qualify.</li>
-<li><b>Correlation is unitless and axis-independent.</b> Changing units or swapping axes leaves r alone.</li>
-</ol>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 4 moves from one variable to <b>two</b>, and asks whether they are <b>associated</b> &mdash; whether knowing one tells you something about the other.</p><p>The tool depends on the variable types: two categorical &rarr; a <b>contingency table</b>; two numerical &rarr; a <b>scatter plot</b>, <b>covariance</b> and the <b>correlation coefficient r</b>; one numerical and one two-level categorical &rarr; the <b>point bi-serial</b> correlation. Quiz marks come from computing r from raw data, knowing how r reacts to transformations, and reading a contingency table.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Read joint, marginal and conditional (row/column) relative frequencies from a contingency table</li><li>Decide whether two categorical variables are associated</li><li>Describe a scatter plot, and compute covariance and r</li><li>Say what happens to r under linear transformations</li><li>Know what R&sup2; and the point bi-serial correlation mean</li></ul><p class="time">About 18 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-stat1-4-c1"><h4><span class="cnum">4.1</span>Two categorical variables: contingency tables</h4><div class="cbody two"><div class="prose"><p>A <b>contingency table</b> has one variable's categories as rows and the other's as columns; each cell counts the cases with that combination. Add <b>row totals</b>, <b>column totals</b> and the <b>grand total</b>.</p><p>Three kinds of relative frequency come out of it. Read the question for which one it wants:</p><ul><li><b>Joint:</b> cell &divide; grand total &mdash; &ldquo;what share of everyone attended <i>and</i> passed?&rdquo;</li><li><b>Marginal:</b> row or column total &divide; grand total &mdash; &ldquo;what share passed?&rdquo;</li><li><b>Conditional (row/column):</b> cell &divide; its row (or column) total &mdash; &ldquo;of those who attended, what share passed?&rdquo;</li></ul><p><b>Association rule:</b> compare the row relative frequencies across rows. If they are about the same, there is no association; if they differ clearly, the variables are associated. A <b>100% stacked bar chart</b> draws exactly this comparison.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><div class="tw"><table class="tbl"><thead><tr><th></th><th>Passed</th><th>Failed</th><th>Total</th></tr></thead><tbody><tr><td>Attended</td><td>60</td><td>20</td><td>80</td></tr><tr><td>Did not</td><td>15</td><td>45</td><td>60</td></tr><tr><td><b>Total</b></td><td>75</td><td>65</td><td>140</td></tr></tbody></table></div><p>Pass rate: attended 60/80 = <b>0.75</b>, did not 15/60 = <b>0.25</b>. Very different &rarr; <b>associated</b>. But it is not proof that attending <i>causes</i> passing.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;What percentage of X are Y?&rdquo; &mdash; the wording decides which total you divide by.</p></section>
+<section class="cn" id="w-stat1-4-c2"><h4><span class="cnum">4.2</span>Two numerical variables: scatter plots</h4><div class="cbody"><div class="prose"><p>Plot the <b>explanatory</b> variable on x and the <b>response</b> on y. Describe the cloud with <b>D-C-V-O</b>:</p><ul><li><b>Direction</b> &mdash; positive (rising) or negative (falling)</li><li><b>Curvature</b> &mdash; straight-line or curved</li><li><b>Variation</b> &mdash; tightly clustered or widely scattered</li><li><b>Outliers</b> &mdash; points far from the rest</li></ul><p>The numbers in this week measure only <b>linear</b> association. A perfect U-shaped pattern can have r = 0.</p></div></div></section>
+<section class="cn" id="w-stat1-4-c3"><h4><span class="cnum">4.3</span>Covariance</h4><div class="cbody two"><div class="prose"><p>Covariance measures whether x and y move together. For each point multiply its x-deviation by its y-deviation: both above average or both below gives a positive product; one above and one below gives a negative one. Average those products.</p><p>The <b>sign</b> tells you the direction. The <b>size</b> is hard to read, because it is in mixed units (cm &times; kg) and changes when you change units.</p></div><div class="side"><div class="fx"><span class="lbl">Formula</span><p>Cov(x, y) = &Sigma;(x &minus; x&#772;)(y &minus; y&#772;) / (n &minus; 1) for a sample, / N for a population</p></div></div></div></section>
+<section class="cn" id="w-stat1-4-c4"><h4><span class="cnum">4.4</span>The correlation coefficient r</h4><div class="cbody two"><div class="prose"><p>Dividing covariance by both standard deviations removes the units, giving <b>r</b>:</p><p style='text-align:center;font-size:19px'><b>r = Cov(x, y) / (s<sub>x</sub> &middot; s<sub>y</sub>)</b></p><p>Properties to know cold:</p><ul><li>r is always between <b>&minus;1 and +1</b>. Near &plusmn;1 is a strong linear pattern; near 0 is weak or none.</li><li>r has <b>no units</b>, and swapping x and y does not change it.</li><li><b>Linear transformations:</b> u = a&middot;x + b, v = c&middot;y + d gives r(u, v) = r(x, y) if a and c have the same sign, and &minus;r(x, y) if they have opposite signs. Adding constants never matters.</li><li>If y is exactly a&middot;x + b, then r = +1 (a &gt; 0) or &minus;1 (a &lt; 0).</li><li><b>Correlation is not causation.</b></li></ul><p>To compute r from raw data, build five columns &mdash; x, y, xy, x&sup2;, y&sup2; &mdash; total them, and use the computational formula on the right.</p></div><div class="side"><div class="fx"><span class="lbl">Computational formula</span><p>r = [n&Sigma;xy &minus; &Sigma;x&Sigma;y] / &radic;([n&Sigma;x&sup2; &minus; (&Sigma;x)&sup2;] &middot; [n&Sigma;y&sup2; &minus; (&Sigma;y)&sup2;])</p></div><div class="ex"><span class="lbl">Worked example</span><p>x: 1, 2, 3, 4, 5 &nbsp; y: 2, 4, 5, 4, 5 (n = 5)</p><p>&Sigma;x = 15, &Sigma;y = 20, &Sigma;xy = 66, &Sigma;x&sup2; = 55, &Sigma;y&sup2; = 86.<br>Numerator = 5(66) &minus; 15(20) = 30.<br>Denominator = &radic;((275 &minus; 225)(430 &minus; 400)) = &radic;(50 &times; 30) = &radic;1500 &asymp; 38.73.<br>r = 30 / 38.73 &asymp; <b>0.775</b> &mdash; a fairly strong positive association.</p></div></div></div><p class="tested"><b>How the exam asks it:</b> &ldquo;Compute r from this table&rdquo;, and &ldquo;if r(x, y) = 0.6, what is r(2x + 3, &minus;5y + 1)?&rdquo;</p></section>
+<section class="cn" id="w-stat1-4-c5"><h4><span class="cnum">4.5</span>Line of best fit, R&sup2;, and the point bi-serial correlation</h4><div class="cbody two"><div class="prose"><p>A <b>line of best fit</b> y = m&middot;x + c summarises a linear scatter. The sign of the slope m matches the sign of r.</p><p><b>R&sup2; = r&sup2;</b> is the share of the variation in y that the line explains. R&sup2; = 0.64 means 64% explained. Because it is squared, it carries <b>no direction</b>: r = 0.8 and r = &minus;0.8 both give 0.64.</p><p><b>Point bi-serial correlation</b> handles one <b>numerical</b> variable against one <b>two-level</b> categorical variable (pass/fail, male/female coded 0 and 1). It compares the numerical variable's mean in the two groups, scaled by its overall SD and by the group proportions p&#8320; and p&#8321;. Swapping which group is coded 1 flips the sign, so only the size is meaningful.</p></div><div class="side"><div class="fx"><span class="lbl">Point bi-serial</span><p>r<sub>pb</sub> = (Y&#772;&#8321; &minus; Y&#772;&#8320;) / s<sub>Y</sub> &times; &radic;(p&#8320; &middot; p&#8321;)</p><p>Y&#772;&#8320;, Y&#772;&#8321; = mean of the numerical variable in each group; p&#8320;, p&#8321; = share of cases in each group; s<sub>Y</sub> = SD of all the numerical values.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>Joint / marginal / conditional</b> &mdash; divide by grand total / by grand total / by the row or column total</li><li><b>Association</b> &mdash; row relative frequencies differ across rows</li><li><b>Scatter</b> &mdash; D-C-V-O; only linear association is measured</li><li><b>Covariance</b> &mdash; sign = direction; size depends on units</li><li><b>r</b> &mdash; Cov / (s<sub>x</sub>s<sub>y</sub>), in [&minus;1, 1], unitless, symmetric</li><li><b>Transforms</b> &mdash; r unchanged, except the sign flips if exactly one variable is multiplied by a negative number</li><li><b>R&sup2;</b> &mdash; r&sup2;, share of variation explained, no direction</li><li><b>Point bi-serial</b> &mdash; one numerical vs one binary; sign depends on the coding</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>Association never licenses a causal claim</b>, however strong r is.</li><li><b>y = x + c has r = 1 exactly</b> (and y = &minus;x + c has r = &minus;1). Recognise the shape instead of recomputing.</li><li><b>R&sup2; has no direction.</b> R&sup2; = 0.64 is consistent with r = +0.8 and with r = &minus;0.8.</li><li><b>The sign of r<sub>pb</sub> flips</b> if you swap the 0/1 coding.</li><li><b>Point bi-serial needs exactly one numerical and one binary variable.</b></li><li><b>r = 0 does not mean no relationship</b> &mdash; only no <i>linear</i> one.</li><li><b>&ldquo;Of those who &hellip;&rdquo; means divide by that row's total</b>, not the grand total.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>A sample gives Cov(x, y) = 12.6, s<sub>x</sub> = 4.2 and s<sub>y</sub> = 5.0. Find r and R&sup2;, and state what each tells you.</div><details><summary>Show answer</summary><div class="ans">r = 12.6 / 21 = <b>0.6</b> &mdash; moderate positive linear association.<br>R&sup2; = <b>0.36</b> &mdash; 36% of the variation in y is explained by the line. It would be the same for r = &minus;0.6.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>Of students who attended a revision session, 60 passed and 20 failed. Of those who did not attend, 15 passed and 45 failed. (a) What share of all students passed? (b) Of those who passed, what share attended? (c) Is attendance associated with passing? Did the session cause the passes?</div><details><summary>Show answer</summary><div class="ans">Grand total 140, passed 75.<br>(a) Marginal: 75/140 &asymp; <b>0.536</b>.<br>(b) Column conditional: 60/75 = <b>0.8</b>.<br>(c) Pass rates 0.75 vs 0.25 &rarr; <b>associated</b>. <b>No causal claim</b>: students who choose to attend may be the ones already studying harder.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Compute r for x: 2, 4, 6, 8 and y: 3, 7, 5, 9.</div><details><summary>Show answer</summary><div class="ans">&Sigma;x = 20, &Sigma;y = 24, &Sigma;xy = 6 + 28 + 30 + 72 = 136, &Sigma;x&sup2; = 120, &Sigma;y&sup2; = 9 + 49 + 25 + 81 = 164, n = 4.<br>Numerator = 4(136) &minus; 20(24) = 544 &minus; 480 = 64.<br>Denominator = &radic;((480 &minus; 400)(656 &minus; 576)) = &radic;(80 &times; 80) = 80.<br>r = 64/80 = <b>0.8</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>r(x, y) = 0.6. Find (a) r(2x + 3, y) (b) r(2x + 3, &minus;5y + 1) (c) r(&minus;x, &minus;y) (d) r(x, 3x + 2).</div><details><summary>Show answer</summary><div class="ans">(a) <b>0.6</b> &mdash; a positive scale and a shift change nothing.<br>(b) <b>&minus;0.6</b> &mdash; exactly one negative multiplier flips the sign.<br>(c) <b>0.6</b> &mdash; two negatives cancel.<br>(d) <b>1</b> &mdash; y is an exact increasing linear function of x.</div></details></div></div></div>
 </div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>A sample gives Cov(x, y) = 12.6, s<sub>x</sub> = 4.2 and s<sub>y</sub> = 5.0. Find r and R&sup2;, and state what each one tells you.</p>
-<details><summary>Show answer</summary>
-<div class="ans">r = 12.6 / (4.2 &times; 5.0) = 12.6 / 21 = <b>0.6</b>.<br>R&sup2; = 0.6&sup2; = <b>0.36</b>.<br><b>r = 0.6</b> &mdash; a moderate <b>positive</b> linear association; as x rises, y tends to rise.<br><b>R&sup2; = 0.36</b> &mdash; 36% of the variation in y is explained by the linear fit. It says nothing about direction; an r of &minus;0.6 would give the same 0.36.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>Of students who attended the revision session, 60 passed and 20 failed. Of those who did not attend, 15 passed and 45 failed. Is attendance associated with passing? Can you conclude the session caused the passes?</p>
-<details><summary>Show answer</summary>
-<div class="ans">Row totals: attended 80, did not attend 60.<br>Row relative frequencies for <i>passed</i>: attended 60/80 = <b>0.75</b>; did not attend 15/60 = <b>0.25</b>.<br>The two rows differ sharply, so the variables <b>are associated</b>.<br><b>No causal conclusion.</b> Students who choose to attend a revision session are likely to be the ones already studying harder, so the comparison is confounded. The course claims association only.</div>
-</details>
-</div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -472,54 +435,47 @@ body.gapsonly .traps,body.gapsonly .drills{display:none}
 <h3>Intro to algorithms</h3>
 <span class="wm">0/1 learned &middot; 17 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Operators</dt><dd><b>/</b> always gives float · <b>//</b> floors · <b>%</b> remainder (days = n // 7, rest = n % 7) · <b>**</b> power · int op float → float</dd>
-<dt>Types</dt><dd><b>int float str bool</b> · a quoted number is str · <b>int('5')+1 = 6</b>, <b>'5'+1</b> is a TypeError · str + str joins, str * int repeats</dd>
-<dt>Output formats</dt><dd><b>len(s)</b> counts characters · f-string width <b>f'{x:5}'</b> right-aligns numbers in 5 columns · print(a, b) puts a space between</dd>
-<!--x-start-->
-<dt>Type rules &mdash; the whole of W1</dt><dd><ul><li><code>int</code> op <code>int</code> &rarr; int, <b>except</b> <code>/</code> (always float) and <code>**</code> with a negative exponent (<code>2**-3</code> &rarr; 0.125, a float).</li><li><code>int</code> op <code>float</code> &rarr; float. One float anywhere poisons the whole expression: <code>7.0 // 2</code> &rarr; <b>3.0</b>, not 3.</li><li>A quoted literal is <code>str</code> even when it looks numeric: <code>"7" + "2"</code> &rarr; <code>"72"</code>, not 9.</li><li><code>+</code> joins str with str only. <code>"a" + 1</code> &rarr; <b>TypeError</b>. But <code>"ab" * 3</code> &rarr; <code>"ababab"</code> is legal.</li><li><code>int()</code>, <code>str()</code>, <code>float()</code>, <code>len()</code> change the type before the next operator sees it &mdash; that is usually the point of the question.</li></ul></dd>
-<dt>Floor division and modulo</dt><dd><code>//</code> floors, <code>%</code> keeps the remainder. The standard decomposition: <code>years = n // 365</code>, <code>weeks = (n % 365) // 7</code>, <code>days = (n % 365) % 7</code>.<br><b>&#9888; <code>//</code> floors toward &minus;&infin;, it does not truncate:</b> <code>-7 // 2</code> is <b>&minus;4</b>, not &minus;3. And <code>%</code> takes the sign of the <b>divisor</b>: <code>-7 % 2</code> is <b>1</b>, not &minus;1.</dd>
-<dt>Strings</dt><dd><code>s[a:b]</code> includes a and excludes b, so the length is b &minus; a, clipped at the ends. <code>s[:k]</code> is the first k characters. <code>len(s)</code> counts characters &mdash; spaces you concatenated in are characters too.</dd>
-<dt>f-string widths</dt><dd><code>f"{5:3}"</code> pads to 3 columns and right-aligns numbers &rarr; <code>"&nbsp;&nbsp;5"</code>. The padding counts toward the output length.</dd>
-<dt>Method</dt><dd>Every W1 question is one expression. Work <b>inside-out</b>: evaluate the innermost call, note its <b>type</b>, then apply the next operator to that.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b><code>/</code> always returns a float</b>, even <code>4/2</code> &rarr; 2.0. If the options show 2 and 2.0, that is the whole question.</li>
-<li><b><code>-7 // 2</code> is &minus;4</b>, because floor division rounds down, not toward zero.</li>
-<li><b><code>-7 % 2</code> is 1</b>, because the result takes the sign of the divisor.</li>
-<li><b>One float poisons the expression.</b> <code>7.0 // 2</code> &rarr; 3.0, and the answer 3 is marked wrong.</li>
-<li><b>Quoted numbers are strings.</b> <code>"5" + 1</code> is a TypeError; <code>int("5") + 1</code> is 6.</li>
-<li><b>Field width adds characters.</b> <code>f"{7:4}"</code> is four characters long, three of them spaces.</li>
-</ol>
-</div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>Give the exact value <b>and type</b> of each:<pre>7 // 2
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 1 covers the building blocks every later program uses: <b>printing</b> and <b>reading input</b>, <b>variables</b>, the four basic <b>types</b> (int, float, str, bool), <b>arithmetic operators</b>, and <b>strings</b>.</p><p>Quiz questions are almost all one expression: &ldquo;what does this print, and what type is it?&rdquo; You win them by knowing the <b>type rules</b> and <b>operator precedence</b> exactly, and by working inside-out instead of guessing.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Predict the value <i>and type</i> of any arithmetic expression</li><li>Use //, % and ** correctly, including with negative numbers</li><li>Convert between types with int(), float(), str(), and know when that fails</li><li>Index and slice strings, and use + and * on them</li><li>Format output with print and f-strings</li></ul><p class="time">About 15 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-python-1-c1"><h4><span class="cnum">1.1</span>print and input</h4><div class="cbody two"><div class="prose"><p><code>print(a, b, c)</code> prints the values separated by a <b>space</b> and ends with a <b>newline</b>. Two optional arguments change that:</p><ul><li><code>sep</code> &mdash; what goes between values: <code>print(1, 2, 3, sep="-")</code> &rarr; <code>1-2-3</code></li><li><code>end</code> &mdash; what goes at the end: <code>print("a", end="")</code> prints no newline, so the next print continues on the same line</li></ul><p><code>input()</code> waits for the user to type a line and <b>always returns a string</b>, even if the user typed 5. Convert it before doing arithmetic: <code>n = int(input())</code>.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>x = input()      # user types 5
+print(x * 3)     # 555  (string repeated)
+print(int(x) * 3) # 15</pre></div></div></div></section>
+<section class="cn" id="w-python-1-c2"><h4><span class="cnum">1.2</span>Variables and types</h4><div class="cbody"><div class="prose"><p>A variable is a name pointing at a value: <code>x = 5</code>. Python works out the type from the value, and a name can later point at a value of a different type.</p><div class="tw"><table class="tbl"><thead><tr><th>Type</th><th>Examples</th><th>Notes</th></tr></thead><tbody><tr><td><code>int</code></td><td><code>7</code>, <code>-3</code>, <code>0</code></td><td>whole numbers, any size</td></tr><tr><td><code>float</code></td><td><code>3.5</code>, <code>2.0</code>, <code>1e3</code></td><td>anything with a decimal point</td></tr><tr><td><code>str</code></td><td><code>"hi"</code>, <code>'7'</code>, <code>""</code></td><td>anything in quotes &mdash; <code>'7'</code> is text, not a number</td></tr><tr><td><code>bool</code></td><td><code>True</code>, <code>False</code></td><td>capital T and F</td></tr></tbody></table></div><p><code>type(x)</code> tells you the type. Conversions:</p><ul><li><code>int(3.9)</code> &rarr; <b>3</b> (cuts off the decimal, toward zero; <code>int(-3.9)</code> &rarr; &minus;3)</li><li><code>int("42")</code> &rarr; 42, but <code>int("3.5")</code> &rarr; <b>ValueError</b></li><li><code>float("3.5")</code> &rarr; 3.5, <code>str(7)</code> &rarr; <code>"7"</code></li></ul></div></div></section>
+<section class="cn" id="w-python-1-c3"><h4><span class="cnum">1.3</span>Arithmetic operators and their types</h4><div class="cbody two"><div class="prose"><div class="tw"><table class="tbl"><thead><tr><th>Operator</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>+ - *</code></td><td>add, subtract, multiply</td><td><code>7 * 2</code> &rarr; 14</td></tr><tr><td><code>/</code></td><td>true division, <b>always a float</b></td><td><code>4 / 2</code> &rarr; 2.0</td></tr><tr><td><code>//</code></td><td>floor division (round down)</td><td><code>7 // 2</code> &rarr; 3</td></tr><tr><td><code>%</code></td><td>remainder</td><td><code>7 % 2</code> &rarr; 1</td></tr><tr><td><code>**</code></td><td>power</td><td><code>2 ** 10</code> &rarr; 1024</td></tr></tbody></table></div><p><b>Type rules:</b> int with int gives int, except <code>/</code> (always float) and <code>**</code> with a negative exponent (<code>2 ** -2</code> &rarr; 0.25). <b>One float anywhere makes the result a float</b>: <code>7.0 // 2</code> &rarr; 3.0.</p><p><b>Negative numbers:</b> <code>//</code> rounds <i>down</i> toward &minus;&infin;, so <code>-7 // 2</code> is <b>&minus;4</b>, not &minus;3. <code>%</code> takes the sign of the divisor, so <code>-7 % 2</code> is <b>1</b>.</p><p><b>// and % together</b> split a quantity into units: 1000 days &rarr; <code>1000 // 365</code> = 2 years, <code>(1000 % 365) // 7</code> = 38 weeks, <code>(1000 % 365) % 7</code> = 4 days.</p></div><div class="side"><div class="fx"><span class="lbl">Precedence (highest first)</span><p>1. <code>( )</code><br>2. <code>**</code> &mdash; groups right to left<br>3. unary <code>-</code><br>4. <code>* / // %</code> &mdash; left to right<br>5. <code>+ -</code> &mdash; left to right</p><p><code>-2 ** 2</code> = &minus;(2&sup2;) = <b>&minus;4</b><br><code>2 ** 3 ** 2</code> = 2<sup>9</sup> = <b>512</b><br><code>10 - 4 - 3</code> = <b>3</b></p></div></div></div></section>
+<section class="cn" id="w-python-1-c4"><h4><span class="cnum">1.4</span>Strings</h4><div class="cbody two"><div class="prose"><p>A string is a sequence of characters. Positions start at <b>0</b>; negative positions count from the end, so <code>s[-1]</code> is the last character.</p><p><b>Slicing</b> <code>s[a:b]</code> gives characters from a up to but <b>not including</b> b, so its length is b &minus; a. Leave out a to start at the beginning, b to go to the end. A third number is the step: <code>s[::2]</code> takes every second character and <code>s[::-1]</code> reverses.</p><p>A slice past the end is clipped silently (<code>s[2:100]</code> is fine), but a single index past the end is an <b>IndexError</b>.</p><p><code>+</code> joins two strings; <code>*</code> with an int repeats. <code>"a" + 1</code> is a <b>TypeError</b>. <code>len(s)</code> counts characters, spaces included. Strings cannot be changed in place: <code>s[0] = "P"</code> is an error.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>s = "python"
+s[0]     # 'p'
+s[-1]    # 'n'
+s[1:4]   # 'yth'
+s[:2]    # 'py'
+s[::-1]  # 'nohtyp'
+s + "3"  # 'python3'</pre></div></div></div></section>
+<section class="cn" id="w-python-1-c5"><h4><span class="cnum">1.5</span>f-strings, and how to solve any W1 question</h4><div class="cbody"><div class="prose"><p>An f-string drops values into text: <code>f"{name} scored {m}"</code>. A format after a colon controls the look:</p><ul><li><code>f"{7:4}"</code> &rarr; <code>"&nbsp;&nbsp;&nbsp;7"</code> &mdash; width 4, numbers right-aligned; the spaces count in <code>len</code></li><li><code>f"{3.14159:.2f}"</code> &rarr; <code>"3.14"</code> &mdash; two decimal places</li></ul><p><b>Method for every W1 question:</b> evaluate the innermost part first, write down its <b>value and its type</b>, then apply the next operator to that. Most wrong answers come from forgetting that a value is a string, or a float.</p></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>input()</b> &mdash; always returns str</li><li><b>/</b> &mdash; always float; // floors; % remainder</li><li><b>Negatives</b> &mdash; -7 // 2 = -4, -7 % 2 = 1</li><li><b>One float</b> &mdash; makes the whole result a float</li><li><b>Precedence</b> &mdash; () &rarr; ** (right to left) &rarr; unary - &rarr; * / // % &rarr; + -</li><li><b>int()</b> &mdash; truncates floats; fails on "3.5"</li><li><b>Slices</b> &mdash; s[a:b] excludes b; s[::-1] reverses; out-of-range slices are clipped</li><li><b>str + int</b> &mdash; TypeError; str * int repeats</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b><code>/</code> always returns a float</b>, even <code>4/2</code> &rarr; 2.0.</li><li><b><code>-7 // 2</code> is &minus;4</b>, because floor division rounds down, not toward zero.</li><li><b><code>-7 % 2</code> is 1</b>, because the result takes the sign of the divisor.</li><li><b>One float poisons the expression.</b> <code>7.0 // 2</code> &rarr; 3.0, and 3 is marked wrong.</li><li><b>Quoted numbers are strings.</b> <code>"5" + 1</code> is a TypeError; <code>int("5") + 1</code> is 6; input() always gives a string.</li><li><b><code>-2 ** 2</code> is &minus;4</b> and <b><code>2 ** 3 ** 2</code> is 512</b>: power binds tighter than minus and groups right to left.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>Give the exact value <b>and type</b> of each:<pre>7 // 2
 -7 // 2
 7 % 2
 -7 % 2
 7 / 2
 2 ** -2
-7.0 // 2</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans"><code>7 // 2</code> &rarr; <b>3</b> (int)<br><code>-7 // 2</code> &rarr; <b>-4</b> (int) &mdash; floors toward &minus;&infin;<br><code>7 % 2</code> &rarr; <b>1</b> (int)<br><code>-7 % 2</code> &rarr; <b>1</b> (int) &mdash; sign of the divisor<br><code>7 / 2</code> &rarr; <b>3.5</b> (float)<br><code>2 ** -2</code> &rarr; <b>0.25</b> (float) &mdash; negative exponent forces a float<br><code>7.0 // 2</code> &rarr; <b>3.0</b> (float) &mdash; floor division still returns a float if either operand is one</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>What does each line print?<pre>s = "12"
+7.0 // 2</pre></div><details><summary>Show answer</summary><div class="ans"><code>7 // 2</code> &rarr; <b>3</b> (int)<br><code>-7 // 2</code> &rarr; <b>-4</b> (int)<br><code>7 % 2</code> &rarr; <b>1</b> (int)<br><code>-7 % 2</code> &rarr; <b>1</b> (int)<br><code>7 / 2</code> &rarr; <b>3.5</b> (float)<br><code>2 ** -2</code> &rarr; <b>0.25</b> (float)<br><code>7.0 // 2</code> &rarr; <b>3.0</b> (float)</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>What does each line print?<pre>s = "12"
 print(s * 2)
 print(int(s) * 2)
 print(len(s + "3"))
-print(f"[{7:4}]")</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans"><code>s * 2</code> &rarr; <b>1212</b> &mdash; str &times; int repeats the string.<br><code>int(s) * 2</code> &rarr; <b>24</b> &mdash; the conversion runs first, so this is arithmetic.<br><code>len(s + "3")</code> &rarr; <b>3</b> &mdash; <code>"12" + "3"</code> is <code>"123"</code>, three characters.<br><code>f"[{7:4}]"</code> &rarr; <b>[&nbsp;&nbsp;&nbsp;7]</b> &mdash; width 4, right-aligned, so three spaces then 7.</div>
-</details>
+print(f"[{7:4}]")</pre></div><details><summary>Show answer</summary><div class="ans"><b>1212</b> &mdash; str &times; int repeats.<br><b>24</b> &mdash; converted first.<br><b>3</b> &mdash; <code>"123"</code>.<br><b>[&nbsp;&nbsp;&nbsp;7]</b> &mdash; width 4, right-aligned.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Evaluate, showing the order of operations:<pre>2 + 3 * 4 ** 2 // 5
+-2 ** 2
+2 ** 3 ** 2
+(10 % 4) * 3 ** 2
+10 - 4 - 3</pre></div><details><summary>Show answer</summary><div class="ans"><code>4 ** 2</code> = 16 &rarr; <code>3 * 16</code> = 48 &rarr; <code>48 // 5</code> = 9 &rarr; <code>2 + 9</code> = <b>11</b>.<br><code>-(2 ** 2)</code> = <b>-4</b>.<br><code>2 ** 9</code> = <b>512</b> (right to left).<br><code>2 * 9</code> = <b>18</b>.<br><code>(10 - 4) - 3</code> = <b>3</b> (left to right).</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>With <code>s = "python"</code>, give each result (or the error):<pre>s[1:4]
+s[-2:]
+s[::-1]
+s[::2]
+len(s * 2)
+s[2:10]
+s[10]
+int("3.5")</pre></div><details><summary>Show answer</summary><div class="ans"><b>'yth'</b><br><b>'on'</b><br><b>'nohtyp'</b><br><b>'pto'</b> (positions 0, 2, 4)<br><b>12</b><br><b>'thon'</b> &mdash; the slice is clipped at the end<br><b>IndexError</b> &mdash; a single index is not clipped<br><b>ValueError</b> &mdash; int() cannot read a decimal string; use <code>int(float("3.5"))</code></div></details></div></div></div>
 </div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -535,51 +491,53 @@ print(f"[{7:4}]")</pre></p>
 <h3>Conditionals</h3>
 <span class="wm">0/2 learned &middot; 12 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Comparisons</dt><dd>== != &lt; &lt;= &gt; &gt;= give <b>bool</b> · chained <b>a &lt; b &lt; c</b> = (a &lt; b) and (b &lt; c) · bool is an int: True + True = 2</dd>
-<dt>Branch tracing</dt><dd>Substitute inputs, follow ONE branch. A name assigned only inside an if raises <b>NameError</b> when no guarding condition held</dd>
-<!--x-start-->
-<dt>Comparisons give bool</dt><dd><code>==</code> <code>!=</code> <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> all produce a <code>bool</code>.</dd>
-<dt>Chained comparison</dt><dd><code>a &lt; b &lt; c</code> means <code>(a &lt; b) and (b &lt; c)</code>, and <b>b is evaluated only once</b>. The result is a bool.</dd>
-<dt>bool is an int</dt><dd><code>True == 1</code>, <code>False == 0</code>, <code>True + True == 2</code>. So <code>type(1 &lt; 2)</code> is <code>bool</code>, but <code>(1 &lt; 2) + 1</code> is <code>2</code>, an int. A comparison stays a bool until an arithmetic operator is applied to it.</dd>
-<dt>Tracing a single if/else</dt><dd>Substitute the inputs, follow <b>exactly one</b> branch, print. Write the variable values in the margin &mdash; not in your head.</dd>
-<dt>The unassigned-variable trap</dt><dd>If a name is assigned only inside an <code>if</code> body and then used after the block, the code raises <b>NameError</b> precisely for the inputs that satisfy <b>none</b> of the conditions. The question is almost always &ldquo;for which inputs does this error?&rdquo;<br><b>Precision:</b> at module level that is a <code>NameError</code>. Inside a function it surfaces as <code>UnboundLocalError</code>, which is a subclass of NameError &mdash; if both appear as options, the function case wants UnboundLocalError.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b><code>True + True</code> is 2</b>, not <code>True</code>. Arithmetic on bools gives ints.</li>
-<li><b><code>a &lt; b &lt; c</code> is not <code>(a &lt; b) &lt; c</code>.</b> It expands to an <code>and</code>, and b is evaluated once.</li>
-<li><b>The NameError fires when every condition is False</b> &mdash; find the inputs that no branch covers, and that set is the answer.</li>
-<li><b>An <code>if</code> with no <code>else</code> can produce no output at all.</b> &ldquo;Nothing is printed&rdquo; is a real option, not a trick.</li>
-<li><b><code>=</code> is assignment, <code>==</code> is comparison.</b> A planted <code>=</code> inside a condition is a SyntaxError, not a silent bug.</li>
-</ol>
-</div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>What does this print, and for which values of <code>x</code> would it instead raise an error?<pre>x = 3
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 2 teaches programs to <b>make decisions</b>. A <b>comparison</b> produces a bool, and an <b>if / else</b> runs one block or the other depending on that bool.</p><p>The questions trace a short program for given inputs, ask for the type of a comparison, or ask for which inputs the program <b>crashes</b> &mdash; usually because a variable only gets a value inside a branch that did not run.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Evaluate comparisons on numbers and strings, including chained ones</li><li>Explain why <code>True + True</code> is 2</li><li>Trace if / else and nested ifs for any input</li><li>Find the inputs for which a program raises NameError</li></ul><p class="time">About 12 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-python-2-c1"><h4><span class="cnum">2.1</span>Comparison operators</h4><div class="cbody two"><div class="prose"><p><code>==</code> (equal), <code>!=</code> (not equal), <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> each produce a <b>bool</b>: True or False.</p><p><code>=</code> assigns, <code>==</code> compares. Writing <code>if x = 5:</code> is a <b>SyntaxError</b>.</p><p><b>Strings compare letter by letter</b> (dictionary order, using character codes). The first differing character decides. Uppercase letters come <b>before</b> lowercase, and digits before both. If one string is a prefix of the other, the shorter one is smaller.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>"apple" &lt; "banana"   # True
+"Zebra" &lt; "apple"    # True  ('Z' before 'a')
+"10" &lt; "9"           # True  ('1' before '9')
+"cat" &lt; "catalog"    # True  (prefix)
+10 &lt; 9               # False (numbers)</pre></div></div></div></section>
+<section class="cn" id="w-python-2-c2"><h4><span class="cnum">2.2</span>Chained comparisons</h4><div class="cbody two"><div class="prose"><p><code>a &lt; b &lt; c</code> means <code>(a &lt; b) and (b &lt; c)</code>. It reads like maths: &ldquo;b is between a and c&rdquo;. The middle value is evaluated only once. It does <b>not</b> mean <code>(a &lt; b) &lt; c</code>.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p><code>1 &lt; 5 &lt; 3</code> &rarr; <code>(1 &lt; 5) and (5 &lt; 3)</code> &rarr; True and False &rarr; <b>False</b>.<br>Read wrongly as <code>(1 &lt; 5) &lt; 3</code> it would be <code>True &lt; 3</code> &rarr; <code>1 &lt; 3</code> &rarr; True.</p></div></div></div></section>
+<section class="cn" id="w-python-2-c3"><h4><span class="cnum">2.3</span>bool is a kind of int</h4><div class="cbody"><div class="prose"><p>In Python <code>True</code> behaves as 1 and <code>False</code> as 0 in arithmetic. A comparison stays a bool until you do arithmetic on it; then it becomes an int.</p><ul><li><code>True + True</code> &rarr; <b>2</b> (int)</li><li><code>(3 &gt; 1) * 10</code> &rarr; <b>10</b></li><li><code>type(3 &gt; 1)</code> &rarr; <b>bool</b></li><li><code>True == 1</code> &rarr; <b>True</b></li></ul><p>So <code>(a &gt; 0) + (b &gt; 0) + (c &gt; 0)</code> counts how many of a, b, c are positive.</p></div></div></section>
+<section class="cn" id="w-python-2-c4"><h4><span class="cnum">2.4</span>if / else and nested ifs</h4><div class="cbody two"><div class="prose"><p>An <code>if</code> line ends with a colon, and the block under it is <b>indented</b>. Python runs the block only if the condition is True. An <code>else</code> block runs when it is False. Exactly one of the two runs.</p><p>Without an <code>else</code>, a False condition means <b>nothing happens</b> &mdash; &ldquo;no output&rdquo; is a real answer.</p><p>Ifs can be <b>nested</b>: an inner if is only reached when the outer condition was True. Trace from the outside in.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>a, b = 7, 3
+if a &gt; b:
+    if a % b == 0:
+        print("divides")
+    else:
+        print("rem", a % b)
+else:
+    print("small")</pre><p>7 &gt; 3 is True, 7 % 3 = 1 is not 0 &rarr; prints <b>rem 1</b>.</p></div></div></div></section>
+<section class="cn" id="w-python-2-c5"><h4><span class="cnum">2.5</span>Tracing, and the variable that never got a value</h4><div class="cbody two"><div class="prose"><p><b>To trace:</b> write each variable's current value in the margin, substitute into the condition, follow exactly one branch, and record what prints. Do it on paper.</p><p><b>The crash pattern:</b> if a variable is assigned only inside an <code>if</code> (with no else), and used afterwards, then for inputs where the condition was False the variable does not exist and Python raises <b>NameError</b>. The question is usually &ldquo;for which inputs does this fail?&rdquo; &mdash; answer: exactly the inputs that make <b>every</b> assigning condition False.</p><p>Inside a function the same mistake is reported as <b>UnboundLocalError</b>, a special kind of NameError.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>x = 3
 if x &gt; 10:
     y = "big"
 elif x &gt; 5:
     y = "mid"
-print(y)</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans">With <code>x = 3</code> it raises <b>NameError: name 'y' is not defined</b>. Neither condition held, so <code>y</code> was never assigned.<br>It errors for <b>every x &le; 5</b>. It prints <code>mid</code> for 5 &lt; x &le; 10, and <code>big</code> for x &gt; 10.<br>Note the boundary: <code>x = 5</code> errors, because <code>5 &gt; 5</code> is False. Had the same code sat inside a function, the error would be <code>UnboundLocalError</code>.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>Give the value and the type of each expression, with <code>a, b, c = 2, 5, 9</code>:<pre>a &lt; b &lt; c
+print(y)</pre><p>For every x &le; 5 nothing assigns y &rarr; <b>NameError</b>. x = 5 also fails, because 5 &gt; 5 is False.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>Comparisons</b> &mdash; give bool; = assigns, == compares</li><li><b>Strings</b> &mdash; compare letter by letter; 'Z' &lt; 'a'; '10' &lt; '9'</li><li><b>a &lt; b &lt; c</b> &mdash; (a &lt; b) and (b &lt; c)</li><li><b>bool</b> &mdash; True is 1, False is 0 in arithmetic; True + True = 2</li><li><b>if without else</b> &mdash; may print nothing</li><li><b>NameError</b> &mdash; a variable assigned only in branches that did not run</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b><code>True + True</code> is 2</b>, not True.</li><li><b><code>a &lt; b &lt; c</code> is not <code>(a &lt; b) &lt; c</code>.</b></li><li><b>The NameError fires when every condition is False.</b> Find the inputs no branch covers.</li><li><b>An <code>if</code> with no <code>else</code> can produce no output at all.</b></li><li><b><code>"10" &lt; "9"</code> is True.</b> Strings compare character by character, not by numeric value.</li><li><b>Check the boundary.</b> <code>x &gt; 5</code> is False at x = 5.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>What does this print, and for which values of <code>x</code> would it raise an error?<pre>x = 3
+if x &gt; 10:
+    y = "big"
+elif x &gt; 5:
+    y = "mid"
+print(y)</pre></div><details><summary>Show answer</summary><div class="ans">With x = 3: <b>NameError</b>. It errors for <b>every x &le; 5</b>, prints <code>mid</code> for 5 &lt; x &le; 10 and <code>big</code> for x &gt; 10.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>With <code>a, b, c = 2, 5, 9</code>, give the value and type of:<pre>a &lt; b &lt; c
 (a &lt; b) + (b &lt; c)
 type(a &lt; b &lt; c)
 True + True
-(1 &lt; 2) + 1</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans"><code>a &lt; b &lt; c</code> &rarr; <b>True</b> (bool) &mdash; expands to <code>(2&lt;5) and (5&lt;9)</code>.<br><code>(a &lt; b) + (b &lt; c)</code> &rarr; <b>2</b> (int) &mdash; True + True.<br><code>type(a &lt; b &lt; c)</code> &rarr; <b>&lt;class 'bool'&gt;</b>.<br><code>True + True</code> &rarr; <b>2</b> (int).<br><code>(1 &lt; 2) + 1</code> &rarr; <b>2</b> (int) &mdash; the comparison is a bool until the <code>+</code> turns it into an int.</div>
-</details>
+(1 &lt; 2) + 1</pre></div><details><summary>Show answer</summary><div class="ans"><b>True</b> (bool)<br><b>2</b> (int)<br><b>&lt;class 'bool'&gt;</b><br><b>2</b> (int)<br><b>2</b> (int)</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>True or False?<pre>"apple" &lt; "Apple"
+"10" &lt; "9"
+"cat" &lt; "catalog"
+"Zebra" &lt; "apple"
+1 &lt; 5 &lt; 3</pre></div><details><summary>Show answer</summary><div class="ans"><b>False</b> &mdash; 'a' comes after 'A'.<br><b>True</b> &mdash; '1' before '9'.<br><b>True</b> &mdash; a prefix is smaller.<br><b>True</b> &mdash; uppercase before lowercase.<br><b>False</b> &mdash; 5 &lt; 3 fails.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>What does this print for (a, b) = (7, 3), (9, 3) and (2, 5)?<pre>if a &gt; b:
+    if a % b == 0:
+        print("divides")
+    else:
+        print("rem", a % b)
+else:
+    print("small")</pre></div><details><summary>Show answer</summary><div class="ans">(7, 3) &rarr; <b>rem 1</b><br>(9, 3) &rarr; <b>divides</b><br>(2, 5) &rarr; <b>small</b> &mdash; the inner if is never reached.</div></details></div></div></div>
 </div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -602,36 +560,18 @@ True + True
 <h3>Conditionals (continued)</h3>
 <span class="wm">0/5 learned &middot; 95 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>Precedence</dt><dd><b>not</b> then <b>and</b> then <b>or</b> · reduce innermost brackets first · not not x = x</dd>
-<dt>elif vs if</dt><dd>elif chain: FIRST true branch runs, the rest are skipped · separate ifs are each tested, several (or none) can fire · test boundary values (=, ±1)</dd>
-<dt>Truthiness</dt><dd>Falsy: 0, 0.0, '', [], None · <b>a or b</b> = first truthy · <b>a and b</b> = first falsy · isinstance(True, int) is True</dd>
-<!--x-start-->
-<dt>Precedence &mdash; memorise cold</dt><dd><b>arithmetic &rarr; comparisons &rarr; not &rarr; and &rarr; or</b> (loosest last).<br><code>not True and False</code> is <code>(not True) and False</code> = <b>False</b>.<br><code>True or False and False</code> is <code>True or (False and False)</code> = <b>True</b>.<br>Parenthesise on paper before substituting, then reduce innermost first. To undo a double negative: <code>not not x</code> is <code>x</code>.</dd>
-<dt>elif chains vs separate ifs &mdash; the half of the paper</dt><dd>In an <code>if/elif/else</code> chain the <b>first</b> true condition runs and every later one is skipped. Separate <code>if</code>s are each tested independently, so several can fire, or none &mdash; output can print twice.<br><b>To find where two versions differ, look for an input that satisfies two conditions at once.</b> That input is the answer.</dd>
-<dt>Intervals that branches actually own</dt><dd>Earlier conditions carve out later ones. <code>if x &gt; 10</code> then <code>elif x &gt; 5</code> means branch two owns <b>5 &lt; x &le; 10</b>, not x &gt; 5. Write each branch's real interval down, then test the threshold itself and &plusmn;1.<br>Counting integers in an inclusive interval a &le; x &le; b: <b>b &minus; a + 1</b> values.</dd>
-<dt>Truthiness</dt><dd>Falsy is exactly: <code>0</code>, <code>0.0</code>, <code>""</code>, <code>[]</code>, <code>{}</code>, <code>()</code>, <code>None</code>. Everything else is truthy &mdash; including <code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code>.</dd>
-<dt>Short-circuit returns the operand, not a bool</dt><dd><code>a or b</code> &rarr; the first truthy operand, or the last one if all are falsy. <code>0 or "x"</code> is <code>"x"</code>; <code>3 or 5</code> is <code>3</code>.<br><code>a and b</code> &rarr; the first falsy operand, or the last one if all are truthy. <code>"" and 5</code> is <code>""</code>; <code>3 and 5</code> is <code>5</code>.</dd>
-<dt>isinstance</dt><dd><code>isinstance(True, int)</code> is <b>True</b> (bool subclasses int), but <code>isinstance(1, bool)</code> is <b>False</b>. That asymmetry is the entire content of the two hardest questions in the pool.</dd>
-<dt>Two things that look like operators you know</dt><dd><code>&amp;</code> and <code>|</code> are <b>bitwise</b>, not logical: <code>5 &amp; 3</code> is <b>1</b>. On two bools they behave logically and return a bool, but they do not short-circuit and they bind tighter than you expect. If you see them, slow down.<br><code>return</code> inside an <code>if</code> exits the function immediately &mdash; nothing after it runs, including later elifs.</dd>
-<dt>&ldquo;Choose the correct snippet&rdquo;</dt><dd>Do not read for elegance. Test each candidate on the nasty inputs: equal values (ties), exactly the threshold, and a negative. The planted bug is always one of four: independent ifs printing twice, an elif chain in the wrong order, <code>&gt;</code> where <code>&gt;=</code> was needed, or a missing else.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>Precedence is not &rarr; and &rarr; or.</b> <code>not True and False</code> is False, and <code>True or False and False</code> is True.</li>
-<li><b>First true branch wins in an elif chain</b>; separate ifs are all tested. The favourite MSQ is an input satisfying two conditions, because that is the only place the versions differ.</li>
-<li><b>Earlier conditions carve out later ones.</b> Branch two of <code>&gt;10 / &gt;5</code> owns 5 &lt; x &le; 10. Always test the threshold and &plusmn;1.</li>
-<li><b><code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code> are all truthy.</b> Only the seven falsy values are falsy.</li>
-<li><b><code>or</code> and <code>and</code> return an operand, not a bool.</b> <code>0 or "x"</code> is <code>"x"</code>, not True.</li>
-<li><b><code>isinstance(True, int)</code> is True but <code>isinstance(1, bool)</code> is False.</b> The asymmetry is the question.</li>
-</ol>
-</div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>Evaluate each, giving the exact value (not just True/False where an operand is returned):<pre>not True and False
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 3 is the heaviest Python week for Quiz 1 by marks. It extends conditionals with <b>elif chains</b>, the logical operators <b>and / or / not</b>, <b>truthiness</b> (which values count as False), and <b>short-circuit</b> evaluation.</p><p>The big question types: trace an if/elif/else chain, find which inputs give which output, spot where an elif chain and separate ifs behave differently, evaluate a tangled boolean expression, and pick the one code snippet that is actually correct.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Evaluate any expression using the full precedence order</li><li>Explain exactly when an elif chain and a run of separate ifs differ</li><li>Write down the real range of inputs each branch handles</li><li>List the falsy values, and evaluate <code>and</code> / <code>or</code> to the operand they return</li><li>Test candidate snippets on the inputs that expose bugs</li></ul><p class="time">About 18 min to read &middot; 4 practice problems at the end</p></div>
+<section class="cn" id="w-python-3-c1"><h4><span class="cnum">3.1</span>Logical operators and the full precedence order</h4><div class="cbody two"><div class="prose"><p><code>not x</code> flips a bool. <code>x and y</code> is True only if both are. <code>x or y</code> is True if at least one is.</p><p>When there are no brackets, Python applies operators in this order. The last three are where marks are lost: <b>not before and, and before or</b>.</p><p>Method: add brackets on paper according to precedence first, then reduce from the innermost bracket out.</p></div><div class="side"><div class="fx"><span class="lbl">Precedence, highest first</span><p>1. <code>( )</code><br>2. <code>**</code><br>3. unary <code>-</code><br>4. <code>* / // %</code><br>5. <code>+ -</code><br>6. comparisons <code>&lt; &lt;= == != &gt;= &gt;</code><br>7. <code>not</code><br>8. <code>and</code><br>9. <code>or</code></p></div><div class="ex"><span class="lbl">Worked example</span><p><code>not True and False</code> &rarr; <code>(not True) and False</code> &rarr; <b>False</b><br><code>True or False and False</code> &rarr; <code>True or (False and False)</code> &rarr; <b>True</b><br><code>not 3 &gt; 5</code> &rarr; <code>not (3 &gt; 5)</code> &rarr; <b>True</b></p></div></div></div></section>
+<section class="cn" id="w-python-3-c2"><h4><span class="cnum">3.2</span>elif chains vs separate ifs</h4><div class="cbody two"><div class="prose"><p>In an <b>if / elif / else</b> chain Python checks the conditions top to bottom and runs <b>only the first</b> one that is True; the rest are skipped. The else runs only if none were True. Exactly one block runs (or none, if there is no else).</p><p>With <b>separate ifs</b>, every if is checked on its own. Several can run, or none.</p><p>So the two versions behave identically <b>except for inputs that satisfy two or more conditions</b>. To find where they differ, look for those inputs &mdash; that is the whole method.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>if x &gt; 10: print("A")      if x &gt; 10: print("A")
+if x &gt; 5:  print("B")      elif x &gt; 5: print("B")</pre><p>x = 12: left prints <b>A B</b>, right prints <b>A</b>.<br>x = 7: both print B. x = 3: both print nothing.</p></div></div></div></section>
+<section class="cn" id="w-python-3-c3"><h4><span class="cnum">3.3</span>What range does each branch really own?</h4><div class="cbody"><div class="prose"><p>In a chain, a later branch only runs if every earlier condition was False. So earlier conditions <b>carve out</b> part of each later one.</p><p><code>if x &gt; 10 &hellip; elif x &gt; 5 &hellip; else &hellip;</code> means:</p><ul><li>branch 1: x &gt; 10</li><li>branch 2: <b>5 &lt; x &le; 10</b> (not just x &gt; 5)</li><li>else: x &le; 5</li></ul><p>Write each branch's real range down, then test the <b>boundary values</b> (exactly the threshold, and one either side).</p><p>Order matters: if a chain checks <code>m &gt;= 50</code> before <code>m &gt;= 90</code>, a 95 is caught by the first test and never reaches the second.</p><p>Counting whole numbers in a &le; x &le; b: <b>b &minus; a + 1</b>.</p></div></div></section>
+<section class="cn" id="w-python-3-c4"><h4><span class="cnum">3.4</span>Truthiness: what counts as False</h4><div class="cbody"><div class="prose"><p>An <code>if</code> accepts any value, not just a bool. These are the only <b>falsy</b> values:</p><p style='text-align:center'><code>False</code> &nbsp; <code>0</code> &nbsp; <code>0.0</code> &nbsp; <code>""</code> &nbsp; <code>[]</code> &nbsp; <code>()</code> &nbsp; <code>{}</code> &nbsp; <code>None</code></p><p>Everything else is truthy, including <code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code>. <code>bool(x)</code> shows you which.</p></div></div></section>
+<section class="cn" id="w-python-3-c5"><h4><span class="cnum">3.5</span>Short-circuit: and / or return an operand</h4><div class="cbody two"><div class="prose"><p>Python stops evaluating as soon as the answer is known, and returns <b>the operand it stopped at</b>, not necessarily True or False:</p><ul><li><code>a or b</code> &rarr; the first truthy value; if none, the last value</li><li><code>a and b</code> &rarr; the first falsy value; if none, the last value</li></ul><p>Because it stops early, the right-hand side may never run at all: <code>x != 0 and 10 / x &gt; 1</code> is safe even when x is 0.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><p><code>0 or "x"</code> &rarr; <b>"x"</b><br><code>3 or 5</code> &rarr; <b>3</b><br><code>"" and 5</code> &rarr; <b>""</b><br><code>3 and 5</code> &rarr; <b>5</b><br><code>None or 0</code> &rarr; <b>0</b> (both falsy, so the last)</p></div></div></div></section>
+<section class="cn" id="w-python-3-c6"><h4><span class="cnum">3.6</span>isinstance, &amp; and |, and choosing the correct snippet</h4><div class="cbody"><div class="prose"><p><code>isinstance(x, int)</code> asks whether x is an int. Because bool is a kind of int, <code>isinstance(True, int)</code> is <b>True</b>, but <code>isinstance(1, bool)</code> is <b>False</b>.</p><p><code>&amp;</code> and <code>|</code> are <b>bitwise</b> operators, not and/or: <code>5 &amp; 3</code> is 1. They don't short-circuit and they bind tighter than comparisons, so slow down when you see them.</p><p><b>&ldquo;Which snippet is correct?&rdquo;</b> Don't read for style. Run every candidate on the nasty inputs: <b>equal values</b>, <b>exactly the threshold</b>, and a <b>negative</b>. The planted bug is almost always one of: separate ifs printing twice, an elif chain in the wrong order, <code>&gt;</code> where <code>&gt;=</code> was needed, or a missing else.</p></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>Precedence</b> &mdash; arithmetic &rarr; comparisons &rarr; not &rarr; and &rarr; or</li><li><b>elif chain</b> &mdash; first True branch only; separate ifs can all run</li><li><b>Where they differ</b> &mdash; inputs satisfying two conditions at once</li><li><b>Branch ranges</b> &mdash; earlier conditions carve out later ones; test boundaries &plusmn;1</li><li><b>Falsy</b> &mdash; False, 0, 0.0, "", [], (), {}, None &mdash; nothing else</li><li><b>or / and</b> &mdash; return the deciding operand, not a bool</li><li><b>isinstance</b> &mdash; True is an int; 1 is not a bool</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>Precedence is not &rarr; and &rarr; or.</b> <code>not True and False</code> is False; <code>True or False and False</code> is True.</li><li><b>First true branch wins in an elif chain</b>; separate ifs are all tested.</li><li><b>Earlier conditions carve out later ones.</b> Branch two of <code>&gt;10 / &gt;5</code> owns 5 &lt; x &le; 10.</li><li><b><code>"0"</code>, <code>" "</code>, <code>"False"</code>, <code>-1</code> and <code>[0]</code> are all truthy.</b></li><li><b><code>or</code> and <code>and</code> return an operand.</b> <code>0 or "x"</code> is <code>"x"</code>, not True.</li><li><b><code>isinstance(True, int)</code> is True but <code>isinstance(1, bool)</code> is False.</b></li><li><b>A chain with the wrong order</b> (<code>&gt;= 50</code> before <code>&gt;= 90</code>) silently puts everyone in the first band.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>Evaluate each, giving the exact value:<pre>not True and False
 True or False and False
 0 or "x"
 "" and 5
@@ -639,13 +579,7 @@ True or False and False
 3 or 5
 isinstance(True, int)
 isinstance(1, bool)
-bool("0")</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans"><code>not True and False</code> &rarr; <b>False</b> &mdash; <code>(not True) and False</code>.<br><code>True or False and False</code> &rarr; <b>True</b> &mdash; <code>True or (False and False)</code>; <code>or</code> short-circuits immediately.<br><code>0 or "x"</code> &rarr; <b>"x"</b> (the operand, not True).<br><code>"" and 5</code> &rarr; <b>""</b> (the first falsy operand).<br><code>3 and 5</code> &rarr; <b>5</b> (all truthy &rarr; the last).<br><code>3 or 5</code> &rarr; <b>3</b> (the first truthy).<br><code>isinstance(True, int)</code> &rarr; <b>True</b>.<br><code>isinstance(1, bool)</code> &rarr; <b>False</b>.<br><code>bool("0")</code> &rarr; <b>True</b> &mdash; a non-empty string, whatever it contains.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>For exactly which values of <code>x</code> do these two functions behave differently?<pre>def a(x):
+bool("0")</pre></div><details><summary>Show answer</summary><div class="ans"><b>False</b><br><b>True</b><br><b>"x"</b><br><b>""</b><br><b>5</b><br><b>3</b><br><b>True</b><br><b>False</b><br><b>True</b> &mdash; a non-empty string</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>For exactly which values of <code>x</code> do these behave differently?<pre>def a(x):
     if x &gt; 10:
         print("A")
     if x &gt; 5:
@@ -655,12 +589,17 @@ def b(x):
     if x &gt; 10:
         print("A")
     elif x &gt; 5:
-        print("B")</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans">They differ for <b>x &gt; 10</b>, and nowhere else.<br><b>x &gt; 10:</b> <code>a</code> prints <b>A then B</b> (both ifs are tested); <code>b</code> prints <b>A only</b> (the elif is skipped).<br><b>5 &lt; x &le; 10:</b> both print <b>B</b>.<br><b>x &le; 5:</b> both print <b>nothing</b>.<br>The method generalises: find the inputs that satisfy <b>two</b> conditions at once, because that is the only region where an elif chain and a run of separate ifs can disagree.</div>
-</details>
+        print("B")</pre></div><details><summary>Show answer</summary><div class="ans">Only for <b>x &gt; 10</b>: <code>a</code> prints A then B, <code>b</code> prints only A. For 5 &lt; x &le; 10 both print B; for x &le; 5 both print nothing.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>What grade does this give for m = 85, 95, 60 and 30? For which marks is the grade actually right?<pre>if m &gt;= 50:
+    g = "C"
+elif m &gt;= 70:
+    g = "B"
+elif m &gt;= 90:
+    g = "A"
+else:
+    g = "F"</pre></div><details><summary>Show answer</summary><div class="ans">85 &rarr; <b>C</b>, 95 &rarr; <b>C</b>, 60 &rarr; <b>C</b>, 30 &rarr; <b>F</b>.<br>The <code>&gt;= 50</code> test catches every mark from 50 up, so B and A are unreachable. It is correct only for <b>m &lt; 70</b>. Fix: test from the top band down &mdash; <code>&gt;= 90</code>, then <code>&gt;= 70</code>, then <code>&gt;= 50</code>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>How many values of x in <code>range(1, 101)</code> make this print X?<pre>if x % 3 == 0 and not x % 5 == 0:
+    print("X")</pre></div><details><summary>Show answer</summary><div class="ans"><code>not</code> binds to <code>x % 5 == 0</code>, so the condition is &ldquo;a multiple of 3 and not a multiple of 5&rdquo;.<br>Multiples of 3 in 1&ndash;100: 33. Multiples of 15: 6.<br>33 &minus; 6 = <b>27</b>.</div></details></div></div></div>
 </div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -704,62 +643,71 @@ def b(x):
 <h3>Iterations and ranges</h3>
 <span class="wm">0/4 learned &middot; 62 marks</span>
 </div>
-<div class="cap"><dl>
-<dt>range</dt><dd><b>range(a, b, step)</b>: stop is exclusive · range(1, 11) has 10 values · range(n) = 0..n-1</dd>
-<dt>while template</dt><dd>init → test → body → update · trace one row per pass · exit value is the first value that fails the test</dd>
-<dt>Digits</dt><dd><b>d = n % 10</b> peels the last digit, <b>n = n // 10</b> drops it · reverse: r = r*10 + d · start sum at 0, product at 1</dd>
-<!--x-start-->
-<dt>range</dt><dd><code>range(start, stop, step)</code> <b>excludes stop</b>. <code>range(1, 11)</code> yields 10 values, 1 through 10. <code>range(10, 0, -2)</code> yields 10, 8, 6, 4, 2. Number of values = <b>ceil((stop &minus; start) / step)</b>.</dd>
-<dt>Checking a candidate loop</dt><dd>&ldquo;First hundred powers of two&rdquo; means 100 iterations with the multiplier updated every pass. Check exactly three things on every candidate: the <b>first</b> value printed, the <b>last</b> value printed, and the <b>number</b> of iterations. One distractor is always off by one at exactly one of those three.</dd>
-<dt>The digit-extraction skeleton &mdash; nine questions ride on this</dt><dd><pre>while n &gt; 0:
-    d = n % 10        # peel the last digit
-    # &lt;&lt;&lt; the only line that changes &gt;&gt;&gt;
-    n = n // 10       # drop it</pre>What sits in the middle is a sum (<code>s += d</code>), a product (<code>p *= d</code>), a reversal (<code>r = r*10 + d</code>), a positional weight (<code>t += d*w; w *= 10</code>), or a filter (<code>if d % 2: s += d</code>).</dd>
-<dt>Accumulator identity</dt><dd><b>Start a sum at 0 and a product at 1.</b> A product started at 0 returns 0 for every input &mdash; that is the standard planted bug. <code>while n &gt; 0</code> on input 0 runs the body zero times, so you get the initial accumulator straight back. Digit loops also assume a positive n: on a negative input the body never runs.</dd>
-<dt>Tracing &mdash; do not do it in your head</dt><dd>Make a table: one row per iteration, one column per variable, plus a column for the condition's truth value. Stop when it first fails.<br><b>&ldquo;Final value of the loop variable&rdquo;</b> = the first value that <b>violates</b> the condition, not the last one that satisfied it.<br><b>&ldquo;Iteration count&rdquo;</b> = the number of rows in your table. Count them, do not estimate.</dd>
-<dt>Two-pointer loop</dt><dd><code>i</code> starts at the left end, <code>j</code> at the right, and you compare <code>a[i] + a[j]</code> with the target. Sum too big &rarr; <code>j -= 1</code>. Too small &rarr; <code>i += 1</code>. The loop runs while <code>i &lt; j</code>; when the pointers cross, nothing was found and it returns None/False. &ldquo;For which arguments does it return None?&rdquo; is asking which input has no valid pair.</dd>
-<dt>Simultaneous assignment</dt><dd><code>a, b = b, a + b</code> uses the <b>old</b> values of both on the right-hand side. Write both variables on every row of your table or you will get it wrong.</dd>
-<!--x-end-->
-</dl></div>
-<div class="traps" data-injected="1">
-<h4>Traps that cost marks</h4>
-<ol>
-<li><b>A product accumulator started at 0 returns 0 for every input.</b> Sums start at 0, products start at 1 &mdash; this is an exam question twice over.</li>
-<li><b><code>while n &gt; 0</code> never runs on input 0</b>, so the printed answer is the initial accumulator value.</li>
-<li><b><code>range(a, b)</code> excludes b.</b> <code>range(1, 11)</code> is ten values, not eleven.</li>
-<li><b>The final loop variable is the first value that breaks the condition</b>, not the last one that passed it.</li>
-<li><b><code>a, b = b, a + b</code> uses the old values of both.</b> Updating them one at a time gives a different, wrong sequence.</li>
-<li><b>Off-by-one lives in three places:</b> the first value, the last value, and the iteration count. Check all three on every candidate.</li>
-</ol>
-</div>
-<div class="drills" data-injected="1">
-<h4>Practice &mdash; solve before you read the answer</h4>
-<div class="dq">
-<p><span class="qn">Q1</span>What does this print? Then fix it, and say what the fixed version prints for <code>n = 234</code> and for <code>n = 0</code>.<pre>n = 234
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 4 introduces <b>loops</b>: <code>while</code>, which repeats while a condition holds, and <code>for</code> over a <code>range</code>, which repeats a fixed number of times. With loops come <b>accumulators</b> (running sums, products, counts) and the classic <b>digit-extraction</b> pattern.</p><p>Questions ask what a loop prints, its final variable value, how many times it ran, or which of several loops produces a given series. Every one of them is answered by a <b>trace table</b>, not by intuition.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Predict exactly which values a range() produces and how many</li><li>Trace a while loop in a table and report the final value and iteration count</li><li>Initialise accumulators correctly and spot the classic wrong starts</li><li>Use the % 10 / // 10 pattern to sum, multiply, reverse or filter digits</li><li>Handle simultaneous assignment and a two-pointer loop</li></ul><p class="time">About 18 min to read &middot; 5 practice problems at the end</p></div>
+<section class="cn" id="w-python-4-c1"><h4><span class="cnum">4.1</span>while loops</h4><div class="cbody two"><div class="prose"><p>A while loop has four parts. Get any one wrong and the loop either never runs, never stops, or is off by one:</p><ol><li><b>initialise</b> the loop variable</li><li><b>test</b> the condition &mdash; if False, skip to after the loop</li><li>run the <b>body</b></li><li><b>update</b> the variable, then go back to step 2</li></ol><p>If the condition is False the very first time, the body runs <b>zero</b> times.</p><p>After the loop ends, the variable holds the <b>first value that failed</b> the test &mdash; not the last value that passed.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>j = 1
+while j &lt; 20:
+    j = j * 3
+print(j)</pre><p>j: 1 &rarr; 3 &rarr; 9 &rarr; 27. The test fails at 27, so it prints <b>27</b>. The body ran <b>3</b> times.</p></div></div></div></section>
+<section class="cn" id="w-python-4-c2"><h4><span class="cnum">4.2</span>for loops and range()</h4><div class="cbody two"><div class="prose"><p><code>for i in range(start, stop, step)</code> gives i each value from start, moving by step, and <b>stops before reaching stop</b>.</p><ul><li><code>range(5)</code> &rarr; 0, 1, 2, 3, 4</li><li><code>range(1, 11)</code> &rarr; 1 to 10 (ten values)</li><li><code>range(0, 10, 3)</code> &rarr; 0, 3, 6, 9</li><li><code>range(10, 0, -3)</code> &rarr; 10, 7, 4, 1</li><li><code>range(5, 1)</code> &rarr; nothing (wrong direction for the default step 1)</li></ul><p>After a for loop, i holds the <b>last value it was given</b> &mdash; unlike a while loop variable.</p></div><div class="side"><div class="fx"><span class="lbl">Counting values</span><p>count = ceil((stop &minus; start) / step), or 0 if that is negative</p><p>range(1, 11): 10 &nbsp;&middot;&nbsp; range(10, 0, &minus;3): ceil(3.33) = 4</p></div><div class="fx"><span class="lbl">break and continue</span><p><code>break</code> leaves the loop immediately.<br><code>continue</code> skips the rest of this pass and goes to the next one.</p></div></div></div></section>
+<section class="cn" id="w-python-4-c3"><h4><span class="cnum">4.3</span>Accumulators</h4><div class="cbody two"><div class="prose"><p>An accumulator is a variable that collects a result over the passes of a loop. Its starting value must be the one that changes nothing:</p><ul><li><b>sum</b> and <b>count</b> start at <b>0</b></li><li><b>product</b> starts at <b>1</b> &mdash; starting it at 0 makes every answer 0</li><li><b>maximum</b> starts at the first value (or a very small number)</li><li>a <b>string</b> being built starts at <code>""</code></li></ul></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>total = 0
+for i in range(1, 6):
+    total += i * i
+print(total)   # 1+4+9+16+25 = 55</pre></div></div></div></section>
+<section class="cn" id="w-python-4-c4"><h4><span class="cnum">4.4</span>The digit-extraction pattern</h4><div class="cbody two"><div class="prose"><p>For a positive whole number n, <code>n % 10</code> is its last digit and <code>n // 10</code> drops that digit. Repeating both peels a number from the right until nothing is left. Many quiz questions use this one skeleton and change only the middle line:</p><pre>while n &gt; 0:
+    d = n % 10      # last digit
+    ...             # the line that changes
+    n = n // 10     # drop it</pre></div><div class="side"><div class="fx"><span class="lbl">What goes in the middle</span><div class="tw"><table class="tbl"><thead><tr><th>Goal</th><th>Middle line</th><th>Start</th></tr></thead><tbody><tr><td>sum of digits</td><td><code>s += d</code></td><td>s = 0</td></tr><tr><td>product of digits</td><td><code>p *= d</code></td><td>p = 1</td></tr><tr><td>count digits</td><td><code>c += 1</code></td><td>c = 0</td></tr><tr><td>reverse</td><td><code>r = r * 10 + d</code></td><td>r = 0</td></tr><tr><td>sum of odd digits</td><td><code>if d % 2: s += d</code></td><td>s = 0</td></tr></tbody></table></div></div><div class="ex"><span class="lbl">Worked example</span><p>Reverse n = 1203:<br>d=3, r=3 &rarr; d=0, r=30 &rarr; d=2, r=302 &rarr; d=1, r=<b>3021</b>.</p><p>On n = 0 the loop body never runs, so you get the starting value back.</p></div></div></div></section>
+<section class="cn" id="w-python-4-c5"><h4><span class="cnum">4.5</span>Trace tables: the only reliable method</h4><div class="cbody two"><div class="prose"><p>Draw a table with one column per variable, plus a column for the condition. Write one row per pass. Stop on the row where the condition is first False.</p><ul><li><b>Iteration count</b> = the number of rows where the body ran. Count them.</li><li><b>Final value</b> of a while variable = the value on the row where the test failed.</li><li>When checking candidate loops, compare three things: the <b>first</b> value, the <b>last</b> value and the <b>count</b>. The wrong options are each off by one in exactly one of these.</li></ul></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>n = 10; c = 0
+while n &gt; 1:
+    n = n // 2
+    c += 1</pre><div class="tw"><table class="tbl"><thead><tr><th>pass</th><th>n &gt; 1?</th><th>n after</th><th>c</th></tr></thead><tbody><tr><td>1</td><td>10 &gt; 1 &check;</td><td>5</td><td>1</td></tr><tr><td>2</td><td>5 &gt; 1 &check;</td><td>2</td><td>2</td></tr><tr><td>3</td><td>2 &gt; 1 &check;</td><td>1</td><td>3</td></tr><tr><td>&ndash;</td><td>1 &gt; 1 &times;</td><td>stop</td><td></td></tr></tbody></table></div><p>Ends with n = <b>1</b>, c = <b>3</b>.</p></div></div></div></section>
+<section class="cn" id="w-python-4-c6"><h4><span class="cnum">4.6</span>Simultaneous assignment and the two-pointer loop</h4><div class="cbody two"><div class="prose"><p><code>a, b = b, a + b</code> computes <b>both right-hand values first</b> using the old a and b, then assigns. Writing <code>a = b</code> then <code>b = a + b</code> on separate lines is different, because the second line sees the new a.</p><p><b>Two pointers:</b> on a sorted list, i starts at the left end and j at the right. Compare <code>a[i] + a[j]</code> with the target: too big &rarr; <code>j -= 1</code>; too small &rarr; <code>i += 1</code>; equal &rarr; found. Loop while <code>i &lt; j</code>; if the pointers meet, there is no pair and the function returns None/False.</p></div><div class="side"><div class="ex"><span class="lbl">Worked example</span><pre>a, b = 0, 1
+for _ in range(5):
+    print(a)
+    a, b = b, a + b</pre><p>Prints <b>0 1 1 2 3</b> (Fibonacci).</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>while</b> &mdash; init &rarr; test &rarr; body &rarr; update; may run 0 times</li><li><b>Final while value</b> &mdash; the first value that fails the test</li><li><b>range(a, b, s)</b> &mdash; excludes b; count = ceil((b &minus; a)/s)</li><li><b>Final for value</b> &mdash; the last value given</li><li><b>Accumulators</b> &mdash; sum/count 0, product 1, string ""</li><li><b>Digits</b> &mdash; d = n % 10, n = n // 10; reverse r = r*10 + d</li><li><b>a, b = b, a+b</b> &mdash; uses the old values of both</li><li><b>Two pointers</b> &mdash; too big &rarr; j &minus;= 1, too small &rarr; i += 1, stop when they meet</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>A product started at 0 returns 0 for every input.</b> Products start at 1.</li><li><b><code>while n &gt; 0</code> never runs on input 0</b>, so the answer is the starting value.</li><li><b><code>range(a, b)</code> excludes b.</b> <code>range(1, 11)</code> is ten values.</li><li><b>A while variable ends on the first value that fails</b>; a for variable ends on the last value given.</li><li><b><code>a, b = b, a + b</code> uses the old values of both.</b></li><li><b>Off-by-one lives in three places:</b> the first value, the last value, and the count.</li><li><b>Forgetting the update</b> (<code>n = n // 10</code>) makes the loop run forever &mdash; &ldquo;infinite loop&rdquo; is a legitimate option.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>What does this print? Then fix it, and say what the fixed version prints for n = 234 and n = 0.<pre>n = 234
 p = 0
 while n &gt; 0:
     d = n % 10
     p *= d
     n = n // 10
-print(p)</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans">As written it prints <b>0</b>. The accumulator starts at 0, so the very first <code>p *= d</code> gives 0 and every later multiply keeps it there &mdash; the loop runs correctly and the answer is still 0 for every input.<br><b>Fix:</b> <code>p = 1</code>. Then n = 234 peels 4, 3, 2 and prints <b>24</b>.<br><b>n = 0:</b> <code>while 0 &gt; 0</code> is False immediately, the body never runs, and it prints the initial value &mdash; <b>1</b> for the fixed version, 0 for the broken one. Both are &ldquo;correct&rdquo; outputs of their own code, which is why this pair shows up as an MSQ.</div>
-</details>
-</div>
-<div class="dq">
-<p><span class="qn">Q2</span>Give the values printed, the iteration count, and the value of the variable after each loop.<pre>for i in range(10, 0, -3):
+print(p)</pre></div><details><summary>Show answer</summary><div class="ans">Prints <b>0</b> &mdash; p starts at 0, so every multiply keeps it 0.<br>Fix: <code>p = 1</code>. Then 234 &rarr; 4 &times; 3 &times; 2 = <b>24</b>.<br>For n = 0 the body never runs: the fixed version prints <b>1</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>Give the values printed, the iteration count, and the variable's value after each loop:<pre>for i in range(10, 0, -3):
     print(i)
 
-# and separately:
 j = 1
 while j &lt; 20:
     j = j * 3
-print(j)</pre></p>
-<details><summary>Show answer</summary>
-<div class="ans"><b>for loop:</b> prints <b>10, 7, 4, 1</b> &mdash; stop is excluded, so it never reaches 0. Count = ceil((0 &minus; 10) / &minus;3) = ceil(3.33) = <b>4</b> iterations. After the loop <code>i</code> is <b>1</b>, the last value yielded.<br><b>while loop:</b> j goes 1 &rarr; 3 &rarr; 9 &rarr; 27. The test fails at 27, so it prints <b>27</b> &mdash; the <b>first value that violates</b> the condition, not 9, the last one that satisfied it. That distinction between a for-loop variable and a while-loop variable is exactly what the question is testing.</div>
-</details>
+print(j)</pre></div><details><summary>Show answer</summary><div class="ans"><b>for:</b> prints 10, 7, 4, 1 &mdash; <b>4</b> iterations; i ends at <b>1</b>.<br><b>while:</b> j goes 1, 3, 9, 27; prints <b>27</b> after <b>3</b> passes.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Trace and give the output:<pre>n = 1203
+r = 0
+while n &gt; 0:
+    r = r * 10 + n % 10
+    n = n // 10
+print(r)</pre></div><details><summary>Show answer</summary><div class="ans">n=1203: r = 3, n = 120<br>n=120: r = 30, n = 12<br>n=12: r = 302, n = 1<br>n=1: r = 3021, n = 0<br>Prints <b>3021</b>, after <b>4</b> passes.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>What do these two print?<pre># version 1
+a, b = 0, 1
+for _ in range(5):
+    print(a, end=" ")
+    a, b = b, a + b
+
+# version 2
+a, b = 0, 1
+for _ in range(5):
+    print(a, end=" ")
+    a = b
+    b = a + b</pre></div><details><summary>Show answer</summary><div class="ans">Version 1: <b>0 1 1 2 3</b>.<br>Version 2: <b>0 1 2 4 8</b> &mdash; after <code>a = b</code>, the next line computes <code>b = b + b</code>, so b just doubles.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q5</span><code>a = [1, 3, 4, 6, 9]</code>. Trace the two-pointer search for target 10 and for target 8. What does each return?<pre>i, j = 0, len(a) - 1
+while i &lt; j:
+    s = a[i] + a[j]
+    if s == t:
+        return (i, j)
+    elif s &gt; t:
+        j -= 1
+    else:
+        i += 1
+return None</pre></div><details><summary>Show answer</summary><div class="ans"><b>t = 10:</b> 1 + 9 = 10 on the first pass &rarr; <b>(0, 4)</b>.<br><b>t = 8:</b> 1+9=10 too big, j=3 &rarr; 1+6=7 too small, i=1 &rarr; 3+6=9 too big, j=2 &rarr; 3+4=7 too small, i=2 &rarr; i &lt; j fails &rarr; <b>None</b>. No pair sums to 8.</div></details></div></div></div>
 </div>
-</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
 <div class="arows">
 <div class="ar gap">
 <span class="tick">&times;</span>
@@ -791,6 +739,8 @@ print(j)</pre></p>
 </div>
 </div></div>
 </section>
+</main>
+</div>
 </div>
 <script src="assets/js/app.js"></script>
 <script>
@@ -885,6 +835,29 @@ print(j)</pre></p>
   function label(){b.textContent=cur()==="dark"?"\u2600 Light":"\u263E Dark"}
   b.onclick=function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}label()};
   label();
+})();
+</script>
+<script>
+(function(){
+  var toc=document.getElementById("toc"); if(!toc) return;
+  var h="", links=[];
+  [].forEach.call(document.querySelectorAll(".sub"),function(s){
+    h+='<div class="ts">'+s.querySelector("h2").textContent+'</div>';
+    [].forEach.call(s.querySelectorAll(".wk"),function(w){
+      h+='<a class="w" href="#'+w.id+'">'+w.querySelector(".wn").textContent+' &middot; '+w.querySelector("h3").textContent+'</a>';
+      [].forEach.call(w.querySelectorAll(".cn"),function(c){
+        h+='<a class="c" href="#'+c.id+'">'+c.querySelector("h4").textContent.replace(/^(\d+\.\d+)/,"$1 ")+'</a>';
+      });
+    });
+  });
+  toc.innerHTML=h;
+  var as=[].slice.call(toc.querySelectorAll("a")), targets=as.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));});
+  function spy(){
+    var on=0; for(var i=0;i<targets.length;i++){ if(targets[i].getBoundingClientRect().top<140) on=i; }
+    as.forEach(function(a,i){ a.classList.toggle("on",i===on); });
+    var a=as[on]; if(a&&(a.offsetTop<toc.scrollTop||a.offsetTop>toc.scrollTop+toc.clientHeight-40)) toc.scrollTop=a.offsetTop-80;
+  }
+  addEventListener("scroll",spy,{passive:true}); spy();
 })();
 </script>
 </body>
