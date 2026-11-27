@@ -80,22 +80,345 @@
 <a class="tab" href="python.html">Python</a>
 <a class="tab active" href="notes.html">Notes</a>
 <div class="spacer"></div>
-<div class="daysleft" id="navDays">&mdash; days to Quiz 1</div>
+<div class="daysleft" id="navDays">&mdash; days to Quiz 2</div>
 </div></nav>
 <div class="wrap notes">
 <header class="noteshead">
-<p class="kicker">IITM BS &middot; Quiz 1 &middot; 15 Nov 2026 &middot; weeks 1&ndash;4</p>
+<p class="kicker">IITM BS &middot; Stat 1 Quiz 2 &middot; Sat 5 Dec 2026 &middot; weeks 5&ndash;8 (+ 1&ndash;4 review)</p>
 <h1>Crib sheets</h1>
 <p class="lede">The four revision sheets, rendered from the markdown in <code>notes/</code>. Read the crib sheet while you revise; read the <strong>must-know</strong> sheet last, right before you walk in.</p>
 </header>
 <div class="notesctl">
-<a href="#python-crib">🐍 Python &middot; crib sheet</a>
-<a href="#python-mustknow">🐍 Python &middot; must-know</a>
 <a href="#stat1-crib">📊 Stat 1 &middot; crib sheet</a>
 <a href="#stat1-mustknow">📊 Stat 1 &middot; must-know</a>
+<a href="#python-crib">🐍 Python &middot; crib sheet</a>
+<a href="#python-mustknow">🐍 Python &middot; must-know</a>
 <span class="sp"></span>
 <button id="tPrint">Print</button>
 </div>
+<section class="sheet s-stat1" id="stat1-crib">
+<div class="sheeth">
+<h2>📊 Stat 1</h2>
+<span class="kind">Crib sheet</span>
+<span class="sp"></span>
+<span class="src">notes/stat1-crib.md</span>
+<span class="blurb">Quiz 2: weeks 5-9 concept map, formula page, curated practice</span>
+</div>
+<div class="md">
+<h1>Stat 1 (IITM BS Foundation) — Quiz 2 Crib Sheet</h1>
+<p><em>Quiz 2: Sat 5 Dec 2026, in centre. New material is weeks 5–8; weeks 1–4 can reappear as review. Built from the 58 week 5–9 questions (157 marks) in the 11 End Term papers, 2022 Aug → 2026 May. No real Quiz 2 papers are in the pool yet, so treat the counts as a guide to what gets asked, not the exact paper.</em></p>
+<p><strong>Week labels follow the lecture PDFs.</strong> W5 = lectures 5.1–5.2 (counting), W6 = 5.3–5.6 (permutations, combinations), W7 = 6.x (probability), W8 = 7.x (conditional probability, Bayes), W9 = 8.x (random variables, PMF, CDF). <strong>Check the portal's Quiz 2 syllabus for W9.</strong> If it lists random variables, study it on day 6; if not, skip it.</p>
+<hr />
+<h2>Part 1 — What the questions look like</h2>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Topic</th>
+<th>Q</th>
+<th>Marks</th>
+<th>What gets asked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W5</td>
+<td>Counting rules</td>
+<td>2</td>
+<td>7</td>
+<td>Multiply choices slot by slot</td>
+</tr>
+<tr>
+<td>W6</td>
+<td>Permutations &amp; combinations</td>
+<td>13</td>
+<td>37</td>
+<td>nPr/nCr equations, include/exclude teams, repeated letters, together/apart</td>
+</tr>
+<tr>
+<td>W7</td>
+<td>Probability basics</td>
+<td>8</td>
+<td>21</td>
+<td>Counting probability with nCr, unions, small sample spaces</td>
+</tr>
+<tr>
+<td>W8</td>
+<td>Conditional probability &amp; Bayes</td>
+<td>14</td>
+<td>42</td>
+<td><strong>Total probability and Bayes (6 Q, 18 marks)</strong>, independence, tables</td>
+</tr>
+<tr>
+<td>W9</td>
+<td>Random variables, PMF, CDF</td>
+<td>21</td>
+<td>50</td>
+<td>Support of X, PMF by counting, CDF jumps, unknown constant</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mostly SA (numeric entry) and MCQ.</strong> Write every intermediate number down; SA tolerances are tight.</li>
+<li><strong>The biggest pattern on the paper is the two-stage "pick a box, then pick a ball" question.</strong> It never says "Bayes". Spot it from a partition (boxes, coins, machines, groups) plus a conditional rate in each part.</li>
+<li><strong>Counting is the engine for W7–W9.</strong> A probability question is usually nCr ÷ nCr. If counting is shaky, three weeks fall over.</li>
+</ul>
+<hr />
+<h2>Part 2 — Concept map by week</h2>
+<h3>W5 — Basic counting</h3>
+<ul>
+<li><strong>Multiplication rule:</strong> k independent slots with n₁, n₂, … choices → n₁·n₂·… ways.</li>
+<li><strong>Addition rule:</strong> disjoint cases → add the counts.</li>
+<li><strong>Factorial:</strong> n! = n·(n−1)·…·1, with 0! = 1.</li>
+<li><strong>Digit problems:</strong> count the allowed digits place by place. The leading digit can't be 0.</li>
+<li><em>3-digit numbers with no 4:</em> hundreds 8 (not 0, not 4) × tens 9 × units 9 = <strong>648</strong>.</li>
+<li><em>4 subjects, each passed with one of 6 grades (S, A, B, C, D, E):</em> 6⁴ = <strong>1296</strong>.</li>
+</ul>
+<h3>W6 — Permutations and combinations</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order matters, r from n distinct</td>
+<td>nPr = n! / (n−r)!</td>
+</tr>
+<tr>
+<td>Order doesn't matter</td>
+<td>nCr = n! / (r!(n−r)!) = nPr / r!</td>
+</tr>
+<tr>
+<td>All n, with repeats p, q, r…</td>
+<td>n! / (p!·q!·r!…)</td>
+</tr>
+<tr>
+<td>Circular arrangement of n</td>
+<td>(n−1)!</td>
+</tr>
+<tr>
+<td>Symmetry</td>
+<td>nCr = nC(n−r), nC0 = nCn = 1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to spot each pattern:</strong></p>
+<ul>
+<li><strong>"Captain and vice-captain", "1st/2nd/3rd prize", "arrange"</strong> → order matters → <strong>P</strong>. <em>nP2 = 42 → n(n−1) = 42 → n = 7.</em></li>
+<li><strong>"Committee", "team", "select", "handshakes"</strong> → order doesn't matter → <strong>C</strong>.</li>
+<li><em>Must include 2 given people in a team of 4 from 8:</em> fix them, choose 2 from the other 6 → C(6,2) = <strong>15</strong>.</li>
+<li><em>Must exclude those 2:</em> choose all 4 from the other 6 → C(6,4) = <strong>15</strong>.</li>
+<li><em>20 men and 10 women shake hands only within their own gender:</em> C(20,2) + C(10,2) = 190 + 45 = <strong>235</strong>.</li>
+<li><em>"At least one":</em> use total − none, or add the disjoint cases (exactly 1 + exactly 2 + …). Don't do "pick one, then pick the rest", because it double counts.</li>
+<li><strong>Repeated letters:</strong> <em>COMMITTEE</em> (9 letters; M, T, E twice each) → 9! / (2!·2!·2!) = <strong>45360</strong>. <em>ARRANGEMENT</em> (11 letters; A, R, N, E twice each) → 11! / (2!)⁴ = <strong>2494800</strong>.</li>
+<li><strong>Together:</strong> glue the group into one block, arrange the blocks, then multiply by the arrangements inside the block. <em>LEADING with all vowels (E, A, I) together:</em> 5 units → 5! × 3! = <strong>720</strong>.</li>
+<li><strong>Not together:</strong> total − together, or arrange the others first and put the restricted items in the gaps. <em>7 people in a row with A, B together and D, E apart:</em> (AB together) 6!·2 = 1440, minus (AB together and DE together) 5!·2·2 = 480, gives <strong>960</strong>.</li>
+<li><strong>Dictionary rank:</strong> at each position, count the unused letters smaller than the actual letter × (remaining letters)!, add these up, then add 1. <em>SACHIN</em> → <strong>601</strong>.</li>
+<li><strong>Identity MSQs:</strong> nPr / nCr = r! ✔ · nCr = nC(n−r) ✔ · "nPr = nCr / r!" ✘ (it is nCr · r!) · "permutations ignore order" ✘.</li>
+<li><strong>Solve for n:</strong> test small n. <em>nⁿ − n! = 21 → n = 3 (27 − 6).</em></li>
+</ul>
+<h3>W7 — Probability</h3>
+<ul>
+<li><strong>Equally likely outcomes:</strong> P(E) = favourable / total. With draws, both are nCr counts.</li>
+<li><em>4 red, 5 blue, draw 3, all the same colour:</em> (C(4,3) + C(5,3)) / C(9,3) = 14/84 = <strong>0.167</strong>.</li>
+<li><strong>Axioms:</strong> 0 ≤ P ≤ 1, P(S) = 1, P(Aᶜ) = 1 − P(A).</li>
+<li><strong>Union:</strong> P(A ∪ B) = P(A) + P(B) − P(A ∩ B). Drop the last term only if A and B are <strong>mutually exclusive</strong>.</li>
+<li><strong>Three exclusive categories that cover everyone (F, D, Deg):</strong> you are given P(F ∪ D) = 0.8 and P(D ∪ Deg) = 0.6. Since F + D + Deg = 1, D = 0.8 + 0.6 − 1 = <strong>0.4</strong>.</li>
+<li><strong>Small sample spaces:</strong> write them out. <em>3-child family:</em> 8 outcomes. <em>Toss until two in a row match, stops on toss 3:</em> HTT, THH → 2/8 = <strong>0.25</strong>.</li>
+<li><strong>Mutually exclusive ≠ independent.</strong> Two exclusive events with nonzero probability are always dependent.</li>
+</ul>
+<h3>W8 — Conditional probability, independence, Bayes</h3>
+<ul>
+<li><strong>Definition:</strong> P(A | B) = P(A ∩ B) / P(B). "Given B" means <strong>B is your new total</strong>.</li>
+<li><strong>From a table:</strong> take the row or column of the condition, then divide the cell by that row or column total.</li>
+<li><strong>From a PMF:</strong> P(X ≤ 3 | X &gt; 1) = [P(2) + P(3)] / [P(2) + P(3) + …]. Sum the values that satisfy both conditions and divide by the sum of the values that satisfy the given condition.</li>
+<li><strong>Multiplication rule:</strong> P(A ∩ B) = P(A)·P(B | A). Use it for sequential draws without replacement: (r/N)·((r−1)/(N−1))…</li>
+<li><strong>Independence:</strong> P(A ∩ B) = P(A)·P(B) ⇔ P(A | B) = P(A). Draws without replacement are <strong>not</strong> independent.</li>
+<li><strong>Independent events, quick results:</strong></li>
+<li>At least one of n happens: 1 − Π(1 − pᵢ).</li>
+<li>Exactly one of two: p₁(1 − p₂) + (1 − p₁)p₂. <em>Forecasters right with 4/7 and 2/3; contradict:</em> (4/7)(1/3) + (3/7)(2/3) = 10/21 = <strong>0.48</strong>.</li>
+<li><strong>Law of total probability</strong> (partition B₁…Bₖ): P(A) = Σ P(A | Bᵢ)·P(Bᵢ).</li>
+<li><strong>Bayes:</strong> P(Bᵢ | A) = P(A | Bᵢ)·P(Bᵢ) / P(A). The denominator is the total-probability sum you just computed.</li>
+<li><em>Pick one of two coins at random, fair or P(H) = 3/4. P(H) = ½·½ + ½·¾ = </em><em>0.625</em><em>. Given heads, P(fair) = 0.25 / 0.625 = </em><em>0.4</em><em>.</em></li>
+<li><strong>Diagnostic test:</strong> P(D | +) = P(+ | D)P(D) / [P(+ | D)P(D) + P(+ | Dᶜ)P(Dᶜ)]. Rare diseases give small answers, even with good tests.</li>
+</ul>
+<h3>W9 — Random variables, PMF, CDF (check it's in the syllabus)</h3>
+<ul>
+<li><strong>Random variable:</strong> a number attached to every outcome. <strong>Discrete</strong> = countable values; <strong>continuous</strong> = an interval.</li>
+<li><strong>Support when drawing n from (good g, bad b):</strong> X runs from max(0, n − b) to min(n, g). <em>10 white + 3 black, draw 4, X = whites:</em> {1, 2, 3, 4}.</li>
+<li><strong>PMF by counting (hypergeometric):</strong> P(X = k) = C(g, k)·C(b, n−k) / C(g+b, n).</li>
+<li><strong>PMF rules:</strong> p(x) ≥ 0 and Σ p(x) = 1. Use the second to find an unknown constant: <em>p(x) = kx for x = 1..4 → 10k = 1 → k = 0.1.</em></li>
+<li><strong>CDF:</strong> F(x) = P(X ≤ x). It never decreases, goes from 0 to 1, and is a right-continuous step function for discrete X.</li>
+<li>Unknown constant: F(largest value) = 1. <em>F(x) = (x² + k)/99 on 1..8 → 64 + k = 99 → k = 35.</em></li>
+<li><strong>P(X = a) = jump at a</strong> = F(a) − F(a⁻).</li>
+<li>P(X ≤ a) = F(a) · P(X &gt; a) = 1 − F(a) · <strong>P(X ≥ a) = 1 − F(a⁻)</strong> · P(a &lt; X ≤ b) = F(b) − F(a).</li>
+<li>Conditional from a CDF: P(X &gt; 1 | X &lt; 3) = [F(2) − F(1)] / F(2) for integer X.</li>
+<li><strong>Sum of two independent throws:</strong> list the pairs. P(S = s) = Σ P(a)·P(b) over pairs with a + b = s.</li>
+</ul>
+<hr />
+<h2>Part 3 — One-page formula sheet (Quiz 2)</h2>
+<pre><code>COUNTING
+  multiplication rule      n1 · n2 · … · nk
+  nPr = n!/(n−r)!          nCr = n!/(r!(n−r)!) = nPr/r!        nCr = nC(n−r)
+  repeated letters         n!/(p!·q!·…)                        circular  (n−1)!
+  together  → glue block, ×(inside arrangements)      apart → total − together
+  at least one             total − none
+
+PROBABILITY
+  P(E) = favourable/total     P(Aᶜ) = 1 − P(A)
+  P(A∪B) = P(A)+P(B)−P(A∩B)   exclusive → P(A∩B) = 0
+  P(A∪B∪C) = ΣP − Σpairs + P(A∩B∩C)
+
+CONDITIONAL
+  P(A|B) = P(A∩B)/P(B)        P(A∩B) = P(A)·P(B|A)
+  independent ⇔ P(A∩B) = P(A)P(B)
+  at least one (indep.)      1 − Π(1 − pi)
+  total probability          P(A) = Σ P(A|Bi)·P(Bi)
+  Bayes                      P(Bi|A) = P(A|Bi)P(Bi) / P(A)
+
+RANDOM VARIABLES (W9)
+  Σ p(x) = 1,  p(x) ≥ 0        F(x) = P(X ≤ x)
+  P(X = a) = F(a) − F(a⁻)      P(X &gt; a) = 1 − F(a)      P(X ≥ a) = 1 − F(a⁻)
+  hypergeometric             P(X=k) = C(g,k)·C(b,n−k)/C(g+b,n)
+  support                    max(0, n−b) … min(n, g)
+</code></pre>
+<h3>Weeks 1–4 review (they can come back on Quiz 2)</h3>
+<pre><code>Mean x̄ = Σx/n     sample var s² = Σ(x−x̄)²/(n−1)     population var σ² = Σ(x−μ)²/N
+Median: n odd → ((n+1)/2)th; n even → average of the two middle values
+Percentile: n·p not an integer → round up, take that rank; an integer → average that rank and the next
+IQR = Q3 − Q1      fences Q1 − 1.5·IQR, Q3 + 1.5·IQR
+Cov = Σ(x−x̄)(y−ȳ)/(n−1)      r = Cov/(sx·sy)      R² = r²
+y = x + c : centre shifts by c, spread unchanged      y = c·x : centre ×c, var ×c², SD ×|c|
+Scales: nominal &lt; ordinal &lt; interval (no true zero) &lt; ratio (true zero)
+</code></pre>
+<hr />
+<h2>Part 4 — Curated practice (all on the Stat 1 page; the answer is hidden until you reveal it)</h2>
+<p>Do them in this order. The ★ question is the archetype's target: solve it with help first, then do the rest cold.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Archetype</th>
+<th>Questions</th>
+<th>Marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>W8-A4 Total probability + Bayes</strong></td>
+<td>★2023 Dec Q7, 2023 Dec Q6, 2023 Sep Q5, 2025 Apr Q9, 2025 Dec Q13, 2022 Dec Q8</td>
+<td>18</td>
+</tr>
+<tr>
+<td>2</td>
+<td>W6-A2 Include/exclude teams</td>
+<td>★2025 Dec Q12, 2024 Dec Q7, Q8, 2023 Sep Q13</td>
+<td>11</td>
+</tr>
+<tr>
+<td>3</td>
+<td>W6-A1 nPr/nCr equations, identities</td>
+<td>★2022 Dec Q10, 2024 Sep Q6, Q13, 2025 Apr Q4</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>W7-A2 nCr ÷ nCr probability</td>
+<td>★2025 Aug Q15, 2023 Sep Q12</td>
+<td>7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>W8-A5 Without replacement, independence</td>
+<td>★2024 Dec Q11, 2025 Aug Q16</td>
+<td>7</td>
+</tr>
+<tr>
+<td>6</td>
+<td>W5-A1 Multiplication rule</td>
+<td>★2024 Apr Q9, 2026 May Q12</td>
+<td>7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>W8-A2 / W8-A3 Tables, independent events</td>
+<td>2022 Aug Q8, 2024 Apr Q20, ★2024 Sep Q4, 2025 Aug Q9</td>
+<td>12</td>
+</tr>
+<tr>
+<td>8</td>
+<td>W6-A3 / A5 / A4 Letters, together/apart, rank</td>
+<td>2023 Sep Q10, 2025 Aug Q2, ★2024 Dec Q9, 2025 Apr Q8, 2022 Aug Q10</td>
+<td>16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>W7-A3 / A4 / A6 Unions, sample spaces</td>
+<td>2024 Dec Q10, 2024 Sep Q5, 2026 May Q13, 2023 Dec Q11</td>
+<td>10</td>
+</tr>
+<tr>
+<td>10</td>
+<td>W9 (if it's in the syllabus) — CDF jumps, unknown k, support, PMF by counting</td>
+<td>W9-A5, A4, A1, A2 first</td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pass mark for yourself:</strong> every ★ solved cold, plus 80% of rows 1–7, by Thursday 3 Dec.</p>
+</div>
+</section>
+<section class="sheet s-stat1" id="stat1-mustknow">
+<div class="sheeth">
+<h2>📊 Stat 1</h2>
+<span class="kind">Must-know</span>
+<span class="sp"></span>
+<span class="src">notes/stat1-mustknow.md</span>
+<span class="blurb">The 8 Quiz 2 traps - read this one last</span>
+</div>
+<div class="md">
+<h1>Stat 1 Quiz 2 — Must-Know List (read this last, right before you walk in)</h1>
+<p>One screen. No new material: just the patterns that carry the paper and the places where easy marks get lost.</p>
+<h2>Where the marks are (weeks 5–9, 11 End Term papers)</h2>
+<ol>
+<li><strong>Two-stage "pick a box, then a ball"</strong> → total probability, then Bayes. The biggest single pattern.</li>
+<li><strong>Teams and committees</strong> → nCr with include/exclude, or split into cases and add.</li>
+<li><strong>nCr ÷ nCr probability</strong> → favourable draws ÷ all draws.</li>
+<li><strong>Independent events</strong> → multiply; "at least one" = 1 − P(none).</li>
+<li><strong>CDF questions (if W9 is in scope)</strong> → P(X = a) is the jump at a.</li>
+</ol>
+<h2>The 8 traps that cost the most marks</h2>
+<ol>
+<li><strong>P vs C:</strong> roles, positions or prizes → P. Groups → C. "Captain and vice-captain" is P.</li>
+<li><strong>"At least one" = total − none.</strong> Never "choose one, then choose the rest freely": it double counts.</li>
+<li><strong>Repeated letters:</strong> divide by the factorial of <strong>each</strong> repeated letter's count.</li>
+<li><strong>Exclusive ≠ independent.</strong> Exclusive means P(A∩B) = 0. Independent means P(A∩B) = P(A)P(B).</li>
+<li><strong>Conditional = shrink the total.</strong> P(A | B) divides by P(B), not by 1, and not by P(A).</li>
+<li><strong>The Bayes denominator is the whole total-probability sum,</strong> not just the branch you care about.</li>
+<li><strong>Without replacement:</strong> update the counts after every draw. The draws are <strong>not</strong> independent.</li>
+<li><strong>CDF strictness:</strong> P(X ≥ a) = 1 − F(a⁻), not 1 − F(a). P(X &lt; a) = F(a⁻).</li>
+</ol>
+<h2>Formula quick-hit</h2>
+<pre><code>nPr = n!/(n−r)!      nCr = nPr/r!      repeats: n!/(p!q!…)      together: glue × inside!
+P(A∪B) = P(A)+P(B)−P(A∩B)              P(A|B) = P(A∩B)/P(B)
+P(A) = Σ P(A|Bi)P(Bi)                  P(Bi|A) = P(A|Bi)P(Bi)/P(A)
+at least one (indep.) = 1 − Π(1 − pi)  exactly one of two = p1(1−p2) + (1−p1)p2
+Σ p(x) = 1    P(X=a) = F(a) − F(a⁻)    P(X&gt;a) = 1 − F(a)
+</code></pre>
+<h2>Last check before you open the exam</h2>
+<ul>
+<li>Draw the tree for every two-stage question, even an easy one. It takes 20 seconds and stops the most common slip.</li>
+<li>For SA answers, keep 4 decimals while you work and round only at the end.</li>
+<li>Read "with / without replacement", "at least / exactly / at most" and "given" in every stem before you touch a formula.</li>
+<li>Weeks 1–4 can come back: n−1 for sample variance, and Q1/Q3 by the percentile rule.</li>
+</ul>
+<p>You've done 60 on Quiz 1 with less. Go get the 80.</p>
+</div>
+</section>
 <section class="sheet s-python" id="python-crib">
 <div class="sheeth">
 <h2>🐍 Python</h2>
@@ -576,419 +899,14 @@ while n &gt; 0:            # input 0 -&gt; body never runs
 <p>63% MCQ · 20% SA · 17% MSQ. It's a tracing exam, and you've traced them all. Go.</p>
 </div>
 </section>
-<section class="sheet s-stat1" id="stat1-crib">
-<div class="sheeth">
-<h2>📊 Stat 1</h2>
-<span class="kind">Crib sheet</span>
-<span class="sp"></span>
-<span class="src">notes/stat1-crib.md</span>
-<span class="blurb">Pattern, weeks 1-4 concept map, formula page, curated practice</span>
-</div>
-<div class="md">
-<h1>Stat 1 (IITM BS Foundation) — Exam Crib Sheet</h1>
-<p><em>Built from Weeks 1–4 PPTs/Transcripts + 9 PYQ practice papers. Exam: tomorrow.</em></p>
-<hr />
-<h2>Part 1 — Exam pattern (from 9 practice papers)</h2>
-<p>Every paper: 17–23 questions, 36–40 marks, mix of MCQ (single answer), MSQ (multi-select), SA (numeric entry, often with a decimal-accuracy tolerance). First question is always the "confirm your subject" dummy (0 marks). Recurring topic clusters, ranked by how often they appear across the 9 papers:</p>
-<table>
-<thead>
-<tr>
-<th>Frequency</th>
-<th>Topic cluster</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Every paper</td>
-<td>Descriptive vs. inferential stats; population vs. sample (representativeness)</td>
-</tr>
-<tr>
-<td>Every paper</td>
-<td>Scales of measurement (nominal/ordinal/interval/ratio) + categorical vs. numerical, discrete vs. continuous, cross-sectional vs. time series</td>
-</tr>
-<tr>
-<td>Almost every paper</td>
-<td>Mean/median/mode + effect of transformations (add/multiply constant)</td>
-</tr>
-<tr>
-<td>Almost every paper</td>
-<td>Variance &amp; SD (population vs. sample) + effect of transformations</td>
-</tr>
-<tr>
-<td>Most papers</td>
-<td>Percentiles, quartiles, IQR, outliers</td>
-</tr>
-<tr>
-<td>Most papers</td>
-<td>Contingency tables &amp; association (row/column relative frequency)</td>
-</tr>
-<tr>
-<td>Most papers</td>
-<td>Covariance &amp; correlation coefficient (r)</td>
-</tr>
-<tr>
-<td>~4 of 9</td>
-<td>Point bi-serial correlation coefficient</td>
-</tr>
-<tr>
-<td>Frequent as MCQ/MSQ</td>
-<td>Charts: pie/bar/Pareto/stacked bar, area principle, misleading graphs</td>
-</tr>
-<tr>
-<td>Occasional</td>
-<td>Stem-and-leaf plots, frequency/relative-frequency tables</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Takeaway:</strong> Weeks 1, 3, and 4 dominate the marks. Week 2 (charts) shows up mostly as quick conceptual MCQs, not calculations. Prioritize accordingly if time gets tight.</p>
-<hr />
-<h2>Part 2 — Concept Map by Week</h2>
-<h3>Week 1 — Foundations of Data</h3>
-<ul>
-<li><strong>Statistics</strong>: "the art of learning from data" (collection → description → analysis → conclusions).</li>
-<li><strong>Descriptive vs. inferential</strong>: descriptive = summarize; inferential = generalize from sample to population (needs probability). A study on a <em>sample</em> can still be purely descriptive if you don't generalize beyond it.</li>
-<li><strong>Population vs. sample</strong>: sample must be <em>representative</em> — missing an entire subgroup breaks representativeness even if it's technically a subset.</li>
-<li><strong>Data</strong>: facts/figures collected &amp; summarized; doesn't "speak" by itself. Comments, likes, multimedia all count as data.</li>
-<li><strong>Structured vs. unstructured data</strong>: structured = organized rows/columns; unstructured = scattered, no context.</li>
-<li><strong>Variables &amp; cases (tidy data rules)</strong>: each variable → one column; each case → one row; consistent unit per variable column. A column constant across all cases is <em>not</em> a variable.</li>
-<li><strong>Missing (NA) ≠ 0</strong>: a bowler who never bowled → NA; a bowler who bowled and took 0 wickets → 0. Don't conflate.</li>
-<li><strong>Categorical vs. numerical</strong>: categorical = group membership (gender, blood group); numerical = has measurement units (marks, height). Gotcha: jersey number / mobile number <em>look</em> numeric but are categorical (arithmetic on them is meaningless).</li>
-<li><strong>Discrete vs. continuous</strong> (numerical only): discrete = whole-number counts; continuous = any fractional value.</li>
-<li><strong>Measurement units</strong>: must be consistent across all observations of a variable (don't mix cm and feet).</li>
-<li><strong>Cross-sectional vs. time series</strong>: time series = same variable tracked over time (→ timeplot); cross-sectional = observed at one point in time.</li>
-<li><strong>Scales of measurement</strong> (the single most-tested Week 1 concept):</li>
-<li><strong>Nominal</strong>: labels only, no order (gender, blood group, jersey number).</li>
-<li><strong>Ordinal</strong>: labels + order, but unequal/undefined gaps between ranks (poor/good/excellent).</li>
-<li><strong>Interval</strong>: order + meaningful differences (subtraction valid), but <strong>no true zero</strong> → ratios meaningless. Classic example: °C/°F — 40°C is <em>not</em> twice as hot as 20°C (only Kelvin has an absolute zero).</li>
-<li><strong>Ratio</strong>: interval + true zero → ratios <em>are</em> meaningful; full arithmetic valid (height, weight, marks, runs). 300 runs really is twice 150 runs.</li>
-<li>Categorical data → nominal/ordinal only. Numerical data → interval/ratio only.</li>
-</ul>
-<h3>Week 2 — Describing Categorical Data (single variable)</h3>
-<ul>
-<li><strong>Frequency distribution</strong>: count per distinct category. <strong>Relative frequency</strong> = frequency ÷ total n; always sums to 1 (used to compare datasets of different sizes).</li>
-<li><strong>Pie chart</strong>: wedge angle = relative frequency × 360°. Shows <strong>share of a whole</strong>. Avoid exploding/3D slices.</li>
-<li><strong>Bar chart</strong>: bar height = frequency; bars equal width, <strong>not touching</strong>. Shows <strong>comparison across groups</strong>, not proportions of a whole.</li>
-<li><strong>Pareto chart</strong>: bar chart sorted by frequency (descending) — but <strong>only valid for nominal data</strong>. If the variable is ordinal (e.g., S/M/L), you must keep the natural order instead of sorting by frequency.</li>
-<li><strong>Area principle</strong>: area shown must be proportional to the data it represents. Violations: <em>decorated graphics</em> (icons of uneven size) and <em>truncated graphs</em> (non-zero baseline exaggerates differences) — if you must truncate, explicitly mark the axis break.</li>
-<li><strong>Round-off errors</strong>: individually-rounded percentages may not sum to exactly 100% — always check totals (matters for pie chart degrees summing to 360°).</li>
-<li><strong>Mode</strong>: highest-frequency category; works for nominal <em>and</em> ordinal. Can be bimodal/multimodal.</li>
-<li><strong>Median (ordinal data only)</strong>: middle value once ranked; undefined for nominal data. <strong>Mode ≠ median in general</strong> — mode = most frequent, median = middle-ranked; they need not coincide.</li>
-<li><strong>Best practice</strong>: use "Other" bucket for many small categories instead of silently dropping them; always label axes/title/legend.</li>
-</ul>
-<h3>Week 3 — Describing Numerical Data (the calculation-heavy core)</h3>
-<ul>
-<li><strong>Frequency tables</strong>: discrete data with few distinct values → one class per value. Continuous data → grouped into classes (5–20 classes, rule of thumb); convention: interval includes its <strong>left</strong> end, excludes its <strong>right</strong> end (e.g., "30–40" includes 30, not 40).</li>
-<li><strong>Histogram</strong>: bars touch (no gaps) since data is continuous — this is the key visual difference from a bar chart.</li>
-<li><strong>Stem-and-leaf plot</strong>: stem = all digits except last, leaf = last digit; leaves sorted ascending within each stem row. Retains actual values (unlike histogram).</li>
-<li><strong>Mean</strong>: x̄ = Σx/n (sample), μ = Σx/N (population). Grouped discrete: x̄ = Σfᵢxᵢ/n (exact). Grouped continuous: x̄ = Σfᵢmᵢ/n using class <strong>midpoints</strong> (approximation only).</li>
-<li>⚠️ Mean is <strong>highly sensitive to outliers</strong>.</li>
-<li><strong>Median</strong>: middle of sorted data. n odd → the ((n+1)/2)-th value. n even → average of the two middle values.</li>
-<li>⚠️ Median is <strong>NOT</strong> sensitive to outliers.</li>
-<li><strong>Mode</strong>: most frequent value; may not exist, may be multiple.</li>
-<li><strong>Transformation rules</strong> (memorize this table cold — tested constantly):</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Transform yᵢ = xᵢ + c</th>
-<th>Transform yᵢ = xᵢ × c</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mean: ȳ = x̄ + c</td>
-<td>Mean: ȳ = x̄ × c</td>
-</tr>
-<tr>
-<td>Median: +c</td>
-<td>Median: ×c</td>
-</tr>
-<tr>
-<td>Mode: +c</td>
-<td>Mode: ×c</td>
-</tr>
-<tr>
-<td>Variance: <strong>unchanged</strong></td>
-<td>Variance: × c²</td>
-</tr>
-<tr>
-<td>SD: <strong>unchanged</strong></td>
-<td>SD: × c (not c²)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Why dispersion measures matter</strong>: {3,3,3,3,3} and {1,2,3,4,5} have identical mean/median/mode but obviously different spread.</li>
-<li><strong>Range</strong> = Max − Min. Extremely outlier-sensitive (uses only 2 points).</li>
-<li><strong>Variance</strong>: uses <em>all</em> points, squared deviations from the mean.</li>
-<li>Population: σ² = Σ(xᵢ−μ)²/N</li>
-<li>Sample: s² = Σ(xᵢ−x̄)²/<strong>(n−1)</strong> ← don't forget n−1 for sample variance.</li>
-<li><strong>SD</strong> = √variance. Restores original units (variance has squared units).</li>
-<li><strong>Percentiles</strong> — two different valid algorithms give different answers, know both:</li>
-<li><em>Manual</em>: sort data; compute n·p. If not integer → round <strong>up</strong>, take that ranked value. If integer → average that rank and the next.</li>
-<li><em>Google Sheets</em> <code>PERCENTILE()</code>: rank = p(n−1)+1; interpolate between the integer and fractional parts.</li>
-<li><strong>Quartiles</strong>: Q1 = 25th pct, Q2 = median, Q3 = 75th pct. <strong>Five-number summary</strong>: Min, Q1, Q2, Q3, Max.</li>
-<li><strong>IQR</strong> = Q3 − Q1. More outlier-robust than range/SD.</li>
-</ul>
-<h3>Week 4 — Association Between Two Variables</h3>
-<ul>
-<li><strong>Association ≠ causality</strong> — course only ever claims association.</li>
-<li><strong>Contingency table</strong>: rows/columns = category levels, cells = counts, margins = row/column totals. Preserve natural order for ordinal variables (don't let software alphabetize).</li>
-<li><strong>Row/column relative frequency</strong>: divide cell by its row (or column) total.</li>
-<li><strong>Rule</strong>: if relative frequencies are ~same across all rows → <strong>no association</strong>. If they differ noticeably → <strong>associated</strong>. (Row-wise and column-wise checks agree.)</li>
-<li><strong>Stacked bar chart</strong> (raw counts) vs. <strong>100% stacked bar chart</strong> (normalized proportions — best for comparing shares across groups).</li>
-<li><strong>Scatter plot</strong>: explanatory variable (x) vs. response variable (y). Describe using <strong>D-C-V-O</strong>: Direction, Curvature, Variation, Outliers. Course only quantifies <strong>linear</strong> association.</li>
-<li><strong>Covariance</strong>: Cov(x,y) = Σ(xᵢ−x̄)(yᵢ−ȳ)/(n−1) [sample] or /N [population]. Sign tells direction; magnitude hard to interpret (has mixed units).</li>
-<li><strong>Correlation (Pearson's r)</strong> = Cov(x,y)/(sₓ·sᵥ). Unitless, always in [−1, +1]. |r| near 1 → strong linear association; near 0 → weak/none. Sign = direction, doesn't depend on axis choice.</li>
-<li><strong>Best-fit line</strong>: y = mx + c. Sign of slope m = direction. <strong>R² = r²</strong> (proportion of variance explained); R² tells fit <em>strength</em>, not direction.</li>
-<li>
-<p><strong>Point bi-serial correlation</strong> (numerical variable X vs. <strong>dichotomous</strong> categorical Y, coded 0/1):
-  rpb = (Ȳ₀ − Ȳ₁)/sₓ × √(p₀p₁) — split by group, use group means and group proportions.</p>
-</li>
-<li>
-<p>⚠️ Sign flips if you swap which category is coded 0 vs 1 — only |rpb| indicates strength.</p>
-</li>
-<li>Line-fitting doesn't apply here (x only takes two values).</li>
-</ul>
-<hr />
-<h2>Part 3 — One-Page Formula Sheet</h2>
-<pre><code>Mean (sample):        x̄ = Σx / n
-Mean (grouped):        x̄ = Σ(f·x) / n   [exact, discrete]  or  Σ(f·midpoint) / n  [approx, continuous]
-Median:                n odd → ((n+1)/2)-th value; n even → avg of two middle values
-Sample variance:        s² = Σ(x − x̄)² / (n − 1)
-Population variance:    σ² = Σ(x − μ)² / N
-SD:                    s = √s²
-Percentile (manual):    n·p not integer → round up, take that rank; integer → avg that rank &amp; next
-IQR:                    Q3 − Q1  (Q1, Q3 via percentile method, p = 0.25, 0.75)
-Sample covariance:      Σ(x−x̄)(y−ȳ) / (n − 1)
-Correlation r:          Cov(x,y) / (sx · sy)      [always −1 ≤ r ≤ 1]
-R²:                    r²
-Point bi-serial:        rpb = (Ȳ0 − Ȳ1)/sx × √(p0·p1)
-Pie slice angle:        relative frequency × 360°
-
-Transform y = x + c:    mean/median/mode shift by c; variance &amp; SD UNCHANGED
-Transform y = c·x:      mean/median/mode scale by c; variance scales by c²; SD scales by c
-</code></pre>
-<hr />
-<h2>Part 4 — Curated Practice (aim: 60–90 min)</h2>
-<p>Papers are in your <code>PYQs</code> folder. Short codes used below:</p>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>File</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1</td>
-<td>2023_july_iit_m_foundation_an4_exam...</td>
-</tr>
-<tr>
-<td>P2</td>
-<td>2023_oct_iit_m_qualifier_exam_qpq2...</td>
-</tr>
-<tr>
-<td>P3</td>
-<td>2024_feb25_iit_m_an4_exam_qdf4... (1)</td>
-</tr>
-<tr>
-<td>P4</td>
-<td>2024_july07_iit_m_an_exam_qdf4...</td>
-</tr>
-<tr>
-<td>P5</td>
-<td>2024_oct27_iit_m_an_exam_qdd2...</td>
-</tr>
-<tr>
-<td>P6</td>
-<td>2025_feb23_iit_m_an_exam_qip4... (1)</td>
-</tr>
-<tr>
-<td>P7</td>
-<td>2025_jul13_iit_m_an_exam_qio4...</td>
-</tr>
-<tr>
-<td>P8</td>
-<td>2025_oct26_iit_m_an_exam_qim4...</td>
-</tr>
-<tr>
-<td>P9</td>
-<td>statistics1_15_mar_26... (most recent — closest in style to your exam)</td>
-</tr>
-</tbody>
-</table>
-<h3>A. Calculation problems — solve by hand, then check the answer key in that PDF</h3>
-<p>Fully self-contained (all numbers given in the question, no missing table/image needed). Do these first — together they cover mean/median/mode, transformations, variance/SD, percentiles/IQR, and correlation.</p>
-<ul>
-<li class="task"><strong>P1 Q6</strong> — mean/variance correction after a mis-recorded value; find corrected sample SD.</li>
-<li class="task"><strong>P1 Q14–16</strong> — t-shirt prices; Q1, Q3, outlier count.</li>
-<li class="task"><strong>P2 Q15</strong> — 5-value dataset; IQR.</li>
-<li class="task"><strong>P2 Q13</strong> — t-shirt sizes; effect of adding a value on median/mode.</li>
-<li class="task"><strong>P4 Q13–15</strong> — two students' marks related by a constant shift; mean and correlation.</li>
-<li class="task"><strong>P6 Q8</strong> — 6-value dataset; range, median, 25th percentile, IQR.</li>
-<li class="task"><strong>P6 Q10–11</strong> — snack prices; Q1, Q3, IQR.</li>
-<li class="task"><strong>P7 Q2</strong> — adding a 7th test score; effect on mean/median/mode.</li>
-<li class="task"><strong>P7 Q7</strong> — two small datasets; compare variability (range &amp; variance).</li>
-<li class="task"><strong>P7 Q8</strong> — solve for a missing value from the mean, then SD after a shift.</li>
-<li class="task"><strong>P7 Q9</strong> — test times; percentile cutoff for top 20%.</li>
-<li class="task"><strong>P8 Q12</strong> — mean &amp; population variance given; solve for two unknown values.</li>
-<li class="task"><strong>P9 Q12</strong> — 9-value dataset; IQR.</li>
-<li class="task"><strong>P9 Q15</strong> — 10-value dataset; median.</li>
-</ul>
-<h3>B. Conceptual pattern-recognition — flip to these in the PDFs (5–10 sec each, just check you'd pick the right option)</h3>
-<p>Go fast here — you already know the concepts from Part 2, this is just pattern-matching practice on how IITM phrases the traps.</p>
-<p><strong>Descriptive vs. inferential / population vs. sample</strong>:</p>
-<ul>
-<li class="task">P1 Q2</li>
-<li class="task">P2 Q3</li>
-<li class="task">P2 Q4</li>
-<li class="task">P3 Q6</li>
-<li class="task">P4 Q9</li>
-<li class="task">P5 Q2</li>
-<li class="task">P6 Q6</li>
-<li class="task">P7 Q3</li>
-<li class="task">P7 Q5</li>
-<li class="task">P8 Q6</li>
-<li class="task">P9 Q4</li>
-</ul>
-<p><strong>Scales of measurement / data types (nominal/ordinal/interval/ratio, discrete/continuous, cross-sectional/time-series)</strong>:</p>
-<ul>
-<li class="task">P1 Q3</li>
-<li class="task">P1 Q10</li>
-<li class="task">P1 Q11</li>
-<li class="task">P2 Q12</li>
-<li class="task">P3 Q7</li>
-<li class="task">P4 Q3</li>
-<li class="task">P4 Q8</li>
-<li class="task">P6 Q2</li>
-<li class="task">P6 Q5</li>
-<li class="task">P7 Q3</li>
-<li class="task">P7 Q4</li>
-<li class="task">P8 Q5</li>
-<li class="task">P8 Q7</li>
-<li class="task">P9 Q2</li>
-<li class="task">P9 Q5</li>
-</ul>
-<p><strong>Mode/median on categorical or small datasets (traps around "not defined")</strong>:</p>
-<ul>
-<li class="task">P1 Q4</li>
-<li class="task">P2 Q6</li>
-<li class="task">P2 Q13</li>
-<li class="task">P3 Q8</li>
-<li class="task">P3 Q9</li>
-<li class="task">P4 Q2</li>
-</ul>
-<p><strong>Contingency tables &amp; association (row/column relative frequency)</strong>:</p>
-<ul>
-<li class="task">P3 Q2</li>
-<li class="task">P3 Q10</li>
-<li class="task">P4 Q6</li>
-<li class="task">P4 Q7</li>
-<li class="task">P7 Q6</li>
-<li class="task">P9 Q7</li>
-<li class="task">P9 Q8</li>
-</ul>
-<p><strong>Covariance/correlation conceptual (sign, ranking scatter plots by r, unitless-ness)</strong>:</p>
-<ul>
-<li class="task">P1 Q12</li>
-<li class="task">P1 Q13</li>
-<li class="task">P4 Q10</li>
-<li class="task">P4 Q12</li>
-<li class="task">P9 Q6</li>
-<li class="task">P9 Q13</li>
-<li class="task">P9 Q16</li>
-</ul>
-<p><strong>Point bi-serial correlation</strong>:</p>
-<ul>
-<li class="task">P2 Q7</li>
-<li class="task">P2 Q8</li>
-<li class="task">P7 Q11</li>
-<li class="task">P9 Q6</li>
-</ul>
-<p><strong>Charts / area principle / Pareto / stacked bar (mostly Week 2, quick MCQs)</strong>:</p>
-<ul>
-<li class="task">P5 Q4</li>
-<li class="task">P5 Q14</li>
-<li class="task">P9 Q1</li>
-<li class="task">P9 Q3</li>
-</ul>
-<p><strong>Transformation-effect questions (add/multiply constant → mean/variance/SD)</strong>:</p>
-<ul>
-<li class="task">P2 Q9</li>
-<li class="task">P2 Q10</li>
-<li class="task">P6 Q14</li>
-<li class="task">P6 Q15</li>
-<li class="task">P7 Q10</li>
-</ul>
-<h3>Suggested order for your 1–2 hours</h3>
-<ol>
-<li>Skim Part 2 concept map once, top to bottom (~15–20 min).</li>
-<li>Do all 14 problems in Section A, then check each against the answer key at the end of its source PDF (~35–45 min).</li>
-<li>Blitz through Section B's pointer list in the actual PDFs — don't re-derive, just confirm you instantly see the right answer (~20–25 min).</li>
-<li>Re-read the transformation table and the scales-of-measurement bullets one more time right before the exam — these two are the highest-frequency "free marks" across all 9 papers.</li>
-</ol>
-<p>You've got this — the pattern across 9 papers is extremely consistent, and you now have it mapped end to end.</p>
-</div>
-</section>
-<section class="sheet s-stat1" id="stat1-mustknow">
-<div class="sheeth">
-<h2>📊 Stat 1</h2>
-<span class="kind">Must-know</span>
-<span class="sp"></span>
-<span class="src">notes/stat1-mustknow.md</span>
-<span class="blurb">The 8 traps - read this one last</span>
-</div>
-<div class="md">
-<h1>Stat 1 — Must-Know List (read this last, right before you walk in)</h1>
-<p>One screen. No new material, no derivations — just the things that show up in nearly every paper and are the most common places to lose an otherwise-easy mark.</p>
-<h2>Highest-probability topics (appear in 8-9 of 9 papers)</h2>
-<ol>
-<li>Descriptive vs. inferential + population vs. sample</li>
-<li>Scales of measurement (nominal/ordinal/interval/ratio) + data types</li>
-<li>Mean/median/mode + transformation effects (+c, ×c)</li>
-<li>Variance &amp; SD (population vs sample) + transformation effects</li>
-</ol>
-<h2>The 8 traps that cost the most marks (from every paper reviewed)</h2>
-<ol>
-<li><strong>Sample variance uses n−1, population variance uses n.</strong> Mixing these up is the single most common silent error.</li>
-<li><strong>Transformation rules</strong> — memorize cold:
-   - <code>+c</code>: mean/median/mode shift by c · variance &amp; SD <strong>unchanged</strong>
-   - <code>×c</code>: mean/median/mode scale by c · variance scales by <strong>c²</strong> · SD scales by <strong>c</strong> (not c²)</li>
-<li><strong>Percentile rule</strong>: sort → compute n·p → not integer = round <strong>up</strong>, take that rank → integer = average that rank and the next.</li>
-<li><strong>"Sample" ≠ automatically inferential.</strong> A study is only inferential if it generalizes BEYOND the sample to a larger population. Analyzing the sample itself = descriptive.</li>
-<li><strong>Interval vs ratio</strong>: the only question that matters is "does zero mean true absence, and are ratios meaningful?" (40°C isn't twice 20°C — no true zero → interval. 300 runs is twice 150 runs — true zero → ratio.)</li>
-<li><strong>Mode works on nominal data; median does NOT</strong> (median needs order, nominal has none). This nominal/ordinal swap is the most repeated wrong-option trap across every paper.</li>
-<li><strong>Mean is never valid for categorical data</strong> — only mode (any categorical) and median (ordinal only). "Mean, median, mode can all summarize a categorical variable" is a recurring false MSQ option.</li>
-<li><strong>y = x + c always gives correlation r = 1</strong> (or −1 for y = −x + c) — don't recompute, just recognize the shape.</li>
-</ol>
-<h2>Formula quick-hit</h2>
-<pre><code>Sample variance: s² = Σ(x−x̄)²/(n−1)         Population variance: σ² = Σ(x−μ)²/N
-SD = √variance
-IQR = Q3 − Q1                                 Outlier fences = Q1−1.5·IQR, Q3+1.5·IQR
-Correlation r = Cov(x,y)/(sx·sy)              R² = r²
-Point bi-serial: pairs ONE numeric + ONE binary (0/1) categorical variable — nothing else
-Pie slice angle = relative frequency × 360°
-</code></pre>
-<h2>Contingency table association — the one-line rule</h2>
-<p>Row (or column) relative frequencies <strong>similar across all rows</strong> → NOT associated. <strong>Different across rows</strong> → associated. Check either direction, they agree.</p>
-<h2>Last check before you open the exam</h2>
-<ul>
-<li>Read every option letter-by-letter — most wrong options are one flipped word away from correct (nominal↔ordinal, n↔n−1, Q1↔Q2, "at least"↔"at most").</li>
-<li>For SA questions with decimal tolerance, do the arithmetic once carefully rather than fast twice — most tolerance bands are narrow (±0.02 to ±0.05).</li>
-<li>If a question gives mean+variance instead of raw numbers, it wants you to work backward through Σx and Σx² — that's not a sign you're missing information.</li>
-</ul>
-<p>You know this. Go.</p>
-</div>
-</section>
 </div>
 <script>
 (function(){
   var b=document.getElementById("tPrint");
   if(b) b.addEventListener("click",function(){window.print();});
-  var d=new Date("2026-11-15T14:00:00"), n=new Date();
+  var d=new Date("2026-12-05T09:00:00"), n=new Date();
   var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");
-  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 1") : "Quiz day";
+  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 2") : "Quiz day";
 })();
 </script>
 </body>

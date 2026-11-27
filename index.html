@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz 1 Prep</title>
+<title>Quiz 2 Prep</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -20,11 +20,11 @@
 <a class="tab" href="python.html">Python</a>
 <a class="tab" href="notes.html">Notes</a>
 <div class="spacer"></div>
-<div class="daysleft" id="navDays">— days to Quiz 1</div>
+<div class="daysleft" id="navDays">— days to Quiz 2</div>
 </div></nav>
 <div class="wrap">
 <header class="mast">
-<p class="kicker">IITM BS &middot; Quiz 1 &middot; 15 Nov 2026 &middot; Stat 1 + Python &middot; archetype-based PYQ trainer</p>
+<p class="kicker">IITM BS &middot; Stat 1 Quiz 2 &middot; Sat 5 Dec 2026 &middot; weeks 1&ndash;9 &middot; archetype-based PYQ trainer</p>
 <h1 class="pagetitle">Learn the pattern, crush the rest</h1>
 <p class="lede">Every Stat 1 and Python PYQ, clustered into a small number of <strong>archetypes</strong> per week. Solve the flagged target question with help, internalise the trigger, then clear the <strong>must-solve</strong> set cold. Every question opens on its own page with the real question image and the answer hidden until you ask for it. This page tracks where you actually are and tells you what to do today &mdash; recalculated from the real date every time you open it.</p>
 <div class="statline" id="overallStats"></div>
@@ -52,17 +52,17 @@
   <span id="syncMsg" class="mono" style="margin-left:10px;color:var(--ink-3)"></span>
 </div>
 
-<footer>Countdown set to Quiz 1 (15 Nov 2026); "today's plan" recomputes from your device's real clock on every load.</footer>
+<footer>Countdown set to Stat 1 Quiz 2 (Sat 5 Dec 2026); "today's plan" recomputes from your device's real clock on every load.</footer>
 </div>
 
-<script src="assets/js/app.js?v=10"></script>
+<script src="assets/js/app.js?v=12"></script>
 <script>
 (async function () {
   var E = window.EndTerm;
   await E.load();
   var state = E.loadState();
   var dl = E.daysLeft();
-  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 1") : "Quiz 1 week";
+  document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 2") : "Quiz 2 week";
 
   var allData = {};
   await Promise.all(E.SUBJECTS.map(async function (sub) {

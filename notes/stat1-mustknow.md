@@ -1,41 +1,37 @@
-# Stat 1 — Must-Know List (read this last, right before you walk in)
+# Stat 1 Quiz 2 — Must-Know List (read this last, right before you walk in)
 
-One screen. No new material, no derivations — just the things that show up in nearly every paper and are the most common places to lose an otherwise-easy mark.
+One screen. No new material: just the patterns that carry the paper and the places where easy marks get lost.
 
-## Highest-probability topics (appear in 8-9 of 9 papers)
-1. Descriptive vs. inferential + population vs. sample
-2. Scales of measurement (nominal/ordinal/interval/ratio) + data types
-3. Mean/median/mode + transformation effects (+c, ×c)
-4. Variance & SD (population vs sample) + transformation effects
+## Where the marks are (weeks 5–9, 11 End Term papers)
+1. **Two-stage "pick a box, then a ball"** → total probability, then Bayes. The biggest single pattern.
+2. **Teams and committees** → nCr with include/exclude, or split into cases and add.
+3. **nCr ÷ nCr probability** → favourable draws ÷ all draws.
+4. **Independent events** → multiply; "at least one" = 1 − P(none).
+5. **CDF questions (if W9 is in scope)** → P(X = a) is the jump at a.
 
-## The 8 traps that cost the most marks (from every paper reviewed)
-1. **Sample variance uses n−1, population variance uses n.** Mixing these up is the single most common silent error.
-2. **Transformation rules** — memorize cold:
-   - `+c`: mean/median/mode shift by c · variance & SD **unchanged**
-   - `×c`: mean/median/mode scale by c · variance scales by **c²** · SD scales by **c** (not c²)
-3. **Percentile rule**: sort → compute n·p → not integer = round **up**, take that rank → integer = average that rank and the next.
-4. **"Sample" ≠ automatically inferential.** A study is only inferential if it generalizes BEYOND the sample to a larger population. Analyzing the sample itself = descriptive.
-5. **Interval vs ratio**: the only question that matters is "does zero mean true absence, and are ratios meaningful?" (40°C isn't twice 20°C — no true zero → interval. 300 runs is twice 150 runs — true zero → ratio.)
-6. **Mode works on nominal data; median does NOT** (median needs order, nominal has none). This nominal/ordinal swap is the most repeated wrong-option trap across every paper.
-7. **Mean is never valid for categorical data** — only mode (any categorical) and median (ordinal only). "Mean, median, mode can all summarize a categorical variable" is a recurring false MSQ option.
-8. **y = x + c always gives correlation r = 1** (or −1 for y = −x + c) — don't recompute, just recognize the shape.
+## The 8 traps that cost the most marks
+1. **P vs C:** roles, positions or prizes → P. Groups → C. "Captain and vice-captain" is P.
+2. **"At least one" = total − none.** Never "choose one, then choose the rest freely": it double counts.
+3. **Repeated letters:** divide by the factorial of **each** repeated letter's count.
+4. **Exclusive ≠ independent.** Exclusive means P(A∩B) = 0. Independent means P(A∩B) = P(A)P(B).
+5. **Conditional = shrink the total.** P(A | B) divides by P(B), not by 1, and not by P(A).
+6. **The Bayes denominator is the whole total-probability sum,** not just the branch you care about.
+7. **Without replacement:** update the counts after every draw. The draws are **not** independent.
+8. **CDF strictness:** P(X ≥ a) = 1 − F(a⁻), not 1 − F(a). P(X < a) = F(a⁻).
 
 ## Formula quick-hit
 ```
-Sample variance: s² = Σ(x−x̄)²/(n−1)         Population variance: σ² = Σ(x−μ)²/N
-SD = √variance
-IQR = Q3 − Q1                                 Outlier fences = Q1−1.5·IQR, Q3+1.5·IQR
-Correlation r = Cov(x,y)/(sx·sy)              R² = r²
-Point bi-serial: pairs ONE numeric + ONE binary (0/1) categorical variable — nothing else
-Pie slice angle = relative frequency × 360°
+nPr = n!/(n−r)!      nCr = nPr/r!      repeats: n!/(p!q!…)      together: glue × inside!
+P(A∪B) = P(A)+P(B)−P(A∩B)              P(A|B) = P(A∩B)/P(B)
+P(A) = Σ P(A|Bi)P(Bi)                  P(Bi|A) = P(A|Bi)P(Bi)/P(A)
+at least one (indep.) = 1 − Π(1 − pi)  exactly one of two = p1(1−p2) + (1−p1)p2
+Σ p(x) = 1    P(X=a) = F(a) − F(a⁻)    P(X>a) = 1 − F(a)
 ```
 
-## Contingency table association — the one-line rule
-Row (or column) relative frequencies **similar across all rows** → NOT associated. **Different across rows** → associated. Check either direction, they agree.
-
 ## Last check before you open the exam
-- Read every option letter-by-letter — most wrong options are one flipped word away from correct (nominal↔ordinal, n↔n−1, Q1↔Q2, "at least"↔"at most").
-- For SA questions with decimal tolerance, do the arithmetic once carefully rather than fast twice — most tolerance bands are narrow (±0.02 to ±0.05).
-- If a question gives mean+variance instead of raw numbers, it wants you to work backward through Σx and Σx² — that's not a sign you're missing information.
+- Draw the tree for every two-stage question, even an easy one. It takes 20 seconds and stops the most common slip.
+- For SA answers, keep 4 decimals while you work and round only at the end.
+- Read "with / without replacement", "at least / exactly / at most" and "given" in every stem before you touch a formula.
+- Weeks 1–4 can come back: n−1 for sample variance, and Q1/Q3 by the percentile rule.
 
-You know this. Go.
+You've done 60 on Quiz 1 with less. Go get the 80.

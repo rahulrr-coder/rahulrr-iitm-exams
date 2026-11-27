@@ -16,7 +16,7 @@
     var state = E.loadState();
     var data = await E.loadSubjectData(sub);
     var dl = E.daysLeft();
-    document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 1") : "Quiz 1 week";
+    document.getElementById("navDays").innerHTML = dl > 0 ? ("<b>" + dl + "</b> days to Quiz 2") : "Quiz 2 week";
 
     function renderStats() {
       var st = E.subjectStats(sub, data, state);

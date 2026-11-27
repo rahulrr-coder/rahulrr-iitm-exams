@@ -10,7 +10,7 @@
   var LEGACY_KEY = "endterm-app.v1";   // v1 stored everything under one key
   var MUST_SHARE = 0.6;                // ceiling on how much of an archetype is must-solve
 
-  var EXAM_DATE = null, STATE_KEY = null, EXAM = "", SUBJECTS = [];
+  var EXAM_DATE = null, STATE_KEY = null, CARRY_KEY = null, EXAM = "", SUBJECTS = [];
 
   async function load() {
     if (SUBJECTS.length) return EXAM;
@@ -18,6 +18,8 @@
     EXAM = m.exam;
     EXAM_DATE = new Date(m.examDate + "T00:00:00");
     STATE_KEY = "rahulrr-iitm-exams." + m.exam;
+    // the previous exam's ticks carry over until the first save under the new key
+    CARRY_KEY = m.carryFrom ? "rahulrr-iitm-exams." + m.carryFrom : null;
     SUBJECTS = m.subjects.map(function (s) {
       s.file = "data/" + s.key + ".json";
       s.archFile = "data/" + s.key + "_archetypes.json";
@@ -44,7 +46,7 @@
     var s;
     try {
       // fall back to the v1 key once, so existing progress carries over
-      s = JSON.parse(localStorage.getItem(STATE_KEY) || localStorage.getItem(LEGACY_KEY) || "{}");
+      s = JSON.parse(localStorage.getItem(STATE_KEY) || (CARRY_KEY && localStorage.getItem(CARRY_KEY)) || localStorage.getItem(LEGACY_KEY) || "{}");
     } catch (e) {
       s = {};
     }
@@ -362,9 +364,15 @@
          hours on whatever happens to be in W1; marks order spends them on the
          patterns that actually carry the paper. core.html is the full list. */
       var ranked = rankArchetypes(data).ranked;
-      var nextArch = null;
-      for (var i = 0; i < ranked.length; i++) {
-        if (!learned[ranked[i].id]) { nextArch = ranked[i]; break; }
+      // the manifest can name the weeks this exam is really about (Quiz 2 = new
+      // weeks only); pick from those first, then fall back to anything unlearned
+      var focus = sub.focusWeeks || null, nextArch = null;
+      for (var pass = focus ? 0 : 1; pass < 2 && !nextArch; pass++) {
+        for (var i = 0; i < ranked.length; i++) {
+          if (learned[ranked[i].id]) continue;
+          if (pass === 0 && focus.indexOf(ranked[i].week) < 0) continue;
+          nextArch = ranked[i]; break;
+        }
       }
       var pacing = stats.mustRemainingM > 0 ? stats.mustRemainingM : stats.remainingM;
       var dailyMarksTarget = dl > 0 ? Math.ceil(pacing / dl) : pacing;

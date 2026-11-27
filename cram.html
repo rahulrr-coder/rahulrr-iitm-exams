@@ -217,13 +217,13 @@ body.gapsonly .lesson>:not(.recap){display:none}
 <a class="tab" href="stat1.html">Stat 1</a>
 <a class="tab" href="python.html">Python</a>
 <a class="tab" href="notes.html">Notes</a>
-<div class="daysleft" id="navDays">&mdash; days to Quiz 1</div>
+<div class="daysleft" id="navDays">&mdash; days to Quiz 2</div>
 </div></nav>
 
 <div class="wrap cram">
 <header class="cramhead">
-<h1>Quiz 1 Cram Sheet</h1>
-<p class="lede">Weeks 1&ndash;4 of Stat 1 and Python for Sun 15 Nov 2026, written to be learned from start to finish. Each week opens with an overview, teaches every concept with a worked example, then gives a recap, the traps, practice problems, and the past-paper patterns built from every Quiz 1 and End Term PYQ since 2023.</p>
+<h1>Quiz 2 Cram Sheet</h1>
+<p class="lede">Stat 1 Quiz 2 on Sat 5 Dec 2026. <b>Weeks 5&ndash;8 are new:</b> counting, permutations and combinations, probability, and conditional probability with Bayes. W9 (random variables) is included in case the syllabus lists it. Weeks 1&ndash;4 stay as review, and the Python weeks 1&ndash;4 stay for OPPE 2. Each week opens with an overview, teaches each concept with a worked example, then gives a recap, the traps, practice problems, and the past-paper patterns from every End Term PYQ since 2022.</p>
 <div class="howto"><b>How to use it (1&ndash;2 hours).</b> Per week: read the overview, then each numbered concept and its worked example. Do the practice problems <b>on paper</b> before opening the answers. Night before the exam, read only the recaps and traps. In the past-paper rows, <b>&check;</b> is a pattern you have ticked and <b>&times;</b> is a gap; <b>Gaps only</b> strips the sheet down to recaps and unticked patterns.</div>
 </header>
 <div class="cramctl">
@@ -240,8 +240,8 @@ body.gapsonly .lesson>:not(.recap){display:none}
 <section class="sub s-stat1" id="s-stat1">
 <div class="subband">
 <h2>📊 Stat 1</h2>
-<span class="slot">Quiz 1 · wk 1–4</span>
-<span class="cov">34 questions &middot; 14 archetypes</span>
+<span class="slot">Quiz 2 · wk 5–8 (+ 1–4, 9)</span>
+<span class="cov">92 questions &middot; 40 archetypes</span>
 </div>
 <div class="wk" id="w-stat1-1">
 <div class="wkh">
@@ -420,6 +420,281 @@ body.gapsonly .lesson>:not(.recap){display:none}
 <span class="at">Read and reason from a contingency table</span>
 <div class="meta"><span class="am">3 marks</span><span class="am">2 Q</span></div>
 <p class="ab">Locate the row/column intersection for the stated categories, use row/column/grand totals to back out any unknown cell via subtraction, then form the requested proportion (part/relevant total).</p>
+</div>
+</div></div>
+<div class="wk" id="w-stat1-5">
+<div class="wkh">
+<span class="wn">W5</span>
+<h3>Counting basics</h3>
+<span class="wm">0/1 learned &middot; 7 marks</span>
+</div>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 5 starts the probability half of the course with <b>counting</b>: how many ways something can happen. Every probability in weeks 7&ndash;9 is a count divided by a count, so this is the foundation.</p><p>On the paper it shows up as short numeric answers: digit problems, grades per subject, outfits. Two rules do almost all of the work.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Use the multiplication rule for a sequence of choices</li><li>Use the addition rule for disjoint cases</li><li>Handle leading-digit and no-repeat restrictions</li><li>Work with factorials, including 0! = 1</li></ul><p class="time">About 6 min to read &middot; 3 practice problems</p></div>
+<section class="cn" id="w-stat1-5-c1"><h4><span class="cnum">5.1</span>Multiplication and addition rules</h4><div class="cbody two"><div class="prose"><p><b>Multiplication rule:</b> if a task is a sequence of k steps with n&#8321;, n&#8322;, &hellip; n&#8342; choices each, there are n&#8321;&middot;n&#8322;&middot;&hellip;&middot;n&#8342; ways in total.</p><p><b>Addition rule:</b> if the outcomes split into <b>disjoint cases</b> (no outcome in two cases), add the counts of the cases.</p><p>Ask yourself: <i>&ldquo;and then&rdquo;</i> &rarr; multiply; <i>&ldquo;or else&rdquo;</i> &rarr; add.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>4 subjects, each passed with one of 6 grades (S, A, B, C, D, E): 6&times;6&times;6&times;6 = <b>1296</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-5-c2"><h4><span class="cnum">5.2</span>Digit problems</h4><div class="cbody two"><div class="prose"><p>Fill the places one at a time and count the allowed digits for each. The <b>leading digit can't be 0</b>. Start with the most restricted place.</p><ul><li>No repeats allowed &rarr; each later place has one fewer option.</li><li>&ldquo;Even number&rdquo; &rarr; fix the units digit first.</li><li>&ldquo;At least one 4&rdquo; &rarr; total &minus; numbers with no 4.</li></ul></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>3-digit numbers with no 4: hundreds 8 (not 0 or 4) &times; tens 9 &times; units 9 = <b>648</b>.<br>So 900 &minus; 648 = 252 contain at least one 4.</p></div></div></div></section>
+<section class="cn" id="w-stat1-5-c3"><h4><span class="cnum">5.3</span>Factorials</h4><div class="cbody"><div class="prose"><p>n! = n&middot;(n&minus;1)&middot;&hellip;&middot;2&middot;1 counts the ways to arrange n distinct objects in a row. <b>0! = 1</b> by definition. Simplify ratios before multiplying out: 10!/8! = 10&middot;9 = 90.</p></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li><b>And then</b> &rarr; multiply &middot; <b>or else</b> &rarr; add</li><li>Leading digit &ne; 0; fill the most restricted place first</li><li>At least one = total &minus; none</li><li>n! arranges n distinct objects; 0! = 1</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li>Forgetting the leading-digit-not-zero rule (900 three-digit numbers, not 1000).</li><li>Using repeats when the question says <b>distinct</b> digits.</li><li>Adding cases that overlap: the cases must be disjoint.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>How many 4-digit numbers have all digits distinct?</div><details><summary>Show answer</summary><div class="ans">9 &times; 9 &times; 8 &times; 7 = <b>4536</b> (first digit 1&ndash;9; then 9 left including 0, then 8, then 7).</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>A menu has 3 starters, 5 mains and 2 desserts. How many 3-course meals? How many meals of a main plus <i>either</i> a starter or a dessert?</div><details><summary>Show answer</summary><div class="ans">3&times;5&times;2 = <b>30</b>. Main &times; (starter or dessert) = 5 &times; (3 + 2) = <b>25</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>How many 3-digit numbers contain at least one 7?</div><details><summary>Show answer</summary><div class="ans">900 &minus; 8&middot;9&middot;9 = 900 &minus; 648 = <b>252</b>.</div></details></div></div></div>
+</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
+<div class="arows">
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W5-A1">W5-A1</a>
+<span class="at">Multiplication rule: independent choices per slot</span>
+<div class="meta"><span class="am">7 marks</span><span class="am">2 Q</span></div>
+<p class="ab">When a count is built from a sequence of independent slots/positions each with their own number of choices (grades per subject, digits per place with a restriction), multiply the number of choices for each slot together; for digit-restriction problems, count allowed digits per place separately (watch leading-digit restrictions) before multiplying.</p>
+</div>
+</div></div>
+<div class="wk" id="w-stat1-6">
+<div class="wkh">
+<span class="wn">W6</span>
+<h3>Permutations &amp; combinations</h3>
+<span class="wm">0/5 learned &middot; 37 marks</span>
+</div>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 6 is the heaviest counting week on the paper (13 questions, 37 marks across the end terms). The whole week is about one question: <b>does order matter?</b> Yes &rarr; permutation. No &rarr; combination.</p><p>Exam questions are teams with must-include/must-exclude people, words with repeated letters, people who must sit together or apart, and MSQs on the identities.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Choose between nPr and nCr from the wording</li><li>Count arrangements with repeated letters</li><li>Handle together/apart restrictions</li><li>Solve nPr = k type equations and check the identities</li></ul><p class="time">About 12 min to read &middot; 4 practice problems</p></div>
+<section class="cn" id="w-stat1-6-c1"><h4><span class="cnum">6.1</span>Permutations: order matters</h4><div class="cbody two"><div class="prose"><p>Arranging r of n distinct objects in order: <b>nPr = n!/(n&minus;r)!</b>. Cue words: <i>arrange, rank, positions, captain and vice-captain, 1st/2nd/3rd prize, PIN, password</i>.</p><p>Around a circle the rotations are the same arrangement, so n people sit in <b>(n&minus;1)!</b> ways.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Captain and vice-captain can be filled in 42 ways: n(n&minus;1) = 42 &rArr; <b>n = 7</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-6-c2"><h4><span class="cnum">6.2</span>Combinations: order doesn't matter</h4><div class="cbody two"><div class="prose"><p>Choosing r of n: <b>nCr = n!/(r!(n&minus;r)!) = nPr / r!</b>. Cue words: <i>select, team, committee, group, handshakes, subset</i>.</p><ul><li><b>Must include</b> k given people &rarr; fix them and choose the rest from the others: C(n&minus;k, r&minus;k).</li><li><b>Must exclude</b> k people &rarr; C(n&minus;k, r).</li><li><b>At least one</b> &rarr; total &minus; none, or add the disjoint &ldquo;exactly&rdquo; cases.</li><li><b>Two pools</b> (men/women) &rarr; multiply within a case, add across cases.</li></ul></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Team of 4 from 8, two given people compulsory: C(6,2) = <b>15</b>.<br>20 men and 10 women shake hands only within gender: C(20,2) + C(10,2) = 190 + 45 = <b>235</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-6-c3"><h4><span class="cnum">6.3</span>Repeated letters</h4><div class="cbody two"><div class="prose"><p>n objects where one kind repeats p times, another q times, &hellip;: <b>n!/(p!&middot;q!&middot;&hellip;)</b>. Count the letters carefully: write each letter with its frequency.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>COMMITTEE: 9 letters, M&times;2, T&times;2, E&times;2 &rarr; 9!/(2!2!2!) = <b>45360</b>.<br>ARRANGEMENT: 11 letters, A, R, N, E twice each &rarr; 11!/(2!)&#8308; = <b>2494800</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-6-c4"><h4><span class="cnum">6.4</span>Together and apart</h4><div class="cbody two"><div class="prose"><p><b>Together:</b> glue the group into one block. Arrange the blocks, then multiply by the arrangements inside the block.</p><p><b>Apart:</b> total &minus; together. Or, for &ldquo;no two of these adjacent&rdquo;, arrange the others and put the restricted items into the gaps.</p><p><b>Dictionary rank:</b> go left to right. At each position, count the unused letters smaller than the actual letter &times; (letters left)!. Add these up, then add 1.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>LEADING, vowels E, A, I together: 5 units &rarr; 5!&middot;3! = <b>720</b>.<br>7 in a row, A&amp;B together, D&amp;E apart: 6!&middot;2 &minus; 5!&middot;2&middot;2 = 1440 &minus; 480 = <b>960</b>.<br>Rank of SACHIN = <b>601</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-6-c5"><h4><span class="cnum">6.5</span>Identities the MSQs test</h4><div class="cbody"><div class="prose"><ul><li>nPr = nCr &middot; r! &nbsp;(so nPr/nCr = r!) &#10004;</li><li>nCr = nC(n&minus;r) &#10004; &nbsp;&middot;&nbsp; nC0 = nCn = 1 &#10004;</li><li>nCr + nC(r&minus;1) = (n+1)Cr &#10004;</li><li>&ldquo;nPr = nCr / r!&rdquo; &#10008; &nbsp;&middot;&nbsp; &ldquo;permutations ignore order&rdquo; &#10008;</li></ul><p>For an unknown n (e.g. n&#8319; &minus; n! = 21), test small values: n = 3 gives 27 &minus; 6 = 21.</p></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li>Order matters &rarr; nPr; it doesn't &rarr; nCr = nPr/r!</li><li>Include k &rarr; C(n&minus;k, r&minus;k); exclude k &rarr; C(n&minus;k, r)</li><li>Repeats &rarr; n!/(p!q!&hellip;)</li><li>Together &rarr; glue &times; inside!; apart &rarr; total &minus; together</li><li>Circle &rarr; (n&minus;1)!</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li><b>&ldquo;At least one&rdquo; by picking one and then choosing freely</b> double counts. Use total &minus; none.</li><li>Missing a repeated letter (ARRANGEMENT has four repeated pairs).</li><li>Forgetting the internal arrangement of a glued block (&times; k!).</li><li>Using P for a committee or C for officer roles.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>From 6 men and 4 women, how many committees of 5 have at least 2 women?</div><details><summary>Show answer</summary><div class="ans">Total C(10,5) = 252. Subtract 0 women: C(6,5) = 6, and 1 woman: C(4,1)C(6,4) = 60. 252 &minus; 66 = <b>186</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>How many arrangements of BANANA?</div><details><summary>Show answer</summary><div class="ans">6!/(3!&middot;2!) = 720/12 = <b>60</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>5 boys and 3 girls in a row so that no two girls are adjacent?</div><details><summary>Show answer</summary><div class="ans">Arrange the boys: 5! = 120. There are 6 gaps; place the 3 girls: 6P3 = 120. 120 &times; 120 = <b>14400</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>If nC2 = 28, find n and nP2.</div><details><summary>Show answer</summary><div class="ans">n(n&minus;1)/2 = 28 &rArr; n = <b>8</b>; 8P2 = <b>56</b>.</div></details></div></div></div>
+</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
+<div class="arows">
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W6-A2">W6-A2</a>
+<span class="at">Combinations with include/exclude/case-split constraints</span>
+<div class="meta"><span class="am">11 marks</span><span class="am">4 Q</span></div>
+<p class="ab">When selecting a subgroup with &#x27;at least one of X&#x27;, &#x27;must include X&#x27;, &#x27;must exclude X&#x27;, or choosing from two separate pools (e.g. men and women), fix the required/excluded elements first and choose the rest with nCr, or split into disjoint cases and add the counts (addition principle).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W6-A1">W6-A1</a>
+<span class="at">Solve nPr/nCr equations and identities</span>
+<div class="meta"><span class="am">10 marks</span><span class="am">4 Q</span></div>
+<p class="ab">When the problem gives an equation in nPr, nCr, or n! (e.g., nPr=42, n^n-n!=21) or asks which formula identity holds, write nPr=n!/(n-r)!, nCr=n!/(r!(n-r)!), and nCr=nPr/r!, then solve algebraically or test each identity directly by substitution.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W6-A3">W6-A3</a>
+<span class="at">Permutations of a word with repeated letters</span>
+<div class="meta"><span class="am">6 marks</span><span class="am">2 Q</span></div>
+<p class="ab">Count the total letters n and the frequency of each repeated letter (p, q, r, ...), then divide n! by the product of the factorials of the repeat counts: n!/(p!q!r!...).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W6-A5">W6-A5</a>
+<span class="at">Arrangements with together/apart positional restrictions</span>
+<div class="meta"><span class="am">6 marks</span><span class="am">2 Q</span></div>
+<p class="ab">For items that must stay together, glue them into a single block, permute the block internally, then permute the block along with the remaining items; for items that must NOT be adjacent, first arrange the unrestricted items, then place the restricted items into the gaps between them.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W6-A4">W6-A4</a>
+<span class="at">Rank of a word in dictionary order</span>
+<div class="meta"><span class="am">4 marks</span><span class="am">1 Q</span></div>
+<p class="ab">Sort the word&#x27;s distinct letters alphabetically; for each position (left to right) count how many still-unused letters smaller than the actual letter could go there, multiply that count by the permutations of the remaining letters (adjusting for repeats), sum these contributions across all positions, and add 1 for the word itself.</p>
+</div>
+</div></div>
+<div class="wk" id="w-stat1-7">
+<div class="wkh">
+<span class="wn">W7</span>
+<h3>Probability</h3>
+<span class="wm">0/6 learned &middot; 21 marks</span>
+</div>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 7 turns counts into <b>probabilities</b>: sample spaces, events, the axioms, and the addition rule. With equally likely outcomes, P(E) is just favourable &divide; total, and both counts usually come from week 6.</p><p>The paper asks for unions of categories, &ldquo;all the same colour&rdquo; draws, and small experiments you can list by hand.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Write a sample space and the events in it</li><li>Compute equally-likely probabilities with nCr</li><li>Use the addition rule and complements</li><li>Tell mutually exclusive events from independent ones</li></ul><p class="time">About 8 min to read &middot; 3 practice problems</p></div>
+<section class="cn" id="w-stat1-7-c1"><h4><span class="cnum">7.1</span>Sample spaces and events</h4><div class="cbody two"><div class="prose"><p>The <b>sample space</b> S lists every outcome. An <b>event</b> is a subset of it. With 2&ndash;3 coins or a 3-child family, <b>write S out</b> (8 outcomes for 3 tosses); don't reach for a formula.</p><p>Events are combined with &cup; (or), &cap; (and) and complement A&#7580; (not).</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Toss a coin until two in a row match. The game stops on toss 3 for HTT and THH only &rarr; 2/8 = <b>0.25</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-7-c2"><h4><span class="cnum">7.2</span>Equally likely outcomes</h4><div class="cbody two"><div class="prose"><p><b>P(E) = |E| / |S|</b>. For draws of several items, count both with combinations: P = C(favourable)&middot;C(rest) / C(total).</p><p>&ldquo;All the same colour&rdquo; = all red <b>or</b> all blue: add the two counts.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>4 red, 5 blue, draw 3. P(all same) = (C(4,3) + C(5,3)) / C(9,3) = (4 + 10)/84 = <b>0.167</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-7-c3"><h4><span class="cnum">7.3</span>Axioms and the addition rule</h4><div class="cbody two"><div class="prose"><p>0 &le; P(A) &le; 1, P(S) = 1, and P(A&#7580;) = 1 &minus; P(A).</p><p><b>P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B).</b> If A and B are <b>mutually exclusive</b> (they can't both happen), the overlap is 0 and you just add.</p><p>For three events: P(A&cup;B&cup;C) = &Sigma;P &minus; &Sigma;(pairwise &cap;) + P(A&cap;B&cap;C).</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Everyone is exactly one of F, D, Deg. P(F or D) = 0.8 and P(D or Deg) = 0.6. Adding: F + 2D + Deg = 1.4, and F + D + Deg = 1, so <b>P(D) = 0.4</b>.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li>P(E) = favourable / total; count draws with nCr</li><li>Complement: P(not A) = 1 &minus; P(A)</li><li>Union = sum &minus; overlap; exclusive &rarr; overlap 0</li><li>Small experiment &rarr; list the sample space</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li>Adding P(A) + P(B) when the events overlap.</li><li><b>Exclusive is not independent.</b> Two exclusive events with P &gt; 0 are dependent.</li><li>Counting ordered outcomes on top and unordered ones on the bottom. Be consistent.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>A box has 10 red, 8 blue and 12 green balls. One is drawn. P(red or green)?</div><details><summary>Show answer</summary><div class="ans">(10 + 12)/30 = <b>0.733</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>P(A) = 0.5, P(B) = 0.4, P(A &cup; B) = 0.7. Find P(A &cap; B) and P(neither).</div><details><summary>Show answer</summary><div class="ans">0.5 + 0.4 &minus; 0.7 = <b>0.2</b>; neither = 1 &minus; 0.7 = <b>0.3</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>A team of 5 is chosen from 6 boys and 4 girls. P(exactly 3 girls)?</div><details><summary>Show answer</summary><div class="ans">C(4,3)C(6,2)/C(10,5) = 4&middot;15/252 = <b>0.238</b>.</div></details></div></div></div>
+</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
+<div class="arows">
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A2">W7-A2</a>
+<span class="at">Combinations for equally-likely counting probability</span>
+<div class="meta"><span class="am">7 marks</span><span class="am">2 Q</span></div>
+<p class="ab">When a fixed-size sample is drawn from a group with subtypes (e.g. draw k items from a pool, or pick a team), compute P = C(favorable subgroup, chosen)/C(total, chosen), summing numerator terms if &#x27;favorable&#x27; covers multiple disjoint subgroup splits (e.g. &#x27;all same colour&#x27; = all-red + all-blue).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A3">W7-A3</a>
+<span class="at">Addition rule for union of mutually exclusive/simple events</span>
+<div class="meta"><span class="am">5 marks</span><span class="am">2 Q</span></div>
+<p class="ab">For &#x27;P(A or B)&#x27; with categories that can&#x27;t overlap (or overlap is given as zero), just add P(A)+P(B); recognize the cue words &#x27;either...or&#x27; / listed disjoint categories as the trigger for direct addition, no subtraction term needed.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A4">W7-A4</a>
+<span class="at">Solve for unknown probability using union equations</span>
+<div class="meta"><span class="am">3 marks</span><span class="am">1 Q</span></div>
+<p class="ab">When given multiple P(X or Y) values sharing a common unknown category, write each as an addition-rule equation (P(A∪B)=P(A)+P(B) when exclusive, or use total-probability/complement identities), then solve the resulting system algebraically for the unknown term.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A1">W7-A1</a>
+<span class="at">List sample space to identify favorable outcomes</span>
+<div class="meta"><span class="am">2 marks</span><span class="am">1 Q</span></div>
+<p class="ab">When the experiment has a small finite number of outcomes (e.g. a family of 3 children, coin/die combos), write out the full sample space explicitly and count the outcomes matching the event condition rather than reaching for a formula.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A5">W7-A5</a>
+<span class="at">Joint probability from a two-way contingency table</span>
+<div class="meta"><span class="am">2 marks</span><span class="am">1 Q</span></div>
+<p class="ab">When probabilities are organized in a table crossing two attributes (e.g. disease status x test result), read the single cell corresponding to the AND condition directly (or divide the relevant cell by the table total) rather than combining marginal probabilities.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W7-A6">W7-A6</a>
+<span class="at">Sequential/conditional probability of an outcome pattern</span>
+<div class="meta"><span class="am">2 marks</span><span class="am">1 Q</span></div>
+<p class="ab">When the question describes a process that stops on a pattern (e.g. repeated tosses until two consecutive matches), enumerate the toss-by-toss sequences that satisfy the stopping condition at exactly the given step, multiplying per-step probabilities (independence) for each valid path and summing over paths.</p>
+</div>
+</div></div>
+<div class="wk" id="w-stat1-8">
+<div class="wkh">
+<span class="wn">W8</span>
+<h3>Conditional probability &amp; Bayes</h3>
+<span class="wm">0/5 learned &middot; 42 marks</span>
+</div>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 8 is the <b>highest-scoring probability week</b> (14 questions, 42 marks across the end terms), and one pattern dominates it: <b>pick a box, then pick a ball</b>. That is the law of total probability, and reversing the question is Bayes' rule.</p><p>The questions never say &ldquo;Bayes&rdquo;. They describe two bags, two machines, a fair and a biased coin, or a diagnostic test.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Compute P(A | B) from a definition, a table or a PMF</li><li>Test independence and use it for &ldquo;at least one&rdquo;</li><li>Draw a probability tree and apply the law of total probability</li><li>Reverse the tree with Bayes' rule</li></ul><p class="time">About 12 min to read &middot; 4 practice problems</p></div>
+<section class="cn" id="w-stat1-8-c1"><h4><span class="cnum">8.1</span>Conditional probability</h4><div class="cbody two"><div class="prose"><p><b>P(A | B) = P(A &cap; B) / P(B)</b>. &ldquo;Given B&rdquo; means B is your new total.</p><ul><li><b>From a table:</b> take the row (or column) of the condition and divide the cell by that row's total.</li><li><b>From a PMF:</b> sum the values in both events, then divide by the sum over the given event.</li></ul><p><b>Multiplication rule:</b> P(A &cap; B) = P(B)&middot;P(A | B). Use it for draws without replacement, updating the counts each time.</p></div><div class="side"><div class="fx"><span class="lbl">Formula</span><p>P(A|B) = P(A&cap;B) / P(B)<br>P(A&cap;B) = P(A)&middot;P(B|A)</p></div></div></div></section>
+<section class="cn" id="w-stat1-8-c2"><h4><span class="cnum">8.2</span>Independence</h4><div class="cbody two"><div class="prose"><p>A and B are <b>independent</b> if P(A &cap; B) = P(A)&middot;P(B), or equivalently P(A | B) = P(A).</p><ul><li>At least one of several independent events: <b>1 &minus; &Pi;(1 &minus; p&#7522;)</b>.</li><li>Exactly one of two: p&#8321;(1 &minus; p&#8322;) + (1 &minus; p&#8321;)p&#8322;.</li><li>Draws <b>without replacement</b> are not independent. Check by comparing P(A&cap;B) with P(A)P(B).</li></ul></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Forecasters are right with probability 4/7 and 2/3, independently. P(they contradict) = (4/7)(1/3) + (3/7)(2/3) = 10/21 = <b>0.48</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-8-c3"><h4><span class="cnum">8.3</span>Law of total probability</h4><div class="cbody two"><div class="prose"><p>If B&#8321;, &hellip;, B&#8342; split the sample space (boxes, machines, groups) then</p><p style='text-align:center;font-size:18px'><b>P(A) = &Sigma; P(A | B&#7522;)&middot;P(B&#7522;)</b></p><p>Draw a tree: the first branches are the B&#7522; with their priors, the second branches are A within each. Multiply along each path to A and add the paths.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>A coin is chosen at random: fair, or P(H) = 3/4.<br>P(H) = &frac12;&middot;&frac12; + &frac12;&middot;&frac34; = <b>0.625</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-8-c4"><h4><span class="cnum">8.4</span>Bayes' rule</h4><div class="cbody two"><div class="prose"><p>Reverse the tree: &ldquo;given A happened, which branch did it come from?&rdquo;</p><p style='text-align:center;font-size:18px'><b>P(B&#7522; | A) = P(A | B&#7522;)&middot;P(B&#7522;) / P(A)</b></p><p>The numerator is one path. The denominator is <b>all</b> paths to A, which is the total-probability sum you just computed.</p><p><b>Diagnostic tests:</b> P(D | +) = P(+|D)P(D) / [P(+|D)P(D) + P(+|D&#7580;)P(D&#7580;)]. For rare diseases this is small, even when the test is good.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>Same coins. Given heads, P(fair) = 0.25/0.625 = <b>0.4</b>.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li>P(A|B) = P(A&cap;B)/P(B): the condition is the new total</li><li>Independent &rArr; multiply; at least one = 1 &minus; &Pi;(1 &minus; p)</li><li>Two-stage question &rarr; tree &rarr; total probability</li><li>&ldquo;Given the result, which source?&rdquo; &rarr; Bayes = one path / all paths</li><li>Without replacement &rArr; dependent; update the counts</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li>Dividing by P(A) instead of P(B) in P(A | B).</li><li>Using only one branch in the Bayes denominator.</li><li>Treating draws without replacement as independent.</li><li>Confusing P(+ | D), which the question gives you, with P(D | +), which it asks for.</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>Bag A (chosen w.p. 1/3) has 3 red and 2 blue; bag B (w.p. 2/3) has 1 red and 4 blue. A ball is drawn. P(red)? Given red, P(bag A)?</div><details><summary>Show answer</summary><div class="ans">P(R) = (1/3)(3/5) + (2/3)(1/5) = 3/15 + 2/15 = <b>1/3</b>. P(A | R) = (3/15)/(5/15) = <b>0.6</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>1% of people have a disease. The test detects it 95% of the time and gives a false positive 5% of the time. P(disease | positive)?</div><details><summary>Show answer</summary><div class="ans">0.0095 / (0.0095 + 0.0495) = <b>0.161</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>Three students solve a problem independently with probabilities 1/2, 1/3, 1/4. P(at least one solves it)?</div><details><summary>Show answer</summary><div class="ans">1 &minus; (1/2)(2/3)(3/4) = 1 &minus; 1/4 = <b>0.75</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q4</span>Two cards are drawn without replacement from a standard deck. P(both aces)? Are &ldquo;first ace&rdquo; and &ldquo;second ace&rdquo; independent?</div><details><summary>Show answer</summary><div class="ans">(4/52)(3/51) = <b>0.0045</b>. Not independent: P(2nd ace | 1st ace) = 3/51 &ne; 4/52.</div></details></div></div></div>
+</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
+<div class="arows">
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W8-A4">W8-A4</a>
+<span class="at">Law of total probability and Bayes&#x27; theorem over a partition</span>
+<div class="meta"><span class="am">18 marks</span><span class="am">6 Q</span></div>
+<p class="ab">Identify the partition of the sample space (boxes, coins, bags, student groups) with known prior probabilities and known conditional probabilities of the event within each branch; compute P(event) = sum of P(event|partition_i)*P(partition_i) via a probability tree, and for a posterior question (&#x27;given the event happened, probability it came from partition_i&#x27;) divide P(event|partition_i)*P(partition_i) by that same total -- the total-probability sum IS the Bayes denominator.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W8-A5">W8-A5</a>
+<span class="at">Without-replacement draws: joint/conditional probability and independence (hypergeometric)</span>
+<div class="meta"><span class="am">7 marks</span><span class="am">2 Q</span></div>
+<p class="ab">When items are drawn sequentially without replacement, multiply successive conditional probabilities while updating the counts after each draw (or use the hypergeometric formula C(k,x)*C(N-k,n-x)/C(N,n) for an exact count); to test independence, compute P(A cap B) this way and compare it to P(A)*P(B) -- without replacement they are almost never equal.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W8-A2">W8-A2</a>
+<span class="at">Conditional probability from a two-way contingency table</span>
+<div class="meta"><span class="am">6 marks</span><span class="am">2 Q</span></div>
+<p class="ab">When data is laid out as a two-way frequency/contingency table, restrict attention to the row or column matching the given condition, then divide the count (or probability) in the target cell by the row/column total -- read the answer straight off the table instead of building a probability tree.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W8-A3">W8-A3</a>
+<span class="at">Independent events: complement and at-least-one/exactly-one rules</span>
+<div class="meta"><span class="am">6 marks</span><span class="am">2 Q</span></div>
+<p class="ab">Recognize independence lets you multiply marginal probabilities directly: use P(at least one occurs) = 1 - product of (1 - P(i)) for independent successes, and for &#x27;exactly one happens / they contradict&#x27; outcomes sum P(A)(1-P(B)) + (1-P(A))P(B) -- never subtract an overlap term since events are independent, not disjoint.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W8-A1">W8-A1</a>
+<span class="at">Conditional probability directly from a PMF</span>
+<div class="meta"><span class="am">5 marks</span><span class="am">2 Q</span></div>
+<p class="ab">When given P(X=x) values or a PMF, compute P(A|B) = P(A cap B)/P(B) by summing PMF values that satisfy both conditions and dividing by the sum of PMF values satisfying the given condition -- no Bayes formula needed, just the definition applied to the distribution.</p>
+</div>
+</div></div>
+<div class="wk" id="w-stat1-9">
+<div class="wkh">
+<span class="wn">W9</span>
+<h3>Random variables, PMF &amp; CDF</h3>
+<span class="wm">0/9 learned &middot; 50 marks</span>
+</div>
+<div class="lesson">
+<div class="ov"><h4>Week overview</h4><p>Week 9 (lectures 8.x) attaches a <b>number</b> to each outcome: a random variable X. Its <b>PMF</b> gives P(X = x) and its <b>CDF</b> gives P(X &le; x). <b>Check the portal's Quiz 2 syllabus</b> before studying this week; it may only be in the End Term.</p><p>If it is in scope, it is quick marks: the support of X, a PMF by counting, an unknown constant, and reading values off a step CDF.</p><p class="goal"><b>After this week you can:</b></p><ul><li>Classify a random variable as discrete or continuous and list its support</li><li>Build a PMF by counting and find an unknown constant</li><li>Move between a PMF and a step CDF</li><li>Compute tail and conditional probabilities from a CDF</li></ul><p class="time">About 8 min to read &middot; 3 practice problems</p></div>
+<section class="cn" id="w-stat1-9-c1"><h4><span class="cnum">9.1</span>Random variables and their support</h4><div class="cbody two"><div class="prose"><p>A <b>discrete</b> random variable takes countable values (a number of heads, a count of defects). A <b>continuous</b> one takes any value in an interval (time, height).</p><p>When drawing n items from g good and b bad, X = number of good runs from <b>max(0, n &minus; b)</b> to <b>min(n, g)</b>.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>10 white, 3 black, draw 4. X = whites &isin; <b>{1, 2, 3, 4}</b>: at most 3 of the 4 can be black.</p></div></div></div></section>
+<section class="cn" id="w-stat1-9-c2"><h4><span class="cnum">9.2</span>PMF</h4><div class="cbody two"><div class="prose"><p>p(x) = P(X = x), with p(x) &ge; 0 and <b>&Sigma; p(x) = 1</b>. The second rule finds unknown constants.</p><p>By counting (without replacement): <b>P(X = k) = C(g,k)&middot;C(b,n&minus;k)/C(g+b,n)</b>.</p><p>For a sum of two independent throws, list the pairs and add P(a)&middot;P(b) over a + b = s.</p></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>p(x) = kx for x = 1..4: k(1+2+3+4) = 1 &rArr; <b>k = 0.1</b>.</p></div></div></div></section>
+<section class="cn" id="w-stat1-9-c3"><h4><span class="cnum">9.3</span>CDF</h4><div class="cbody two"><div class="prose"><p><b>F(x) = P(X &le; x)</b>. For discrete X it is a step function: it never decreases, it starts at 0 and ends at 1, and it is right-continuous.</p><ul><li>P(X = a) = <b>the jump at a</b> = F(a) &minus; F(a&#8315;)</li><li>P(X &gt; a) = 1 &minus; F(a) &nbsp;&middot;&nbsp; P(X &ge; a) = 1 &minus; F(a&#8315;)</li><li>P(a &lt; X &le; b) = F(b) &minus; F(a)</li><li>Unknown constant: F(largest value) = 1</li></ul></div><div class="side"><div class="fx"><span class="lbl">Worked</span><p>F(x) = (x&sup2; + k)/99 on x = 1..8: F(8) = 1 &rArr; 64 + k = 99 &rArr; <b>k = 35</b>.</p></div></div></div></section>
+<div class="recap"><h4>Recap &mdash; read this the night before</h4><ul><li>Support of draws: max(0, n&minus;b) to min(n, g)</li><li>&Sigma; p(x) = 1 finds k</li><li>F(x) = P(X &le; x); P(X = a) = jump at a</li><li>&ge; and &lt; need F(a&#8315;): watch strict inequalities</li><li>Conditional from a CDF: P(A&cap;B)/P(B), each from F</li></ul></div>
+<div class="traps"><h4>Traps that cost marks</h4><ol><li>P(X &ge; a) = 1 &minus; F(a) is wrong. It is 1 &minus; F(a&#8315;).</li><li>Reading F(a) as P(X = a).</li><li>Listing support values that can't happen (more whites than there are).</li></ol></div>
+<div class="drills"><h4>Practice &mdash; solve on paper first, then open the answer</h4><div class="dqgrid"><div class="dq"><div class="dqq"><span class="qn">Q1</span>X has F(0) = 0.2, F(1) = 0.5, F(2) = 0.85, F(3) = 1. Find P(X = 2), P(X &ge; 1) and P(X &gt; 1 | X &lt; 3).</div><details><summary>Show answer</summary><div class="ans">P(X=2) = 0.85 &minus; 0.5 = <b>0.35</b>. P(X &ge; 1) = 1 &minus; 0.2 = <b>0.8</b>. P(X&gt;1 | X&lt;3) = P(X=2)/F(2) = 0.35/0.85 = <b>0.412</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q2</span>A box has 3 red and 3 blue balls; pick 3 without replacement. X = reds. Find the PMF.</div><details><summary>Show answer</summary><div class="ans">C(3,k)C(3,3&minus;k)/20: P(0) = <b>1/20</b>, P(1) = <b>9/20</b>, P(2) = <b>9/20</b>, P(3) = <b>1/20</b>.</div></details></div><div class="dq"><div class="dqq"><span class="qn">Q3</span>p(x) = c(x + 1) for x = 0, 1, 2, 3. Find c and P(X &le; 1).</div><details><summary>Show answer</summary><div class="ans">c(1+2+3+4) = 1 &rArr; <b>c = 0.1</b>; P(X &le; 1) = 0.1 + 0.2 = <b>0.3</b>.</div></details></div></div></div>
+</div>
+<h4 class="arh">Past-paper patterns for this week</h4>
+<div class="arows">
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A2">W9-A2</a>
+<span class="at">PMF via combinatorial (hypergeometric-style) counting</span>
+<div class="meta"><span class="am">12 marks</span><span class="am">4 Q</span></div>
+<p class="ab">When X counts favorable items drawn from a finite population (with or without replacement), compute P(X=k) as a ratio of combinations/counts of favorable-vs-total outcomes, e.g. C(favorable,k)*C(rest,n-k)/C(total,n), for each value in the support.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A1">W9-A1</a>
+<span class="at">Support/range of a discrete RV from a counting setup</span>
+<div class="meta"><span class="am">8 marks</span><span class="am">4 Q</span></div>
+<p class="ab">When a scenario describes drawing/selecting a fixed number of items from a population and asks only for the possible values of X (not probabilities), list the support as min = max(0, n_draws - non_favorable_count) up to max = min(n_draws, favorable_count).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A5">W9-A5</a>
+<span class="at">Extract a PMF value from the jump size of a step CDF</span>
+<div class="meta"><span class="am">7 marks</span><span class="am">3 Q</span></div>
+<p class="ab">Given a step/piecewise CDF, recover P(X=x) as the size of the jump at x: F(x) minus F evaluated just below x.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A7">W9-A7</a>
+<span class="at">Conditional probability computed from a CDF</span>
+<div class="meta"><span class="am">6 marks</span><span class="am">2 Q</span></div>
+<p class="ab">For P(event1 | event2) from a CDF, compute P(event1 ∩ event2) and P(event2) separately as CDF-derived probabilities, then divide: P(A|B) = P(A∩B)/P(B).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A4">W9-A4</a>
+<span class="at">Solve for an unknown constant via total-probability normalization</span>
+<div class="meta"><span class="am">4 marks</span><span class="am">2 Q</span></div>
+<p class="ab">Whenever a PMF or CDF contains an unknown constant, use the fact that total probability equals 1 — sum all PMF terms to 1, or set the CDF value at the largest support point to 1 — and solve for the constant.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A6">W9-A6</a>
+<span class="at">Read cumulative/tail probability directly off a step CDF</span>
+<div class="meta"><span class="am">4 marks</span><span class="am">2 Q</span></div>
+<p class="ab">Given a step CDF table or graph, read P(X&lt;=a) directly as F(a), and get &#x27;at least&#x27;/&#x27;greater than&#x27; probabilities as 1 - F(a) (or F just below a, for strict inequalities) with no extra computation.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A9">W9-A9</a>
+<span class="at">Conceptual true/false checks on discrete RVs and CDFs</span>
+<div class="meta"><span class="am">4 marks</span><span class="am">2 Q</span></div>
+<p class="ab">For true/false statements about discrete RVs or CDFs, test each against the defining properties: CDF is non-decreasing, right-continuous, ranges 0 to 1; PMF values are non-negative and sum to 1; Bernoulli mean equals p — eliminate options that violate any property.</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A3">W9-A3</a>
+<span class="at">PMF of a sum via convolution over two independent trials</span>
+<div class="meta"><span class="am">3 marks</span><span class="am">1 Q</span></div>
+<p class="ab">When X is the sum of two independent trial outcomes (e.g. two die throws), build the full joint outcome table and sum P(A=a)*P(B=b) over all pairs with a+b=x to get P(X=x).</p>
+</div>
+<div class="ar gap">
+<span class="tick">&times;</span>
+<a class="aid" href="stat1.html#arch-W9-A8">W9-A8</a>
+<span class="at">Build a CDF from a PMF by cumulative summation</span>
+<div class="meta"><span class="am">2 marks</span><span class="am">1 Q</span></div>
+<p class="ab">Given a PMF table, build the CDF by cumulatively summing PMF values up to and including each x: F(x) = sum of P(X=t) for all t &lt;= x.</p>
 </div>
 </div></div>
 </section>
@@ -757,9 +1032,9 @@ return None</pre></div><details><summary>Show answer</summary><div class="ans"><
     if(keep){ keep.scrollIntoView(); } else { window.scrollTo(0,0); }
   });
   document.getElementById("tPrint").addEventListener("click",function(){window.print();});
-  var d=new Date("2026-11-15T14:00:00"), n=new Date();
+  var d=new Date("2026-12-05T09:00:00"), n=new Date();
   var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");
-  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 1") : "End-term day";
+  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 2") : "Quiz day";
 })();
 
 /* The sheet is generated as a static snapshot — every row ships as a gap with a

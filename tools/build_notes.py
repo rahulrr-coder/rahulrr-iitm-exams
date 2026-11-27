@@ -12,10 +12,10 @@ OUT = os.path.join(ROOT, "notes.html")
 
 # order on the page: read the must-know sheet last, so the crib sheet comes first
 SHEETS = [
+    ("stat1-crib",      "stat1",  "📊 Stat 1",  "Crib sheet",  "Quiz 2: weeks 5-9 concept map, formula page, curated practice"),
+    ("stat1-mustknow",  "stat1",  "📊 Stat 1",  "Must-know",   "The 8 Quiz 2 traps - read this one last"),
     ("python-crib",     "python", "🐍 Python",  "Crib sheet",  "Pattern, weeks 1-4 concept map, formula page, curated practice"),
     ("python-mustknow", "python", "🐍 Python",  "Must-know",   "The 10 traps - read this one last"),
-    ("stat1-crib",      "stat1",  "📊 Stat 1",  "Crib sheet",  "Pattern, weeks 1-4 concept map, formula page, curated practice"),
-    ("stat1-mustknow",  "stat1",  "📊 Stat 1",  "Must-know",   "The 8 traps - read this one last"),
 ]
 
 NAV = """<nav class="topnav"><div class="inner">
@@ -27,7 +27,7 @@ NAV = """<nav class="topnav"><div class="inner">
 <a class="tab" href="python.html">Python</a>
 <a class="tab active" href="notes.html">Notes</a>
 <div class="spacer"></div>
-<div class="daysleft" id="navDays">&mdash; days to Quiz 1</div>
+<div class="daysleft" id="navDays">&mdash; days to Quiz 2</div>
 </div></nav>"""
 
 # page-local: long-form prose, read top to bottom and on a phone. The rest of the
@@ -147,7 +147,7 @@ def main():
         "</head>", "<body>", NAV,
         '<div class="wrap notes">',
         '<header class="noteshead">',
-        '<p class="kicker">IITM BS &middot; Quiz 1 &middot; 15 Nov 2026 &middot; weeks 1&ndash;4</p>',
+        '<p class="kicker">IITM BS &middot; Stat 1 Quiz 2 &middot; Sat 5 Dec 2026 &middot; weeks 5&ndash;8 (+ 1&ndash;4 review)</p>',
         "<h1>Crib sheets</h1>",
         '<p class="lede">The four revision sheets, rendered from the markdown in <code>notes/</code>. '
         'Read the crib sheet while you revise; read the <strong>must-know</strong> sheet last, right before you walk in.</p>',
@@ -179,9 +179,9 @@ def main():
         '(function(){',
         '  var b=document.getElementById("tPrint");',
         '  if(b) b.addEventListener("click",function(){window.print();});',
-        '  var d=new Date("2026-11-15T14:00:00"), n=new Date();',
+        '  var d=new Date("2026-12-05T09:00:00"), n=new Date();',
         '  var dl=Math.ceil((d-n)/864e5), el=document.getElementById("navDays");',
-        '  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 1") : "Quiz day";',
+        '  if(el) el.innerHTML = dl>0 ? ("<b>"+dl+"</b> days to Quiz 2") : "Quiz day";',
         "})();",
         "</script>",
         "</body>", "</html>",
