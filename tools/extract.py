@@ -252,7 +252,9 @@ def main():
         for fn in sorted(os.listdir(src)):
             if not fn.endswith(".pdf"):
                 continue
-            pk = by_token.get(paper_token(fn))
+            # "S18_2023_dec-whatever.pdf" names its key outright; Quiz 2 and
+            # End Term papers can share a year_month token.
+            pk = fn.split("-")[0] if fn.split("-")[0] in want else by_token.get(paper_token(fn))
             if not pk:
                 print("  ?? no paper key for", fn); continue
             pdf = os.path.join(src, fn)

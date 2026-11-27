@@ -1,10 +1,10 @@
 # Stat 1 (IITM BS Foundation) — Quiz 2 Crib Sheet
 
-*Quiz 2: Sat 5 Dec 2026, in centre. New material is weeks 5–8; weeks 1–4 can reappear as review. Built from the 58 week 5–9 questions (157 marks) in the 11 End Term papers, 2022 Aug → 2026 May. Now also includes the two real Quiz 2 papers, Apr 2026 and Aug 2026 (27 questions, 80 marks).*
+*Quiz 2: Sat 5 Dec 2026, in centre. New material is weeks 5–8; weeks 1–4 can reappear as review. Built from the 58 week 5–9 questions (157 marks) in the 11 End Term papers, 2022 Aug → 2026 May. Now also includes 10 real Quiz 2 papers from Apr 2023 to Aug 2026 (141 questions, 410 marks).*
 
-**What the real Quiz 2 papers look like:** each has 40 marks in 13–14 questions and covers **only W5–W8**, with no W1–4 review and no random variables. Marks per paper by week: W5 6/4, **W6 13/15**, W7 5/7, **W8 16/14** (Apr/Aug). W6 counting plus W8 conditional probability and Bayes make up about 70% of each paper. Every paper has a 5-mark Bayes SA question.
+**What the real Quiz 2 papers look like (10 papers, 2023–2026):** 40 marks in 11–18 questions. Share of all marks by week: W5 12%, **W6 31%**, W7 20%, **W8 29%**, and W1–4 review 7%. There is **no W9 in any paper**. The papers before Mar 2024 carried 3–14 marks of W1–4 review (IQR, quartiles, association), but none have since Aug 2024. Almost every paper has a Bayes or total-probability question worth 3–5 marks.
 
-**Week labels follow the lecture PDFs.** W5 = lectures 5.1–5.2 (counting), W6 = 5.3–5.6 (permutations, combinations), W7 = 6.x (probability), W8 = 7.x (conditional probability, Bayes), W9 = 8.x (random variables, PMF, CDF). **W9 is probably out:** neither real Quiz 2 paper asked about it. Confirm on the portal; if the syllabus doesn't list it, skip it.
+**Week labels follow the lecture PDFs.** W5 = lectures 5.1–5.2 (counting), W6 = 5.3–5.6 (permutations, combinations), W7 = 6.x (probability), W8 = 7.x (conditional probability, Bayes), W9 = 8.x (random variables, PMF, CDF). **W9 is probably out:** none of the 10 real Quiz 2 papers asked about it. Confirm on the portal; if the syllabus doesn't list it, skip it.
 
 ---
 
