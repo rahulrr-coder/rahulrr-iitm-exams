@@ -2,12 +2,12 @@
 
 One screen. No new material: just the patterns that carry the paper and the places where easy marks get lost.
 
-## Where the marks are (weeks 5–9, 11 End Term papers)
+## Where the marks are (real Quiz 2 papers: W6 ≈ 14/40, W8 ≈ 15/40)
 1. **Two-stage "pick a box, then a ball"** → total probability, then Bayes. The biggest single pattern.
 2. **Teams and committees** → nCr with include/exclude, or split into cases and add.
 3. **nCr ÷ nCr probability** → favourable draws ÷ all draws.
 4. **Independent events** → multiply; "at least one" = 1 − P(none).
-5. **CDF questions (if W9 is in scope)** → P(X = a) is the jump at a.
+5. **CDF questions (only if W9 is on the syllabus; neither real Quiz 2 paper had one)** → P(X = a) is the jump at a.
 
 ## The 8 traps that cost the most marks
 1. **P vs C:** roles, positions or prizes → P. Groups → C. "Captain and vice-captain" is P.
